@@ -71,7 +71,7 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
         jLabel3 = new javax.swing.JLabel();
         expiresTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        registerBtn = new javax.swing.JButton();
         optionsMethodPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -160,7 +160,7 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(toAddressTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel6))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         dialBtn.setText("Dial");
@@ -190,7 +190,7 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(dialBtn)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         tab.addTab("INVITE", inviteMethodPanel);
@@ -258,10 +258,10 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Register");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        registerBtn.setText("Register");
+        registerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                registerBtnActionPerformed(evt);
             }
         });
 
@@ -275,7 +275,7 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
                     .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, registerMethodPanelLayout.createSequentialGroup()
                         .add(0, 0, Short.MAX_VALUE)
-                        .add(jButton1)))
+                        .add(registerBtn)))
                 .addContainerGap())
         );
         registerMethodPanelLayout.setVerticalGroup(
@@ -284,8 +284,8 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
                 .addContainerGap()
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton1)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .add(registerBtn)
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         tab.addTab("REGISTER", registerMethodPanel);
@@ -348,7 +348,7 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(sendOptionsBtn)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
 
         tab.addTab("OPTIONS", optionsMethodPanel);
@@ -361,7 +361,7 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
         );
         referMethodPanelLayout.setVerticalGroup(
             referMethodPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 258, Short.MAX_VALUE)
+            .add(0, 262, Short.MAX_VALUE)
         );
 
         tab.addTab("REFER", referMethodPanel);
@@ -374,7 +374,7 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
         );
         customMethodPanelLayout.setVerticalGroup(
             customMethodPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 258, Short.MAX_VALUE)
+            .add(0, 262, Short.MAX_VALUE)
         );
 
         tab.addTab("Custom", customMethodPanel);
@@ -467,9 +467,9 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
         dialog.setVisible(true);
     }//GEN-LAST:event_preferencesMenuItemActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_registerBtnActionPerformed
 
     private void optionsServerAddressTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionsServerAddressTextFieldActionPerformed
         // TODO add your handling code here:
@@ -612,7 +612,6 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel inviteMethodPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
@@ -634,6 +633,7 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
     private javax.swing.JPanel optionsMethodPanel;
     private javax.swing.JTextField optionsServerAddressTextField;
     private javax.swing.JPanel referMethodPanel;
+    private javax.swing.JButton registerBtn;
     private javax.swing.JPanel registerMethodPanel;
     private javax.swing.JTextField registrarTextField;
     private javax.swing.JLabel registrationStatus;

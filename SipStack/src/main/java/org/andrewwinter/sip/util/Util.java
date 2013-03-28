@@ -7,9 +7,15 @@ import java.net.UnknownHostException;
  *
  * @author andrewwinter77
  */
-public class Util {
+public final class Util {
     
     private static String ipAddress = null;
+
+    /**
+     * Prevents instantiation.
+     */
+    private Util() {
+    }
     
     /**
      *

@@ -6,7 +6,7 @@ import java.util.Random;
  *
  * @author andrewwinter77
  */
-public class RandomStringFactory {
+public final class RandomStringFactory {
 
     private static final char[] ALPHABET = new char[] {
         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd',
@@ -18,6 +18,11 @@ public class RandomStringFactory {
     // framework but we'll work around it here by not generating tags with a %.
     // , '%'};
     
+    /**
+     * Prevents instantiation.
+     */
+    private RandomStringFactory() {
+    }
     
     /**
      *

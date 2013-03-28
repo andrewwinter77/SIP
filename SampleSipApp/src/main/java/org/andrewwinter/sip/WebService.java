@@ -1,11 +1,14 @@
 package org.andrewwinter.sip;
 
 
+import java.io.IOException;
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.sip.ConvergedHttpSession;
+import javax.servlet.sip.ServletParseException;
+import javax.servlet.sip.SipApplicationSession;
 import javax.servlet.sip.SipFactory;
+import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipSessionsUtil;
 import javax.servlet.sip.TimerService;
 import javax.ws.rs.ApplicationPath;
@@ -22,10 +25,6 @@ import javax.ws.rs.core.Context;
 @Path("/")
 public class WebService extends Application {
 
-    public WebService() {
-        System.out.println("Constructor");
-    }
-    
     @Resource
     private SipFactory sipFactoryVariableName;
 
@@ -46,26 +45,29 @@ public class WebService extends Application {
             @Context ServletContext servletContext,
             @Context HttpServletRequest request) {
         
-        final StringBuilder sb = new StringBuilder();
-        
         if (sipFactoryVariableName == null) {
-            sb.append("SipFactory is null. Bad times!!!");
-        } else {
-            sb.append("SipFactory is non null! ").append(sipFactoryVariableName.toString());
+            return "sipFactory is null.";
         }
-        sb.append("\n\n");
         
-        sb.append("Converged HTTP session? ").append(request.getSession() instanceof ConvergedHttpSession);
-        sb.append("\n\n");
-        sb.append("Request is ").append(request);
+        final SipApplicationSession sas = sipFactoryVariableName.createApplicationSession();
+
+        final SipServletRequest invite;
+        try {
+            invite = sipFactoryVariableName.createRequest(
+                    sas,
+                    "INVITE",
+                    "sip:from@someone.com",
+                    "sip:to@someone.com");
+        } catch (ServletParseException e) {
+            return "ServletParseException!";
+        }
         
-        
-//        
-//        return sb.toString();
-        
-        MainSipServlet ss = new MainSipServlet();
-        ss.foo();
-        
-        return sb.toString();
+        try {
+            invite.send();
+        } catch (IOException e) {
+            return "IOException sending INVITE";
+        }
+         
+        return "INVITE sent successfully.";
     }
 }

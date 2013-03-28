@@ -1,10 +1,12 @@
 package org.andrewwinter.sip;
 
 
+import java.io.IOException;
 import javax.annotation.Resource;
-import javax.enterprise.context.ApplicationScoped;
+import javax.servlet.ServletException;
 import javax.servlet.sip.SipFactory;
 import javax.servlet.sip.SipServlet;
+import javax.servlet.sip.SipServletResponse;
 import javax.servlet.sip.SipSessionsUtil;
 import javax.servlet.sip.TimerService;
 
@@ -20,9 +22,15 @@ public class MainSipServlet extends SipServlet {
 
     @Resource
     private TimerService timerService;
-    
-    public void foo() {
-        System.out.println("In MainSipServlet, got " + timerService);
+
+    @Override
+    protected void doSuccessResponse(SipServletResponse ssr) throws ServletException, IOException {
+        super.doSuccessResponse(ssr); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void doErrorResponse(SipServletResponse ssr) throws ServletException, IOException {
+        super.doErrorResponse(ssr); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

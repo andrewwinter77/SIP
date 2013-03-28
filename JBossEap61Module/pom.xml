@@ -3,31 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>SipProjects</artifactId>
+        <artifactId>SIP</artifactId>
         <groupId>org.andrewwinter.sip</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.andrewwinter.sip</groupId>
     <artifactId>JBossEap61Module</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <name>JBossEap61Module</name>
-    <url>http://maven.apache.org</url>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.2-beta-4</version>
                 <configuration>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
@@ -48,7 +34,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
 
@@ -89,15 +74,15 @@
         </dependency>
                     
         <dependency>
-            <groupId>org.andrewwinter.sip</groupId>
-            <artifactId>JSR289</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Jsr289</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.andrewwinter.sip</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>SipStack</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 </project>

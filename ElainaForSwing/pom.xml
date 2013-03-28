@@ -3,15 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>SipProjects</artifactId>
+        <artifactId>SIP</artifactId>
         <groupId>org.andrewwinter.sip</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.andrewwinter.sip</groupId>
     <artifactId>ElainaForSwing</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <name>ElainaForSwing</name>
-    <url>http://maven.apache.org</url>
 
     <build>
         <plugins>
@@ -19,7 +16,6 @@
                 <!-- Build an executable JAR -->
                 <groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-jar-plugin</artifactId>
-		<version>2.3.1</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -35,9 +31,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.andrewwinter.sip</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>SipStack</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -57,7 +53,6 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty</artifactId>
-            <version>3.3.1.Final</version>
         </dependency>
     </dependencies>
 </project>

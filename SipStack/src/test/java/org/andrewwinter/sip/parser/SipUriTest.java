@@ -92,12 +92,9 @@ public class SipUriTest {
     
     @Test
     public void testEqual() throws ParseException {
-        
         for (final String[] pair : EQUAL) {
             SipUri uriA = (SipUri) Uri.parse(pair[0]);
             SipUri uriB = (SipUri) Uri.parse(pair[1]);
-            System.out.println(uriA);
-            System.out.println(uriB);
             Assert.assertTrue(uriA.toString() + " and " + uriB.toString() + " are supposed to be equal.", uriA.equalsUsingComparisonRules(uriB));
             Assert.assertTrue(uriA.toString() + " and " + uriB.toString() + " are supposed to be equal.", uriB.equalsUsingComparisonRules(uriA));
         }
@@ -105,12 +102,9 @@ public class SipUriTest {
 
     @Test
     public void testNotEqual() throws ParseException {
-        
         for (final String[] pair : NOT_EQUAL) {
             SipUri uriA = (SipUri) Uri.parse(pair[0]);
             SipUri uriB = (SipUri) Uri.parse(pair[1]);
-            System.out.println(uriA);
-            System.out.println(uriB);
             Assert.assertFalse(uriA.toString() + " and " + uriB.toString() + " are not supposed to be equal.", uriA.equalsUsingComparisonRules(uriB));
             Assert.assertFalse(uriA.toString() + " and " + uriB.toString() + " are not supposed to be equal.", uriB.equalsUsingComparisonRules(uriA));
         }

@@ -1,7 +1,6 @@
 package org.andrewwinter.sip.parser;
 
 import java.util.List;
-import org.andrewwinter.sip.message.SipMessageFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,7 +31,6 @@ public class SipMessageTest {
         final SipMessage message = SipMessage.parse(MESSAGE);
         final Parameterable param = message.getParameterable(HeaderName.CONTACT);
         Assert.assertEquals("<sip:alice@pc33.atlanta.com>", param.toString());
-        System.out.println("Got " + param);
     }
     
     
@@ -61,12 +59,9 @@ public class SipMessageTest {
   
     @Test
     public void testAddAddressHeader001() {
-        
         final SipMessage message = SipMessage.parse(MESSAGE);
         Uri uri = Uri.parse("http://wwww.example.com/alice/photo.jpg");
         Address callInfo = new Address(uri);
         callInfo.setParameter("purpose", "icon");
-        
-//      resp.addAddressHeader("Call-Info", callInfo, false);
     }
 }

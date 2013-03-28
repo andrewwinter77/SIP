@@ -53,9 +53,6 @@ public class AddressTest {
         Assert.assertEquals("3600", address.getParameter("expires"));
         Assert.assertEquals("", address.getParameter("flagparam"));
         Assert.assertEquals("Mr. \\\"Watson\\\"", address.getDisplayName());
-//        System.out.println(address.getDisplayName());
-        
-//        Assert.assertEquals();
     }
 
     /**
@@ -67,8 +64,6 @@ public class AddressTest {
         Assert.assertEquals("hyh8", address.getTag());
         Assert.assertNull(address.getParameter("nonexistentparam"));
         Assert.assertEquals("Anonymous", address.getDisplayName());
-        
-//        Assert.assertEquals();
     }
 
     /**
@@ -79,11 +74,6 @@ public class AddressTest {
         final Address address = Address.parse("sip:vivekg@chair-dnrc.example.com ;   tag    = 1918181833n");
         Assert.assertEquals("1918181833n", address.getTag());
         Assert.assertNull(address.getDisplayName());
-        
-        System.out.println(address.getValue());
-//        System.out.println(address.getDisplayName());
-        
-//        Assert.assertEquals();
     }
     
     /**
@@ -93,9 +83,6 @@ public class AddressTest {
     public void testAddress4() throws ParseException {
         final Address address = Address.parse("sip:vivekg@chair-dnrc.example.com");
         Assert.assertNull(address.getDisplayName());
-//        System.out.println(address.getDisplayName());
-        
-//        Assert.assertEquals();
     }
     
     private static Address createAddress(final String address) {
@@ -112,13 +99,11 @@ public class AddressTest {
     private static boolean compareAddress(final String add1, final String add2) {
         final Address address1 = createAddress(add1);
         final Address address2 = createAddress(add2);
-
         return address1.equals(address2);
     }
 
     @Test
     public void testEquals001() {
-
         if (!compareAddress("\"Alice\" <sip:%61lice@bea.com;transport=TCP;lr>;q=0.6;expires=3601", "\"Alice02\" <sip:alice@BeA.CoM;Transport=tcp;lr>;q=0.6;expires=3601")) {
             Assert.fail();
         }
@@ -135,5 +120,4 @@ public class AddressTest {
             Assert.fail();
         }
     }
-    
 }

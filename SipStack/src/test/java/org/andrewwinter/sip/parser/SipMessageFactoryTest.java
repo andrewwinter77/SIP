@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.andrewwinter.sip.parser;
 
 import junit.framework.Assert;
@@ -31,23 +27,29 @@ public class SipMessageFactoryTest implements SipRequestHandler {
 
         final UserAgentProperties uaProperties = new UserAgentProperties(from, "andrew");
         
-        
-        final SipRequest options = SipMessageFactory.createOutOfDialogRequest(
-                "OPTIONS", "sip:iptel.org", uaProperties.getFrom().toString(), null, uaProperties.getContact());
-        System.out.println(options);
-        
-        final ServerTransport serverTransport = new CoreJavaServerTransport(this);
-        serverTransport.listen();
-//        Udp.send(options, "iptel.org", 5060);
+        try {
+            SipMessageFactory.createOutOfDialogRequest(
+                "OPTIONS",
+                "sip:iptel.org",
+                uaProperties.getFrom().toString(),
+                null,
+                uaProperties.getContact());
+        } catch (Exception e) {
+            Assert.fail();
+        }
     }
 
     @Test
     public void testForParseException() {
         try {
-            final SipRequest options = SipMessageFactory.createOutOfDialogRequest(
-                 "OPTIONS", "iptel.org", "sip:from@foo.com", null, Address.parse("sip:contact@foo.com"));
+            SipMessageFactory.createOutOfDialogRequest(
+                 "OPTIONS",
+                 "iptel.org",
+                 "sip:from@foo.com",
+                 null,
+                 Address.parse("sip:contact@foo.com"));
             Assert.fail();
-        } catch (ParseException e) {
+        } catch (Exception e) {
         }
     }
     

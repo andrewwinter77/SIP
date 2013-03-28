@@ -180,38 +180,5 @@ public class SipUnitTest {
         
         String newFangledHeader = (String) request.getFirstOccurrenceOfHeader(HeaderName.fromString("newfangledheader"));
         Assert.assertEquals("newfangled value continued newfangled value", newFangledHeader);
-        
-        
-        
-//        List<String> require = request.getRequire();
-//        for (final String r : require) {
-//            System.out.println(r);
-//        }
-//        
-//        System.out.println("[" + request.getContentType().getParameter("charset") + "]");
-//        
-//        
-//        for (final StringWithParams swp : request.getAccept()) {
-//            System.out.println(swp);
-//        }
-        
-        List<Via> vias = request.getVias();
-        for (final Via via : vias) {
-            System.out.println(via);
-        }
-        
-//        System.out.println(request.getCSeq());
-  
-        for (final Address address : SipMessageHelper.getContact(request)) {
-            System.out.println("This one: " + address);
-        }
-        
-//        Assert.assertNull(requireHeader);
-        
-        
-//        System.out.println("\n==================================");
-//        final SipResponse response = SipMessageFactory.createResponse(request, ResponseType.OK);
-//        System.out.println(response);
-//        System.out.println("==================================");
     } 
 }

@@ -1,0 +1,10 @@
+<module xmlns="urn:jboss:module:1.1" name="javax.servlet.sip.api">
+    <dependencies>
+        <module name="javax.servlet.api" export="true"/>
+    </dependencies>
+
+    <resources>
+        <resource-root path="sipservlet-1_1-api.jar"/>
+    </resources>
+</module>
+

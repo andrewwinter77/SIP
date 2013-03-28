@@ -109,5 +109,6 @@
         <module>JBossEap61Module</module>
         <module>Jsr289</module>
         <module>SipAppArchetype</module>
+        <module>SampleSipApp</module>
     </modules>
 </project>

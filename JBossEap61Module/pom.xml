@@ -32,12 +32,6 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.jboss.as</groupId>
             <artifactId>jboss-as-server</artifactId>
             <version>7.1.1.Final</version>

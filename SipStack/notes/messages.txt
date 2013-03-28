@@ -1,0 +1,45 @@
+From iSIP:
+
+REGISTER sip:192.168.1.91;transport=tcp SIP/2.0
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Call-ID: o3aj1npl.0l12.owh8wx9i9.entuzytz
+Contact: "Andrew" <sip:Andrew@192.168.1.91:8000>
+Content-Length: 0
+CSeq: 13537 REGISTER
+Expires: 3600
+From: "Andrew" <sip:Andrew@192.168.1.91>;tag=huyeyya60lfed7gankd-zmqr.h.lcptx
+Max-Forwards: 70
+To: "Andrew" <sip:Andrew@192.168.1.91>
+User-Agent: iSip v4.8.9/iPhoneOS
+Via: SIP/2.0/UDP 192.168.1.91:8000;rport;branch=z9hG4bKPjblk-p0-bog4i7yvnczwrsc.gsg9vrrmh
+
+Back to iSIP from my app:
+
+SIP/2.0 200 OK
+Call-ID: o3aj1npl.0l12.owh8wx9i9.entuzytz
+CSeq: 13537 REGISTER
+Date: Mon, 23 Jul 2012 19:18:01 GMT
+From: "Andrew" <sip:Andrew@192.168.1.91>;tag=huyeyya60lfed7gankd-zmqr.h.lcptx
+To: "Andrew" <sip:Andrew@192.168.1.91>;tag=2djue04q9e
+Via: SIP/2.0/UDP 192.168.1.91:8000;rport=;branch=z9hG4bKPjblk-p0-bog4i7yvnczwrsc.gsg9vrrmh
+
+
+
+
+From iSIP:
+
+INVITE sip:123@192.168.1.91;transport=TCP SIP/2.0
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Call-ID: wltn5epwr7f0vnzdeccsiebceo1vyz8o
+Contact: "Andrew" <sip:Andrew@192.168.1.91:8000>
+Content-Length: 337
+Content-Type: application/sdp
+CSeq: 30615 INVITE
+From: "Andrew" <sip:Andrew@192.168.1.91>;tag=cl2lvte.4beltkyrjlg2lv-xf-to56c8
+Max-Forwards: 70
+Supported: replaces, 100rel, timer, norefersub
+To: <sip:123@192.168.1.91>
+User-Agent: iSip v4.8.9/iPhoneOS
+Via: SIP/2.0/UDP 192.168.1.91:8000;rport;branch=z9hG4bKPj.srivyh6ye6a1ktiit1z85472spmtzok
+Session-Expires: 1800
+Min-SE: 90

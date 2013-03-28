@@ -1,0 +1,22 @@
+Sound effects taken from here:
+http://www.soundjay.com/phone-sounds-1.html
+
+
+Java Sound API
+
+Check out AudioSystem, part of JSE
+http://docs.oracle.com/javase/1.5.0/docs/api/javax/sound/sampled/AudioSystem.html
+http://docs.oracle.com/javase/1.5.0/docs/guide/sound/programmer_guide/contents.html
+
+Though apparently JMF supports RTP but Java Sound doesn't. See
+http://www.jsresources.org/faq_general.html
+
+This resource:
+http://www.jsresources.org/faq_audio.html
+suggests using Java Sound in conjunction with the RTP implementation in JMF.
+
+
+Someone (https://forums.oracle.com/forums/thread.jspa?threadID=1271001) said this:
+For my project, I initially considered JMF...but ran into issues due to the level of abstraction it provides. With JMF, I was able to play audio easily but to actually do anything else with it was almost impossible or very difficult given the provided interfaces. And judging from the last release, I don't think Sun is actively supporting it.
+
+My project plays live streaming audio over RTP using Java Sound. There is a Java library that implements the RTP protocol called jrtp which can be found at https://jrtp.dev.java.net.

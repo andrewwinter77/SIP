@@ -1,0 +1,55 @@
+1. SYNTAX & ENCODING LAYER
+
+2. TRANSPORT LAYER
+- Sets Via header maddr, ttl and sent-by components.
+- Processes responses first.
+- Passes responses to the transaction layer.
+- Can generate fatal transport errors.
+- Can forward requests.
+- All SIP elements contain a transport layer.
+- Described in Section 18.
+
+
+3. TRANSACTION LAYER
+- Receives responses from the transport layer.
+- Passes responses to the TU.
+- Can generate timeout errors (for example, when a request receives no response).
+- Not used by stateless UASs.
+- Receives REGISTERS (among other things?) from the UAC.
+- Handles retransmissions.
+- Matches responses to requests.
+- Handles application-layer timeouts.
+- Described in Section 17.
+- Has a client component (the client transaction) represented as a FSM
+- Has a server component (the server transaction) represented as a FSM
+
+4. TRANSACTION USER
+
+
+
+APPLICATION LAYER
+
+PROXY LAYER
+CP1109DH1B5
+
+--
+
+USER AGENT
+- Contains a transaction layer.
+- Is a transaction user.
+- Is a core
+
+REGISTRAR
+- Contains a transaction layer.
+- Is a transaction user.
+- Is a core
+
+STATEFUL PROXY
+- Contains a transaction layer.
+- Is a transaction user.
+- Is a core
+
+STATELESS PROXY
+- Does not contain a transaction layer.
+- Is NOT a transaction user.
+- Is a core

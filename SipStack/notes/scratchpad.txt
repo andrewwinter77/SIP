@@ -1,0 +1,17 @@
+====================================================
+SRV lookup
+====================================================
+
+
+    public static void main(String[] args) throws Exception {
+        Hashtable<String, String> env = new Hashtable<String, String>();
+        env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.dns.DnsContextFactory");
+//        env.put("java.naming.provider.url", "dns://dns.server.com");
+//        env.put("java.naming.provider.url", "dns://8.8.8.8");
+        env.put(Context.PROVIDER_URL, "dns:");
+        DirContext ctx = new InitialDirContext(env);
+        Attributes attributes = ctx.getAttributes("_sip._udp.iptel.org", new String [] { "SRV" });
+        System.out.println(attributes.toString());
+        
+        final Attribute attribute = attributes.get("SRV");
+    }

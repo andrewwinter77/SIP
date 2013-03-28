@@ -1,0 +1,47 @@
+========================================================
+CODE CHANGES
+========================================================
+
+At the time of writing, XMLVM does not support the following:
+
+java.nio.channels.SocketChannel
+java.net.InetAddress
+java.net.UnknownHostException
+java.net.DatagramSocket
+java.net.DatagramPacket
+java.net.SocketException
+java.util.EnumMap
+
+Also, a main method is required to run the app in Xcode.
+
+
+========================================================
+WORKAROUNDS
+========================================================
+
+This was my test for numeric IP address. XMLVM doesn't support this.
+
+try {
+    return address.equals(InetAddress.getByName(address).getHostAddress());
+} catch (UnknownHostException e) {
+    // TODO: Handle UnknownHostException 
+    return false;
+}
+
+
+========================================================
+BUILDING
+========================================================
+
+Download XMLVM from here:
+http://xmlvm.svn.sourceforge.net/viewvc/xmlvm/trunk/xmlvm/?view=tar
+
+Unzip with
+tar -zxvf xmlvm-xmlvm.tar.gz 
+
+Build with
+ant
+
+Cross compile classes with
+java -Xmx256m -jar /Users/andrewwinter77/Downloads/xmlvm/xmlvm/dist/xmlvm.jar --target=iphone  --in=/Users/andrewwinter77/sip/build/classes/ --app-name=elaina
+

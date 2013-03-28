@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -11,6 +13,8 @@ import java.util.Locale;
  */
 public class TelUrl extends Uri {
 
+    private static final Logger LOG = LoggerFactory.getLogger(TelUrl.class);
+    
     private String uriAsString;
 
     private String number;
@@ -123,8 +127,6 @@ public class TelUrl extends Uri {
         moveToFront(paramNames, "isdn-subaddress");
         
         for (final String paramName : paramNames) {
-            
-            System.out.println("param name = " + paramName);
             sb.append(";").append(paramName);
             String paramValue = getParameter(paramName);
             if (paramValue.length() > 0) {
@@ -150,7 +152,7 @@ public class TelUrl extends Uri {
         try {
             return SipUri.parse(sb.toString());
         } catch (ParseException e) {
-            System.out.println("Failed to convert tel URL to SIP URI");
+            LOG.info("Failed to convert tel URL to SIP URI: {}", sb.toString());
             return null;
         }
     }

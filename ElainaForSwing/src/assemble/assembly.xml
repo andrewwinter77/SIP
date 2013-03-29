@@ -1,0 +1,37 @@
+<assembly>
+    <id>distribution</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>src/assemble</directory>
+            <includes>
+                <include>elaina.sh</include>
+            </includes>
+            <outputDirectory>elaina</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>audio</directory>
+            <includes>
+                <include>alerting.wav</include>
+            </includes>
+            <outputDirectory>elaina/audio</outputDirectory>
+        </fileSet>
+    </fileSets>
+    <dependencySets>
+        <dependencySet>
+            <includes>
+                <include>${project.groupId}:SipStack:jar</include>
+                <include>${project.groupId}:ElainaForSwing:jar</include>
+                <include>org.swinglabs:swing-layout:jar</include>
+                <include>javax.media:jmf:jar</include>
+                <include>io.netty:netty:jar</include>
+            </includes>
+            
+            <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>elaina</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+</assembly>

@@ -23,7 +23,7 @@ public class AddressImplTest extends TestCase {
     private static final String ORIGINAL_URL = "sip:foo@bar.com";
     private static final String ALTERNATIVE_URL = "tel:bar@foo.com";
 
-    private static final SipFactory SIP_FACTORY = new SipFactoryImpl(null, null);
+    private static final SipFactory SIP_FACTORY = new SipFactoryImpl();
     
     public AddressImplTest(String testName) {
         super(testName);

@@ -43,7 +43,7 @@ public class ServletContextFactory implements WebContextFactory {
         final String appName = sipMetadata.getAppName();
         
         final ServletContext context = sc.getServletContext();
-        context.setAttribute("javax.servlet.sip.SipFactory", new SipFactoryImpl(appName, sipMetadata.getMainServletName()));
+        context.setAttribute("javax.servlet.sip.SipFactory", new SipFactoryImpl());
         context.setAttribute("javax.servlet.sip.SipSessionsUtil", new SipSessionsUtilImpl(appName));
         context.setAttribute("javax.servlet.sip.TimerService", new TimerServiceImpl());
         

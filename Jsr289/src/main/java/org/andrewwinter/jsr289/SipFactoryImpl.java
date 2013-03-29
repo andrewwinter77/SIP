@@ -25,15 +25,6 @@ import org.andrewwinter.sip.parser.Uri;
  */
 public class SipFactoryImpl implements SipFactory {
 
-    private final String appName;
-    
-    private final String mainServletName;
-    
-    public SipFactoryImpl(final String appName, final String mainServletName) {
-        this.appName = appName;
-        this.mainServletName = mainServletName;
-    }
-    
     @Override
     public URI createURI(String uri) throws ServletParseException {
         
@@ -173,7 +164,7 @@ public class SipFactoryImpl implements SipFactory {
 
     @Override
     public SipApplicationSession createApplicationSession() {
-        return SipApplicationSessionImpl.create(appName);
+        return SipApplicationSessionImpl.create(AppNameThreadLocal.get());
     }
 
     @Override

@@ -14,8 +14,11 @@ public class SipFactoryResourceReferenceProcessor implements EEResourceReference
 
     private final DeploymentUnit du;
     
-    public SipFactoryResourceReferenceProcessor(final DeploymentUnit du) {
+    private final SipFactory sf;
+    
+    public SipFactoryResourceReferenceProcessor(final DeploymentUnit du, final SipFactory sf) {
         this.du = du;
+        this.sf = sf;
     }
     
     @Override
@@ -25,6 +28,6 @@ public class SipFactoryResourceReferenceProcessor implements EEResourceReference
 
     @Override
     public InjectionSource getResourceReferenceBindingSource() throws DeploymentUnitProcessingException {
-        return new SipFactoryInjectionSource(du);
+        return new SipFactoryInjectionSource(du, sf);
     }
 }

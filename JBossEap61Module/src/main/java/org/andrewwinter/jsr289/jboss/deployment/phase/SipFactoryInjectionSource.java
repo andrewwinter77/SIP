@@ -1,5 +1,6 @@
 package org.andrewwinter.jsr289.jboss.deployment.phase;
 
+import javax.servlet.sip.SipFactory;
 import org.jboss.as.ee.component.InjectionSource;
 import org.jboss.as.naming.ManagedReferenceFactory;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
@@ -16,8 +17,11 @@ public class SipFactoryInjectionSource extends InjectionSource {
 
     private final DeploymentUnit du;
     
-    public SipFactoryInjectionSource(final DeploymentUnit du) {
+    private final SipFactory sf;
+    
+    public SipFactoryInjectionSource(final DeploymentUnit du, final SipFactory sf) {
         this.du = du;
+        this.sf = sf;
     }
     
     @Override
@@ -27,6 +31,6 @@ public class SipFactoryInjectionSource extends InjectionSource {
             final DeploymentPhaseContext dpc,
             final Injector<ManagedReferenceFactory> injector) throws DeploymentUnitProcessingException {
         
-        injector.inject(new SipFactoryManagedReferenceFactory(du));
+        injector.inject(new SipFactoryManagedReferenceFactory(du, sf));
     }
 }

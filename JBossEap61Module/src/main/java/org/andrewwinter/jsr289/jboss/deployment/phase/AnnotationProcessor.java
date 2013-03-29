@@ -5,24 +5,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.annotation.Resource;
-import javax.servlet.sip.SipApplicationSessionActivationListener;
-import javax.servlet.sip.SipApplicationSessionAttributeListener;
-import javax.servlet.sip.SipApplicationSessionBindingListener;
-import javax.servlet.sip.SipApplicationSessionListener;
-import javax.servlet.sip.SipErrorListener;
 import javax.servlet.sip.SipFactory;
-import javax.servlet.sip.SipServletListener;
-import javax.servlet.sip.SipSessionActivationListener;
-import javax.servlet.sip.SipSessionAttributeListener;
-import javax.servlet.sip.SipSessionBindingListener;
-import javax.servlet.sip.SipSessionListener;
 import javax.servlet.sip.SipSessionsUtil;
-import javax.servlet.sip.TimerListener;
 import javax.servlet.sip.TimerService;
 import javax.servlet.sip.annotation.SipApplication;
 import javax.servlet.sip.annotation.SipApplicationKey;
 import javax.servlet.sip.annotation.SipListener;
 import javax.servlet.sip.annotation.SipServlet;
+import org.andrewwinter.jsr289.SipFactoryImpl;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipApplicationInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
@@ -30,7 +20,6 @@ import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipServletInfo;
 import org.jboss.as.ee.component.Attachments;
 import org.jboss.as.ee.component.BindingConfiguration;
-import org.jboss.as.ee.component.EEModuleClassDescription;
 import org.jboss.as.ee.component.EEModuleDescription;
 import org.jboss.as.ee.component.InjectionSource;
 import org.jboss.as.ee.component.deployers.EEResourceReferenceProcessor;
@@ -83,7 +72,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
         
         final EEResourceReferenceProcessorRegistry registry = du.getAttachment(
                 Attachments.RESOURCE_REFERENCE_PROCESSOR_REGISTRY);
-        registry.registerResourceReferenceProcessor(new SipFactoryResourceReferenceProcessor(du));
+        registry.registerResourceReferenceProcessor(new SipFactoryResourceReferenceProcessor(du, new SipFactoryImpl()));
         registry.registerResourceReferenceProcessor(new SipSessionsUtilResourceReferenceProcessor(du));
         registry.registerResourceReferenceProcessor(new TimerServiceResourceReferenceProcessor(du));
 

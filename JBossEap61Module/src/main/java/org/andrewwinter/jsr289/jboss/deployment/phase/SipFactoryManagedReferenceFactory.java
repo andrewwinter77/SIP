@@ -1,5 +1,6 @@
 package org.andrewwinter.jsr289.jboss.deployment.phase;
 
+import javax.servlet.sip.SipFactory;
 import org.jboss.as.naming.ManagedReference;
 import org.jboss.as.naming.ManagedReferenceFactory;
 import org.jboss.as.server.deployment.DeploymentUnit;
@@ -12,12 +13,15 @@ public class SipFactoryManagedReferenceFactory implements ManagedReferenceFactor
 
     private final DeploymentUnit du;
     
-    public SipFactoryManagedReferenceFactory(final DeploymentUnit du) {
+    private final SipFactory sf;
+    
+    public SipFactoryManagedReferenceFactory(final DeploymentUnit du, final SipFactory sf) {
         this.du = du;
+        this.sf = sf;
     }
     
     @Override
     public ManagedReference getReference() {
-        return new SipFactoryManagedReference(du);
+        return new SipFactoryManagedReference(du, sf);
     }
 }

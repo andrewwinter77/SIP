@@ -27,6 +27,11 @@ public class SipServletStore {
     }
     
     public void put(final String appName, final String servletName, final SipServlet servlet) {
+        
+        if (appName == null || servletName == null || servlet == null) {
+            throw new IllegalArgumentException("Tried to put servlet using null app name, servlet name or servlet.");
+        }
+        
         Map<String, SipServlet> servletNameToServletMap = map.get(appName);
         if (servletNameToServletMap == null) {
             servletNameToServletMap = new HashMap<>();
@@ -36,6 +41,11 @@ public class SipServletStore {
     }
     
     public SipServlet get(final String appName, final String servletName) {
+        
+        if (appName == null || servletName == null) {
+            throw new IllegalArgumentException("Tried to get servlet using null app name or servlet name.");
+        }
+        
         final Map<String, SipServlet> servletNameToServletMap = map.get(appName);
         if (servletNameToServletMap == null) {
             return null;

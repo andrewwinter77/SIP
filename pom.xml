@@ -110,5 +110,6 @@
         <module>Jsr289</module>
         <module>SipAppArchetype</module>
         <module>SampleSipApp</module>
-    </modules>
+    <module>SampleAppRouter</module>
+  </modules>
 </project>

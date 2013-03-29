@@ -12,16 +12,16 @@ import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipSessionsUtil;
 import javax.servlet.sip.TimerService;
 import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.GET;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
 
 /**
  * 
  */
-@ApplicationPath("/foo/")
+@ApplicationPath("/click2call/")
 @Path("/")
 public class WebService extends Application {
 
@@ -38,36 +38,33 @@ public class WebService extends Application {
      * Replace this method with something of your own.
      * @param param
      */
-    @GET
-    @Path("/bar/{someParam}")
-    public String doSomething(
-            @PathParam("someParam") final String param,
+    @POST
+    @Path("/call")
+    public String call(
+            @FormParam("from") final String from,
+            @FormParam("to") final String to,
             @Context ServletContext servletContext,
             @Context HttpServletRequest request) {
         
-        if (sipFactoryVariableName == null) {
-            return "sipFactory is null.";
-        }
-        
-        final SipApplicationSession sas = sipFactoryVariableName.createApplicationSession();
+        final SipApplicationSession appSession = sipFactoryVariableName.createApplicationSession();
 
         final SipServletRequest invite;
         try {
             invite = sipFactoryVariableName.createRequest(
-                    sas,
+                    appSession,
                     "INVITE",
-                    "sip:from@someone.com",
-                    "sip:to@someone.com");
+                    from,
+                    to);
         } catch (ServletParseException e) {
-            return "ServletParseException!";
+            return "There was something wrong with the addresses.";
         }
         
         try {
             invite.send();
         } catch (IOException e) {
-            return "IOException sending INVITE";
+            return "There was an error placing the call.";
         }
          
-        return "INVITE sent successfully.";
+        return "Call in progress.";
     }
 }

@@ -6,7 +6,6 @@ import org.jboss.as.controller.OperationFailedException;
 import org.jboss.as.controller.OperationStepHandler;
 import org.jboss.as.controller.descriptions.DescriptionProvider;
 import org.jboss.as.controller.descriptions.ModelDescriptionConstants;
-import org.jboss.as.controller.descriptions.common.CommonDescriptions;
 import org.jboss.dmr.ModelNode;
 
 /**
@@ -34,11 +33,14 @@ public class SubsystemDescribeHandler implements OperationStepHandler, Descripti
     @Override
     public void execute(OperationContext context, ModelNode operation) throws OperationFailedException {
         context.getResult().add(createAddSubSystemOperation());
-        context.completeStep();
+        context.stepCompleted();
     }
 
     @Override
     public ModelNode getModelDescription(Locale locale) {
-        return CommonDescriptions.getSubsystemDescribeOperation(locale);
+        final ModelNode subsystem = new ModelNode();
+        // TODO: Fix this
+        subsystem.get(ModelDescriptionConstants.DESCRIPTION).set("fixme");
+        return subsystem;
     }
 }

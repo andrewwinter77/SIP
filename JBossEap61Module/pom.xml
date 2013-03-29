@@ -9,6 +9,9 @@
     </parent>
     <artifactId>JBossEap61Module</artifactId>
     <name>JBossEap61Module</name>
+    <properties>
+        <jboss.version>7.2.0.Final</jboss.version>
+    </properties>
     <build>
         <plugins>
             <plugin>
@@ -34,14 +37,14 @@
         <dependency>
             <groupId>org.jboss.as</groupId>
             <artifactId>jboss-as-server</artifactId>
-            <version>7.1.1.Final</version>
+            <version>${jboss.version}</version>
             <scope>provided</scope>
         </dependency>
         
         <dependency>
             <groupId>org.jboss.as</groupId>
             <artifactId>jboss-as-web</artifactId>
-            <version>7.1.1.Final</version>
+            <version>${jboss.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -63,7 +66,7 @@
         <dependency>
             <groupId>org.jboss.as</groupId>
             <artifactId>jboss-as-ee</artifactId>
-            <version>7.1.1.Final</version>
+            <version>${jboss.version}</version>
             <scope>provided</scope>
         </dependency>
                     

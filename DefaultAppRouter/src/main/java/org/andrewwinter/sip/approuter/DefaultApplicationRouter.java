@@ -278,7 +278,7 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
                     final SipApplicationRouterInfo orig = rules.get(0);
 
                     return new SipApplicationRouterInfo(
-                            method,
+                            orig.getNextApplicationName(),
                             orig.getRoutingRegion(),
                             getSubscriberUri(orig.getSubscriberURI(), initialRequest),
                             orig.getRoutes(),

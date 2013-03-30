@@ -1,18 +1,23 @@
 package org.andrewwinter.jsr289.jboss;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
+import javax.servlet.sip.ServletParseException;
 import javax.servlet.sip.SipServlet;
+import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipServletResponse;
 import javax.servlet.sip.ar.SipApplicationRouter;
 import javax.servlet.sip.ar.SipApplicationRouterInfo;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
-import javax.servlet.sip.ar.SipApplicationRoutingRegion;
+import javax.servlet.sip.ar.SipRouteModifier;
+import javax.servlet.sip.ar.SipTargetedRequestInfo;
+import org.andrewwinter.jsr289.SipFactoryImpl;
 import org.andrewwinter.jsr289.SipListenerStore;
 import org.andrewwinter.jsr289.SipServletRequestImpl;
 import org.andrewwinter.jsr289.SipServletStore;
@@ -31,10 +36,18 @@ import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.StartContext;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.service.StopContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SipServletService implements SipRequestHandler, Service<SipServletService> {
 
     public static final ServiceName SERVICE_NAME = ServiceName.JBOSS.append("sipservlet");
+    
+    /**
+     * Logger.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(SipServletService.class);
+
     /**
      * Map from application name to SIP metadata.
      */
@@ -125,35 +138,159 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         }
     }
 
-    private void doInitialRequest(final SipServletRequestImpl sipServletRequest) {
+    /**
+     * 
+     * @param request
+     * @return 
+     */
+    private static SipTargetedRequestInfo getTargettedRequestInfo(final SipServletRequest request) {
+        // TODO: Do this. See getNextApplication() Javadocs on SipApplicationRouter
+        // for a starting point.
+        return null;
+    }
+    
+    /**
+     * 
+     * @param request
+     * @param reasonPhrase 
+     */
+    private static void respondWith500(final SipServletRequest request, final String reasonPhrase) {
+        try {
+            SipServletResponse response = request.createResponse(SipServletResponse.SC_SERVER_INTERNAL_ERROR, reasonPhrase);
+            response.send();
+        } catch (final Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    /**
+     * Implements Section 15.4.1 of Sip Servlet 1.1.
+     * @param sipServletRequest 
+     */
+    private void routeInitialRequest(final SipServletRequestImpl sipServletRequest) {
         if (appRouter == null) {
-            // TODO: Handle case where no app router is deployed. Maybe send
-            // a 500. Does the SIP Servlet spec say what to do?
+            // No app router deployed.
+            respondWith500(sipServletRequest, "No app router");
+            return;
+        }
+
+        final Serializable stateInfo;
+        final SipApplicationRoutingDirective directive;
+        if (true) { // TODO: if request is received from external SIP entity
+            directive = SipApplicationRoutingDirective.NEW;
+            stateInfo = null;
         } else {
-            final SipApplicationRouterInfo routerInfo = appRouter.getNextApplication(
-                    sipServletRequest,
-                    SipApplicationRoutingRegion.NEUTRAL_REGION, // TODO: Set region
-                    SipApplicationRoutingDirective.NEW, // TODO: Set directive
-                    null, // TODO: Set targetted request info
-                    null); // TODO: Set state info
+            // Request is received from an application
 
-            if (routerInfo == null) {
-                // TODO: Handle case where app router returns no app. This should
-                // happen only when there are no apps deployed, but a misbehaving
-                // app router might also return null.
+            // If request is received from an application, directive is set
+            // either implicitly or explicitly by the application.
+
+            // TODO: Set this to the correct value
+            directive = SipApplicationRoutingDirective.CONTINUE;
+
+
+
+            if (directive == SipApplicationRoutingDirective.CONTINUE || directive == SipApplicationRoutingDirective.REVERSE) {
+                // If request is received from an application, and directive
+                // is CONTINUE or REVERSE, stateInfo is set to that of the
+                // original request that this request is associated with.
+
+                stateInfo = null; // TODO: Set this
+
+
             } else {
-                final String appName = routerInfo.getNextApplicationName();
-                System.out.println("Next application is: " + appName);
 
-                final SipModuleInfo moduleInfo = APP_NAME_TO_MODULE_INFO.get(appName);
-                if (moduleInfo == null) {
-                    System.out.println("oh noooooooooooooooo no metadata for application " + appName);
-                } else {
-                    final SipServlet servlet = moduleInfo.getMainServlet();
-                    doRequest(sipServletRequest, moduleInfo, servlet);
-                }
+                // Otherwise, stateInfo is not set initially.
+                stateInfo = null;
             }
         }
+        
+        // 1. Call the SipApplicationRouter.getNextApplication() method of the
+        // Application Router object. The Application Router returns a
+        // SipApplicationRouterInfo object, named 'result' for this discussion.
+        
+        final SipApplicationRouterInfo result;
+        try {
+            result = appRouter.getNextApplication(
+                    sipServletRequest,
+                    null, // Routing region not set initially
+                    directive,
+                    getTargettedRequestInfo(sipServletRequest),
+                    stateInfo);
+        } catch (Exception e) {
+            // If SipApplicationRouter.getNextApplication() throws an exception,
+            // the container should send a 500 Server Internal Error final
+            // response to the initial request.
+            respondWith500(sipServletRequest, "App router failed");
+            return;
+        }
+
+        if (result == null) {
+            respondWith500(sipServletRequest, "App router returned null");
+            return;
+        } 
+        
+        // 2. Check the result.getRouteModifier()
+        
+        if (result.getRouteModifier() == SipRouteModifier.ROUTE) {
+            
+            // If result.getRouteModifier() is ROUTE, then get the routes using
+            // result.getRoutes().
+        
+            final String[] routes = result.getRoutes();
+            
+            // TODO: DO THIS
+            
+            
+        } else if (result.getRouteModifier() == SipRouteModifier.ROUTE_BACK) {
+
+            // TODO: DO THIS
+            
+        } else {
+           
+            // If result.getRouteModifier() is NO_ROUTE then disregard the
+            // result.getRoutes() and proceed.
+        }
+        
+        // 3. Check the result.getNextApplicationName()
+        
+        final String appName = result.getNextApplicationName();
+        
+        if (appName != null) {
+
+            // If result.getNextApplicationName() is not null:
+            // - set the application selection state on the SipSession:
+            //     * stateInfo to result.getStateInfo(),
+            //     * region to result.getRegion(), and
+            //     * URI to result.getSubscriberURI().
+            
+            final SipSessionImpl session = (SipSessionImpl) sipServletRequest.getSession();
+            session.setStateInfo(result.getStateInfo());
+            session.setRegion(result.getRoutingRegion());
+            
+            try {
+                session.setSubscriberURI(new SipFactoryImpl().createURI(result.getSubscriberURI()));
+            } catch (ServletParseException e) {
+                respondWith500(sipServletRequest, "App router generated illegal subsriber");
+                return;
+            }
+            
+            // - follow the procedures of Chapter 16 to select a servlet from
+            // the application.
+            
+            final SipModuleInfo moduleInfo = APP_NAME_TO_MODULE_INFO.get(appName);
+            if (moduleInfo == null) {
+                respondWith500(sipServletRequest, "No such application " + appName);
+                LOG.error("No such application " + appName);
+            } else {
+                final SipServlet servlet = moduleInfo.getMainServlet();
+                doRequest(sipServletRequest, moduleInfo, servlet);
+            }
+        } else {
+            
+            // TODO: Handle case where no app router name is returned
+        }
+
     }
 
     /**
@@ -164,7 +301,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
     public void doRequest(final InboundSipRequest isr) {
         final SipServletRequestImpl sipServletRequest = new SipServletRequestImpl(isr);
         if (sipServletRequest.isInitial()) {
-            doInitialRequest(sipServletRequest);
+            routeInitialRequest(sipServletRequest);
         } else {
             final Dialog dialog = isr.getServerTransaction().getDialog();
             if (dialog == null) {

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,8 +41,9 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
     
     private static final Pattern RULE_PATTERN = Pattern.compile("\"(.*?)\"");
 
-    private Map<String, List<SipApplicationRouterInfo>> rules;
+    private Map<String, List<SipApplicationRouterInfo>> rulesMap;
     
+    private final Object processingRulesLock = new Object();
     
     private boolean initialized;
     
@@ -102,6 +104,11 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
         initialized = true;
     }
 
+    /**
+     * 
+     * @param matcher
+     * @return 
+     */
     private static String getNextStringFromRule(final Matcher matcher) {
         if (matcher.find()) {
             String str = matcher.group();
@@ -112,6 +119,11 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
         } 
     }
 
+    /**
+     * 
+     * @param method
+     * @param rule 
+     */
     private void processRule(final String method, final String rule) {
         final Matcher ruleMatcher = RULE_PATTERN.matcher(rule);
         
@@ -128,15 +140,28 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
             routingRegion = SipApplicationRoutingRegion.NEUTRAL_REGION;
         }
         
-        
         final String route = getNextStringFromRule(ruleMatcher);
         
         final String routeModifierAsString = getNextStringFromRule(ruleMatcher);
         final SipRouteModifier routeModifier = SipRouteModifier.valueOf(routeModifierAsString);
         
+        final String stateInfoAsString = getNextStringFromRule(ruleMatcher);
+        final Integer stateInfo = Integer.valueOf(stateInfoAsString);
         
-        final String stateInfo = getNextStringFromRule(ruleMatcher);
+        final SipApplicationRouterInfo info = new SipApplicationRouterInfo(
+                appName,
+                routingRegion,
+                subscriberUri,
+                new String[] { route },
+                routeModifier,
+                stateInfo);
         
+        List<SipApplicationRouterInfo> rules = rulesMap.get(method);
+        if (rules == null) {
+            rules = new ArrayList<>();
+            rulesMap.put(method, rules);
+        }
+        rules.add(info);
     }
     
     /**
@@ -150,10 +175,8 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
                 
         final Matcher lineMatcher = LINE_PATTERN.matcher(line);
         while (lineMatcher.find()) {
-            
             final String rule = lineMatcher.group();
             processRule(method, rule);
-            
         }
     }
     
@@ -176,19 +199,19 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
             if (entity == null) {
 
             } else {
-                
-                rules = new HashMap<>();
-                
                 final InputStream is = entity.getContent();
-                BufferedReader in = new BufferedReader(new InputStreamReader(is));
-                String line = null;
+                final BufferedReader in = new BufferedReader(new InputStreamReader(is));
+                String line;
 
-                while((line = in.readLine()) != null) {
-                    line = line.trim();
-                    if (!line.isEmpty()) {
-                        processLineFromPropertiesFile(line);
+                synchronized (processingRulesLock) {
+                    rulesMap = new HashMap<>();
+                    while((line = in.readLine()) != null) {
+                        line = line.trim();
+                        if (!line.isEmpty()) {
+                            processLineFromPropertiesFile(line);
+                        }
                     }
-                }                
+                }
             }
         } catch (IOException e) {
             LOG.error("Error fetching DAR config file from " + url, e);
@@ -229,6 +252,13 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
             throw new IllegalStateException("App router must be initialized before invoking.");
         }
 
+        synchronized (processingRulesLock) {
+            
+            final String method = initialRequest.getMethod();
+            final List<SipApplicationRouterInfo> rules = rulesMap.get(method);
+            
+        }
+        
 //        final SipApplicationRouterInfo info = new SipApplicationRouterInfo(
 //                null,
 //                region,
@@ -239,14 +269,5 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
 //
 //        return info;
         return null;
-    }
-
-    // INVITE: ("OriginatingCallWaiting", "DAR:From", "ORIGINATING", "", "NO_ROUTE", "0"), ("CallForwarding", "DAR:To", "TERMINATING", "", "NO_ROUTE", "1")
-    public static void main(final String[] args) {
-        
-        final String line = "(\"OriginatingCallWaiting\", \"DAR:From\", \"ORIGINATING\", \"\", \"NO_ROUTE\", \"0\"), (\"CallForwarding\", \"DAR:To\", \"TERMINATING\", \"\", \"NO_ROUTE\", \"1\")";
-        Pattern p = Pattern.compile("\\(.*\\)");
-        Matcher m = p.matcher(line);
-        System.out.println(m.matches());
     }
 }

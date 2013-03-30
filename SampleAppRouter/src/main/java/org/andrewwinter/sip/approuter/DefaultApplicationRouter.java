@@ -37,10 +37,28 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
      */
     private static final Logger LOG = LoggerFactory.getLogger(DefaultApplicationRouter.class);
     
+    /**
+     * The properties file MUST be made available to the DAR and the
+     * location/content of this file MUST be accessible from a hierarchical URI
+     * which itself is to be supplied as a system property.
+     */
+    private static final String CONFIGURATION_FILE_SYSTEM_PROPERTY = "javax.servlet.sip.ar.dar.configuration";
+
     private static final Pattern LINE_PATTERN = Pattern.compile(" *?\\((.*?)\\) *?,?");
     
     private static final Pattern RULE_PATTERN = Pattern.compile("\"(.*?)\"");
 
+    /**
+     * Returned by getNextApplication when no routing rule matches.
+     */
+    private static final SipApplicationRouterInfo DEFAULT_ROUTER_INFO = new SipApplicationRouterInfo(
+            null,
+            null,
+            null,
+            null,
+            SipRouteModifier.NO_ROUTE,
+            null);
+    
     private Map<String, List<SipApplicationRouterInfo>> rulesMap;
     
     private final Object processingRulesLock = new Object();
@@ -48,12 +66,6 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
     private boolean initialized;
     
     private final DefaultHttpClient httpclient;
-    /**
-     * The properties file MUST be made available to the DAR and the
-     * location/content of this file MUST be accessible from a hierarchical URI
-     * which itself is to be supplied as a system property.
-     */
-    private static final String CONFIGURATION_FILE_SYSTEM_PROPERTY = "javax.servlet.sip.ar.dar.configuration";
 
     /**
      * 
@@ -257,17 +269,43 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
             final String method = initialRequest.getMethod();
             final List<SipApplicationRouterInfo> rules = rulesMap.get(method);
             
+            if (rules == null || rules.isEmpty()) {
+                return DEFAULT_ROUTER_INFO;
+            } else {
+            
+                if (stateInfo == null && directive == SipApplicationRoutingDirective.NEW && targetedRequestInfo == null) {
+
+                    final SipApplicationRouterInfo orig = rules.get(0);
+
+                    return new SipApplicationRouterInfo(
+                            method,
+                            orig.getRoutingRegion(),
+                            getSubscriberUri(orig.getSubscriberURI(), initialRequest),
+                            orig.getRoutes(),
+                            orig.getRouteModifier(),
+                            new Integer(0));
+                    
+                } else {
+                    throw new UnsupportedOperationException("Not supported yet.");
+                }
+            }
         }
-        
-//        final SipApplicationRouterInfo info = new SipApplicationRouterInfo(
-//                null,
-//                region,
-//                null,
-//                strings,
-//                SipRouteModifier.ROUTE,
-//                stateInfo);
-//
-//        return info;
-        return null;
+    }
+    
+    /**
+     * The identity of the subscriber that the DAR returns. It can return any
+     * header in the SIP request using the DAR directive DAR:SIP_HEADER e.g
+     * "DAR:From" would return the SIP URI in From header. Or alternatively it
+     * can return any string.
+     * @param str
+     * @param request
+     * @return 
+     */
+    private static String getSubscriberUri(String str, final SipServletRequest request) {
+        if (str.startsWith("DAR:")) {
+            return request.getHeader(str.substring(4));
+        } else {
+            return str;
+        }
     }
 }

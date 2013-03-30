@@ -1,5 +1,6 @@
 package org.andrewwinter.jsr289;
 
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.util.Collections;
@@ -54,7 +55,19 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
     private long creationTime;
     
     private boolean invalidateWhenReady;
+    
+    private SipApplicationRoutingRegion routingRegion;
+    
+    /**
+     * State info used by app router. Not exposed to applications.
+     */
+    private Serializable stateInfo;
 
+    /**
+     * Determined by the app router.
+     */
+    private URI subscriberUri;
+    
     /**
      * The name of the servlet which should handle all subsequently received
      * messages for this SipSession. The servlet must belong to the same
@@ -470,13 +483,29 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
     @Override
     public SipApplicationRoutingRegion getRegion() {
         handleInvalidSession();
-        throw new UnsupportedOperationException("Not supported yet.");
+        return routingRegion;
     }
 
+    /**
+     * 
+     * @param region 
+     */
+    public void setRegion(final SipApplicationRoutingRegion region) {
+        this.routingRegion = region;
+    }
+    
     @Override
     public URI getSubscriberURI() {
         handleInvalidSession();
-        throw new UnsupportedOperationException("Not supported yet.");
+        return subscriberUri;
+    }
+    
+    /**
+     * 
+     * @param uri 
+     */
+    public void setSubscriberURI(final URI uri) {
+        this.subscriberUri = uri;
     }
 
     @Override
@@ -484,6 +513,22 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
         return servletContext;
     }
 
+    /**
+     * 
+     * @return 
+     */
+    public Serializable getStateInfo() {
+        return stateInfo;
+    }
+    
+    /**
+     * 
+     * @param stateInfo 
+     */
+    public void setStateInfo(final Serializable stateInfo) {
+        this.stateInfo = stateInfo;
+    }
+    
     /**
      * For subsequent requests only!
      * @param isr 

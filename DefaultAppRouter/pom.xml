@@ -7,8 +7,8 @@
         <groupId>org.andrewwinter.sip</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>SampleAppRouter</artifactId>
-    <name>SampleAppRouter</name>
+    <artifactId>DefaultAppRouter</artifactId>
+    <name>DefaultAppRouter</name>
     
     <build>
         <plugins>

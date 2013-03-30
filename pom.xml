@@ -111,5 +111,6 @@
         <module>SipAppArchetype</module>
         <module>SampleSipApp</module>
         <module>DefaultAppRouter</module>
+        <module>RegistrarApp</module>
   </modules>
 </project>

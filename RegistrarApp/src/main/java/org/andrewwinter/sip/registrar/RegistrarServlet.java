@@ -2,6 +2,7 @@ package org.andrewwinter.sip.registrar;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -37,9 +38,9 @@ public class RegistrarServlet extends SipServlet {
 
             final String canonicalizedUri = canonicalizeUri((SipURI) toUri.clone()).toString();
 
-            final Set<Binding> bindingsToAdd = new HashSet<>();
-            final Set<Binding> bindingsToRemove = new HashSet<>();
-
+            final List<Binding> bindingsToAdd = new ArrayList<>();
+            final Set<String> contactAddressesToRemove = new HashSet<>();
+            
             // If neither mechanism for expressing a suggested expiration time is
             // present in a REGISTER, the client is indicating its desire for the
             // server to choose.
@@ -93,7 +94,7 @@ public class RegistrarServlet extends SipServlet {
                                     // if the CSeq in the request is higher than the
                                     // value stored for that binding.
 
-                                    bindingsToRemove.add(binding);
+                                    contactAddressesToRemove.add(binding.getContactAddress());
 
                                 } else {
 
@@ -110,13 +111,18 @@ public class RegistrarServlet extends SipServlet {
                                 // with the value stored for each binding. If not, it MUST
                                 // remove the binding.
 
-                                bindingsToRemove.add(binding);
+                                contactAddressesToRemove.add(binding.getContactAddress());
                             }
                         }
                     }
                 } else {
 
-                    response = processContactHeaders(request, expiresFieldValue, canonicalizedUri, bindingsToAdd, bindingsToRemove);
+                    response = processContactHeaders(
+                            request,
+                            expiresFieldValue,
+                            canonicalizedUri,
+                            bindingsToAdd,
+                            contactAddressesToRemove);
                 }
             }
 
@@ -129,7 +135,7 @@ public class RegistrarServlet extends SipServlet {
                 // removed.
 
                 LocationService.getInstance().applyBindingsChanges(
-                        canonicalizedUri, bindingsToAdd, bindingsToRemove, getSipFactory());
+                        canonicalizedUri, bindingsToAdd, contactAddressesToRemove, getSipFactory());
                 
                 response = createOK(request, canonicalizedUri.toString());
             }
@@ -234,8 +240,8 @@ public class RegistrarServlet extends SipServlet {
             final SipServletRequest request,
             final Integer expiresFieldValue,
             final String canonicalizedUri,
-            final Set<Binding> bindingsToAdd,
-            final Set<Binding> bindingsToRemove) {
+            final List<Binding> bindingsToAdd,
+            final Set<String> contactAddressesToRemove) {
 
         SipServletResponse response = null;
 
@@ -319,7 +325,7 @@ public class RegistrarServlet extends SipServlet {
                         // existing binding, it MUST update or remove
                         // the binding as above.
 
-                        bindingsToRemove.add(binding);
+                        contactAddressesToRemove.add(binding.getContactAddress());
                         if (expires > 0) {
                             binding = new Binding(
                                     request.getCallId(),
@@ -347,7 +353,7 @@ public class RegistrarServlet extends SipServlet {
                     // the binding MUST be removed if the expiration
                     // time is zero and updated otherwise.
 
-                    bindingsToRemove.add(binding);
+                    contactAddressesToRemove.add(binding.getContactAddress());
                     if (expires > 0) {
                         binding = new Binding(
                                 request.getCallId(),

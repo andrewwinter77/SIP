@@ -2,8 +2,6 @@ package org.andrewwinter.sip.registrar;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import javax.naming.InitialContext;
@@ -58,12 +56,6 @@ public class LocationService {
         return bindings;
     }
 
-//    public void removeBinding(final String canonicalizedUri, final Binding binding) {
-//        final Set<Binding> set = allBindings.get(canonicalizedUri);
-//        if (set != null) {
-//            set.remove(binding);
-//        }
-//    }
     /**
      *
      * @param canonicalizedUri
@@ -155,48 +147,11 @@ public class LocationService {
      */
     public void applyBindingsChanges(
             final String canonicalizedUri,
-            final Set<Binding> bindingsToAdd,
-            final Set<Binding> bindingsToRemove,
+            final List<Binding> bindingsToAdd,
+            final Set<String> contactAddressesToRemove,
             final SipFactory sf) {
 
-        // The binding updates MUST be committed (that is, made visible to the
-        // proxy or redirect server) if and only if all binding updates and
-        // additions succeed. If any one of them fails (for example, because the
-        // back-end database commit failed), the request MUST fail with a 500
-        // (Server Error) response and all tentative binding updates MUST be
-        // removed.
-
-        List<Binding> bindings = getBindingsManager().getBindings(canonicalizedUri);
-//        if (bindings == null) {
-//            bindings = new ArrayList<>();
-//            getBindingsManager().put(canonicalizedUri, bindings);
-//        }
-
-        final Iterator<Binding> iter = bindings.iterator();
-        while (iter.hasNext()) {
-
-            final Binding existingBinding = iter.next();
-
-            try {
-                URI uriFromExistingBinding = sf.createURI(existingBinding.getContactAddress());
-
-                for (final Binding binding : bindingsToRemove) {
-
-                    URI uriInBinding = sf.createURI(binding.getContactAddress());
-                    if (Util.equalsUsingComparisonRules((SipURI) uriInBinding, (SipURI) uriFromExistingBinding)) {
-                        iter.remove();
-                    }
-                }
-
-            } catch (ServletParseException e) {
-                // Should never happen
-            }
-        }
-
-        bindings.addAll(bindingsToAdd);
-        if (bindings.isEmpty()) {
-            getBindingsManager().removeBindings(canonicalizedUri);
-        }
+        getBindingsManager().addAndRemoveBindings(canonicalizedUri, bindingsToAdd, contactAddressesToRemove, sf);
     }
 
     private LocationService() {

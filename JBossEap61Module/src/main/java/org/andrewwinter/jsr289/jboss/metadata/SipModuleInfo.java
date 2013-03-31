@@ -173,8 +173,10 @@ public class SipModuleInfo {
                     service,
                     this);
 
-            mainServletName = getMainServletName(); // TODO: Fail deployment if this is null
-
+            if ((mainServletName = getMainServletName()) == null) {
+                throw new DeploymentUnitProcessingException("Unable to determine main servlet name");
+            }
+            
             instantiateSipServlets();
             
             for (final Class clazz : org.andrewwinter.jsr289.Util.LISTENER_CLASSES) {

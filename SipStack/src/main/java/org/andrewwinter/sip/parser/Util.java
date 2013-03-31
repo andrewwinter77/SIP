@@ -80,15 +80,16 @@ public final class Util {
             // requests and responses, 3xx and 485 responses, and 200/OPTIONS
             // responses.
 
-            if (message instanceof SipRequest) {
-                return !((SipRequest) message).isREGISTER();
-            } else {
-                final SipResponse response = (SipResponse) message;
-                final int code = response.getStatusCode();
+            if ("REGISTER".equals(message.getMethod())) {
+                return false;
+            } else if (message instanceof SipResponse) {
+                final int code = ((SipResponse) message).getStatusCode();
                 return !(
                         (code >= 300 && code < 400) 
                         || code == 485
-                        || (code == 200 && "OPTIONS".equals(response.getMethod())));
+                        || (code == 200 && "OPTIONS".equals(message.getMethod())));
+            } else {
+                return true;
             }
         } else if (hn.equals(HeaderName.ROUTE)) {
             // Route (except through pushRoute)

@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.sip.ServletParseException;
 import javax.servlet.sip.SipFactory;
 import javax.servlet.sip.SipURI;
@@ -18,7 +20,19 @@ import javax.servlet.sip.URI;
 public class LocationService {
 
     private static final LocationService INSTANCE = new LocationService();
+    private BindingsManager bindingsManager;
     private Map<String, Set<Binding>> allBindings;
+
+    private BindingsManager getBindingsManager() {
+        if (bindingsManager == null) {
+            try {
+                final InitialContext ic = new InitialContext();
+                bindingsManager = (BindingsManager) ic.lookup("java:global/RegistrarApp-1.0-SNAPSHOT/BindingsManager!org.andrewwinter.sip.registrar.BindingsManager");
+            } catch (NamingException e) {
+            }
+        }
+        return bindingsManager;
+    }
 
     /**
      *
@@ -116,7 +130,7 @@ public class LocationService {
                 // TODO: Support non-SIP URIs
 
                 try {
-                    URI uriInBinding = sf.createURI(binding.getUri());
+                    URI uriInBinding = sf.createURI(binding.getContactAddress());
                     if (Util.equalsUsingComparisonRules((SipURI) uriInBinding, (SipURI) contact)) {
                         result = binding;
                         break;
@@ -164,11 +178,11 @@ public class LocationService {
             final Binding existingBinding = iter.next();
 
             try {
-                URI uriFromExistingBinding = sf.createURI(existingBinding.getUri());
+                URI uriFromExistingBinding = sf.createURI(existingBinding.getContactAddress());
 
                 for (final Binding binding : bindingsToRemove) {
 
-                    URI uriInBinding = sf.createURI(binding.getUri());
+                    URI uriInBinding = sf.createURI(binding.getContactAddress());
                     if (Util.equalsUsingComparisonRules((SipURI) uriInBinding, (SipURI) uriFromExistingBinding)) {
                         iter.remove();
                     }

@@ -86,7 +86,7 @@ public class RegistrarServlet extends SipServlet {
                             if (binding.getCallId().equals(request.getCallId())) {
 
 
-                                if (Util.getCSeqValue(request) > binding.getCSeqValue()) {
+                                if (Util.getCSeqValue(request) > binding.getCseqValue()) {
 
                                     // If it does agree, it MUST remove the binding only
                                     // if the CSeq in the request is higher than the
@@ -197,7 +197,7 @@ public class RegistrarServlet extends SipServlet {
                 }
 
                 try {
-                    final Address address = sf.createAddress(binding.getUri());
+                    final Address address = sf.createAddress(binding.getContactAddress());
                     address.setParameter("expires", String.valueOf(expires));
                     ok.addAddressHeader("Contact", address, false);
                 } catch (ServletParseException e) {
@@ -289,7 +289,8 @@ public class RegistrarServlet extends SipServlet {
                         request.getCallId(),
                         cseqValue,
                         contact.getURI().toString(),
-                        createExpiryTime(expires));
+                        createExpiryTime(expires),
+                        canonicalizedUri);
 
                 bindingsToAdd.add(binding);
             } else {
@@ -302,7 +303,7 @@ public class RegistrarServlet extends SipServlet {
                     // If they are the same, the registrar compares the
                     // CSeq value.
 
-                    if (cseqValue > binding.getCSeqValue()) {
+                    if (cseqValue > binding.getCseqValue()) {
 
                         // If the value is higher than that of the
                         // existing binding, it MUST update or remove
@@ -314,7 +315,8 @@ public class RegistrarServlet extends SipServlet {
                                     request.getCallId(),
                                     cseqValue,
                                     contact.getURI().toString(),
-                                    createExpiryTime(expires));
+                                    createExpiryTime(expires),
+                                    canonicalizedUri);
 
                             bindingsToAdd.add(binding);
                         }
@@ -341,7 +343,8 @@ public class RegistrarServlet extends SipServlet {
                                 request.getCallId(),
                                 cseqValue,
                                 contact.getURI().toString(),
-                                createExpiryTime(expires));
+                                createExpiryTime(expires),
+                                canonicalizedUri);
 
                         bindingsToAdd.add(binding);
                     }

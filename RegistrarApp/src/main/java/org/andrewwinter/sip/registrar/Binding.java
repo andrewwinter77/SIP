@@ -1,6 +1,15 @@
 package org.andrewwinter.sip.registrar;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
@@ -9,28 +18,52 @@ import java.util.Date;
 
 
 // TODO: Implement hashcode and equals - it's important we do this for this class
-public class Binding {
+@Table(name="bindings")
+@NamedQueries(value = {
+    @NamedQuery(name="getBinding", query = "SELECT b FROM Binding b WHERE b.publicAddress=:public_address")})
+@Entity
+public class Binding implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+  
+    @Column(name="call_id", nullable=false, unique=false)
+    private String callId;
+    
+    @Column(name="cseq", nullable=false, unique=false)
+    private int cseqValue;
+    
+    @Column(name="public_address", nullable=false, unique=false)
+    private String publicAddress;
 
-    private final String callId;
+    @Column(name="contact_address", nullable=false, unique=false)
+    private String contactAddress;
     
-    private final int cseq;
-    
-    private final String uri;
-    
-    private final Date expiryTime;
+    @Column(name="expiry_time", nullable=false, unique=false)
+    private Date expiryTime;
+
+    /**
+     * The entity class must have a no-arg constructor. It may have other
+     * constructors as well. The no-arg constructor must be public or protected.
+     */
+    public Binding() {
+    }
     
     /**
      * 
      * @param callId
      * @param cseq
-     * @param uri Contact URI.
+     * @param contactAddress Contact URI.
      * @param expiryTime  
+     * @param publicAddress
      */
-    public Binding(final String callId, final int cseq, final String uri, Date expiryTime) {
+    public Binding(final String callId, final int cseq, final String contactAddress, final Date expiryTime, final String publicAddress) {
         this.callId = callId;
-        this.cseq = cseq;
-        this.uri = uri;
+        this.cseqValue = cseq;
+        this.contactAddress = contactAddress;
         this.expiryTime = expiryTime;
+        this.publicAddress = publicAddress;
     }
     
     /**
@@ -45,16 +78,16 @@ public class Binding {
      *
      * @return
      */
-    public int getCSeqValue() {
-        return cseq;
+    public int getCseqValue() {
+        return cseqValue;
     }
     
     /**
      *
      * @return
      */
-    public String getUri() {
-        return uri;
+    public String getContactAddress() {
+        return contactAddress;
     }
     
     /**
@@ -63,5 +96,29 @@ public class Binding {
      */
     public Date getExpiryTime() {
         return expiryTime;
+    }
+
+    public void setCallId(final String callId) {
+        this.callId = callId;
+    }
+
+    public void setCseqValue(final int cseqValue) {
+        this.cseqValue = cseqValue;
+    }
+
+    public void setContactAddress(final String contactAddress) {
+        this.contactAddress = contactAddress;
+    }
+
+    public void setExpiryTime(final Date expiryTime) {
+        this.expiryTime = expiryTime;
+    }
+
+    public String getPublicAddress() {
+        return publicAddress;
+    }
+
+    public void setPublicAddress(final String publicAddress) {
+        this.publicAddress = publicAddress;
     }
 }

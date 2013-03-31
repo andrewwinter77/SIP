@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 import java.util.TimeZone;
@@ -79,7 +80,7 @@ public class RegistrarServlet extends SipServlet {
                     } else {
 
 
-                        final Set<Binding> bindings = LocationService.getInstance().getBindings(canonicalizedUri);
+                        final List<Binding> bindings = LocationService.getInstance().getBindings(canonicalizedUri);
                         for (final Binding binding : bindings) {
 
 
@@ -120,7 +121,16 @@ public class RegistrarServlet extends SipServlet {
             }
 
             if (response == null) {
-                applyBindingChanges(canonicalizedUri, bindingsToAdd, bindingsToRemove);
+                // The binding updates MUST be committed (that is, made visible to the
+                // proxy or redirect server) if and only if all binding updates and
+                // additions succeed. If any one of them fails (for example, because the
+                // back-end database commit failed), the request MUST fail with a 500
+                // (Server Error) response and all tentative binding updates MUST be
+                // removed.
+
+                LocationService.getInstance().applyBindingsChanges(
+                        canonicalizedUri, bindingsToAdd, bindingsToRemove, getSipFactory());
+                
                 response = createOK(request, canonicalizedUri.toString());
             }
 
@@ -184,7 +194,7 @@ public class RegistrarServlet extends SipServlet {
 
         final long now = new Date().getTime();
 
-        final Set<Binding> bindings = LocationService.getInstance().getBindings(canonicalizedUri);
+        final List<Binding> bindings = LocationService.getInstance().getBindings(canonicalizedUri);
         if (bindings != null && !bindings.isEmpty()) {
 
             final SipFactory sf = (SipFactory) getServletContext().getAttribute("javax.servlet.sip.SipFactory");
@@ -359,21 +369,5 @@ public class RegistrarServlet extends SipServlet {
         final Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
         cal.add(Calendar.SECOND, expires);
         return cal.getTime();
-    }
-
-    private void applyBindingChanges(
-            final String canonicalizedUri,
-            final Set<Binding> bindingsToAdd,
-            final Set<Binding> bindingsToRemove) {
-
-        // The binding updates MUST be committed (that is, made visible to the
-        // proxy or redirect server) if and only if all binding updates and
-        // additions succeed. If any one of them fails (for example, because the
-        // back-end database commit failed), the request MUST fail with a 500
-        // (Server Error) response and all tentative binding updates MUST be
-        // removed.
-
-        LocationService.getInstance().applyBindingsChanges(
-                canonicalizedUri, bindingsToAdd, bindingsToRemove, getSipFactory());
     }
 }

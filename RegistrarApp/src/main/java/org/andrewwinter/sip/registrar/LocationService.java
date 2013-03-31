@@ -1,10 +1,10 @@
 package org.andrewwinter.sip.registrar;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -21,7 +21,7 @@ public class LocationService {
 
     private static final LocationService INSTANCE = new LocationService();
     private BindingsManager bindingsManager;
-    private Map<String, Set<Binding>> allBindings;
+//    private Map<String, Set<Binding>> allBindings;
 
     private BindingsManager getBindingsManager() {
         if (bindingsManager == null) {
@@ -50,12 +50,12 @@ public class LocationService {
      * @return Returns an unmodifiable copy of the set of bindings for the URI
      * or null if there are no bindings.
      */
-    public Set<Binding> getBindings(final String canonicalizedUri) {
-        Set<Binding> set = allBindings.get(canonicalizedUri);
-        if (set != null) {
-            set = Collections.unmodifiableSet(set);
+    public List<Binding> getBindings(final String canonicalizedUri) {
+        List<Binding> bindings = getBindingsManager().getBindings(canonicalizedUri);
+        if (bindings != null) {
+            bindings = Collections.unmodifiableList(bindings);
         }
-        return set;
+        return bindings;
     }
 
 //    public void removeBinding(final String canonicalizedUri, final Binding binding) {
@@ -78,10 +78,10 @@ public class LocationService {
         // (Server Error) response and all tentative binding updates MUST be
         // removed.
 
-        Set<Binding> existingBindings = allBindings.get(canonicalizedUri);
+        List<Binding> existingBindings = getBindingsManager().getBindings(canonicalizedUri);
         if (existingBindings == null) {
-            existingBindings = new HashSet<>();
-            allBindings.put(canonicalizedUri, existingBindings);
+            existingBindings = new ArrayList<>();
+            getBindingsManager().put(canonicalizedUri, existingBindings);
         }
         existingBindings.addAll(bindings);
     }
@@ -100,7 +100,7 @@ public class LocationService {
         // (Server Error) response and all tentative binding updates MUST be
         // removed.
 
-        final Set<Binding> set = allBindings.get(canonicalizedUri);
+        final List<Binding> set = getBindingsManager().getBindings(canonicalizedUri);
         if (set == null) {
             System.out.println("Removing bindings when no bindings exist.");
         } else {
@@ -123,7 +123,7 @@ public class LocationService {
         // the registrar then searches the list of current bindings using the
         // URI comparison rules.
 
-        final Set<Binding> bindings = allBindings.get(canonicalizedPublicUri);
+        final List<Binding> bindings = getBindingsManager().getBindings(canonicalizedPublicUri);
         if (bindings != null) {
             for (final Binding binding : bindings) {
 
@@ -166,11 +166,11 @@ public class LocationService {
         // (Server Error) response and all tentative binding updates MUST be
         // removed.
 
-        Set<Binding> bindings = allBindings.get(canonicalizedUri);
-        if (bindings == null) {
-            bindings = new HashSet<>();
-            allBindings.put(canonicalizedUri, bindings);
-        }
+        List<Binding> bindings = getBindingsManager().getBindings(canonicalizedUri);
+//        if (bindings == null) {
+//            bindings = new ArrayList<>();
+//            getBindingsManager().put(canonicalizedUri, bindings);
+//        }
 
         final Iterator<Binding> iter = bindings.iterator();
         while (iter.hasNext()) {
@@ -195,11 +195,10 @@ public class LocationService {
 
         bindings.addAll(bindingsToAdd);
         if (bindings.isEmpty()) {
-            allBindings.remove(canonicalizedUri);
+            getBindingsManager().removeBindings(canonicalizedUri);
         }
     }
 
     private LocationService() {
-        this.allBindings = new HashMap<>();
     }
 }

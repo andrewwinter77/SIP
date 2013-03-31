@@ -20,7 +20,10 @@ import javax.persistence.Table;
 // TODO: Implement hashcode and equals - it's important we do this for this class
 @Table(name="bindings")
 @NamedQueries(value = {
-    @NamedQuery(name="getBinding", query = "SELECT b FROM Binding b WHERE b.publicAddress=:public_address")})
+    @NamedQuery(name="Binding.findBindings", query="SELECT b FROM Binding b WHERE b.publicAddress=:publicAddress"),
+    @NamedQuery(name="Binding.deleteBindings", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress"),
+    @NamedQuery(name="Binding.deleteExpiredBindings", query="DELETE FROM Binding b WHERE b.expiryTime<:expiryTime")
+})
 @Entity
 public class Binding implements Serializable {
     

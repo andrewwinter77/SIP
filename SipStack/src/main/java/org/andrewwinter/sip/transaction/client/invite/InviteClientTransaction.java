@@ -1,9 +1,11 @@
 package org.andrewwinter.sip.transaction.client.invite;
 
+import java.util.List;
 import org.andrewwinter.sip.SipResponseHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.dialog.DialogState;
 import org.andrewwinter.sip.element.Destination;
+import org.andrewwinter.sip.parser.Address;
 import org.andrewwinter.sip.parser.CSeq;
 import org.andrewwinter.sip.parser.SipMessageHelper;
 import org.andrewwinter.sip.parser.SipRequest;
@@ -97,8 +99,17 @@ public class InviteClientTransaction extends ClientTransaction {
         // is created with a provisional response, and then transition to
         // the "confirmed" state when a 2xx final response arrives.
 
+        final Address to = SipMessageHelper.getTo(response);
+        final List<Address> contact = SipMessageHelper.getContact(response);
         
-        if (statusCode < 300 && SipMessageHelper.getTo(response).getTag() != null) {
+        // Note: there's a discussion here:
+        // http://www.mail-archive.com/sip@ietf.org/msg03828.html
+        // on whether 1xx without a Contact
+        // header should form a dialog or not. We'll add a check for Contact
+        // header being present because there are situations where this code
+        // will blow up otherwise.
+        
+        if (statusCode < 300 && to.getTag() != null && contact != null && !contact.isEmpty()) {
 
             if (statusCode < 200) {
                 if (dialog == null) {

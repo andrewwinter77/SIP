@@ -335,5 +335,9 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        if (appRouter != null) {
+            appRouter.destroy();
+        }
     }
 }

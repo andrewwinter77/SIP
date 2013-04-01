@@ -65,12 +65,26 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
     
     private boolean initialized;
     
-    private final DefaultHttpClient httpclient;
+    private DefaultHttpClient httpclient;
 
     /**
      * 
      */
-    public DefaultApplicationRouter() {
+    @Override
+    public void init() {
+        init(null);
+    }
+
+    /**
+     * 
+     * @param properties 
+     */
+    @Override
+    public void init(final Properties properties) {
+        if (initialized) {
+            throw new IllegalStateException("App router must not be initialized more than once.");
+        }
+
         initialized = false;
         httpclient = new DefaultHttpClient();
 
@@ -93,25 +107,7 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
                 return isRedirect;
             }
         });
-    }
-
-    /**
-     * 
-     */
-    @Override
-    public void init() {
-        init(null);
-    }
-
-    /**
-     * 
-     * @param properties 
-     */
-    @Override
-    public void init(final Properties properties) {
-        if (initialized) {
-            throw new IllegalStateException("App router must not be initialized more than once.");
-        }
+        
         refreshProperties();
         initialized = true;
     }
@@ -197,41 +193,46 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
      */
     private void refreshProperties() {
         
-        final String url = System.getProperty(CONFIGURATION_FILE_SYSTEM_PROPERTY);
-        if (url == null) {
-            LOG.error("Default Application Router (DAR) config file system property not set.");
-            return;
-        }
+        // If we don't synchronize this then httpclient.execute() sometimes barfs
+        synchronized (processingRulesLock) {
         
-        final HttpGet httpget = new HttpGet(url);
-        try {
-            HttpResponse response = httpclient.execute(httpget);
-            HttpEntity entity = response.getEntity();
-
-            if (entity == null) {
-
-            } else {
-                final InputStream is = entity.getContent();
-                final BufferedReader in = new BufferedReader(new InputStreamReader(is));
-                String line;
-
-                synchronized (processingRulesLock) {
-                    rulesMap = new HashMap<>();
-                    while((line = in.readLine()) != null) {
-                        line = line.trim();
-                        if (!line.isEmpty()) {
-                            processLineFromPropertiesFile(line);
-                        }
-                    }
-                }
+            final String url = System.getProperty(CONFIGURATION_FILE_SYSTEM_PROPERTY);
+            if (url == null) {
+                LOG.error("Default Application Router (DAR) config file system property not set.");
+                return;
             }
-        } catch (IOException e) {
-            LOG.error("Error fetching DAR config file from " + url, e);
+
+            final HttpGet httpget = new HttpGet(url);
+            try {
+                HttpResponse response = httpclient.execute(httpget);
+                HttpEntity entity = response.getEntity();
+
+                if (entity == null) {
+
+                } else {
+                    final InputStream is = entity.getContent();
+                    final BufferedReader in = new BufferedReader(new InputStreamReader(is));
+                    String line;
+
+                        rulesMap = new HashMap<>();
+                        while((line = in.readLine()) != null) {
+                            line = line.trim();
+                            if (!line.isEmpty()) {
+                                processLineFromPropertiesFile(line);
+                            }
+                        }
+                }
+            } catch (IOException e) {
+                LOG.error("Error fetching DAR config file from " + url, e);
+            }
         }
     }
 
     @Override
     public void destroy() {
+        if (httpclient != null && httpclient.getConnectionManager() != null) {
+            httpclient.getConnectionManager().shutdown();
+        }
     }
 
     @Override

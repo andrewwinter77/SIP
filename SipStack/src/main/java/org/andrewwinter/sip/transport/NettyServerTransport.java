@@ -78,7 +78,7 @@ public class NettyServerTransport extends ServerTransport {
         // Enable broadcast
         b.setOption("broadcast", "false");
  
-        // Allow packets as large as up to 1024 bytes (default is 768).
+        // Allow packets as large as up to 65535 bytes.
         // You could increase or decrease this value to avoid truncated packets
         // or to improve memory footprint respectively.
         //
@@ -90,7 +90,7 @@ public class NettyServerTransport extends ServerTransport {
         // safe to send small packets in UDP.
         b.setOption(
                 "receiveBufferSizePredictorFactory",
-                new FixedReceiveBufferSizePredictorFactory(1024));
+                new FixedReceiveBufferSizePredictorFactory(65535));
  
         // Bind to the port and start the service.
         b.bind(localPort);

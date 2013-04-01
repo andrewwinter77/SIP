@@ -1,16 +1,19 @@
 package org.andrewwinter.sip.registrar;
 
+import org.andrewwinter.sip.location.Util;
+import org.andrewwinter.sip.location.Binding;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 import java.util.TimeZone;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.sip.Address;
 import javax.servlet.sip.ServletParseException;
@@ -20,11 +23,21 @@ import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipServletResponse;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.SipURI;
+import org.andrewwinter.sip.location.BindingsManager;
 
 @javax.servlet.sip.annotation.SipServlet
 public class RegistrarServlet extends SipServlet {
 
     private static final int LOCALLY_CONFIGURED_DEFAULT_EXPIRES = 3600;
+
+    private static BindingsManager getBindingsManager() {
+        try {
+            final InitialContext ic = new InitialContext();
+            return (BindingsManager) ic.lookup("java:global/RegistrarApp-1.0-SNAPSHOT/BindingsManager!org.andrewwinter.sip.location.BindingsManager");
+        } catch (NamingException e) {
+            return null;
+        }
+    }
 
     @Override
     protected void doRegister(SipServletRequest request) throws ServletException, IOException {
@@ -36,7 +49,7 @@ public class RegistrarServlet extends SipServlet {
         // This address-of-record MUST be a SIP URI or SIPS URI.
         if (toUri instanceof SipURI) {
 
-            final String canonicalizedUri = canonicalizeUri((SipURI) toUri.clone()).toString();
+            final String canonicalizedUri = Util.canonicalizeUri((SipURI) toUri.clone()).toString();
 
             final List<Binding> bindingsToAdd = new ArrayList<>();
             final Set<String> contactAddressesToRemove = new HashSet<>();
@@ -81,7 +94,7 @@ public class RegistrarServlet extends SipServlet {
                     } else {
 
 
-                        final List<Binding> bindings = LocationService.getInstance().getBindings(canonicalizedUri);
+                        final List<Binding> bindings = getBindingsManager().getBindings(canonicalizedUri);
                         for (final Binding binding : bindings) {
 
 
@@ -134,7 +147,7 @@ public class RegistrarServlet extends SipServlet {
                 // (Server Error) response and all tentative binding updates MUST be
                 // removed.
 
-                LocationService.getInstance().applyBindingsChanges(
+                getBindingsManager().addAndRemoveBindings(
                         canonicalizedUri, bindingsToAdd, contactAddressesToRemove, getSipFactory());
                 
                 response = createOK(request, canonicalizedUri.toString());
@@ -153,30 +166,6 @@ public class RegistrarServlet extends SipServlet {
         }
 
         response.send();
-    }
-
-    /**
-     * The address-of-record MUST be a SIP URI or SIPS URI so other schemes are
-     * not considered in this method. Modifies the copy passed in, but also
-     * returns it for convenience.
-     *
-     * @param uri
-     * @return
-     */
-    public static SipURI canonicalizeUri(final SipURI uri) {
-
-        // The URI MUST then be converted to a canonical form. To do that, all
-        // URI parameters MUST be removed (including the user-param), and any
-        // escaped characters MUST be converted to their unescaped form.
-
-        Iterator<String> iter = uri.getParameterNames();
-        while (iter.hasNext()) {
-            uri.removeParameter(iter.next());
-        }
-
-        // TODO: Unescape any escaped characters.
-
-        return uri;
     }
 
     /**
@@ -200,10 +189,10 @@ public class RegistrarServlet extends SipServlet {
 
         final long now = new Date().getTime();
 
-        final List<Binding> bindings = LocationService.getInstance().getBindings(canonicalizedUri);
+        final List<Binding> bindings = getBindingsManager().getBindings(canonicalizedUri);
         if (bindings != null && !bindings.isEmpty()) {
 
-            final SipFactory sf = (SipFactory) getServletContext().getAttribute("javax.servlet.sip.SipFactory");
+            final SipFactory sf = getSipFactory();
 
             for (final Binding binding : bindings) {
 
@@ -226,7 +215,7 @@ public class RegistrarServlet extends SipServlet {
     }
 
     private SipFactory getSipFactory() {
-        return (SipFactory) getServletContext().getAttribute("javax.servlet.sip.SipFactory");
+        return (SipFactory) getServletContext().getAttribute(SIP_FACTORY);
     }
 
     /**
@@ -292,7 +281,7 @@ public class RegistrarServlet extends SipServlet {
                 }
             }
 
-            Binding binding = LocationService.getInstance().getBinding(
+            Binding binding = getBindingsManager().getBinding(
                     canonicalizedUri,
                     contact.getURI(),
                     getSipFactory());

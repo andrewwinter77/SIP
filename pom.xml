@@ -112,5 +112,7 @@
         <module>SampleSipApp</module>
         <module>DefaultAppRouter</module>
         <module>RegistrarApp</module>
+        <module>LocationService</module>
+        <module>LocationServiceCommon</module>
   </modules>
 </project>

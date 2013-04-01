@@ -12,11 +12,13 @@ import javax.servlet.sip.SipApplicationSessionListener;
 import javax.servlet.sip.SipErrorListener;
 import javax.servlet.sip.SipServlet;
 import javax.servlet.sip.SipServletListener;
+import javax.servlet.sip.SipServletResponse;
 import javax.servlet.sip.SipSessionActivationListener;
 import javax.servlet.sip.SipSessionAttributeListener;
 import javax.servlet.sip.SipSessionBindingListener;
 import javax.servlet.sip.SipSessionListener;
 import javax.servlet.sip.TimerListener;
+import javax.servlet.sip.TooManyHopsException;
 
 /**
  *
@@ -45,7 +47,7 @@ public class Util {
     public static void invokeServlet(
             final SipServlet servlet,
             final SipServletRequestImpl request,
-            final SipServletResponseImpl response,
+            SipServletResponseImpl response,
             final ServletContext context,
             final String appName,
             final String mainServlet) throws Exception {
@@ -55,6 +57,20 @@ public class Util {
         AppNameThreadLocal.set(appName);
         MainServletNameThreadLocal.set(mainServlet);
 
-        servlet.service(request, response);
+        try {
+            servlet.service(request, response);
+        } catch (TooManyHopsException e) {
+            if (request != null) {
+                
+                // If unhandled by the application, this will be caught by the
+                // container which must then generate a 483 (Too many hops)
+                // error response.
+            
+                response = (SipServletResponseImpl) request.createResponse(SipServletResponse.SC_TOO_MANY_HOPS);
+                response.send();
+            } else {
+                throw e;
+            }
+        }
     }
 }

@@ -109,7 +109,7 @@
         <module>JBossEap61Module</module>
         <module>Jsr289</module>
         <module>SipAppArchetype</module>
-        <module>SampleSipApp</module>
+        <module>ClickToCallApp</module>
         <module>DefaultAppRouter</module>
         <module>RegistrarApp</module>
         <module>LocationService</module>

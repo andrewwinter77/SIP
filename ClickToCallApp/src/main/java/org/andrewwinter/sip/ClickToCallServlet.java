@@ -26,7 +26,6 @@ public class ClickToCallServlet extends SipServlet {
 
     @Override
     protected void doSuccessResponse(final SipServletResponse response) throws ServletException, IOException {
-        System.out.println("GOT SUCCESS RESPONSE!!!!!!!!!");
         if (response.getMethod().equals("INVITE")) {
             final SipServletRequest ack = response.createAck();
             ack.setContent(response.getContent(), response.getContentType());

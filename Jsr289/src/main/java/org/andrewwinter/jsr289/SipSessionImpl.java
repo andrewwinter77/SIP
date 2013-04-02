@@ -582,8 +582,20 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
         }
     }
 
+    /**
+     * Although SipStack invokes this method for all responses including 100s,
+     * the Sip Servlet v1.1 spec says we shouldn't invoke the app for 100s.
+     * @param isr 
+     */
     @Override
     public void doResponse(final InboundSipResponse isr) {
+
+        if (isr.getResponse().getStatusCode() == 100) {
+            // The UAC application is invoked for all incoming responses except
+            // 100 responses (and retransmissions).
+            return;
+        }
+        
         final String servletName;
         if (handler == null) {
             servletName = mainServletName;

@@ -1,5 +1,6 @@
 package org.andrewwinter.jsr289;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.sip.Address;
 import javax.servlet.sip.AuthInfo;
@@ -25,6 +26,18 @@ import org.andrewwinter.sip.parser.Uri;
  */
 public class SipFactoryImpl implements SipFactory {
 
+    private final String appName;
+    
+    private final String mainServletName;
+
+    private final ServletContext servletContext;
+    
+    public SipFactoryImpl(final String appName, final String mainServletName, final ServletContext servletContext) {
+        this.appName = appName;
+        this.mainServletName = mainServletName;
+        this.servletContext = servletContext;
+    }
+    
     @Override
     public URI createURI(String uri) throws ServletParseException {
         
@@ -119,8 +132,28 @@ public class SipFactoryImpl implements SipFactory {
         }
     }
 
+    /**
+     * Some methods we call require these are set. Depending on where we get
+     * our thread from, these variables may or may not be set already. If they
+     * are not set then set them.
+     */
+    private void setThreadLocalVariables() {
+        if (ServletContextThreadLocal.get() == null) {
+            ServletContextThreadLocal.set(servletContext);
+        }
+        if (AppNameThreadLocal.get() == null) {
+            AppNameThreadLocal.set(appName);
+        }
+        if (MainServletNameThreadLocal.get() == null) {
+            MainServletNameThreadLocal.set(mainServletName);
+        }
+    }
+    
     @Override
     public SipServletRequest createRequest(SipApplicationSession appSession, String method, String from, String to) throws ServletParseException {
+        
+        setThreadLocalVariables();
+        
         if (method == null || "ACK".equals(method) || "CANCEL".equals(method)) {
             throw new IllegalArgumentException("Invalid method.");
         }

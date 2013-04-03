@@ -6,6 +6,7 @@ package org.andrewwinter.jsr289.jboss.deployment.attachment;
 
 import java.io.File;
 import javax.servlet.sip.SipFactory;
+import org.andrewwinter.jsr289.SipFactoryImpl;
 import org.andrewwinter.jsr289.jboss.SipServletService;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.jboss.as.server.deployment.AttachmentKey;
@@ -25,7 +26,7 @@ public class CustomAttachments {
     
     public static final AttachmentKey<SipServletService> SIP_SERVLET_SERVICE = AttachmentKey.create(SipServletService.class);
     
-    public static final AttachmentKey<SipFactory> SIP_FACTORY = AttachmentKey.create(SipFactory.class);
+    public static final AttachmentKey<SipFactoryImpl> SIP_FACTORY = AttachmentKey.create(SipFactory.class);
     
     public static final AttachmentKey<File> TEMP_DIRECTORY = AttachmentKey.create(File.class);
     

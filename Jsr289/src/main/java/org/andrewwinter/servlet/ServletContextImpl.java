@@ -32,7 +32,7 @@ public class ServletContextImpl implements ServletContext {
     
     public ServletContextImpl() {
         attributes = new HashMap<>();
-        attributes.put("javax.servlet.sip.SipFactory", new SipFactoryImpl());
+        attributes.put("javax.servlet.sip.SipFactory", new SipFactoryImpl(null, null, null));
         attributes.put("javax.servlet.sip.SipSessionsUtil", new SipSessionsUtilImpl(null));
         
     }

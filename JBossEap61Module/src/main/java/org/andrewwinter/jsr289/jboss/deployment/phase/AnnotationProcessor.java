@@ -12,7 +12,6 @@ import javax.servlet.sip.annotation.SipApplication;
 import javax.servlet.sip.annotation.SipApplicationKey;
 import javax.servlet.sip.annotation.SipListener;
 import javax.servlet.sip.annotation.SipServlet;
-import org.andrewwinter.jsr289.SipFactoryImpl;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipApplicationInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
@@ -72,7 +71,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
         
         final EEResourceReferenceProcessorRegistry registry = du.getAttachment(
                 Attachments.RESOURCE_REFERENCE_PROCESSOR_REGISTRY);
-        registry.registerResourceReferenceProcessor(new SipFactoryResourceReferenceProcessor(du, new SipFactoryImpl()));
+        registry.registerResourceReferenceProcessor(new SipFactoryResourceReferenceProcessor(du));
         registry.registerResourceReferenceProcessor(new SipSessionsUtilResourceReferenceProcessor(du));
         registry.registerResourceReferenceProcessor(new TimerServiceResourceReferenceProcessor(du));
 

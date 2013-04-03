@@ -269,7 +269,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             session.setRegion(result.getRoutingRegion());
             
             try {
-                session.setSubscriberURI(new SipFactoryImpl().createURI(result.getSubscriberURI()));
+                session.setSubscriberURI(new SipFactoryImpl(null, null, null).createURI(result.getSubscriberURI()));
             } catch (ServletParseException e) {
                 respondWith500(sipServletRequest, "App router generated illegal subsriber");
                 return;

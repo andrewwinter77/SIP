@@ -92,6 +92,24 @@ public class MediaBuilder {
      * @return
      */
     public Media build() {
+        nullCheck(type, "type");
+        nullCheck(protocol, "protocol");
+        
+        if (protocol == TransportProtocol.UDP) {
+            if (formatDesc.isEmpty()) {
+                throw new IllegalArgumentException("Format description MUST be present for UDP protocol.");
+            }
+        } if (protocol == TransportProtocol.RTPAVP) {
+            if (formatDesc.isEmpty()) {
+                
+                // This is completely defined in the RTP Audio/Video profile as
+                // payload type 0, so there is no need for an "a=rtpmap:"
+                // attribute
+                
+                formatDesc.add("0");
+            }
+        }
+        
         return new Media(type, port, numPorts, protocol, formatDesc);
     }
     

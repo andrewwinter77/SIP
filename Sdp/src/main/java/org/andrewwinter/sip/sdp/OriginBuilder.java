@@ -107,6 +107,15 @@ public class OriginBuilder {
     public Origin build() {
         nullCheck(addrType, "addrType");
         nullCheck(unicastAddr, "unicastAddr");
+        
+        if (id == 0) {
+            id = System.currentTimeMillis();
+        }
+        
+        if (version == 0) {
+            version = System.currentTimeMillis();
+        }
+        
         return new Origin(username, id, version, netType, addrType, unicastAddr);
     }
     

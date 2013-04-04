@@ -71,6 +71,10 @@ public class SessionDescriptionBuilder {
             throw new IllegalStateException("Origin must be set.");
         }
         
+        if (timings.isEmpty()) {
+            timings.add(new Timing(0, 0, new ArrayList<RepeatTimes>()));
+        }
+        
         return new SessionDescription(
                 version,
                 origin,

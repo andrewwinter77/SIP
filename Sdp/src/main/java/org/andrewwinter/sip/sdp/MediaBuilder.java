@@ -95,6 +95,10 @@ public class MediaBuilder {
         nullCheck(type, "type");
         nullCheck(protocol, "protocol");
         
+        if (port == 0) {
+            throw new IllegalArgumentException("A non-zero port number must be specified, even for black hole SDP.");
+        }
+        
         if (protocol == TransportProtocol.UDP) {
             if (formatDesc.isEmpty()) {
                 throw new IllegalArgumentException("Format description MUST be present for UDP protocol.");

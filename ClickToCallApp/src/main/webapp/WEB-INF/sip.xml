@@ -3,5 +3,5 @@
 <sip-app xmlns="http://www.jcp.org/xml/ns/sipservlet" 
                 xmlns:javaee="http://java.sun.com/xml/ns/javaee">
     
-    <app-name>org.andrewwinter.sip.test</app-name>
+    <app-name>org.andrewwinter.sip.ClickToCall</app-name>
 </sip-app>

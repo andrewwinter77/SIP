@@ -18,6 +18,7 @@ public class SessionDescriptionBuilderTest {
         MediaBuilder mediaBuilder = new MediaBuilder();
         mediaBuilder = mediaBuilder.type(MediaType.AUDIO);
         mediaBuilder = mediaBuilder.protocol(TransportProtocol.RTPAVP);
+        mediaBuilder = mediaBuilder.port(1234);
         final Media media = mediaBuilder.build();
         
         AttributeBuilder attributeBuilder = new AttributeBuilder();

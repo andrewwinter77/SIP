@@ -22,7 +22,8 @@ import javax.persistence.TemporalType;
     @NamedQuery(name="Binding.findBindings", query="SELECT b FROM Binding b WHERE b.publicAddress=:publicAddress"),
     @NamedQuery(name="Binding.deleteBindings", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress"),
     @NamedQuery(name="Binding.deleteBinding", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress AND b.contactAddress=:contactAddress"),
-    @NamedQuery(name="Binding.deleteExpiredBindings", query="DELETE FROM Binding b WHERE b.expiryTime<:expiryTime")
+    @NamedQuery(name="Binding.deleteExpiredBindings", query="DELETE FROM Binding b WHERE b.expiryTime<:expiryTime"),
+    @NamedQuery(name="Binding.deleteExpiredBindingsForPublicAddress", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress AND b.expiryTime<:expiryTime")
 })
 @Entity
 public class Binding implements Serializable {

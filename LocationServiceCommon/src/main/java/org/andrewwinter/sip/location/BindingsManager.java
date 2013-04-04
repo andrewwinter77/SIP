@@ -1,5 +1,6 @@
 package org.andrewwinter.sip.location;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import javax.ejb.Stateless;
@@ -51,6 +52,14 @@ public class BindingsManager {
         final Query query = em.createNamedQuery("Binding.deleteBinding");
         query.setParameter("publicAddress", publicAddress);
         query.setParameter("contactAddress", contactAddress);
+        query.executeUpdate();
+    }
+    
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public void removeExpiredBindingsForPublicAddress(final String publicAddress) {
+        final Query query = em.createNamedQuery("Binding.deleteExpiredBindingsForPublicAddress");
+        query.setParameter("publicAddress", publicAddress);
+        query.setParameter("expiryTime", new Date());
         query.executeUpdate();
     }
 

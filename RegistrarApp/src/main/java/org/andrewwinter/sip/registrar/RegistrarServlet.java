@@ -39,6 +39,10 @@ public class RegistrarServlet extends SipServlet {
         }
     }
 
+    private static void deleteExpiredBindings(final String publicAddress) {
+        getBindingsManager().removeExpiredBindingsForPublicAddress(publicAddress);
+    }
+    
     @Override
     protected void doRegister(SipServletRequest request) throws ServletException, IOException {
 
@@ -51,6 +55,8 @@ public class RegistrarServlet extends SipServlet {
 
             final String canonicalizedUri = Util.canonicalizeUri((SipURI) toUri.clone()).toString();
 
+            deleteExpiredBindings(canonicalizedUri);
+            
             final List<Binding> bindingsToAdd = new ArrayList<>();
             final Set<String> contactAddressesToRemove = new HashSet<>();
             

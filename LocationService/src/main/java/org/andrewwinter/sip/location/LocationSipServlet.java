@@ -30,6 +30,10 @@ public class LocationSipServlet extends SipServlet {
         return (SipFactory) getServletContext().getAttribute(SIP_FACTORY);
     }
     
+    private static void deleteExpiredBindings(final String publicAddress) {
+        getBindingsManager().removeExpiredBindingsForPublicAddress(publicAddress);
+    }
+
     @Override
     protected void doInvite(final SipServletRequest invite) throws ServletException, IOException {
         
@@ -39,6 +43,9 @@ public class LocationSipServlet extends SipServlet {
         
         if (requestUri instanceof SipURI) {
             final String canonicalizedUri = Util.canonicalizeUri((SipURI) requestUri.clone()).toString();
+            
+            deleteExpiredBindings(canonicalizedUri);
+            
             final List<Binding> bindings = getBindingsManager().getBindings(canonicalizedUri);
             if (bindings != null) {
                 for (final Binding binding : bindings) {

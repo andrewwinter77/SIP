@@ -136,6 +136,7 @@ public class SipMessageFactory {
         }
         
         final SipRequest request = new SipRequest(method, requestUri);
+        request.setMatchesExistingDialog(true);
 
         populateInDialogHeaders(request, dialog);
         SipMessageHelper.pushVia(createVia(method, null), request);

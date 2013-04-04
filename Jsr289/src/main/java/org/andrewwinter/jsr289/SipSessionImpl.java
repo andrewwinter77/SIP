@@ -596,6 +596,11 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
             return;
         }
         
+        if (dialog == null && isr.getDialog() != null) {
+            // Response has just created a dialog, so update this session.
+            setDialog(isr.getDialog());
+        }
+        
         final String servletName;
         if (handler == null) {
             servletName = mainServletName;

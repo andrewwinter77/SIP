@@ -1,5 +1,7 @@
 package org.andrewwinter.jsr289;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.sip.Address;
@@ -164,12 +166,18 @@ public class SipFactoryImpl implements SipFactory {
         
         final SipRequest request;
         try {
+            final String contactAddressAsString = "sip:" + InetAddress.getLocalHost().getHostAddress();
+            final org.andrewwinter.sip.parser.Address contactHeader =
+                    org.andrewwinter.sip.parser.Address.parse(contactAddressAsString);
+            
             request = SipMessageFactory.createOutOfDialogRequest(
                     method,
                     to,
                     from,
                     null,
-                    org.andrewwinter.sip.parser.Address.parse("sip:dummy@contact.address")); // TODO: Set a sensible contact address
+                    contactHeader);
+        } catch (UnknownHostException e) {
+            throw new RuntimeException("Unable to create Contact header address.");
         } catch (final ParseException e) {
             throw new ServletParseException("Attempting to construct a malformed message.");
         }

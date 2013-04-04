@@ -111,8 +111,13 @@ public class ClickToCallServlet extends SipServlet {
     }
 
     @Override
-    protected void doBye(SipServletRequest ssr) throws ServletException, IOException {
-        super.doBye(ssr); //To change body of generated methods, choose Tools | Templates.
+    protected void doBye(final SipServletRequest bye) throws ServletException, IOException {
+        final SipSession otherSession = bye.getB2buaHelper().getLinkedSession(bye.getSession());
+        
+        final SipServletRequest byeToOtherParty = otherSession.createRequest("BYE");
+        byeToOtherParty.send();
+        
+        bye.createResponse(SipServletResponse.SC_OK).send();
     }
 
     @Override

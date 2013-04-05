@@ -1,0 +1,1610 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="11" name="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" tests="19" time="138.809">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="env.SIPUNIT_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib" />
+    <property name="env.SIGNATURE_FILE_NAME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/bin/jsr289_api.sig" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="env.TCK_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="spec.report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/spec_report" />
+    <property name="lib" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib" />
+    <property name="env.TCK_DIRECTORY" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/JObjC.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/classes" />
+    <property name="env.TMPDIR" value="/var/folders/qt/j9kz_nw12bqfytwz9kfyjvq00000gn/T/" />
+    <property name="env.Apple_Ubiquity_Message" value="/tmp/launch-s2GBEw/Apple_Ubiquity_Message" />
+    <property name="env.SIPUNIT_DIRECTORY" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit" />
+    <property name="env.PWD" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
+    <property name="user.country.format" value="GB" />
+    <property name="report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report" />
+    <property name="env.LANG" value="en_GB.UTF-8" />
+    <property name="signature.report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/sig_report" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="/usr/share/ant" />
+    <property name="java.runtime.version" value="1.7.0_10-ea-b09" />
+    <property name="env.TCK_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck" />
+    <property name="env.Apple_PubSub_Socket_Render" value="/tmp/launch-w5MTVj/Render" />
+    <property name="approuter.src" value="com/bea/sipservlet/tck/ar" />
+    <property name="user.name" value="andrew" />
+    <property name="env.USER" value="andrew" />
+    <property name="env.SHELL" value="/bin/bash" />
+    <property name="env.__CF_USER_TEXT_ENCODING" value="0x1F5:0:0" />
+    <property name="env.XMLLINT_INDENT" value="    " />
+    <property name="env.PATH" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/bin:/usr/share/ant/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin" />
+    <property name="user.language" value="en" />
+    <property name="build" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build" />
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib" />
+    <property name="ant.project.default-target" value="usage" />
+    <property name="ant.project.name" value="SIP Servlet 1.1 API Technology Compatibility Kit (TCK)" />
+    <property name="env.REPORT_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/report" />
+    <property name="java.version" value="1.7.0_10-ea" />
+    <property name="classes" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/classes" />
+    <property name="user.timezone" value="" />
+    <property name="apiapp.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/apitestapp" />
+    <property name="tck.zip" value="../sipservlet-1_1-tck.zip" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="log4j" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/log4j.properties" />
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/endorsed" />
+    <property name="signaturefile" value="jsr289_api.sig" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="env.SHLVL" value="2" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="51.0" />
+    <property name="src" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/src" />
+    <property name="sipunit.dir" value="../sipunit" />
+    <property name="ar.build" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/ar-build" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre" />
+    <property name="dist.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="env.LOGNAME" value="andrew" />
+    <property name="ant.file" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build.xml" />
+    <property name="os.version" value="10.8.3" />
+    <property name="env.TERM_PROGRAM_VERSION" value="309" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="23.6-b03" />
+    <property name="ant.library.dir" value="/usr/share/ant/lib" />
+    <property name="env.SIPUNIT_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit" />
+    <property name="env.JAVA_HOME" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home" />
+    <property name="env.SIGCONFIG" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/signature.properties" />
+    <property name="env.TERM" value="xterm-256color" />
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
+    <property name="env.SIGTEST_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/sigtest.jar" />
+    <property name="sun.io.unicode.encoding" value="UnicodeBig" />
+    <property name="ant.file.SIP Servlet 1.1 API Technology Compatibility Kit (TCK)" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build.xml" />
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="env.APIJAR" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/servlet-2_5-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/sipservlet-1_1-api.jar" />
+    <property name="user.home" value="/Users/andrew" />
+    <property name="env.CLASSPATH" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/lib/tools.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/tck-junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib/junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/sigtest.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/conf" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="env.TERM_PROGRAM" value="Apple_Terminal" />
+    <property name="env.TCKJUNIT_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/tck-junit.jar" />
+    <property name="java.library.path" value="/Users/andrew/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="gopherProxySet" value="false" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="java.class.path" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/ant-contrib-1.0b3.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/javax.annotation_1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/servlet-2_5-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sigtest.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipservlet-1_1-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipunit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/tck-junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipApi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipRi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/concurrent.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/dom.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jax-qname.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-impl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-libs.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/log4j-1.2.8.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/namespace.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/nist-sdp-1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/relaxngDatatype.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/tracesviewer.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xalan.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xercesImpl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xsdlib.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/classes:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/lib/tools.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf:/usr/share/java/ant-1.8.2/lib/ant-launcher.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar" />
+    <property name="sun.java.command" value="com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit395650468.properties" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on June 20 2012" />
+    <property name="env.TERM_SESSION_ID" value="7818A790-16A8-47B8-9DFE-BD2903CA9C1F" />
+    <property name="env.JSR289TCK_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/.." />
+    <property name="env.JBOSS_HOME" value="/opt/jboss-eap-6.1" />
+    <property name="signature.property" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/signature.properties" />
+    <property name="jsr289.dir" value=".." />
+    <property name="api.report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type" value="file" />
+    <property name="java.vm.specification.version" value="1.7" />
+    <property name="conf" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="env.HOME" value="/Users/andrew" />
+    <property name="env.ANT_HOME" value="/usr/share/ant" />
+    <property name="java.io.tmpdir" value="/var/folders/qt/j9kz_nw12bqfytwz9kfyjvq00000gn/T/" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="env.SSH_AUTH_SOCK" value="/tmp/launch-JxY2DM/Listeners" />
+    <property name="env.MAVEN_OPTS" value="-Xmx512M -XX:MaxPermSize=512M" />
+    <property name="signature.report.filename" value="jsr289SignatureReport.txt" />
+    <property name="env.COMMAND_MODE" value="unix2003" />
+    <property name="applications.src.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-continue,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-internalroutemodifier,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-reverse,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-suburiregion,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-success,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/uas,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/uac,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/b2bua,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/proxy" />
+    <property name="os.arch" value="x86_64" />
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
+    <property name="java.ext.dirs" value="/Users/andrew/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
+    <property name="ar.appname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-approuter.jar" />
+    <property name="env.JAVA_MAIN_CLASS_46883" value="org.apache.tools.ant.launch.Launcher" />
+    <property name="user.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
+    <property name="applications.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="ant.file.type.SIP Servlet 1.1 API Technology Compatibility Kit (TCK)" value="file" />
+    <property name="env.RJAR_HOME" value="/Users/andrew/Dev/rjar/" />
+    <property name="basedir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
+    <property name="ant.java.version" value="1.7" />
+    <property name="ant.core.lib" value="/usr/share/ant/lib/ant.jar" />
+    <property name="env.SIGNATURE_REPORT_NAME" value="jsr289SignatureReport.txt" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="env.SIGREPORT_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/report/sig_report" />
+    <property name="env.JUNIT_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib/junit.jar" />
+    <property name="java.specification.version" value="1.7" />
+    <property name="env.REFERENCE_JAR" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sigtest.jar" />
+    <property name="ant.project.invoked-targets" value="run-api-tests" />
+    <property name="tck.earname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-apps.ear" />
+  </properties>
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch5] - Returns the associated proxy with this branch." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testGetProxy001" time="3.631" />
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch6] - Returns the current value of the search timeout associated with this ProxyBranch object." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testGetProxyBranchTimeout001" time="13.016">
+    <failure message="b wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: b wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.assertProxyBranchSimpleCase(ProxyBranchTest.java:705)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.testGetProxyBranchTimeout001(ProxyBranchTest.java:182)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch7] - Returns true if subsequent invocations of proxyTo(URI) will add a Record-Route header to the proxied request, false otherwise." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testGetRecordRoute001" time="3.036">
+    <failure message="Fail to get &quot;Record-Route&quot; header from INVITE." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Fail to get &quot;Record-Route&quot; header from INVITE.
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.assertProxyBranchSimpleCase(ProxyBranchTest.java:714)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.testGetRecordRoute001(ProxyBranchTest.java:190)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch8] - if record-routing flag is set to true, a Record-Route header will be added to the proxied request." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testGetRecordRouteURI001" time="13.012">
+    <failure message="b wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: b wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.assertProxyBranchSimpleCase(ProxyBranchTest.java:705)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.testGetRecordRouteURI001(ProxyBranchTest.java:198)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch8] - Throws IllegalStateException - if record-routing is not enabled." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testGetRecordRouteURI101" time="3.173" />
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch9][SipServlet:JAVADOC:ProxyBranch19] - Returns true if this proxy branch object is set to recurse, or false otherwise." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testGetSetRecurse001" time="3.166" />
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch10] - Receipt of a 3xx class redirect response on a branch can result in recursed branches if the proxy or the branch has recursion enabled. This can result in several levels of recursed branches in a tree like fashion. This method returns the top level branches directly.below this ProxyBranch . " classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testgetRecursedProxyBranches001" time="13.032">
+    <failure message="c wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: c wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.testgetRecursedProxyBranches001(ProxyBranchTest.java:301)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch11] - Return the request associated with this branch." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testGetRequest001" time="13.011">
+    <failure message="b wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: b wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.assertProxyBranchSimpleCase(ProxyBranchTest.java:705)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.testGetRequest001(ProxyBranchTest.java:339)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch12] - Return the last SipServletResponse received, or null if no response has been received so far." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testGetResponse001" time="3.059">
+    <failure message="Fail to get &quot;ResponseHeader&quot; header from 200/INVITE." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Fail to get &quot;ResponseHeader&quot; header from 200/INVITE.
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.assertProxyBranchSimpleCase(ProxyBranchTest.java:739)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.testGetResponse001(ProxyBranchTest.java:347)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch13] - This method tells if the given branch has been started yet or not. The branches created as a result of proxyTo are always started on creation." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testIsStarted001" time="13.009">
+    <failure message="b wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: b wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.assertProxyBranchSimpleCase(ProxyBranchTest.java:705)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.testIsStarted001(ProxyBranchTest.java:356)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch15] - If multihoming is supported, then this method can be used to select the outbound interface and source port number when forwarding requests for this proxy branch. The specified address must be the address of one of the configured outbound interfaces. The set of SipURI objects which represent the supported outbound interfaces can be obtained from the servlet context attribute named javax.servlet.sip.outboundInterfaces." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testSetOutboundInterface001" time="3.155" />
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch15] - Throw IllegalStateException if this method is called on an invalidated session." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testSetOutboundInterface101" time="13.009">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.testSetOutboundInterface101(ProxyBranchTest.java:418)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch15] - Throw NullPointerException. if null address." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testSetOutboundInterface102" time="3.026" />
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch16] - If multihoming is supported, then this method can be used to select the outbound interface to use when sending requests for this proxy branch. The specified address must be the address of one of the configured outbound interfaces. The set of SipURI objects which represent the supported outbound interfaces can be obtained from the servlet context attribute named javax.servlet.sip.outboundInterfaces." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testSetOutboundInterface002" time="3.164" />
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch16] - Throw NullPointerException, if address is null." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testSetOutboundInterface103" time="3.02" />
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch17] - Sets the search timeout value for this ProxyBranch object." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testSetProxyBranchTimeout001" time="13.01">
+    <failure message="b wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: b wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.assertProxyBranchSimpleCase(ProxyBranchTest.java:705)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.testSetProxyBranchTimeout001(ProxyBranchTest.java:462)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch17] - Throws IllegalArgumentException if this value is negative." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testSetProxyBranchTimeout101" time="3.021" />
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch18] - Specifies whether this branch should include a Record-Route header for this servlet engine or not. if true the engine will record-route, otherwise it won&apos;t." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testSetRecordRoute001" time="3.028">
+    <failure message="Fail to get &quot;Record-Route&quot; header from INVITE." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Fail to get &quot;Record-Route&quot; header from INVITE.
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.assertProxyBranchSimpleCase(ProxyBranchTest.java:714)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.testSetRecordRoute001(ProxyBranchTest.java:479)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:JAVADOC:ProxyBranch18] - Throws IllegalStateException - if the proxy has already been started." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest" name="testSetRecordRoute101" time="13.028">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ProxyBranchTest.testSetRecordRoute101(ProxyBranchTest.java:541)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <system-out><![CDATA[[2013-04-04 20:52:09,135] ProxyBranchTest:1008 INFO  - === testGetProxy001() ===
+SIPUNIT TRACE:  1365105129293  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105129294  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 10796cf8471c7e447ab38547ac5189b9@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1446564853
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9615e03aac657d9002724846fbb0b951
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testGetProxy001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105129294  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105129294  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105129333  SipStack: request received !
+SIPUNIT TRACE:  1365105129333  SipStack: calling listener
+SIPUNIT TRACE:  1365105129333  SipSession: request received !
+SIPUNIT TRACE:  1365105129333       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105129333       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105129333       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testGetProxy001
+From: <sip:alice@192.168.1.65>;tag=1446564853
+Call-ID: 10796cf8471c7e447ab38547ac5189b9@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK7edv2ftarvmvj2kgsxxv_2r.f6v+ch;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9615e03aac657d9002724846fbb0b951
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105129333  SipSession: notifying block object
+SIPUNIT TRACE:  1365105129333  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105129333  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105129334  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105129334  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testGetProxy001
+From: <sip:alice@192.168.1.65>;tag=1446564853
+Call-ID: 10796cf8471c7e447ab38547ac5189b9@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK7edv2ftarvmvj2kgsxxv_2r.f6v+ch;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9615e03aac657d9002724846fbb0b951
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105129334  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
+SIPUNIT TRACE:  1365105129337  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105129337  SIP/2.0 200 200 for INVITE
+To: <sip:JSR289_TCK@localhost:5060>;tag=1049919994
+From: <sip:alice@192.168.1.65>;tag=1446564853
+Call-ID: 10796cf8471c7e447ab38547ac5189b9@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK7edv2ftarvmvj2kgsxxv_2r.f6v+ch;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9615e03aac657d9002724846fbb0b951
+CSeq: 1 INVITE
+Contact: <sip:bob@192.168.1.65:5072;transport=udp;lr>
+Expires: 10000
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105129344  Outgoing call response received: SIP/2.0 100 Trying
+To: <sip:JSR289_TCK@localhost:5060>
+From: <sip:alice@192.168.1.65>;tag=1446564853
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9615e03aac657d9002724846fbb0b951
+Call-ID: 10796cf8471c7e447ab38547ac5189b9@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105129355  Outgoing call response received: SIP/2.0 200 200 for INVITE
+Expires: 10000
+Contact: <sip:bob@192.168.1.65:5072;lr;transport=udp>
+To: <sip:JSR289_TCK@localhost:5060>;tag=1049919994
+From: <sip:alice@192.168.1.65>;tag=1446564853
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9615e03aac657d9002724846fbb0b951
+Call-ID: 10796cf8471c7e447ab38547ac5189b9@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105129463  SipStack: request received !
+SIPUNIT TRACE:  1365105129463  SipStack: calling listener
+SIPUNIT TRACE:  1365105129463  SipSession: request received !
+SIPUNIT TRACE:  1365105129463       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105129463       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105129463       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb2038d450a658d5f973238dc9e32a7b2
+CSeq: 1 ACK
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=1049919994
+From: <sip:alice@192.168.1.65>;tag=1446564853
+Call-ID: 10796cf8471c7e447ab38547ac5189b9@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105129463  SipSession: notifying block object
+SIPUNIT TRACE:  1365105129467  SipStack: request received !
+SIPUNIT TRACE:  1365105129467  SipStack: calling listener
+SIPUNIT TRACE:  1365105129467  SipSession: request received !
+SIPUNIT TRACE:  1365105129467       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105129468       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105129468       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK683092b9a526b56d10c1b3b214245fa7
+CSeq: 2 BYE
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=1049919994
+From: <sip:alice@192.168.1.65>;tag=1446564853
+Call-ID: 10796cf8471c7e447ab38547ac5189b9@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105129468  SipSession: notifying block object
+SIPUNIT TRACE:  1365105129473  SipStack: request received !
+SIPUNIT TRACE:  1365105129473  SipStack: calling listener
+SIPUNIT TRACE:  1365105129473  SipSession: request received !
+SIPUNIT TRACE:  1365105129473       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105129473       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105129473       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4b14be1dbc8d5a423d12ab85061cd64a
+CSeq: 3 BYE
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=1049919994
+From: <sip:alice@192.168.1.65>;tag=1446564853
+Call-ID: 10796cf8471c7e447ab38547ac5189b9@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105129473  SipSession: not interested in blocking requests
+[2013-04-04 20:52:12,484] ProxyBranchTest:1008 INFO  - === testGetProxyBranchTimeout001() ===
+SIPUNIT TRACE:  1365105132491  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105132492  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: a269cd3a63bade05087855527f2d0899@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1172201590
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc52724f0be882cf934366630c401bd90
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testGetProxyBranchTimeout001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105132492  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105132492  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105142487  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105142488  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:52:25,501] ProxyBranchTest:1008 INFO  - === testGetRecordRoute001() ===
+SIPUNIT TRACE:  1365105145506  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105145506  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: cb7489cb0540162ecabbef85c1792cd6@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1991136934
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf0a6d434c976a579ff6845cadece6e3f
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testGetRecordRoute001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105145506  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105145506  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105145525  SipStack: request received !
+SIPUNIT TRACE:  1365105145525  SipStack: calling listener
+SIPUNIT TRACE:  1365105145525  SipSession: request received !
+SIPUNIT TRACE:  1365105145525       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105145525       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105145525       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testGetRecordRoute001
+From: <sip:alice@192.168.1.65>;tag=1991136934
+Call-ID: cb7489cb0540162ecabbef85c1792cd6@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK1279!kp7xox9ylirr_u6f9pkco5lel;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf0a6d434c976a579ff6845cadece6e3f
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105145525  SipSession: notifying block object
+SIPUNIT TRACE:  1365105145525  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105145525  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105145525  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105145527  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testGetRecordRoute001
+From: <sip:alice@192.168.1.65>;tag=1991136934
+Call-ID: cb7489cb0540162ecabbef85c1792cd6@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK1279!kp7xox9ylirr_u6f9pkco5lel;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf0a6d434c976a579ff6845cadece6e3f
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105145527  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
+[2013-04-04 20:52:28,536] ProxyBranchTest:1008 INFO  - === testGetRecordRouteURI001() ===
+SIPUNIT TRACE:  1365105148543  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105148544  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ac2ac2b9a62b9ca40fdec5c354a06e15@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1785636278
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK2c5e6c7f591a437efa36114388dd9a03
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testGetRecordRouteURI001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105148544  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105148544  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105158540  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105158540  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:52:41,548] ProxyBranchTest:1008 INFO  - === testGetRecordRouteURI101() ===
+SIPUNIT TRACE:  1365105161554  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105161554  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 271895fab660aa4f44c0828a68a3047a@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1747746747
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1fe009cb46f2c88cd88235d453fe1d24
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testGetRecordRouteURI101
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105161554  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105161554  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105161569  SipStack: request received !
+SIPUNIT TRACE:  1365105161569  SipStack: calling listener
+SIPUNIT TRACE:  1365105161569  SipSession: request received !
+SIPUNIT TRACE:  1365105161569       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105161569       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105161570       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testGetRecordRouteURI101
+From: <sip:alice@192.168.1.65>;tag=1747746747
+Call-ID: 271895fab660aa4f44c0828a68a3047a@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKx7pe-koyylhmf-+t+6.e+hd3lex80u;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1fe009cb46f2c88cd88235d453fe1d24
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105161570  SipSession: notifying block object
+SIPUNIT TRACE:  1365105161570  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105161570  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105161570  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105161570  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testGetRecordRouteURI101
+From: <sip:alice@192.168.1.65>;tag=1747746747
+Call-ID: 271895fab660aa4f44c0828a68a3047a@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKx7pe-koyylhmf-+t+6.e+hd3lex80u;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1fe009cb46f2c88cd88235d453fe1d24
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105161570  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
+SIPUNIT TRACE:  1365105161572  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105161572  SIP/2.0 200 200 for INVITE
+To: <sip:JSR289_TCK@localhost:5060>;tag=436816165
+From: <sip:alice@192.168.1.65>;tag=1747746747
+Call-ID: 271895fab660aa4f44c0828a68a3047a@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKx7pe-koyylhmf-+t+6.e+hd3lex80u;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1fe009cb46f2c88cd88235d453fe1d24
+CSeq: 1 INVITE
+Contact: <sip:bob@192.168.1.65:5072;transport=udp;lr>
+Expires: 10000
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105161575  Outgoing call response received: SIP/2.0 100 Trying
+To: <sip:JSR289_TCK@localhost:5060>
+From: <sip:alice@192.168.1.65>;tag=1747746747
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1fe009cb46f2c88cd88235d453fe1d24
+Call-ID: 271895fab660aa4f44c0828a68a3047a@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105161598  Outgoing call response received: SIP/2.0 200 200 for INVITE
+Expires: 10000
+Contact: <sip:bob@192.168.1.65:5072;lr;transport=udp>
+To: <sip:JSR289_TCK@localhost:5060>;tag=436816165
+From: <sip:alice@192.168.1.65>;tag=1747746747
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1fe009cb46f2c88cd88235d453fe1d24
+Call-ID: 271895fab660aa4f44c0828a68a3047a@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105161705  SipStack: request received !
+SIPUNIT TRACE:  1365105161706  SipStack: calling listener
+SIPUNIT TRACE:  1365105161706  SipSession: request received !
+SIPUNIT TRACE:  1365105161706       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105161706       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105161706       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe805fe61a346333aa06773c99e3307f1
+CSeq: 1 ACK
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=436816165
+From: <sip:alice@192.168.1.65>;tag=1747746747
+Call-ID: 271895fab660aa4f44c0828a68a3047a@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105161706  SipSession: notifying block object
+SIPUNIT TRACE:  1365105161710  SipStack: request received !
+SIPUNIT TRACE:  1365105161710  SipStack: calling listener
+SIPUNIT TRACE:  1365105161710  SipSession: request received !
+SIPUNIT TRACE:  1365105161710       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105161710       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105161710       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa7dca3aee57f766ee2f38554587aa5f2
+CSeq: 2 BYE
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=436816165
+From: <sip:alice@192.168.1.65>;tag=1747746747
+Call-ID: 271895fab660aa4f44c0828a68a3047a@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105161710  SipSession: notifying block object
+SIPUNIT TRACE:  1365105161714  SipStack: request received !
+SIPUNIT TRACE:  1365105161714  SipStack: calling listener
+SIPUNIT TRACE:  1365105161714  SipSession: request received !
+SIPUNIT TRACE:  1365105161714       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105161714       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105161714       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK18ce69a87fe0dcbf34394943bd7e1e02
+CSeq: 3 BYE
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=436816165
+From: <sip:alice@192.168.1.65>;tag=1747746747
+Call-ID: 271895fab660aa4f44c0828a68a3047a@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105161715  SipSession: not interested in blocking requests
+[2013-04-04 20:52:44,721] ProxyBranchTest:1008 INFO  - === testGetSetRecurse001() ===
+SIPUNIT TRACE:  1365105164727  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105164727  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 65eba3daaee36be66e29c95e8736cb16@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=848039836
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe2a27b33a7abd0e2225d340fae93c243
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testGetSetRecurse001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105164727  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105164727  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105164743  SipStack: request received !
+SIPUNIT TRACE:  1365105164743  SipStack: calling listener
+SIPUNIT TRACE:  1365105164743  SipSession: request received !
+SIPUNIT TRACE:  1365105164743       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105164743       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105164743       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testGetSetRecurse001
+From: <sip:alice@192.168.1.65>;tag=848039836
+Call-ID: 65eba3daaee36be66e29c95e8736cb16@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK2yzs.!r9mzx-n!a2s3d25vngnqzomi;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe2a27b33a7abd0e2225d340fae93c243
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105164744  SipSession: notifying block object
+SIPUNIT TRACE:  1365105164744  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105164744  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105164744  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105164744  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testGetSetRecurse001
+From: <sip:alice@192.168.1.65>;tag=848039836
+Call-ID: 65eba3daaee36be66e29c95e8736cb16@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK2yzs.!r9mzx-n!a2s3d25vngnqzomi;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe2a27b33a7abd0e2225d340fae93c243
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105164744  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
+SIPUNIT TRACE:  1365105164746  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105164747  SIP/2.0 200 200 for INVITE
+To: <sip:JSR289_TCK@localhost:5060>;tag=1576227473
+From: <sip:alice@192.168.1.65>;tag=848039836
+Call-ID: 65eba3daaee36be66e29c95e8736cb16@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK2yzs.!r9mzx-n!a2s3d25vngnqzomi;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe2a27b33a7abd0e2225d340fae93c243
+CSeq: 1 INVITE
+Contact: <sip:bob@192.168.1.65:5072;transport=udp;lr>
+Expires: 10000
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105164750  Outgoing call response received: SIP/2.0 100 Trying
+To: <sip:JSR289_TCK@localhost:5060>
+From: <sip:alice@192.168.1.65>;tag=848039836
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe2a27b33a7abd0e2225d340fae93c243
+Call-ID: 65eba3daaee36be66e29c95e8736cb16@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105164760  Outgoing call response received: SIP/2.0 200 200 for INVITE
+Expires: 10000
+Contact: <sip:bob@192.168.1.65:5072;lr;transport=udp>
+To: <sip:JSR289_TCK@localhost:5060>;tag=1576227473
+From: <sip:alice@192.168.1.65>;tag=848039836
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe2a27b33a7abd0e2225d340fae93c243
+Call-ID: 65eba3daaee36be66e29c95e8736cb16@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105164868  SipStack: request received !
+SIPUNIT TRACE:  1365105164868  SipStack: calling listener
+SIPUNIT TRACE:  1365105164868  SipSession: request received !
+SIPUNIT TRACE:  1365105164868       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105164868       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105164868       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK73defe492245d720f8da71ca80ab0e3f
+CSeq: 1 ACK
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=1576227473
+From: <sip:alice@192.168.1.65>;tag=848039836
+Call-ID: 65eba3daaee36be66e29c95e8736cb16@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105164869  SipSession: notifying block object
+SIPUNIT TRACE:  1365105164873  SipStack: request received !
+SIPUNIT TRACE:  1365105164874  SipStack: calling listener
+SIPUNIT TRACE:  1365105164874  SipSession: request received !
+SIPUNIT TRACE:  1365105164874       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105164874       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105164874       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK560a7aef3f52c811f6d53abc2c378356
+CSeq: 2 BYE
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=1576227473
+From: <sip:alice@192.168.1.65>;tag=848039836
+Call-ID: 65eba3daaee36be66e29c95e8736cb16@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105164874  SipSession: notifying block object
+SIPUNIT TRACE:  1365105164880  SipStack: request received !
+SIPUNIT TRACE:  1365105164880  SipStack: calling listener
+SIPUNIT TRACE:  1365105164880  SipSession: request received !
+SIPUNIT TRACE:  1365105164880       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105164880       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105164880       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK182693c54a6d85402ef107bb37db4b93
+CSeq: 3 BYE
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=1576227473
+From: <sip:alice@192.168.1.65>;tag=848039836
+Call-ID: 65eba3daaee36be66e29c95e8736cb16@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105164880  SipSession: not interested in blocking requests
+[2013-04-04 20:52:47,887] ProxyBranchTest:1008 INFO  - === testgetRecursedProxyBranches001() ===
+SIPUNIT TRACE:  1365105167892  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105167893  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 68ea9892e794d327a4fb99901534bd82@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1758510146
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4f399614935033e425af4bec554a4f69
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testgetRecursedProxyBranches001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105167893  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105167893  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105167908  SipStack: request received !
+SIPUNIT TRACE:  1365105167908  SipStack: calling listener
+SIPUNIT TRACE:  1365105167908  SipSession: request received !
+SIPUNIT TRACE:  1365105167908       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105167908       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105167908       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testgetRecursedProxyBranches001
+From: <sip:alice@192.168.1.65>;tag=1758510146
+Call-ID: 68ea9892e794d327a4fb99901534bd82@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKx6.ouov8a6wsmm+aqj.u55bxjp.3t7;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4f399614935033e425af4bec554a4f69
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105167909  SipSession: notifying block object
+SIPUNIT TRACE:  1365105167909  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105167909  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105167909  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105167909  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testgetRecursedProxyBranches001
+From: <sip:alice@192.168.1.65>;tag=1758510146
+Call-ID: 68ea9892e794d327a4fb99901534bd82@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKx6.ouov8a6wsmm+aqj.u55bxjp.3t7;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4f399614935033e425af4bec554a4f69
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105167909  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
+SIPUNIT TRACE:  1365105167911  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105167911  SIP/2.0 301 301 for INVITE
+To: <sip:JSR289_TCK@localhost:5060>;tag=1808269513
+From: <sip:alice@192.168.1.65>;tag=1758510146
+Call-ID: 68ea9892e794d327a4fb99901534bd82@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKx6.ouov8a6wsmm+aqj.u55bxjp.3t7;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4f399614935033e425af4bec554a4f69
+CSeq: 1 INVITE
+Expires: 10000
+Contact: <sip:jim@192.168.1.65:5073>
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105167915  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105177912  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105177912  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:53:00,920] ProxyBranchTest:1008 INFO  - === testGetRequest001() ===
+SIPUNIT TRACE:  1365105180925  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105180925  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ed2bfef8a5db491c801cf6900599c3e9@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=456962984
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK7ac97d13029ffd76031afe452cbffbdc
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testGetRequest001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105180925  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105180925  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105190921  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105190921  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:53:13,937] ProxyBranchTest:1008 INFO  - === testGetResponse001() ===
+SIPUNIT TRACE:  1365105193945  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105193945  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: a6aecb33f9c78e023859728c18d86e3e@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=349407823
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK07af7c29cb809b728b9765899bdfb12b
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testGetResponse001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105193946  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105193946  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105193960  SipStack: request received !
+SIPUNIT TRACE:  1365105193960  SipStack: calling listener
+SIPUNIT TRACE:  1365105193960  SipSession: request received !
+SIPUNIT TRACE:  1365105193960       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105193960       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105193960       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testGetResponse001
+From: <sip:alice@192.168.1.65>;tag=349407823
+Call-ID: a6aecb33f9c78e023859728c18d86e3e@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKkfhc2avjw_ij9nzltd6!js4cm6emde;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK07af7c29cb809b728b9765899bdfb12b
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105193960  SipSession: notifying block object
+SIPUNIT TRACE:  1365105193960  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105193960  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105193960  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105193960  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testGetResponse001
+From: <sip:alice@192.168.1.65>;tag=349407823
+Call-ID: a6aecb33f9c78e023859728c18d86e3e@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKkfhc2avjw_ij9nzltd6!js4cm6emde;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK07af7c29cb809b728b9765899bdfb12b
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105193960  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
+SIPUNIT TRACE:  1365105193962  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105193962  SIP/2.0 200 200 for INVITE
+To: <sip:JSR289_TCK@localhost:5060>;tag=1879941625
+From: <sip:alice@192.168.1.65>;tag=349407823
+Call-ID: a6aecb33f9c78e023859728c18d86e3e@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKkfhc2avjw_ij9nzltd6!js4cm6emde;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK07af7c29cb809b728b9765899bdfb12b
+CSeq: 1 INVITE
+Contact: <sip:bob@192.168.1.65:5072;transport=udp;lr>
+Expires: 10000
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105193965  Outgoing call response received: SIP/2.0 100 Trying
+To: <sip:JSR289_TCK@localhost:5060>
+From: <sip:alice@192.168.1.65>;tag=349407823
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK07af7c29cb809b728b9765899bdfb12b
+Call-ID: a6aecb33f9c78e023859728c18d86e3e@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105193974  Outgoing call response received: SIP/2.0 200 200 for INVITE
+Expires: 10000
+Contact: <sip:bob@192.168.1.65:5072;lr;transport=udp>
+To: <sip:JSR289_TCK@localhost:5060>;tag=1879941625
+From: <sip:alice@192.168.1.65>;tag=349407823
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK07af7c29cb809b728b9765899bdfb12b
+Call-ID: a6aecb33f9c78e023859728c18d86e3e@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105193982  SipStack: request received !
+SIPUNIT TRACE:  1365105193982  SipStack: calling listener
+SIPUNIT TRACE:  1365105193982  SipSession: request received !
+SIPUNIT TRACE:  1365105193982       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105193982       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105193982       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf2cb13e92d842c3bfd24e0ca29359811
+CSeq: 2 BYE
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=1879941625
+From: <sip:alice@192.168.1.65>;tag=349407823
+Call-ID: a6aecb33f9c78e023859728c18d86e3e@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105193982  SipSession: not interested in blocking requests
+[2013-04-04 20:53:16,989] ProxyBranchTest:1008 INFO  - === testIsStarted001() ===
+SIPUNIT TRACE:  1365105196994  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105196994  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 5cacd6ac7accef0c6d3244a7dfba59db@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=694095802
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf152cebc65396730e3e8c73b5e882600
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testIsStarted001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105196994  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105196994  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105206991  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105206991  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:53:29,998] ProxyBranchTest:1008 INFO  - === testSetOutboundInterface001() ===
+SIPUNIT TRACE:  1365105210003  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105210003  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 0cd6aa4d856cde9fffda88702e2ed409@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=547364067
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb84ecd3f7ec8d3ab2a12430b16e07c8c
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testSetOutboundInterface001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105210003  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105210003  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105210016  SipStack: request received !
+SIPUNIT TRACE:  1365105210016  SipStack: calling listener
+SIPUNIT TRACE:  1365105210016  SipSession: request received !
+SIPUNIT TRACE:  1365105210016       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105210016       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105210016       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testSetOutboundInterface001
+From: <sip:alice@192.168.1.65>;tag=547364067
+Call-ID: 0cd6aa4d856cde9fffda88702e2ed409@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKku.tx5vd6rft62.bglsn.r54.20c!0;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb84ecd3f7ec8d3ab2a12430b16e07c8c
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105210016  SipSession: notifying block object
+SIPUNIT TRACE:  1365105210016  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105210016  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105210016  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105210016  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testSetOutboundInterface001
+From: <sip:alice@192.168.1.65>;tag=547364067
+Call-ID: 0cd6aa4d856cde9fffda88702e2ed409@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKku.tx5vd6rft62.bglsn.r54.20c!0;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb84ecd3f7ec8d3ab2a12430b16e07c8c
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105210017  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
+SIPUNIT TRACE:  1365105210018  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105210018  SIP/2.0 200 200 for INVITE
+To: <sip:JSR289_TCK@localhost:5060>;tag=621522595
+From: <sip:alice@192.168.1.65>;tag=547364067
+Call-ID: 0cd6aa4d856cde9fffda88702e2ed409@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKku.tx5vd6rft62.bglsn.r54.20c!0;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb84ecd3f7ec8d3ab2a12430b16e07c8c
+CSeq: 1 INVITE
+Contact: <sip:bob@192.168.1.65:5072;transport=udp;lr>
+Expires: 10000
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105210021  Outgoing call response received: SIP/2.0 100 Trying
+To: <sip:JSR289_TCK@localhost:5060>
+From: <sip:alice@192.168.1.65>;tag=547364067
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb84ecd3f7ec8d3ab2a12430b16e07c8c
+Call-ID: 0cd6aa4d856cde9fffda88702e2ed409@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105210031  Outgoing call response received: SIP/2.0 200 200 for INVITE
+Expires: 10000
+Contact: <sip:bob@192.168.1.65:5072;lr;transport=udp>
+To: <sip:JSR289_TCK@localhost:5060>;tag=621522595
+From: <sip:alice@192.168.1.65>;tag=547364067
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb84ecd3f7ec8d3ab2a12430b16e07c8c
+Call-ID: 0cd6aa4d856cde9fffda88702e2ed409@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105210137  SipStack: request received !
+SIPUNIT TRACE:  1365105210137  SipStack: calling listener
+SIPUNIT TRACE:  1365105210138  SipSession: request received !
+SIPUNIT TRACE:  1365105210138       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105210138       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105210138       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe8e864c72bd64c2e428b926ebfecefb7
+CSeq: 1 ACK
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=621522595
+From: <sip:alice@192.168.1.65>;tag=547364067
+Call-ID: 0cd6aa4d856cde9fffda88702e2ed409@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105210138  SipSession: notifying block object
+SIPUNIT TRACE:  1365105210141  SipStack: request received !
+SIPUNIT TRACE:  1365105210141  SipStack: calling listener
+SIPUNIT TRACE:  1365105210141  SipSession: request received !
+SIPUNIT TRACE:  1365105210141       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105210141       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105210141       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKae4d4b18daa7520af17b49c605305f73
+CSeq: 2 BYE
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=621522595
+From: <sip:alice@192.168.1.65>;tag=547364067
+Call-ID: 0cd6aa4d856cde9fffda88702e2ed409@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105210141  SipSession: notifying block object
+SIPUNIT TRACE:  1365105210145  SipStack: request received !
+SIPUNIT TRACE:  1365105210145  SipStack: calling listener
+SIPUNIT TRACE:  1365105210145  SipSession: request received !
+SIPUNIT TRACE:  1365105210145       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105210145       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105210145       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa63ccaf989e7d4d9982fe64fd5b75cf4
+CSeq: 3 BYE
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=621522595
+From: <sip:alice@192.168.1.65>;tag=547364067
+Call-ID: 0cd6aa4d856cde9fffda88702e2ed409@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105210146  SipSession: not interested in blocking requests
+[2013-04-04 20:53:33,153] ProxyBranchTest:1008 INFO  - === testSetOutboundInterface101() ===
+[2013-04-04 20:53:33,154] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 4d9c3bec462eced537fbd7b95779a424@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=690396881
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-04 20:53:33,158] ProxyBranchTest:413 DEBUG - ---UA1 send MESSAGE req is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 4d9c3bec462eced537fbd7b95779a424@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=690396881
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6d91fd900d4db2c67829a97688e5c31f
+Max-Forwards: 5
+Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: ProxyBranch
+Method-Name: testSetOutboundInterface101
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+---
+SIPUNIT TRACE:  1365105213158  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105223154  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105223154  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:53:46,164] ProxyBranchTest:1008 INFO  - === testSetOutboundInterface102() ===
+[2013-04-04 20:53:46,164] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: b16685907a7553159acb31e8f6bab21e@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=702941568
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-04 20:53:46,170] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: b16685907a7553159acb31e8f6bab21e@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=702941568
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK247a432673ec877c18a517955fb86ab6
+Max-Forwards: 5
+Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: ProxyBranch
+Method-Name: testSetOutboundInterface102
+Content-Length: 0
+
+ ---
+[2013-04-04 20:53:49,188] ProxyBranchTest:1008 INFO  - === testSetOutboundInterface002() ===
+SIPUNIT TRACE:  1365105229193  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105229193  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 3477b1bada7a2206264ba282410eb60f@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=438117720
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfaa5ec02cfd31dd69d9eb6346e0f633d
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testSetOutboundInterface002
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105229193  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105229193  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105229206  SipStack: request received !
+SIPUNIT TRACE:  1365105229206  SipStack: calling listener
+SIPUNIT TRACE:  1365105229206  SipSession: request received !
+SIPUNIT TRACE:  1365105229206       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105229206       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105229206       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testSetOutboundInterface002
+From: <sip:alice@192.168.1.65>;tag=438117720
+Call-ID: 3477b1bada7a2206264ba282410eb60f@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK5.ozagbq6!db0w5+yyz54.7pwzpv3x;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfaa5ec02cfd31dd69d9eb6346e0f633d
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105229206  SipSession: notifying block object
+SIPUNIT TRACE:  1365105229206  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105229206  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105229207  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105229207  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testSetOutboundInterface002
+From: <sip:alice@192.168.1.65>;tag=438117720
+Call-ID: 3477b1bada7a2206264ba282410eb60f@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK5.ozagbq6!db0w5+yyz54.7pwzpv3x;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfaa5ec02cfd31dd69d9eb6346e0f633d
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105229207  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
+SIPUNIT TRACE:  1365105229208  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105229208  SIP/2.0 200 200 for INVITE
+To: <sip:JSR289_TCK@localhost:5060>;tag=1746445192
+From: <sip:alice@192.168.1.65>;tag=438117720
+Call-ID: 3477b1bada7a2206264ba282410eb60f@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK5.ozagbq6!db0w5+yyz54.7pwzpv3x;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfaa5ec02cfd31dd69d9eb6346e0f633d
+CSeq: 1 INVITE
+Contact: <sip:bob@192.168.1.65:5072;transport=udp;lr>
+Expires: 10000
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105229211  Outgoing call response received: SIP/2.0 100 Trying
+To: <sip:JSR289_TCK@localhost:5060>
+From: <sip:alice@192.168.1.65>;tag=438117720
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfaa5ec02cfd31dd69d9eb6346e0f633d
+Call-ID: 3477b1bada7a2206264ba282410eb60f@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105229220  Outgoing call response received: SIP/2.0 200 200 for INVITE
+Expires: 10000
+Contact: <sip:bob@192.168.1.65:5072;lr;transport=udp>
+To: <sip:JSR289_TCK@localhost:5060>;tag=1746445192
+From: <sip:alice@192.168.1.65>;tag=438117720
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfaa5ec02cfd31dd69d9eb6346e0f633d
+Call-ID: 3477b1bada7a2206264ba282410eb60f@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105229337  SipStack: request received !
+SIPUNIT TRACE:  1365105229337  SipStack: calling listener
+SIPUNIT TRACE:  1365105229337  SipSession: request received !
+SIPUNIT TRACE:  1365105229337       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105229337       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105229337       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK7b28f4f4b7112b6e54bd7522877f8fee
+CSeq: 1 ACK
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=1746445192
+From: <sip:alice@192.168.1.65>;tag=438117720
+Call-ID: 3477b1bada7a2206264ba282410eb60f@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105229337  SipSession: notifying block object
+SIPUNIT TRACE:  1365105229340  SipStack: request received !
+SIPUNIT TRACE:  1365105229340  SipStack: calling listener
+SIPUNIT TRACE:  1365105229340  SipSession: request received !
+SIPUNIT TRACE:  1365105229340       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105229340       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105229340       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK240fcb8f51f974bae60680de666e9272
+CSeq: 2 BYE
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=1746445192
+From: <sip:alice@192.168.1.65>;tag=438117720
+Call-ID: 3477b1bada7a2206264ba282410eb60f@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105229341  SipSession: notifying block object
+SIPUNIT TRACE:  1365105229344  SipStack: request received !
+SIPUNIT TRACE:  1365105229344  SipStack: calling listener
+SIPUNIT TRACE:  1365105229344  SipSession: request received !
+SIPUNIT TRACE:  1365105229344       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105229344       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105229345       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6c796889af59e15a1d19a8ddce5ad718
+CSeq: 3 BYE
+Expires: 10000
+To: <sip:JSR289_TCK@localhost:5060>;tag=1746445192
+From: <sip:alice@192.168.1.65>;tag=438117720
+Call-ID: 3477b1bada7a2206264ba282410eb60f@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105229345  SipSession: not interested in blocking requests
+[2013-04-04 20:53:52,352] ProxyBranchTest:1008 INFO  - === testSetOutboundInterface103() ===
+[2013-04-04 20:53:52,353] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 25b2d1104ee1c4dda7373102059f7b45@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=97713410
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-04 20:53:52,356] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 25b2d1104ee1c4dda7373102059f7b45@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=97713410
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe115de5c94649bbcfa789ac6d23bc3d0
+Max-Forwards: 5
+Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: ProxyBranch
+Method-Name: testSetOutboundInterface103
+Content-Length: 0
+
+ ---
+[2013-04-04 20:53:55,372] ProxyBranchTest:1008 INFO  - === testSetProxyBranchTimeout001() ===
+SIPUNIT TRACE:  1365105235377  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105235378  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: aa16c8090d1be9c794cadc0d81ed5e0c@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=79031533
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK86dc0ba4dc388242c25272c06d35c116
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testSetProxyBranchTimeout001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105235378  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105235378  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105245374  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105245374  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:54:08,383] ProxyBranchTest:1008 INFO  - === testSetProxyBranchTimeout101() ===
+[2013-04-04 20:54:08,384] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 41f2a3178bf2d3517b262d61279b486b@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=737734144
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-04 20:54:08,388] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 41f2a3178bf2d3517b262d61279b486b@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=737734144
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe85b7f3c8bc213f4f370f19f3c48fbd8
+Max-Forwards: 5
+Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: ProxyBranch
+Method-Name: testSetProxyBranchTimeout101
+Content-Length: 0
+
+ ---
+[2013-04-04 20:54:11,403] ProxyBranchTest:1008 INFO  - === testSetRecordRoute001() ===
+SIPUNIT TRACE:  1365105251408  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105251408  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 163868b7b92eb80010b3115f81ffcb6e@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1410445132
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfb33c6430d1a1e1f5b92f29f078b1a9f
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testSetRecordRoute001
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105251408  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105251408  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105251421  SipStack: request received !
+SIPUNIT TRACE:  1365105251421  SipStack: calling listener
+SIPUNIT TRACE:  1365105251421  SipSession: request received !
+SIPUNIT TRACE:  1365105251421       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105251421       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105251421       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testSetRecordRoute001
+From: <sip:alice@192.168.1.65>;tag=1410445132
+Call-ID: 163868b7b92eb80010b3115f81ffcb6e@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKlf.gi+dpnidn+2+zo_3x+tmnqwb0ew;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfb33c6430d1a1e1f5b92f29f078b1a9f
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105251421  SipSession: notifying block object
+SIPUNIT TRACE:  1365105251421  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105251421  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105251421  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105251422  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testSetRecordRoute001
+From: <sip:alice@192.168.1.65>;tag=1410445132
+Call-ID: 163868b7b92eb80010b3115f81ffcb6e@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKlf.gi+dpnidn+2+zo_3x+tmnqwb0ew;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfb33c6430d1a1e1f5b92f29f078b1a9f
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105251422  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
+[2013-04-04 20:54:14,432] ProxyBranchTest:1008 INFO  - === testSetRecordRoute101() ===
+SIPUNIT TRACE:  1365105254438  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105254439  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 7742e32c6ac914e162fdab08360d9f24@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=2000120296
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK794cf13902528831d0edef7bec4beb8f
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: ProxyBranch
+Method-Name: testSetRecordRoute101
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+ua2-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105254439  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1365105254439  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105254452  SipStack: request received !
+SIPUNIT TRACE:  1365105254452  SipStack: calling listener
+SIPUNIT TRACE:  1365105254453  SipSession: request received !
+SIPUNIT TRACE:  1365105254453       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105254453       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105254453       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testSetRecordRoute101
+From: <sip:alice@192.168.1.65>;tag=2000120296
+Call-ID: 7742e32c6ac914e162fdab08360d9f24@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKnww23by32f5y2cr9i8yhc_h09b630x;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK794cf13902528831d0edef7bec4beb8f
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105254453  SipSession: notifying block object
+SIPUNIT TRACE:  1365105254453  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105254453  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105254453  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105254453  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: ProxyBranch
+To: <sip:JSR289_TCK@localhost:5060>
+Contact: <sip:alice@192.168.1.65:5071;lr;transport=udp>
+Method-Name: testSetRecordRoute101
+From: <sip:alice@192.168.1.65>;tag=2000120296
+Call-ID: 7742e32c6ac914e162fdab08360d9f24@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKnww23by32f5y2cr9i8yhc_h09b630x;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK794cf13902528831d0edef7bec4beb8f
+Route: <sip:localhost:5060;lr;transport=udp>
+Max-Forwards: 69
+ua2-uri: sip:bob@192.168.1.65:5072
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105254453  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
+SIPUNIT TRACE:  1365105254455  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105264452  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105264452  SS.waitRequest() - either we got the request, or timed out
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

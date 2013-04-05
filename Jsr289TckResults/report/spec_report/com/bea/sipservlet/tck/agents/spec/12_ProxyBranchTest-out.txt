@@ -1,0 +1,130 @@
+[2013-01-13 19:10:04,344] ProxyBranchTest:1008 INFO  - === testAddNoSysHeader() ===
+[2013-01-13 19:10:04,349] ProxyBranchTest:940 DEBUG - ----------------1-------------- begin
+SIPUNIT TRACE:  1358104204479  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104204480  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: fa3e935c6e51e181427fa199f0675617@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1508343525
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK97df4b72daae5df6d5a58a3a437b8ef8
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Servlet-Name: AddNoSysHeader
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TARGET1: sip:bob@192.168.1.65:5072
+TARGET2: sip:jim@192.168.1.65:5073
+TARGET3: sip:tom@192.168.1.65:5074
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104204480  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+[2013-01-13 19:10:04,480] ProxyBranchTest:942 DEBUG - -----------------1-------------- end
+[2013-01-13 19:10:04,481] ProxyBranchTest:940 DEBUG - ----------------2-------------- begin
+SIPUNIT TRACE:  1358104204481  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104209480  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104209480  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:10:13,498] ProxyBranchTest:1008 INFO  - === testCancelProxy() ===
+[2013-01-13 19:10:13,498] ProxyBranchTest:940 DEBUG - ----------------1-------------- begin
+SIPUNIT TRACE:  1358104213504  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104213504  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: fa432321430a13cb77d572233bbd4fb0@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1912906863
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4b8fb96dbaa885f37ca8783e4dce7f6c
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Servlet-Name: CancelProxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TARGET1: sip:bob@192.168.1.65:5072
+TARGET2: sip:jim@192.168.1.65:5073
+TARGET3: sip:tom@192.168.1.65:5074
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104213504  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+[2013-01-13 19:10:13,504] ProxyBranchTest:942 DEBUG - -----------------1-------------- end
+[2013-01-13 19:10:13,504] ProxyBranchTest:940 DEBUG - ----------------2-------------- begin
+SIPUNIT TRACE:  1358104213505  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104218503  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104218504  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:10:22,514] ProxyBranchTest:1008 INFO  - === testCreatingBranchNoParallel() ===
+[2013-01-13 19:10:22,514] ProxyBranchTest:940 DEBUG - ----------------1-------------- begin
+SIPUNIT TRACE:  1358104222520  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104222520  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 929a3c23413d813ef1b767041109e62d@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1967814529
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKd6080588aefbffe7eed3bdb26ac2e625
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Servlet-Name: CreatingBranchNoParallel
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TARGET1: sip:bob@192.168.1.65:5072
+TARGET2: sip:jim@192.168.1.65:5073
+TARGET3: sip:tom@192.168.1.65:5074
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104222520  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+[2013-01-13 19:10:22,520] ProxyBranchTest:942 DEBUG - -----------------1-------------- end
+[2013-01-13 19:10:22,520] ProxyBranchTest:940 DEBUG - ----------------2-------------- begin
+SIPUNIT TRACE:  1358104222521  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104227519  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104227519  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:10:31,533] ProxyBranchTest:1008 INFO  - === testCreatingBranchParallel() ===
+[2013-01-13 19:10:31,534] ProxyBranchTest:940 DEBUG - ----------------1-------------- begin
+SIPUNIT TRACE:  1358104231540  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104231540  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 12e13c90bbf0e31a8622ffad7b612e27@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1624565300
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK2992d872e5068136cee8773dfedcce57
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Servlet-Name: CreatingBranchParallel
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TARGET1: sip:bob@192.168.1.65:5072
+TARGET2: sip:jim@192.168.1.65:5073
+TARGET3: sip:tom@192.168.1.65:5074
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104231540  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+[2013-01-13 19:10:31,540] ProxyBranchTest:942 DEBUG - -----------------1-------------- end
+[2013-01-13 19:10:31,540] ProxyBranchTest:940 DEBUG - ----------------2-------------- begin
+SIPUNIT TRACE:  1358104231541  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104236540  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104236540  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:10:40,552] ProxyBranchTest:1008 INFO  - === testProxyBranchRecurse() ===
+[2013-01-13 19:10:40,553] ProxyBranchTest:940 DEBUG - ----------------1-------------- begin
+SIPUNIT TRACE:  1358104240559  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104240559  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: c2db27c4b448fe75090c98a8c7828f92@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1593422914
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK487781c15c7419ed75aef365f4091ec6
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Servlet-Name: ProxyBranchRecurse
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TARGET1: sip:bob@192.168.1.65:5072
+TARGET2: sip:jim@192.168.1.65:5073
+TARGET3: sip:tom@192.168.1.65:5074
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104240559  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+[2013-01-13 19:10:40,559] ProxyBranchTest:942 DEBUG - -----------------1-------------- end
+[2013-01-13 19:10:40,560] ProxyBranchTest:940 DEBUG - ----------------2-------------- begin
+SIPUNIT TRACE:  1358104240560  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104245559  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104245559  SS.waitRequest() - either we got the request, or timed out

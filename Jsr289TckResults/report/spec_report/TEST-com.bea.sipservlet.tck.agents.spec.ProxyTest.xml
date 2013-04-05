@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="12" name="com.bea.sipservlet.tck.agents.spec.ProxyTest" tests="12" time="136.756">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="env.SIPUNIT_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib" />
+    <property name="env.SIGNATURE_FILE_NAME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/bin/jsr289_api.sig" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="env.TCK_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="spec.report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/spec_report" />
+    <property name="lib" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib" />
+    <property name="env.TCK_DIRECTORY" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/JObjC.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/classes" />
+    <property name="env.TMPDIR" value="/var/folders/qt/j9kz_nw12bqfytwz9kfyjvq00000gn/T/" />
+    <property name="env.Apple_Ubiquity_Message" value="/tmp/launch-eKCEt5/Apple_Ubiquity_Message" />
+    <property name="env.SIPUNIT_DIRECTORY" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit" />
+    <property name="env.PWD" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
+    <property name="user.country.format" value="GB" />
+    <property name="report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report" />
+    <property name="env.LANG" value="en_GB.UTF-8" />
+    <property name="signature.report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/sig_report" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="/usr/share/ant" />
+    <property name="java.runtime.version" value="1.7.0_10-ea-b09" />
+    <property name="env.TCK_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck" />
+    <property name="env.Apple_PubSub_Socket_Render" value="/tmp/launch-koMd4z/Render" />
+    <property name="approuter.src" value="com/bea/sipservlet/tck/ar" />
+    <property name="user.name" value="andrew" />
+    <property name="env.USER" value="andrew" />
+    <property name="env.SHELL" value="/bin/bash" />
+    <property name="env.__CF_USER_TEXT_ENCODING" value="0x1F5:0:0" />
+    <property name="env.PATH" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/bin:/usr/share/ant/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin" />
+    <property name="user.language" value="en" />
+    <property name="build" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build" />
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib" />
+    <property name="ant.project.default-target" value="usage" />
+    <property name="ant.project.name" value="SIP Servlet 1.1 API Technology Compatibility Kit (TCK)" />
+    <property name="env.REPORT_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/report" />
+    <property name="java.version" value="1.7.0_10-ea" />
+    <property name="classes" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/classes" />
+    <property name="user.timezone" value="" />
+    <property name="apiapp.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/apitestapp" />
+    <property name="tck.zip" value="../sipservlet-1_1-tck.zip" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="log4j" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/log4j.properties" />
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/endorsed" />
+    <property name="signaturefile" value="jsr289_api.sig" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="env.SHLVL" value="2" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="51.0" />
+    <property name="src" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/src" />
+    <property name="sipunit.dir" value="../sipunit" />
+    <property name="ar.build" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/ar-build" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre" />
+    <property name="dist.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="env.LOGNAME" value="andrew" />
+    <property name="ant.file" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build.xml" />
+    <property name="os.version" value="10.8.2" />
+    <property name="env.JAVA_MAIN_CLASS_35959" value="org.apache.tools.ant.launch.Launcher" />
+    <property name="env.TERM_PROGRAM_VERSION" value="309" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="23.6-b03" />
+    <property name="ant.library.dir" value="/usr/share/ant/lib" />
+    <property name="env.SIPUNIT_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit" />
+    <property name="env.JAVA_HOME" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home" />
+    <property name="env.TERM" value="xterm-256color" />
+    <property name="env.SIGTEST_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/sigtest.jar" />
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
+    <property name="env.SIGCONFIG" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/signature.properties" />
+    <property name="sun.io.unicode.encoding" value="UnicodeBig" />
+    <property name="ant.file.SIP Servlet 1.1 API Technology Compatibility Kit (TCK)" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build.xml" />
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="env.APIJAR" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/servlet-2_5-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/sipservlet-1_1-api.jar" />
+    <property name="user.home" value="/Users/andrew" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="env.CLASSPATH" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/lib/tools.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/tck-junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib/junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/sigtest.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/conf" />
+    <property name="env.TERM_PROGRAM" value="Apple_Terminal" />
+    <property name="env.TCKJUNIT_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/tck-junit.jar" />
+    <property name="java.library.path" value="/Users/andrew/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="gopherProxySet" value="false" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on June 20 2012" />
+    <property name="java.class.path" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/ant-contrib-1.0b3.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/javax.annotation_1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/servlet-2_5-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sigtest.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipservlet-1_1-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipunit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/tck-junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipApi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipRi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/concurrent.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/dom.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jax-qname.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-impl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-libs.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/log4j-1.2.8.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/namespace.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/nist-sdp-1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/relaxngDatatype.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/tracesviewer.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xalan.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xercesImpl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xsdlib.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/classes:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/lib/tools.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf:/usr/share/java/ant-1.8.2/lib/ant-launcher.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar" />
+    <property name="sun.java.command" value="com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.spec.ProxyTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/spec_report/TEST-com.bea.sipservlet.tck.agents.spec.ProxyTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit324827978.properties" />
+    <property name="env.TERM_SESSION_ID" value="4060C741-639F-4B29-A7CA-1E6852E6416F" />
+    <property name="env.JSR289TCK_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/.." />
+    <property name="env.JBOSS_HOME" value="/opt/jboss-as-7.1.1.Final" />
+    <property name="signature.property" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/signature.properties" />
+    <property name="jsr289.dir" value=".." />
+    <property name="api.report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type" value="file" />
+    <property name="conf" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf" />
+    <property name="java.vm.specification.version" value="1.7" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="env.HOME" value="/Users/andrew" />
+    <property name="env.ANT_HOME" value="/usr/share/ant" />
+    <property name="java.io.tmpdir" value="/var/folders/qt/j9kz_nw12bqfytwz9kfyjvq00000gn/T/" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="env.SSH_AUTH_SOCK" value="/tmp/launch-VEOujx/Listeners" />
+    <property name="signature.report.filename" value="jsr289SignatureReport.txt" />
+    <property name="env.COMMAND_MODE" value="unix2003" />
+    <property name="applications.src.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-continue,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-internalroutemodifier,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-reverse,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-suburiregion,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-success,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/uas,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/uac,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/b2bua,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/proxy" />
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
+    <property name="os.arch" value="x86_64" />
+    <property name="java.ext.dirs" value="/Users/andrew/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
+    <property name="ar.appname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-approuter.jar" />
+    <property name="applications.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications" />
+    <property name="user.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="ant.file.type.SIP Servlet 1.1 API Technology Compatibility Kit (TCK)" value="file" />
+    <property name="basedir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
+    <property name="ant.java.version" value="1.7" />
+    <property name="ant.core.lib" value="/usr/share/ant/lib/ant.jar" />
+    <property name="env.SIGNATURE_REPORT_NAME" value="jsr289SignatureReport.txt" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="env.SIGREPORT_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/report/sig_report" />
+    <property name="env.JUNIT_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib/junit.jar" />
+    <property name="java.specification.version" value="1.7" />
+    <property name="env.REFERENCE_JAR" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sigtest.jar" />
+    <property name="tck.earname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-apps.ear" />
+    <property name="ant.project.invoked-targets" value="run-spec-tests" />
+  </properties>
+  <testcase assertions="[SipServlet:SPEC:Proxy3] - Tests recursion. Recursion is disabled." classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxyRecurseOff" time="13.423">
+    <failure message="Wait response error - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Wait response error - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxyRecurseOff(ProxyTest.java:528)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:SPEC:Proxy4] - Tests cancellation of proxy operation in progress." classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxyCancel" time="13.011">
+    <failure message="Wait response error - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Wait response error - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxyCancel(ProxyTest.java:642)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:SPEC:Proxy5] - Tests that a 483 Too Many Hops response is returned when an application  attempts to proxy a request with Max-Forwards: 0" classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxyTooManyHops" time="13.014">
+    <failure message="Wait response error - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Wait response error - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxyTooManyHops(ProxyTest.java:772)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:SPEC:Proxy6] - Exercises ability of proxy app to generate its own 2xx response in  the best response callback, when the best response received was a non-2xx" classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxyGen2xx" time="13.019">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxyGen2xx(ProxyTest.java:847)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:SPEC:Proxy7] - Basic proxy caller bye test" classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxyBasicCallerBye" time="8.019">
+    <failure message="Don&apos;t receive INVITE" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Don&apos;t receive INVITE
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxyBasicCallerBye(ProxyTest.java:971)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:SPEC:Proxy2] - Tests ability of proxy applications to proxy to add URIs to the proxy target set in the best-response callback if the best response is not a 2xx" classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxyRecurseApp" time="13.015">
+    <failure message="Wait response error - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Wait response error - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxyRecurseApp(ProxyTest.java:347)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:SPEC:Proxy1] - Tests recursion in proxy applications." classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxyRecurseOn" time="13.016">
+    <failure message="Wait response error - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Wait response error - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxyRecurseOn(ProxyTest.java:140)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:SPEC:Proxy8] - Basic proxy callee bye test" classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxyBasicCalleeBye" time="13.014">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxyBasicCalleeBye(ProxyTest.java:1050)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:SPEC:Proxy9] - App record-routes. Proxy caller bye test" classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxyRRCallerBye" time="8.014">
+    <failure message="Don&apos;t receive INVITE" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Don&apos;t receive INVITE
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxyRRCallerBye(ProxyTest.java:1136)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:SPEC:Proxy10] - App record-routes. Proxy callee bye test" classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxyRRCalleeBye" time="13.017">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxyRRCalleeBye(ProxyTest.java:1231)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:SPEC:Proxy11] - Tests ability of applications to push state to endpoints" classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxyPushState" time="8.014">
+    <failure message="Don&apos;t receive INVITE" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Don&apos;t receive INVITE
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxyPushState(ProxyTest.java:1326)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:SPEC:Proxy12] - Tests behavior of proxy when the supervised flag is set to false" classname="com.bea.sipservlet.tck.agents.spec.ProxyTest" name="testProxySupervisedOff" time="8.013">
+    <failure message="Don&apos;t receive INVITE" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Don&apos;t receive INVITE
+	at com.bea.sipservlet.tck.agents.spec.ProxyTest.testProxySupervisedOff(ProxyTest.java:1422)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <system-out><![CDATA[[2013-01-13 19:10:50,669] ProxyTest:1008 INFO  - === testProxyRecurseOff() ===
+[2013-01-13 19:10:50,675] ProxyTest:65 DEBUG - ---  Step 1  ---
+SIPUNIT TRACE:  1358104250859  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104250859  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 5b6ee2eba5f7dc80747835a91cb11e54@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1624185309
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKdd971e76af0bfab7dc7c03173d97f8bc
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: Proxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TCK-Proxy-Options: recurse=false
+TCK-Proxy-Dest: sip:bob@192.168.1.65:5072;lr;transport=udp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104250859  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+[2013-01-13 19:11:03,875] ProxyTest:1008 INFO  - === testProxyCancel() ===
+[2013-01-13 19:11:03,875] ProxyTest:65 DEBUG - ---  Step 1  ---
+SIPUNIT TRACE:  1358104263880  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104263880  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: e8016684b83d571864c97d253b46b74d@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=668875815
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb33fe56b82e10c51b8489052ae218e16
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: Proxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TCK-Proxy-Options: 
+TCK-Proxy-Dest: sip:bob@192.168.1.65:5072;lr;transport=udp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104263880  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+[2013-01-13 19:11:16,885] ProxyTest:1008 INFO  - === testProxyTooManyHops() ===
+[2013-01-13 19:11:16,886] ProxyTest:65 DEBUG - ---  Step 1  ---
+SIPUNIT TRACE:  1358104276893  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104276893  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 798acab7064d174d41bc52cfa5d6d1c1@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1865964971
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK654edef8e1e89804b810a55a9d4d9e4a
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: Proxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TCK-Proxy-Options: 
+TCK-Proxy-Dest: sip:bob@192.168.1.65:5072;lr;transport=udp
+Max-Forwards: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104276893  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+[2013-01-13 19:11:29,902] ProxyTest:1008 INFO  - === testProxyGen2xx() ===
+[2013-01-13 19:11:29,902] ProxyTest:65 DEBUG - ---  Step 1  ---
+[2013-01-13 19:11:29,904] TestBase:351 DEBUG - === created message:MESSAGE sip:proxy-gen2xx@localhost:5060 SIP/2.0
+Call-ID: 1849af513a8199b239f165a5d962972e@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1836123938
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-01-13 19:11:29,911] ProxyTest:65 DEBUG - ---  Step 2  ---
+SIPUNIT TRACE:  1358104289911  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104299908  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104299908  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:11:42,920] ProxyTest:1008 INFO  - === testProxyBasicCallerBye() ===
+SIPUNIT TRACE:  1358104302928  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104302928  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: dd441fe6d225311606acf79261640f82@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=2097949707
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK58c845c5d0ec024889888e9bfd20131f
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: Proxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TCK-Proxy-Dest: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104302928  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1358104302928  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104307927  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104307927  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:11:50,939] ProxyTest:1008 INFO  - === testProxyRecurseApp() ===
+[2013-01-13 19:11:50,940] ProxyTest:65 DEBUG - ---  Step 1  ---
+SIPUNIT TRACE:  1358104310946  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104310946  INVITE sip:proxy-recurse-app@localhost:5060 SIP/2.0
+Call-ID: 3aea4d6e2631482d15c56c986946557b@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1197853148
+To: <sip:proxy-recurse-app@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK0732c9e85396dafaf62574ac857039b9
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: Proxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TCK-Proxy-Options: recordRoute=true recurse=false
+TCK-Proxy-Dest: sip:bob@192.168.1.65:5072;lr;transport=udp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104310946  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+[2013-01-13 19:12:03,954] ProxyTest:1008 INFO  - === testProxyRecurseOn() ===
+[2013-01-13 19:12:03,955] ProxyTest:65 DEBUG - ---  Step 1  ---
+SIPUNIT TRACE:  1358104323960  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104323960  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 7524e4c13f5b9f6b61285d702c004f1a@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1164667011
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK85c9a7f3680b7da58a84be5e1ca49146
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: Proxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TCK-Proxy-Options: recordRoute=true
+TCK-Proxy-Dest: sip:bob@192.168.1.65:5072;lr;transport=udp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104323961  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+[2013-01-13 19:12:16,970] ProxyTest:1008 INFO  - === testProxyBasicCalleeBye() ===
+SIPUNIT TRACE:  1358104336975  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104336975  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: a3f6d8971238914fb99d387739d0d054@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=2120762278
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK70417be76cc2d89301b8b7a5a4c7d426
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: Proxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TCK-Proxy-Dest: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104336975  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1358104336975  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104346972  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104346972  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:12:29,982] ProxyTest:1008 INFO  - === testProxyRRCallerBye() ===
+SIPUNIT TRACE:  1358104349988  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104349988  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 355016cd97ae6d4c8700875c592c7694@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=196022939
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK7f54983b6438ace2a23c26915b782faf
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: Proxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TCK-Proxy-Dest: sip:bob@192.168.1.65:5072
+TCK-Proxy-Options: recordRoute=true
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104349988  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1358104349988  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104354986  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104354987  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:12:37,999] ProxyTest:1008 INFO  - === testProxyRRCalleeBye() ===
+SIPUNIT TRACE:  1358104358006  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104358006  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: b71c3bd979eb8b26645a41464c589683@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1745986754
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK7867c8c786c33768a362553d40f5c992
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: Proxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TCK-Proxy-Dest: sip:bob@192.168.1.65:5072
+TCK-Proxy-Options: recordRoute=true
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104358006  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1358104358006  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104368003  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104368003  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:12:51,014] ProxyTest:1008 INFO  - === testProxyPushState() ===
+SIPUNIT TRACE:  1358104371020  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104371020  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: d7a76ada356d209b71189f2d5d114b0d@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1751438484
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9257f084698f7314cb1ce606c1d94c72
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: Proxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TCK-Proxy-Dest: sip:bob@192.168.1.65:5072
+TCK-Proxy-Options: recordRoute=true param.foo=bar
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104371020  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1358104371020  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104376019  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104376019  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:12:59,027] ProxyTest:1008 INFO  - === testProxySupervisedOff() ===
+SIPUNIT TRACE:  1358104379033  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104379033  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 5e22120ff7e5309d2627d6bafd4097f9@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1220069123
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf4c63c9683e043744998102022bef2e7
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Servlet-Name: Proxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+TCK-Proxy-Dest: sip:bob@192.168.1.65:5072
+TCK-Proxy-Options: supervised=false recordRoute=true
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104379033  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1358104379033  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104384032  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104384032  SS.waitRequest() - either we got the request, or timed out
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

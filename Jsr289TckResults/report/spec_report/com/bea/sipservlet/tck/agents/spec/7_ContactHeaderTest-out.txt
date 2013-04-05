@@ -1,0 +1,30 @@
+[2013-01-13 19:07:56,700] ContactHeaderTest:67 DEBUG - expectedContactHeaders[0] = &lt;sip:tck@sipservlet.com&gt;;expires=3600;
+[2013-01-13 19:07:56,701] ContactHeaderTest:68 DEBUG - expectedContactHeaders[1] = &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+[2013-01-13 19:07:56,702] ContactHeaderTest:70 DEBUG - expectedContactHeaderAddresses[0] = &lt;sip:tck@sipservlet.com&gt;
+[2013-01-13 19:07:56,702] ContactHeaderTest:71 DEBUG - expectedContactHeaderAddresses[1] = &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+[2013-01-13 19:07:56,703] ContactHeaderTest:1008 INFO  - === testContactheader() ===
+[2013-01-13 19:07:56,850] TestBase:351 DEBUG - === created message:REGISTER sip:localhost SIP/2.0
+Call-ID: 49bf5580b1f4bd693f39417fcae1d04e@192.168.1.65
+CSeq: 1 REGISTER
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=461576525
+To: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-01-13 19:07:56,902] ContactHeaderTest:169 DEBUG - ---UA1 send REGISTER req is:REGISTER sip:localhost SIP/2.0
+Call-ID: 49bf5580b1f4bd693f39417fcae1d04e@192.168.1.65
+CSeq: 1 REGISTER
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=461576525
+To: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKcdfb7640f4c4936c1c8f605a7e2aedd6
+Max-Forwards: 5
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Expires: 7200
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.uas
+Servlet-Name: ContactHeader
+Content-Length: 0
+
+---

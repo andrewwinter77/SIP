@@ -1,0 +1,621 @@
+<html xmlns:lxslt="http://xml.apache.org/xslt" xmlns:stringutils="xalan://org.apache.tools.ant.util.StringUtils">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Unit Test Results: com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest</title>
+<link rel="stylesheet" type="text/css" title="Style" href="../../../../../../../stylesheet.css">
+<script type="text/javascript" language="JavaScript">
+        var TestCases = new Array();
+        var cur;
+        
+    cur = TestCases['com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest'] = new Array();
+    
+        cur['ant.core.lib'] = '/usr/share/ant/lib/ant.jar';
+    
+        cur['ant.file'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build.xml';
+    
+        cur['ant.file.SIP Servlet 1.1 API Technology Compatibility Kit (TCK)'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build.xml';
+    
+        cur['ant.file.type'] = 'file';
+    
+        cur['ant.file.type.SIP Servlet 1.1 API Technology Compatibility Kit (TCK)'] = 'file';
+    
+        cur['ant.home'] = '/usr/share/ant';
+    
+        cur['ant.java.version'] = '1.7';
+    
+        cur['ant.library.dir'] = '/usr/share/ant/lib';
+    
+        cur['ant.project.default-target'] = 'usage';
+    
+        cur['ant.project.invoked-targets'] = 'run-api-tests';
+    
+        cur['ant.project.name'] = 'SIP Servlet 1.1 API Technology Compatibility Kit (TCK)';
+    
+        cur['ant.version'] = 'Apache Ant(TM) version 1.8.2 compiled on June 20 2012';
+    
+        cur['api.report'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report';
+    
+        cur['apiapp.dir'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/apitestapp';
+    
+        cur['applications.dir'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications';
+    
+        cur['applications.src.dir'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-continue,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-internalroutemodifier,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-reverse,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-suburiregion,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/ar-success,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/uas,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/uac,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/b2bua,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications/spectestapps/proxy';
+    
+        cur['approuter.src'] = 'com/bea/sipservlet/tck/ar';
+    
+        cur['ar.appname'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-approuter.jar';
+    
+        cur['ar.build'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/ar-build';
+    
+        cur['awt.toolkit'] = 'sun.lwawt.macosx.LWCToolkit';
+    
+        cur['basedir'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck';
+    
+        cur['build'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build';
+    
+        cur['classes'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/classes';
+    
+        cur['conf'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf';
+    
+        cur['dist.dir'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist';
+    
+        cur['env.__CF_USER_TEXT_ENCODING'] = '0x1F5:0:0';
+    
+        cur['env.ANT_HOME'] = '/usr/share/ant';
+    
+        cur['env.APIJAR'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/servlet-2_5-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/sipservlet-1_1-api.jar';
+    
+        cur['env.Apple_PubSub_Socket_Render'] = '/tmp/launch-w5MTVj/Render';
+    
+        cur['env.Apple_Ubiquity_Message'] = '/tmp/launch-s2GBEw/Apple_Ubiquity_Message';
+    
+        cur['env.CLASSPATH'] = '/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/lib/tools.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/tck-junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib/junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/sigtest.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/conf';
+    
+        cur['env.COMMAND_MODE'] = 'unix2003';
+    
+        cur['env.HOME'] = '/Users/andrew';
+    
+        cur['env.JAVA_HOME'] = '/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home';
+    
+        cur['env.JAVA_MAIN_CLASS_46883'] = 'org.apache.tools.ant.launch.Launcher';
+    
+        cur['env.JBOSS_HOME'] = '/opt/jboss-eap-6.1';
+    
+        cur['env.JSR289TCK_HOME'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/..';
+    
+        cur['env.JUNIT_LIB'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib/junit.jar';
+    
+        cur['env.LANG'] = 'en_GB.UTF-8';
+    
+        cur['env.LOGNAME'] = 'andrew';
+    
+        cur['env.MAVEN_OPTS'] = '-Xmx512M -XX:MaxPermSize=512M';
+    
+        cur['env.PATH'] = '/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/bin:/usr/share/ant/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin';
+    
+        cur['env.PWD'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck';
+    
+        cur['env.REFERENCE_JAR'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sigtest.jar';
+    
+        cur['env.REPORT_HOME'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/report';
+    
+        cur['env.RJAR_HOME'] = '/Users/andrew/Dev/rjar/';
+    
+        cur['env.SHELL'] = '/bin/bash';
+    
+        cur['env.SHLVL'] = '2';
+    
+        cur['env.SIGCONFIG'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/signature.properties';
+    
+        cur['env.SIGNATURE_FILE_NAME'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/bin/jsr289_api.sig';
+    
+        cur['env.SIGNATURE_REPORT_NAME'] = 'jsr289SignatureReport.txt';
+    
+        cur['env.SIGREPORT_HOME'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/report/sig_report';
+    
+        cur['env.SIGTEST_LIB'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/sigtest.jar';
+    
+        cur['env.SIPUNIT_DIRECTORY'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit';
+    
+        cur['env.SIPUNIT_HOME'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit';
+    
+        cur['env.SIPUNIT_LIB'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib';
+    
+        cur['env.SSH_AUTH_SOCK'] = '/tmp/launch-JxY2DM/Listeners';
+    
+        cur['env.TCK_DIRECTORY'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck';
+    
+        cur['env.TCK_HOME'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck';
+    
+        cur['env.TCK_LIB'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib';
+    
+        cur['env.TCKJUNIT_LIB'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../tck/lib/tck-junit.jar';
+    
+        cur['env.TERM'] = 'xterm-256color';
+    
+        cur['env.TERM_PROGRAM'] = 'Apple_Terminal';
+    
+        cur['env.TERM_PROGRAM_VERSION'] = '309';
+    
+        cur['env.TERM_SESSION_ID'] = '7818A790-16A8-47B8-9DFE-BD2903CA9C1F';
+    
+        cur['env.TMPDIR'] = '/var/folders/qt/j9kz_nw12bqfytwz9kfyjvq00000gn/T/';
+    
+        cur['env.USER'] = 'andrew';
+    
+        cur['env.XMLLINT_INDENT'] = '    ';
+    
+        cur['file.encoding'] = 'UTF-8';
+    
+        cur['file.encoding.pkg'] = 'sun.io';
+    
+        cur['file.separator'] = '/';
+    
+        cur['ftp.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['gopherProxySet'] = 'false';
+    
+        cur['http.nonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['java.awt.graphicsenv'] = 'sun.awt.CGraphicsEnvironment';
+    
+        cur['java.awt.printerjob'] = 'sun.lwawt.macosx.CPrinterJob';
+    
+        cur['java.class.path'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/ant-contrib-1.0b3.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/javax.annotation_1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/servlet-2_5-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sigtest.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipservlet-1_1-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipunit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/tck-junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipApi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipRi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/concurrent.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/dom.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jax-qname.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-impl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-libs.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/log4j-1.2.8.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/namespace.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/nist-sdp-1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/relaxngDatatype.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/tracesviewer.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xalan.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xercesImpl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xsdlib.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/classes:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/lib/tools.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf:/usr/share/java/ant-1.8.2/lib/ant-launcher.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar';
+    
+        cur['java.class.version'] = '51.0';
+    
+        cur['java.endorsed.dirs'] = '/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/endorsed';
+    
+        cur['java.ext.dirs'] = '/Users/andrew/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java';
+    
+        cur['java.home'] = '/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre';
+    
+        cur['java.io.tmpdir'] = '/var/folders/qt/j9kz_nw12bqfytwz9kfyjvq00000gn/T/';
+    
+        cur['java.library.path'] = '/Users/andrew/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.';
+    
+        cur['java.runtime.name'] = 'Java(TM) SE Runtime Environment';
+    
+        cur['java.runtime.version'] = '1.7.0_10-ea-b09';
+    
+        cur['java.specification.name'] = 'Java Platform API Specification';
+    
+        cur['java.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.specification.version'] = '1.7';
+    
+        cur['java.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vendor.url'] = 'http://java.oracle.com/';
+    
+        cur['java.vendor.url.bug'] = 'http://bugreport.sun.com/bugreport/';
+    
+        cur['java.version'] = '1.7.0_10-ea';
+    
+        cur['java.vm.info'] = 'mixed mode';
+    
+        cur['java.vm.name'] = 'Java HotSpot(TM) 64-Bit Server VM';
+    
+        cur['java.vm.specification.name'] = 'Java Virtual Machine Specification';
+    
+        cur['java.vm.specification.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.specification.version'] = '1.7';
+    
+        cur['java.vm.vendor'] = 'Oracle Corporation';
+    
+        cur['java.vm.version'] = '23.6-b03';
+    
+        cur['jsr289.dir'] = '..';
+    
+        cur['lib'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib';
+    
+        cur['line.separator'] = '
+';
+    
+        cur['log4j'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/log4j.properties';
+    
+        cur['os.arch'] = 'x86_64';
+    
+        cur['os.name'] = 'Mac OS X';
+    
+        cur['os.version'] = '10.8.3';
+    
+        cur['path.separator'] = ':';
+    
+        cur['report'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report';
+    
+        cur['signature.property'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/signature.properties';
+    
+        cur['signature.report'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/sig_report';
+    
+        cur['signature.report.filename'] = 'jsr289SignatureReport.txt';
+    
+        cur['signaturefile'] = 'jsr289_api.sig';
+    
+        cur['sipunit.dir'] = '../sipunit';
+    
+        cur['socksNonProxyHosts'] = 'local|*.local|169.254/16|*.169.254/16';
+    
+        cur['spec.report'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/spec_report';
+    
+        cur['src'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/src';
+    
+        cur['sun.arch.data.model'] = '64';
+    
+        cur['sun.boot.class.path'] = '/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/JObjC.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/classes';
+    
+        cur['sun.boot.library.path'] = '/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib';
+    
+        cur['sun.cpu.endian'] = 'little';
+    
+        cur['sun.cpu.isalist'] = '';
+    
+        cur['sun.io.unicode.encoding'] = 'UnicodeBig';
+    
+        cur['sun.java.command'] = 'com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit569458843.properties';
+    
+        cur['sun.java.launcher'] = 'SUN_STANDARD';
+    
+        cur['sun.jnu.encoding'] = 'UTF-8';
+    
+        cur['sun.management.compiler'] = 'HotSpot 64-Bit Tiered Compilers';
+    
+        cur['sun.os.patch.level'] = 'unknown';
+    
+        cur['tck.earname'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-apps.ear';
+    
+        cur['tck.zip'] = '../sipservlet-1_1-tck.zip';
+    
+        cur['user.country'] = 'US';
+    
+        cur['user.country.format'] = 'GB';
+    
+        cur['user.dir'] = '/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck';
+    
+        cur['user.home'] = '/Users/andrew';
+    
+        cur['user.language'] = 'en';
+    
+        cur['user.name'] = 'andrew';
+    
+        cur['user.timezone'] = '';
+    </script><script type="text/javascript" language="JavaScript">
+        function displayProperties (name) {
+          var win = window.open('','JUnitSystemProperties','scrollbars=1,resizable=1');
+          var doc = win.document.open();
+          doc.write("<html><head><title>Properties of " + name + "</title>");
+          doc.write("<style type=\"text/css\">");
+          doc.write("body {font:normal 68% verdana,arial,helvetica; color:#000000; }");
+          doc.write("table tr td, table tr th { font-size: 68%; }");
+          doc.write("table.properties { border-collapse:collapse; border-left:solid 1 #cccccc; border-top:solid 1 #cccccc; padding:5px; }");
+          doc.write("table.properties th { text-align:left; border-right:solid 1 #cccccc; border-bottom:solid 1 #cccccc; background-color:#eeeeee; }");
+          doc.write("table.properties td { font:normal; text-align:left; border-right:solid 1 #cccccc; border-bottom:solid 1 #cccccc; background-color:#fffffff; }");
+          doc.write("h3 { margin-bottom: 0.5em; font: bold 115% verdana,arial,helvetica }");
+          doc.write("</style>");
+          doc.write("</head><body>");
+          doc.write("<h3>Properties of " + name + "</h3>");
+          doc.write("<div align=\"right\"><a href=\"javascript:window.close();\">Close</a></div>");
+          doc.write("<table class='properties'>");
+          doc.write("<tr><th>Name</th><th>Value</th></tr>");
+          for (prop in TestCases[name]) {
+            doc.write("<tr><th>" + prop + "</th><td>" + TestCases[name][prop] + "</td></tr>");
+          }
+          doc.write("</table>");
+          doc.write("</body></html>");
+          doc.close();
+          win.focus();
+        }
+      
+      </script>
+</head>
+<body>
+<h1>Unit Test Results</h1>
+<table width="100%">
+<tr>
+<td align="left"></td><td align="right">Designed for use with <a href="http://www.junit.org/">JUnit</a> and <a href="http://jakarta.apache.org/">Ant</a>.</td>
+</tr>
+</table>
+<hr size="1">
+<h3>Class com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest</h3>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th width="80%">Name</th><th>Tests</th><th>Errors</th><th>Failures</th><th nowrap>Time(s)</th>
+</tr>
+<tr valign="top" class="Failure">
+<td><a href="22_SipServletMessageTest.html">SipServletMessageTest</a></td><td>76</td><td>0</td><td>23</td><td>240.384</td>
+</tr>
+</table>
+<h2>Tests</h2>
+<table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
+<tr valign="top">
+<th>Name</th><th>Assertions</th><th>Status</th><th width="70%">Type</th><th nowrap>Time(s)</th>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testAddHeader001</td><td>[SipServlet:JAVADOC:SipServletMessage3]</td><td>Success</td><td></td><td>3.428</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testAddHeader101</td><td>[SipServlet:JAVADOC:SipServletMessage3] - test IllegalArgumentException will be thrown if the header is a system header</td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testAddParameterableHeader001</td><td>[SipServlet:JAVADOC:SipServletMessage4]</td><td>Success</td><td></td><td>3.026</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testAddParameterableHeader101</td><td>[SipServlet:JAVADOC:SipServletMessage4] - test IllegalArgumentException will be thrown if the header can not hold parameterable values</td><td>Success</td><td></td><td>3.023</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetAcceptLanguage001</td><td>[SipServlet:JAVADOC:SipServletMessage5]</td><td>Failure</td><td>the reason got from UAS:get wrong preferred language:en.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason got from UAS:get wrong preferred language:en.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.sendMsgWithMultiAcceptLangHdrs(SipServletMessageTest.java:267)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetAcceptLanguage001(SipServletMessageTest.java:241)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.035</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetAcceptLanguages001</td><td>[SipServlet:JAVADOC:SipServletMessage6]</td><td>Success</td><td></td><td>3.021</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetAddressHeader001</td><td>[SipServlet:JAVADOC:SipServletMessage7]</td><td>Success</td><td></td><td>3.032</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetAddressHeader101</td><td>[SipServlet:JAVADOC:SipServletMessage7] - test ServletParseException</td><td>Success</td><td></td><td>3.025</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetAddressHeaders001</td><td>[SipServlet:JAVADOC:SipServletMessage8]</td><td>Success</td><td></td><td>3.022</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetAddressHeaders101</td><td>[SipServlet:JAVADOC:SipServletMessage8] - test ServletParseException</td><td>Success</td><td></td><td>3.019</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetApplicationSession001</td><td>[SipServlet:JAVADOC:SipServletMessage9] - test get App session without parameter</td><td>Success</td><td></td><td>3.022</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetApplicationSession002</td><td>[SipServlet:JAVADOC:SipServletMessage10] - test get App session with a boolean parameter</td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetAttribute001</td><td>[SipServlet:JAVADOC:SipServletMessage11][SipServlet:JAVADOC:SipServletMessage12][SipServlet:JAVADOC:SipServletMessage43][SipServlet:JAVADOC:SipServletMessage48] - test get/set/removeAttribute and getAttributeNames, if anyone of those assertions doesn't pass the case will fail</td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetCallId001</td><td>[SipServlet:JAVADOC:SipServletMessage13]</td><td>Success</td><td></td><td>3.040</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testAddAddressHeader001</td><td>[SipServlet:JAVADOC:SipServletMessage2]</td><td>Failure</td><td>N/A<br>
+<br>
+<code>junit.framework.AssertionFailedError	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testAddAddressHeader001(SipServletMessageTest.java:116)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.036</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testAddAddressHeader101</td><td>[SipServlet:JAVADOC:SipServletMessage2] - test IllegalArgumentException will be thrown if the specified header field is a system header</td><td>Success</td><td></td><td>3.024</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testAddAcceptLanguage001</td><td>[SipServlet:JAVADOC:SipServletMessage1]</td><td>Failure</td><td>expected:&lt;415&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: expected:&lt;415&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testAddAcceptLanguage001(SipServletMessageTest.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.029</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetCharacterEncoding001</td><td>[SipServlet:JAVADOC:SipServletMessage14][SipServlet:JAVADOC:SipServletMessage49] - getCharacterEncoding/setCharacterEncoding</td><td>Failure</td><td>the reason got from UAS:Server Internal Error expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason got from UAS:Server Internal Error expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetCharacterEncoding001(SipServletMessageTest.java:393)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.023</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetContent001</td><td>[SipServlet:JAVADOC:SipServletMessage15] - test getContent() with content of String</td><td>Failure</td><td>the reason got from UAS:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason got from UAS:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.simpleCheckResp(SipServletMessageTest.java:1321)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.sendMsgWithStringContent(SipServletMessageTest.java:479)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetContent001(SipServletMessageTest.java:416)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.021</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetContent101</td><td>[SipServlet:JAVADOC:SipServletMessage15] - if message's character encoding is not supported by the platform UnsupportedEncodingException will be thrown</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetContent101(SipServletMessageTest.java:425)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.022</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetContentLanguage001</td><td>[SipServlet:JAVADOC:SipServletMessage16]</td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetContentLength001</td><td>[SipServlet:JAVADOC:SipServletMessage17]</td><td>Success</td><td></td><td>3.019</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetContentType001</td><td>[SipServlet:JAVADOC:SipServletMessage18]</td><td>Success</td><td></td><td>3.021</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetExpires001</td><td>[SipServlet:JAVADOC:SipServletMessage19]</td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetExpires002</td><td>[SipServlet:JAVADOC:SipServletMessage19] - the Expires header doesn't exist and -1 returned</td><td>Success</td><td></td><td>3.027</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetFrom001</td><td>[SipServlet:JAVADOC:SipServletMessage20]</td><td>Failure</td><td>the reason got from UAS:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason got from UAS:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.simpleCheckResp(SipServletMessageTest.java:1321)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetFrom001(SipServletMessageTest.java:540)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.022</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetHeader001</td><td>[SipServlet:JAVADOC:SipServletMessage21]</td><td>Success</td><td></td><td>3.021</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testHeaderForm001</td><td>[SipServlet:JAVADOC:SipServletMessage22][SipServlet:JAVADOC:SipServletMessage56] - test set/getHeaderForm</td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetHeaderNames001</td><td>[SipServlet:JAVADOC:SipServletMessage23]</td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetHeaders001</td><td>[SipServlet:JAVADOC:SipServletMessage24]</td><td>Success</td><td></td><td>3.018</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetLocalAddr001</td><td>[SipServlet:JAVADOC:SipServletMessage25]</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.simpleCheckRespForMessage(SipServletMessageTest.java:1354)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetLocalAddr001(SipServletMessageTest.java:607)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.022</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetLocalPort001</td><td>[SipServlet:JAVADOC:SipServletMessage26]</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.simpleCheckRespForMessage(SipServletMessageTest.java:1354)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetLocalPort001(SipServletMessageTest.java:621)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.022</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetMethod001</td><td>[SipServlet:JAVADOC:SipServletMessage27]</td><td>Success</td><td></td><td>3.021</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetParameterableHeader001</td><td>[SipServlet:JAVADOC:SipServletMessage28]</td><td>Success</td><td></td><td>3.021</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetParameterableHeader101</td><td>[SipServlet:JAVADOC:SipServletMessage28] - ServletParseException should be thrown if the specified header field cannot be parsed as a SIP parameterable object </td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetParameterableHeader102</td><td>[SipServlet:JAVADOC:SipServletMessage28] - NullPointerException should be thrown if the name is null; </td><td>Success</td><td></td><td>3.021</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetParameterableHeaders001</td><td>[SipServlet:JAVADOC:SipServletMessage29]</td><td>Success</td><td></td><td>3.029</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetParameterableHeaders101</td><td>[SipServlet:JAVADOC:SipServletMessage29] - ServletParseException should be thrown if the specified header field cannot be parsed as a SIP parameterable object </td><td>Success</td><td></td><td>3.019</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetParameterableHeaders102</td><td>[SipServlet:JAVADOC:SipServletMessage28] - NullPointerException should be thrown if the name is null; </td><td>Success</td><td></td><td>3.018</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetProtocol001</td><td>[SipServlet:JAVADOC:SipServletMessage30]</td><td>Success</td><td></td><td>3.018</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetRawContent001</td><td>[SipServlet:JAVADOC:SipServletMessage31]</td><td>Success</td><td></td><td>3.022</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetRemoteAddr001</td><td>[SipServlet:JAVADOC:SipServletMessage32]</td><td>Failure</td><td>the reason got from UAS:Server Internal Error expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason got from UAS:Server Internal Error expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetRemoteAddr001(SipServletMessageTest.java:736)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.022</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetRemotePort001</td><td>[SipServlet:JAVADOC:SipServletMessage33]</td><td>Failure</td><td>the reason got from UAS:Server Internal Error expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason got from UAS:Server Internal Error expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetRemotePort001(SipServletMessageTest.java:778)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.021</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetSession001</td><td>[SipServlet:JAVADOC:SipServletMessage35] - test getSession()</td><td>Success</td><td></td><td>3.019</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetSession002</td><td>[SipServlet:JAVADOC:SipServletMessage36] - test getSession(boolean create). Some containers always create the sesson regardless the 'create' value, so the test only asserts if the container support the API.</td><td>Success</td><td></td><td>3.018</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetTo001</td><td>[SipServlet:JAVADOC:SipServletMessage37]</td><td>Success</td><td></td><td>3.019</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetTransport001</td><td>[SipServlet:JAVADOC:SipServletMessage38]</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.simpleCheckRespForMessage(SipServletMessageTest.java:1354)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetTransport001(SipServletMessageTest.java:827)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.022</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testIsCommitted001</td><td>[SipServlet:JAVADOC:SipServletMessage40]</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testIsCommitted001(SipServletMessageTest.java:835)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.023</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testIsSecure001</td><td>[SipServlet:JAVADOC:SipServletMessage41]</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testIsSecure001(SipServletMessageTest.java:842)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.029</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testRemoveHeader001</td><td>[SipServlet:JAVADOC:SipServletMessage44]</td><td>Success</td><td></td><td>3.019</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testRemoveHeader101</td><td>[SipServlet:JAVADOC:SipServletMessage44] - IllegalArgumentException should be thrown if the header is a system header</td><td>Success</td><td></td><td>3.022</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSend001</td><td>[SipServlet:JAVADOC:SipServletMessage45]</td><td>Success</td><td></td><td>3.041</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testSend101</td><td>[SipServlet:JAVADOC:SipServletMessage45]</td><td>Failure</td><td>the reason gotten from Server:IllegalStateException is not thrown.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:IllegalStateException is not thrown.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testSend101(SipServletMessageTest.java:892)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.023</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testSetAcceptLanguage001</td><td>[SipServlet:JAVADOC:SipServletMessage46]</td><td>Failure</td><td>expected:&lt;415&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: expected:&lt;415&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testSetAcceptLanguage001(SipServletMessageTest.java:903)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.023</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetAddressHeader001</td><td>[SipServlet:JAVADOC:SipServletMessage47]</td><td>Success</td><td></td><td>3.022</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetAddressHeader101</td><td>[SipServlet:JAVADOC:SipServletMessage47] - IllegalArgumentException should be thrown if the header is a system header</td><td>Success</td><td></td><td>3.021</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetAttribute101</td><td>[SipServlet:JAVADOC:SipServletMessage48] - NullPointerException should be thrown if the value is null</td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testSetCharacterEncoding101</td><td>[SipServlet:JAVADOC:SipServletMessage49] - UnsupportedEncodingException should be thrown if an invalide encoding is used</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testSetCharacterEncoding101(SipServletMessageTest.java:965)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.022</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testSetContent001</td><td>[SipServlet:JAVADOC:SipServletMessage50]</td><td>Failure</td><td>request Event is null.<br>
+<br>
+<code>junit.framework.AssertionFailedError: request Event is null.	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testSetContent001(SipServletMessageTest.java:990)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.025</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testSetContent101</td><td>[SipServlet:JAVADOC:SipServletMessage50] - UnsupportedEncodingException should be thrown if the encoding is not supported</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testSetContent101(SipServletMessageTest.java:1012)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.026</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testSetContent102</td><td>[SipServlet:JAVADOC:SipServletMessage50] - IllegalArgumentException should be thrown if MIME type is unknown</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testSetContent102(SipServletMessageTest.java:1020)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.025</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetContent103</td><td>[SipServlet:JAVADOC:SipServletMessage50] - IllegalStateException  should be thrown if message has already been sent.</td><td>Success</td><td></td><td>3.027</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetContentLanguage001</td><td>[SipServlet:JAVADOC:SipServletMessage51]</td><td>Success</td><td></td><td>3.028</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetContentLength001</td><td>[SipServlet:JAVADOC:SipServletMessage52]</td><td>Success</td><td></td><td>3.018</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetContentLength101</td><td>[SipServlet:JAVADOC:SipServletMessage52] - IllegalStateException should be thrown if the message has already been sent.</td><td>Success</td><td></td><td>3.029</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetContentType001</td><td>[SipServlet:JAVADOC:SipServletMessage53]</td><td>Success</td><td></td><td>3.024</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetExpires001</td><td>[SipServlet:JAVADOC:SipServletMessage54]</td><td>Success</td><td></td><td>3.029</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetHeader001</td><td>[SipServlet:JAVADOC:SipServletMessage55]</td><td>Success</td><td></td><td>3.031</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetHeader101</td><td>[SipServlet:JAVADOC:SipServletMessage55] - IllegalArgumentException should be thrown if the header is a system header</td><td>Success</td><td></td><td>3.019</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetHeader102</td><td>[SipServlet:JAVADOC:SipServletMessage55] - NullPointerException  should be thrown if the name is null</td><td>Success</td><td></td><td>3.044</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetHeader103</td><td>[SipServlet:JAVADOC:SipServletMessage55] - NullPointerException  should be thrown if the value is null</td><td>Success</td><td></td><td>3.026</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetParameterableHeader001</td><td>[SipServlet:JAVADOC:SipServletMessage57]</td><td>Success</td><td></td><td>3.022</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetParameterableHeader101</td><td>[SipServlet:JAVADOC:SipServletMessage57] - IllegalArgumentException should be thrown if the header can not hold parameterable values</td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetInitialRemoteAddr001</td><td>[SipServlet:JAVADOC:SipServletMessage58]</td><td>Failure</td><td>the reason got from UAS:Server Internal Error expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason got from UAS:Server Internal Error expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetInitialRemoteAddr001(SipServletMessageTest.java:1247)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.023</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetInitialRemotePort001</td><td>[SipServlet:JAVADOC:SipServletMessage59]</td><td>Failure</td><td>the reason got from UAS:Server Internal Error expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason got from UAS:Server Internal Error expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetInitialRemotePort001(SipServletMessageTest.java:1267)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.025</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testGetInitialTransport001</td><td>[SipServlet:JAVADOC:SipServletMessage60]</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.simpleCheckRespForMessage(SipServletMessageTest.java:1354)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest.testGetInitialTransport001(SipServletMessageTest.java:1284)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.021</td>
+</tr>
+</table>
+<div class="Properties">
+<a href="javascript:displayProperties('com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletMessageTest');">
+                    Properties &raquo;
+                </a>
+</div>
+<div class="Properties">
+<a href="./22_SipServletMessageTest-out.txt">
+                        System.out &raquo;
+                    </a>
+</div>
+</body>
+</html>

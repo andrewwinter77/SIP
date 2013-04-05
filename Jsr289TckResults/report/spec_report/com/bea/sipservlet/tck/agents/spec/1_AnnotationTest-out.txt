@@ -1,0 +1,11 @@
+[2013-01-13 19:03:04,109] AnnotationTest:1008 INFO  - === testAnnotation() ===
+[2013-01-13 19:03:04,234] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 083403037fcf42e7c07130e385ae885f@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=180736109
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===

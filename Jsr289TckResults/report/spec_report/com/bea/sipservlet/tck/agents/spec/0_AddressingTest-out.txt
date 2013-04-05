@@ -1,0 +1,13 @@
+[2013-01-13 19:02:57,837] AddressingTest:1008 INFO  - === testAddressing() ===
+[2013-01-13 19:02:57,839] AddressingTest:43 DEBUG - ---   Step 1   ---
+[2013-01-13 19:02:57,929] TestBase:351 DEBUG - === created message:MESSAGE sip:proxy-gen2xx@localhost:5060 SIP/2.0
+Call-ID: 05be30db5e680020794102b24e8dd3a2@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1665597844
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-01-13 19:02:57,969] AddressingTest:43 DEBUG - ---   Step 2   ---

@@ -1,0 +1,51 @@
+[2013-01-13 19:14:52,386] UasTest:1008 INFO  - === testUasPassive() ===
+SIPUNIT TRACE:  1358104492532  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104492533  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 6b4d5b8fe6099d524711e96dc175f9d4@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=430730763
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6e4c90328f52ba655a3ec1ed7182f89a
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Servlet-Name: UasPassive
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.uas
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104492533  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+[2013-01-13 19:15:05,548] UasTest:1008 INFO  - === testUasActive() ===
+SIPUNIT TRACE:  1358104505555  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104505556  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 04acbb2e05d64c2720ea9a6002284f40@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=2062708525
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK528e3590cf1cb7a7aaf25cbcbd21cfa3
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Servlet-Name: UasActive
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.uas
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104505556  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+[2013-01-13 19:15:18,562] UasTest:1008 INFO  - === testUasCancel() ===
+SIPUNIT TRACE:  1358104518568  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104518569  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 2ecdd9f158110ddab1cec9fea3a9be85@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=168648657
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK7f0ca19c5c81ee42c26ba01481d7040d
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Servlet-Name: UasCancel
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.uas
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104518569  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;

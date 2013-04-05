@@ -1,0 +1,42 @@
+[2013-01-13 19:07:01,829] B2buaTest:1008 INFO  - === testB2bua1() ===
+SIPUNIT TRACE:  1358104022017  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104022017  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 5481948fac42f7e3f46ddd082a6a2e90@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1993441501
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb5631b1ec5958c15edcb8a86ac76e2be
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Servlet-Name: B2bua
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.b2bua
+private-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104022017  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1358104022017  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104032013  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104032013  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:07:15,033] B2buaTest:1008 INFO  - === testB2bua2() ===
+SIPUNIT TRACE:  1358104035040  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104035040  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 91aae5182e31cb8ff8a714ddb10749e9@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=57775377
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf465233125e1e475c32d8e9ef277c6cf
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;
+Servlet-Name: B2bua
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.b2bua
+private-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104035040  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1358104035040  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104045037  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104045037  SS.waitRequest() - either we got the request, or timed out

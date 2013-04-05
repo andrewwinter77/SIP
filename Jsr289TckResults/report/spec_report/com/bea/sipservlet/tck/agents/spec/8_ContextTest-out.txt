@@ -1,0 +1,11 @@
+[2013-01-13 19:08:11,020] ContextTest:1008 INFO  - === testContext1() ===
+[2013-01-13 19:08:11,143] TestBase:351 DEBUG - === created message:OPTIONS sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 7d4026999b3ae6e3644f0419f2b6696f@192.168.1.65
+CSeq: 1 OPTIONS
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1376159868
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===

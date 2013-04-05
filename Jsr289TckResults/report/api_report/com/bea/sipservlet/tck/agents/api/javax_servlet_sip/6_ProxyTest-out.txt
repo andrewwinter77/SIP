@@ -1,0 +1,2376 @@
+[2013-04-04 20:54:28,610] ProxyTest:1008 INFO  - === testGetRecordRouteURI101() ===
+SIPUNIT TRACE:  1365105268786  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105268787  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: fd342d59955abb056030aecf07052bd3@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=641474297
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe86e39a853d9c717e28bcebcc8061526
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Servlet-Name: Proxy
+Method-Name: testGetRecordRouteURI101
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105268787  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105268787  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105268787  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105268808  SipStack: request received !
+SIPUNIT TRACE:  1365105268808  SipStack: calling listener
+SIPUNIT TRACE:  1365105268808  SipSession: request received !
+SIPUNIT TRACE:  1365105268808       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105268808       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105268808       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testGetRecordRouteURI101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=641474297
+Call-ID: fd342d59955abb056030aecf07052bd3@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKxt-ejhumtksn0_wh7_bcol78xrcfhk;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe86e39a853d9c717e28bcebcc8061526
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105268808  SipSession: notifying block object
+SIPUNIT TRACE:  1365105268808  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105268808  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105268809  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105268809  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testGetRecordRouteURI101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=641474297
+Call-ID: fd342d59955abb056030aecf07052bd3@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKxt-ejhumtksn0_wh7_bcol78xrcfhk;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe86e39a853d9c717e28bcebcc8061526
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105268809  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105268809  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105268812  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105268812  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=174269504
+From: &lt;sip:alice@192.168.1.65&gt;;tag=641474297
+Call-ID: fd342d59955abb056030aecf07052bd3@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKxt-ejhumtksn0_wh7_bcol78xrcfhk;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe86e39a853d9c717e28bcebcc8061526
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Servlet-Name: Proxy
+Method-Name: testGetRecordRouteURI101
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105268822  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=641474297
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe86e39a853d9c717e28bcebcc8061526
+Call-ID: fd342d59955abb056030aecf07052bd3@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105268830  Outgoing call response received: SIP/2.0 200 OK
+Servlet-Name: Proxy
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=174269504
+Method-Name: testGetRecordRouteURI101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=641474297
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe86e39a853d9c717e28bcebcc8061526
+Call-ID: fd342d59955abb056030aecf07052bd3@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105268935  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105268939  SipStack: request received !
+SIPUNIT TRACE:  1365105268939  SipStack: calling listener
+SIPUNIT TRACE:  1365105268939  SipSession: request received !
+SIPUNIT TRACE:  1365105268939       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105268939       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105268939       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK3ad981eff73195c58845c4f4ab2f9aa3
+CSeq: 1 ACK
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=174269504
+Method-Name: testGetRecordRouteURI101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=641474297
+Call-ID: fd342d59955abb056030aecf07052bd3@192.168.1.65
+Max-Forwards: 70
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105268940  SipSession: notifying block object
+SIPUNIT TRACE:  1365105268940  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105268940  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105268946  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105268949  SipStack: request received !
+SIPUNIT TRACE:  1365105268949  SipStack: calling listener
+SIPUNIT TRACE:  1365105268949  SipSession: request received !
+SIPUNIT TRACE:  1365105268949       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105268949       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105268949       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6d3e3b41ab023b959a5ec25e6d88ef35
+CSeq: 2 BYE
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=174269504
+Method-Name: testGetRecordRouteURI101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=641474297
+Call-ID: fd342d59955abb056030aecf07052bd3@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105268949  SipSession: notifying block object
+SIPUNIT TRACE:  1365105268949  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105268949  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105268950  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105268950  SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6d3e3b41ab023b959a5ec25e6d88ef35
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=174269504
+From: &lt;sip:alice@192.168.1.65&gt;;tag=641474297
+Call-ID: fd342d59955abb056030aecf07052bd3@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105268958  Asynchronous response received: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6d3e3b41ab023b959a5ec25e6d88ef35
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=174269504
+From: &lt;sip:alice@192.168.1.65&gt;;tag=641474297
+Call-ID: fd342d59955abb056030aecf07052bd3@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105268966  SipStack: request received !
+[2013-04-04 20:54:31,973] ProxyTest:1008 INFO  - === testProxyTo101() ===
+SIPUNIT TRACE:  1365105271981  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105271981  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: c6dbf8bd00362c6723a29f9a08d3e339@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1567992246
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKde757cc8feaa348193b4252f9375dfc8
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Servlet-Name: Proxy
+Method-Name: testProxyTo101
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105271981  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105271981  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105271981  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105271996  SipStack: request received !
+SIPUNIT TRACE:  1365105271996  SipStack: calling listener
+SIPUNIT TRACE:  1365105271996  SipSession: request received !
+SIPUNIT TRACE:  1365105271996       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105271996       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105271996       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1567992246
+Call-ID: c6dbf8bd00362c6723a29f9a08d3e339@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKcfj!96!io1ln8h9m-obyq0zv6qeqt2;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKde757cc8feaa348193b4252f9375dfc8
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105271996  SipSession: notifying block object
+SIPUNIT TRACE:  1365105271996  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105271996  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105271996  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105271996  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1567992246
+Call-ID: c6dbf8bd00362c6723a29f9a08d3e339@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKcfj!96!io1ln8h9m-obyq0zv6qeqt2;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKde757cc8feaa348193b4252f9375dfc8
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105271996  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105271996  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105271998  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105271998  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1998787412
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1567992246
+Call-ID: c6dbf8bd00362c6723a29f9a08d3e339@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKcfj!96!io1ln8h9m-obyq0zv6qeqt2;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKde757cc8feaa348193b4252f9375dfc8
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Servlet-Name: Proxy
+Method-Name: testProxyTo101
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105272002  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1567992246
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKde757cc8feaa348193b4252f9375dfc8
+Call-ID: c6dbf8bd00362c6723a29f9a08d3e339@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105272014  Outgoing call response received: SIP/2.0 200 OK
+Servlet-Name: Proxy
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1998787412
+Method-Name: testProxyTo101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1567992246
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKde757cc8feaa348193b4252f9375dfc8
+Call-ID: c6dbf8bd00362c6723a29f9a08d3e339@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105272117  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105272122  SipStack: request received !
+SIPUNIT TRACE:  1365105272122  SipStack: calling listener
+SIPUNIT TRACE:  1365105272122  SipSession: request received !
+SIPUNIT TRACE:  1365105272122       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105272122       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105272123       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6fa8403a7058896428727e6a0b1a36f9
+CSeq: 1 ACK
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1998787412
+Method-Name: testProxyTo101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1567992246
+Call-ID: c6dbf8bd00362c6723a29f9a08d3e339@192.168.1.65
+Max-Forwards: 70
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105272123  SipSession: notifying block object
+SIPUNIT TRACE:  1365105272123  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105272123  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105272128  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105272131  SipStack: request received !
+SIPUNIT TRACE:  1365105272131  SipStack: calling listener
+SIPUNIT TRACE:  1365105272131  SipSession: request received !
+SIPUNIT TRACE:  1365105272131       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105272131       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105272132       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK348a67e24bb3b01bf558924aa431eb7e
+CSeq: 2 BYE
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1998787412
+Method-Name: testProxyTo101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1567992246
+Call-ID: c6dbf8bd00362c6723a29f9a08d3e339@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105272132  SipSession: notifying block object
+SIPUNIT TRACE:  1365105272132  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105272132  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105272132  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105272132  SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK348a67e24bb3b01bf558924aa431eb7e
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1998787412
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1567992246
+Call-ID: c6dbf8bd00362c6723a29f9a08d3e339@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105272140  Asynchronous response received: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK348a67e24bb3b01bf558924aa431eb7e
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1998787412
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1567992246
+Call-ID: c6dbf8bd00362c6723a29f9a08d3e339@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105272152  SipStack: request received !
+[2013-04-04 20:54:35,166] ProxyTest:1008 INFO  - === testProxyTo102() ===
+SIPUNIT TRACE:  1365105275172  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105275172  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 6bac13cc4e65e1a61ec4cdb8ebe61cc9@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=153127001
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK71953e053b47ce3fbc53816da7d1e210
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Servlet-Name: Proxy
+Method-Name: testProxyTo102
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105275172  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105275172  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105275172  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105275190  SipStack: request received !
+SIPUNIT TRACE:  1365105275190  SipStack: calling listener
+SIPUNIT TRACE:  1365105275190  SipSession: request received !
+SIPUNIT TRACE:  1365105275190       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105275190       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105275190       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo102
+From: &lt;sip:alice@192.168.1.65&gt;;tag=153127001
+Call-ID: 6bac13cc4e65e1a61ec4cdb8ebe61cc9@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKjlc7onodjpl!cj-00.edsnbyswhsg6;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK71953e053b47ce3fbc53816da7d1e210
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105275190  SipSession: notifying block object
+SIPUNIT TRACE:  1365105275191  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105275191  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105275191  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105275191  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo102
+From: &lt;sip:alice@192.168.1.65&gt;;tag=153127001
+Call-ID: 6bac13cc4e65e1a61ec4cdb8ebe61cc9@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKjlc7onodjpl!cj-00.edsnbyswhsg6;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK71953e053b47ce3fbc53816da7d1e210
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105275191  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105275191  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105275194  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105275194  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1599882383
+From: &lt;sip:alice@192.168.1.65&gt;;tag=153127001
+Call-ID: 6bac13cc4e65e1a61ec4cdb8ebe61cc9@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKjlc7onodjpl!cj-00.edsnbyswhsg6;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK71953e053b47ce3fbc53816da7d1e210
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105275194  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105275203  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=153127001
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK71953e053b47ce3fbc53816da7d1e210
+Call-ID: 6bac13cc4e65e1a61ec4cdb8ebe61cc9@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105275213  Outgoing call response received: SIP/2.0 200 OK
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1599882383
+From: &lt;sip:alice@192.168.1.65&gt;;tag=153127001
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK71953e053b47ce3fbc53816da7d1e210
+Call-ID: 6bac13cc4e65e1a61ec4cdb8ebe61cc9@192.168.1.65
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105275317  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105275321  SipStack: request received !
+SIPUNIT TRACE:  1365105275321  SipStack: calling listener
+SIPUNIT TRACE:  1365105275322  SipSession: request received !
+SIPUNIT TRACE:  1365105275322       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105275322       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105275322       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb6c567692b8ba55c0297f825a926a6a4
+CSeq: 1 ACK
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1599882383
+From: &lt;sip:alice@192.168.1.65&gt;;tag=153127001
+Call-ID: 6bac13cc4e65e1a61ec4cdb8ebe61cc9@192.168.1.65
+Max-Forwards: 70
+Servlet-Name: Proxy
+private-uri: testProxyTo102
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105275322  SipSession: notifying block object
+SIPUNIT TRACE:  1365105275322  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105275322  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105275330  SipStack: request received !
+SIPUNIT TRACE:  1365105275330  SipStack: calling listener
+SIPUNIT TRACE:  1365105275330  SipSession: request received !
+SIPUNIT TRACE:  1365105275330       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105275330       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105275330       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK09c729a72de6a9621835bf3a9267f959
+CSeq: 2 BYE
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1599882383
+From: &lt;sip:alice@192.168.1.65&gt;;tag=153127001
+Call-ID: 6bac13cc4e65e1a61ec4cdb8ebe61cc9@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105275331  SipSession: not interested in blocking requests
+[2013-04-04 20:54:38,344] ProxyTest:1008 INFO  - === testProxyTo103() ===
+SIPUNIT TRACE:  1365105278348  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105278349  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 9b753de27c2d1821fcbdd27f6596d492@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=2002754535
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK08b385579ba6c27ae938a7c92d40941e
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;
+Servlet-Name: Proxy
+Method-Name: testProxyTo103
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105278349  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105278349  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105278363  SipStack: request received !
+SIPUNIT TRACE:  1365105278363  SipStack: calling listener
+SIPUNIT TRACE:  1365105278363  SipSession: request received !
+SIPUNIT TRACE:  1365105278363       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105278363       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105278363       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo103
+From: &lt;sip:alice@192.168.1.65&gt;;tag=2002754535
+Call-ID: 9b753de27c2d1821fcbdd27f6596d492@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKz7sy9avv3vs6hes1a.t!ui7zf22bjl;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK08b385579ba6c27ae938a7c92d40941e
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105278363  SipSession: notifying block object
+SIPUNIT TRACE:  1365105278363  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105278363  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105278363  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105278364  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo103
+From: &lt;sip:alice@192.168.1.65&gt;;tag=2002754535
+Call-ID: 9b753de27c2d1821fcbdd27f6596d492@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKz7sy9avv3vs6hes1a.t!ui7zf22bjl;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK08b385579ba6c27ae938a7c92d40941e
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105278364  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105278366  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105278366  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1274566897
+From: &lt;sip:alice@192.168.1.65&gt;;tag=2002754535
+Call-ID: 9b753de27c2d1821fcbdd27f6596d492@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKz7sy9avv3vs6hes1a.t!ui7zf22bjl;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK08b385579ba6c27ae938a7c92d40941e
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Servlet-Name: Proxy
+Method-Name: testProxyTo103
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105278369  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=2002754535
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK08b385579ba6c27ae938a7c92d40941e
+Call-ID: 9b753de27c2d1821fcbdd27f6596d492@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105278379  Outgoing call response received: SIP/2.0 200 OK
+Servlet-Name: Proxy
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1274566897
+Method-Name: testProxyTo103
+From: &lt;sip:alice@192.168.1.65&gt;;tag=2002754535
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK08b385579ba6c27ae938a7c92d40941e
+Call-ID: 9b753de27c2d1821fcbdd27f6596d492@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105278485  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105278489  SipStack: request received !
+SIPUNIT TRACE:  1365105278489  SipStack: calling listener
+SIPUNIT TRACE:  1365105278489  SipSession: request received !
+SIPUNIT TRACE:  1365105278489       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105278489       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105278489       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKbba2a8bae545d6fe600658bbc681ac4f
+CSeq: 1 ACK
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1274566897
+Method-Name: testProxyTo103
+From: &lt;sip:alice@192.168.1.65&gt;;tag=2002754535
+Call-ID: 9b753de27c2d1821fcbdd27f6596d492@192.168.1.65
+Max-Forwards: 70
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105278489  SipSession: notifying block object
+SIPUNIT TRACE:  1365105278489  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105278489  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105278493  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105278497  SipStack: request received !
+SIPUNIT TRACE:  1365105278497  SipStack: calling listener
+SIPUNIT TRACE:  1365105278497  SipSession: request received !
+SIPUNIT TRACE:  1365105278497       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105278497       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105278498       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9f2d9d9fe11aa2781a7eb94da5b920e5
+CSeq: 2 BYE
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1274566897
+Method-Name: testProxyTo103
+From: &lt;sip:alice@192.168.1.65&gt;;tag=2002754535
+Call-ID: 9b753de27c2d1821fcbdd27f6596d492@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105278498  SipSession: notifying block object
+SIPUNIT TRACE:  1365105278498  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105278498  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105278498  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105278498  SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9f2d9d9fe11aa2781a7eb94da5b920e5
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1274566897
+From: &lt;sip:alice@192.168.1.65&gt;;tag=2002754535
+Call-ID: 9b753de27c2d1821fcbdd27f6596d492@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105278507  Asynchronous response received: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9f2d9d9fe11aa2781a7eb94da5b920e5
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1274566897
+From: &lt;sip:alice@192.168.1.65&gt;;tag=2002754535
+Call-ID: 9b753de27c2d1821fcbdd27f6596d492@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105278512  SipStack: request received !
+[2013-04-04 20:54:41,516] ProxyTest:1008 INFO  - === testProxyTo104() ===
+SIPUNIT TRACE:  1365105281522  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105281522  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 7b5a290382f50011a90921fbd51da4ef@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1014542870
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK713f12180e0c06466f396ccadf46ba10
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Servlet-Name: Proxy
+Method-Name: testProxyTo104
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105281522  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105281522  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105281522  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105281536  SipStack: request received !
+SIPUNIT TRACE:  1365105281536  SipStack: calling listener
+SIPUNIT TRACE:  1365105281536  SipSession: request received !
+SIPUNIT TRACE:  1365105281536       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105281536       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105281537       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo104
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1014542870
+Call-ID: 7b5a290382f50011a90921fbd51da4ef@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKo.zp984e9y!0mxe016trp4q.zq!jtc;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK713f12180e0c06466f396ccadf46ba10
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105281537  SipSession: notifying block object
+SIPUNIT TRACE:  1365105281537  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105281537  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105281537  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105281537  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo104
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1014542870
+Call-ID: 7b5a290382f50011a90921fbd51da4ef@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKo.zp984e9y!0mxe016trp4q.zq!jtc;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK713f12180e0c06466f396ccadf46ba10
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105281537  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105281537  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105281539  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105281539  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=441832405
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1014542870
+Call-ID: 7b5a290382f50011a90921fbd51da4ef@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKo.zp984e9y!0mxe016trp4q.zq!jtc;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK713f12180e0c06466f396ccadf46ba10
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Servlet-Name: Proxy
+Method-Name: testProxyTo104
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105281542  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1014542870
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK713f12180e0c06466f396ccadf46ba10
+Call-ID: 7b5a290382f50011a90921fbd51da4ef@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105281551  Outgoing call response received: SIP/2.0 200 OK
+Servlet-Name: Proxy
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=441832405
+Method-Name: testProxyTo104
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1014542870
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK713f12180e0c06466f396ccadf46ba10
+Call-ID: 7b5a290382f50011a90921fbd51da4ef@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105281656  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105281659  SipStack: request received !
+SIPUNIT TRACE:  1365105281659  SipStack: calling listener
+SIPUNIT TRACE:  1365105281659  SipSession: request received !
+SIPUNIT TRACE:  1365105281659       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105281659       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105281659       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK80c19be081a164c3db75499b6d661308
+CSeq: 1 ACK
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=441832405
+Method-Name: testProxyTo104
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1014542870
+Call-ID: 7b5a290382f50011a90921fbd51da4ef@192.168.1.65
+Max-Forwards: 70
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105281659  SipSession: notifying block object
+SIPUNIT TRACE:  1365105281659  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105281659  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105281663  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105281666  SipStack: request received !
+SIPUNIT TRACE:  1365105281666  SipStack: calling listener
+SIPUNIT TRACE:  1365105281666  SipSession: request received !
+SIPUNIT TRACE:  1365105281666       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105281666       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105281666       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKcea8d626cc8a7e318768a7cc36c3b7df
+CSeq: 2 BYE
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=441832405
+Method-Name: testProxyTo104
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1014542870
+Call-ID: 7b5a290382f50011a90921fbd51da4ef@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105281666  SipSession: notifying block object
+SIPUNIT TRACE:  1365105281667  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105281667  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105281667  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105281667  SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKcea8d626cc8a7e318768a7cc36c3b7df
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=441832405
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1014542870
+Call-ID: 7b5a290382f50011a90921fbd51da4ef@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105281673  Asynchronous response received: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKcea8d626cc8a7e318768a7cc36c3b7df
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=441832405
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1014542870
+Call-ID: 7b5a290382f50011a90921fbd51da4ef@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105281679  SipStack: request received !
+[2013-04-04 20:54:44,686] ProxyTest:1008 INFO  - === testProxyTo105() ===
+SIPUNIT TRACE:  1365105284692  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105284692  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 6af47db0afa4cf51735708bf54638738@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1196825542
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa829cf001389cd861ecc49e7b8591ecb
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Servlet-Name: Proxy
+Method-Name: testProxyTo105
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105284692  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105284692  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105284692  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105284711  SipStack: request received !
+SIPUNIT TRACE:  1365105284711  SipStack: calling listener
+SIPUNIT TRACE:  1365105284711  SipSession: request received !
+SIPUNIT TRACE:  1365105284711       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105284711       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105284711       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo105
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1196825542
+Call-ID: 6af47db0afa4cf51735708bf54638738@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK4.v.i1n1-hf7dygit!fr.on++etntw;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa829cf001389cd861ecc49e7b8591ecb
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105284711  SipSession: notifying block object
+SIPUNIT TRACE:  1365105284711  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105284711  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105284711  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105284712  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo105
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1196825542
+Call-ID: 6af47db0afa4cf51735708bf54638738@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK4.v.i1n1-hf7dygit!fr.on++etntw;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa829cf001389cd861ecc49e7b8591ecb
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105284712  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105284712  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105284714  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105284714  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=259549733
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1196825542
+Call-ID: 6af47db0afa4cf51735708bf54638738@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK4.v.i1n1-hf7dygit!fr.on++etntw;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa829cf001389cd861ecc49e7b8591ecb
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105284714  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105284717  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1196825542
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa829cf001389cd861ecc49e7b8591ecb
+Call-ID: 6af47db0afa4cf51735708bf54638738@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105284728  Outgoing call response received: SIP/2.0 200 OK
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=259549733
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1196825542
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa829cf001389cd861ecc49e7b8591ecb
+Call-ID: 6af47db0afa4cf51735708bf54638738@192.168.1.65
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105284831  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105284835  SipStack: request received !
+SIPUNIT TRACE:  1365105284835  SipStack: calling listener
+SIPUNIT TRACE:  1365105284835  SipSession: request received !
+SIPUNIT TRACE:  1365105284835       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105284835       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105284835       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK941d76df88aa55ef1c42a4bd39cce6ae
+CSeq: 1 ACK
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=259549733
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1196825542
+Call-ID: 6af47db0afa4cf51735708bf54638738@192.168.1.65
+Max-Forwards: 70
+Servlet-Name: Proxy
+private-uri: testProxyTo105
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105284835  SipSession: notifying block object
+SIPUNIT TRACE:  1365105284835  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105284835  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105284842  SipStack: request received !
+SIPUNIT TRACE:  1365105284842  SipStack: calling listener
+SIPUNIT TRACE:  1365105284842  SipSession: request received !
+SIPUNIT TRACE:  1365105284842       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105284842       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105284842       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK19378a26b9e5cf6405a83e52364022dd
+CSeq: 2 BYE
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=259549733
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1196825542
+Call-ID: 6af47db0afa4cf51735708bf54638738@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105284842  SipSession: not interested in blocking requests
+[2013-04-04 20:54:47,851] ProxyTest:1008 INFO  - === testProxyTo106() ===
+SIPUNIT TRACE:  1365105287856  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105287856  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 46123fcf0d9077632008750617b2f079@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=505227534
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfeda064c545aae0a329a5fc4f1a6554a
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;
+Servlet-Name: Proxy
+Method-Name: testProxyTo106
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105287856  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105287856  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105287870  SipStack: request received !
+SIPUNIT TRACE:  1365105287870  SipStack: calling listener
+SIPUNIT TRACE:  1365105287871  SipSession: request received !
+SIPUNIT TRACE:  1365105287871       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105287871       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105287871       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo106
+From: &lt;sip:alice@192.168.1.65&gt;;tag=505227534
+Call-ID: 46123fcf0d9077632008750617b2f079@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKjeoonar5el11qtgnfpr6swhamzche5;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfeda064c545aae0a329a5fc4f1a6554a
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105287871  SipSession: notifying block object
+SIPUNIT TRACE:  1365105287871  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105287871  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105287871  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105287871  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testProxyTo106
+From: &lt;sip:alice@192.168.1.65&gt;;tag=505227534
+Call-ID: 46123fcf0d9077632008750617b2f079@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKjeoonar5el11qtgnfpr6swhamzche5;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfeda064c545aae0a329a5fc4f1a6554a
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105287871  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105287873  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105287873  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=431069006
+From: &lt;sip:alice@192.168.1.65&gt;;tag=505227534
+Call-ID: 46123fcf0d9077632008750617b2f079@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKjeoonar5el11qtgnfpr6swhamzche5;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfeda064c545aae0a329a5fc4f1a6554a
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Servlet-Name: Proxy
+Method-Name: testProxyTo106
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105287876  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=505227534
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfeda064c545aae0a329a5fc4f1a6554a
+Call-ID: 46123fcf0d9077632008750617b2f079@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105287886  Outgoing call response received: SIP/2.0 200 OK
+Servlet-Name: Proxy
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=431069006
+Method-Name: testProxyTo106
+From: &lt;sip:alice@192.168.1.65&gt;;tag=505227534
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfeda064c545aae0a329a5fc4f1a6554a
+Call-ID: 46123fcf0d9077632008750617b2f079@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105287989  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105287993  SipStack: request received !
+SIPUNIT TRACE:  1365105287993  SipStack: calling listener
+SIPUNIT TRACE:  1365105287993  SipSession: request received !
+SIPUNIT TRACE:  1365105287993       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105287993       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105287993       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb79e9c4ce40c8c73885edf32e494eec3
+CSeq: 1 ACK
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=431069006
+Method-Name: testProxyTo106
+From: &lt;sip:alice@192.168.1.65&gt;;tag=505227534
+Call-ID: 46123fcf0d9077632008750617b2f079@192.168.1.65
+Max-Forwards: 70
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105287993  SipSession: notifying block object
+SIPUNIT TRACE:  1365105287993  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105287993  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105287997  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105288001  SipStack: request received !
+SIPUNIT TRACE:  1365105288001  SipStack: calling listener
+SIPUNIT TRACE:  1365105288001  SipSession: request received !
+SIPUNIT TRACE:  1365105288001       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105288001       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105288001       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK57610792192832a02a802bf1cb410136
+CSeq: 2 BYE
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=431069006
+Method-Name: testProxyTo106
+From: &lt;sip:alice@192.168.1.65&gt;;tag=505227534
+Call-ID: 46123fcf0d9077632008750617b2f079@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105288002  SipSession: notifying block object
+SIPUNIT TRACE:  1365105288002  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105288002  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105288002  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105288002  SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK57610792192832a02a802bf1cb410136
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=431069006
+From: &lt;sip:alice@192.168.1.65&gt;;tag=505227534
+Call-ID: 46123fcf0d9077632008750617b2f079@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105288008  Asynchronous response received: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK57610792192832a02a802bf1cb410136
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=431069006
+From: &lt;sip:alice@192.168.1.65&gt;;tag=505227534
+Call-ID: 46123fcf0d9077632008750617b2f079@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105288012  SipStack: request received !
+[2013-04-04 20:54:51,016] ProxyTest:1008 INFO  - === testSetOutboundInterface101() ===
+[2013-04-04 20:54:51,017] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 81775c0cf92d1069fffbefab572a014a@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=2065411754
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-04 20:54:51,021] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 81775c0cf92d1069fffbefab572a014a@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=2065411754
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKbd577132053cc9ceadca9d59c3e39a45
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: Proxy
+Method-Name: testSetOutboundInterface101
+Content-Length: 0
+
+ ---
+[2013-04-04 20:54:54,040] ProxyTest:1008 INFO  - === testSetOutboundInterface102() ===
+[2013-04-04 20:54:54,040] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 9dbd8ae961105c564bce21475c32df71@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1014168802
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-04 20:54:54,044] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 9dbd8ae961105c564bce21475c32df71@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1014168802
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9e355a60e2424ee842e1092cdc12e928
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: Proxy
+Method-Name: testSetOutboundInterface102
+Content-Length: 0
+
+ ---
+[2013-04-04 20:54:57,061] ProxyTest:1008 INFO  - === testGetCreateProxyBranches001() ===
+[2013-04-04 20:54:57,062] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 10a1589dd59fed339385b4c1c5a3c182@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1907817345
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105297066  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105307062  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105307062  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:55:10,072] ProxyTest:1008 INFO  - === testStartProxy101() ===
+SIPUNIT TRACE:  1365105310078  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105310078  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: e461f1564a1434d1a4be7f95e6317eca@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=789212142
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK052392af903cbd4971bbda4b8d3341e2
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Servlet-Name: Proxy
+Method-Name: testStartProxy101
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105310078  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105310078  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105310078  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105310095  SipStack: request received !
+SIPUNIT TRACE:  1365105310095  SipStack: calling listener
+SIPUNIT TRACE:  1365105310095  SipSession: request received !
+SIPUNIT TRACE:  1365105310095       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105310095       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105310096       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testStartProxy101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=789212142
+Call-ID: e461f1564a1434d1a4be7f95e6317eca@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK.hgy+ch+2uvipeeojxb82tzr5mky6v;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK052392af903cbd4971bbda4b8d3341e2
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105310096  SipSession: notifying block object
+SIPUNIT TRACE:  1365105310096  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105310096  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105310096  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105310096  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testStartProxy101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=789212142
+Call-ID: e461f1564a1434d1a4be7f95e6317eca@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK.hgy+ch+2uvipeeojxb82tzr5mky6v;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK052392af903cbd4971bbda4b8d3341e2
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105310096  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105310096  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105310098  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105310098  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=2049379880
+From: &lt;sip:alice@192.168.1.65&gt;;tag=789212142
+Call-ID: e461f1564a1434d1a4be7f95e6317eca@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK.hgy+ch+2uvipeeojxb82tzr5mky6v;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK052392af903cbd4971bbda4b8d3341e2
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105310098  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105310101  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=789212142
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK052392af903cbd4971bbda4b8d3341e2
+Call-ID: e461f1564a1434d1a4be7f95e6317eca@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105310119  Outgoing call response received: SIP/2.0 200 OK
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=2049379880
+From: &lt;sip:alice@192.168.1.65&gt;;tag=789212142
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK052392af903cbd4971bbda4b8d3341e2
+Call-ID: e461f1564a1434d1a4be7f95e6317eca@192.168.1.65
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105310224  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105310227  SipStack: request received !
+SIPUNIT TRACE:  1365105310227  SipStack: calling listener
+SIPUNIT TRACE:  1365105310227  SipSession: request received !
+SIPUNIT TRACE:  1365105310227       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105310227       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105310227       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK279ecc251547ec7dd141cb5e9941f6cf
+CSeq: 1 ACK
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=2049379880
+From: &lt;sip:alice@192.168.1.65&gt;;tag=789212142
+Call-ID: e461f1564a1434d1a4be7f95e6317eca@192.168.1.65
+Max-Forwards: 70
+Servlet-Name: Proxy
+private-uri: testStartProxy101
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105310227  SipSession: notifying block object
+SIPUNIT TRACE:  1365105310227  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105310227  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105310234  SipStack: request received !
+SIPUNIT TRACE:  1365105310234  SipStack: calling listener
+SIPUNIT TRACE:  1365105310234  SipSession: request received !
+SIPUNIT TRACE:  1365105310234       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105310234       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105310234       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK8853c4c4a5ed2b9097c5f6fca049429b
+CSeq: 2 BYE
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=2049379880
+From: &lt;sip:alice@192.168.1.65&gt;;tag=789212142
+Call-ID: e461f1564a1434d1a4be7f95e6317eca@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105310234  SipSession: not interested in blocking requests
+[2013-04-04 20:55:13,241] ProxyTest:1008 INFO  - === testCreateProxyBranches101() ===
+SIPUNIT TRACE:  1365105313247  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105313247  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 686add9c3f6d1b43c7288f3bb69d845a@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=124008498
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKae3ddebe3689782724846f7f95cd0ae4
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;
+Servlet-Name: Proxy
+Method-Name: testCreateProxyBranches101
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105313247  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105313247  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105313260  SipStack: request received !
+SIPUNIT TRACE:  1365105313260  SipStack: calling listener
+SIPUNIT TRACE:  1365105313260  SipSession: request received !
+SIPUNIT TRACE:  1365105313260       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105313260       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105313260       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testCreateProxyBranches101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=124008498
+Call-ID: 686add9c3f6d1b43c7288f3bb69d845a@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKe0mi3l_20agt9.f97-7l6o9lfz21s+;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKae3ddebe3689782724846f7f95cd0ae4
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105313260  SipSession: notifying block object
+SIPUNIT TRACE:  1365105313260  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105313260  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105313260  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105313261  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testCreateProxyBranches101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=124008498
+Call-ID: 686add9c3f6d1b43c7288f3bb69d845a@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKe0mi3l_20agt9.f97-7l6o9lfz21s+;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKae3ddebe3689782724846f7f95cd0ae4
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105313261  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105313262  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105313262  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=852196135
+From: &lt;sip:alice@192.168.1.65&gt;;tag=124008498
+Call-ID: 686add9c3f6d1b43c7288f3bb69d845a@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKe0mi3l_20agt9.f97-7l6o9lfz21s+;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKae3ddebe3689782724846f7f95cd0ae4
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Servlet-Name: Proxy
+Method-Name: testCreateProxyBranches101
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105313265  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=124008498
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKae3ddebe3689782724846f7f95cd0ae4
+Call-ID: 686add9c3f6d1b43c7288f3bb69d845a@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105313275  Outgoing call response received: SIP/2.0 200 OK
+Servlet-Name: Proxy
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=852196135
+Method-Name: testCreateProxyBranches101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=124008498
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKae3ddebe3689782724846f7f95cd0ae4
+Call-ID: 686add9c3f6d1b43c7288f3bb69d845a@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105313377  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105313380  SipStack: request received !
+SIPUNIT TRACE:  1365105313380  SipStack: calling listener
+SIPUNIT TRACE:  1365105313380  SipSession: request received !
+SIPUNIT TRACE:  1365105313380       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105313380       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105313380       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6a17b62e816fdcf235e0f0cee20e08dd
+CSeq: 1 ACK
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=852196135
+Method-Name: testCreateProxyBranches101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=124008498
+Call-ID: 686add9c3f6d1b43c7288f3bb69d845a@192.168.1.65
+Max-Forwards: 70
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105313381  SipSession: notifying block object
+SIPUNIT TRACE:  1365105313381  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105313381  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105313384  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105313387  SipStack: request received !
+SIPUNIT TRACE:  1365105313387  SipStack: calling listener
+SIPUNIT TRACE:  1365105313387  SipSession: request received !
+SIPUNIT TRACE:  1365105313387       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105313387       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105313387       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK10d65f37b51da879df5da18cc8e83f0a
+CSeq: 2 BYE
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=852196135
+Method-Name: testCreateProxyBranches101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=124008498
+Call-ID: 686add9c3f6d1b43c7288f3bb69d845a@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105313387  SipSession: notifying block object
+SIPUNIT TRACE:  1365105313387  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105313387  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105313387  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105313387  SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK10d65f37b51da879df5da18cc8e83f0a
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=852196135
+From: &lt;sip:alice@192.168.1.65&gt;;tag=124008498
+Call-ID: 686add9c3f6d1b43c7288f3bb69d845a@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105313393  Asynchronous response received: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK10d65f37b51da879df5da18cc8e83f0a
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=852196135
+From: &lt;sip:alice@192.168.1.65&gt;;tag=124008498
+Call-ID: 686add9c3f6d1b43c7288f3bb69d845a@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105313397  SipStack: request received !
+[2013-04-04 20:55:16,404] ProxyTest:1008 INFO  - === testGetPathURI101() ===
+SIPUNIT TRACE:  1365105316409  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105316409  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: c1bf2cae20aa0aff01a7b3c92a0e26da@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1346333397
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKd3f3756bdbdf7cde348d7b50c1c844c4
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Servlet-Name: Proxy
+Method-Name: testGetPathURI101
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105316410  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105316410  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105316410  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105316425  SipStack: request received !
+SIPUNIT TRACE:  1365105316425  SipStack: calling listener
+SIPUNIT TRACE:  1365105316426  SipSession: request received !
+SIPUNIT TRACE:  1365105316426       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105316426       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105316426       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testGetPathURI101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1346333397
+Call-ID: c1bf2cae20aa0aff01a7b3c92a0e26da@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKmvimv92i.2ijkvpxe5-6o85c-.80mq;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKd3f3756bdbdf7cde348d7b50c1c844c4
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105316426  SipSession: notifying block object
+SIPUNIT TRACE:  1365105316426  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105316426  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105316426  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105316426  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testGetPathURI101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1346333397
+Call-ID: c1bf2cae20aa0aff01a7b3c92a0e26da@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKmvimv92i.2ijkvpxe5-6o85c-.80mq;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKd3f3756bdbdf7cde348d7b50c1c844c4
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105316426  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105316426  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105316428  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105316428  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=988938397
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1346333397
+Call-ID: c1bf2cae20aa0aff01a7b3c92a0e26da@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKmvimv92i.2ijkvpxe5-6o85c-.80mq;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKd3f3756bdbdf7cde348d7b50c1c844c4
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Servlet-Name: Proxy
+Method-Name: testGetPathURI101
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105316431  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1346333397
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKd3f3756bdbdf7cde348d7b50c1c844c4
+Call-ID: c1bf2cae20aa0aff01a7b3c92a0e26da@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105316442  Outgoing call response received: SIP/2.0 200 OK
+Servlet-Name: Proxy
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=988938397
+Method-Name: testGetPathURI101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1346333397
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKd3f3756bdbdf7cde348d7b50c1c844c4
+Call-ID: c1bf2cae20aa0aff01a7b3c92a0e26da@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105316546  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105316549  SipStack: request received !
+SIPUNIT TRACE:  1365105316549  SipStack: calling listener
+SIPUNIT TRACE:  1365105316550  SipSession: request received !
+SIPUNIT TRACE:  1365105316550       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105316550       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105316550       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKae2bcf2f0845b32d733419bf2dc20ded
+CSeq: 1 ACK
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=988938397
+Method-Name: testGetPathURI101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1346333397
+Call-ID: c1bf2cae20aa0aff01a7b3c92a0e26da@192.168.1.65
+Max-Forwards: 70
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105316550  SipSession: notifying block object
+SIPUNIT TRACE:  1365105316550  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105316550  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105316553  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105316556  SipStack: request received !
+SIPUNIT TRACE:  1365105316556  SipStack: calling listener
+SIPUNIT TRACE:  1365105316556  SipSession: request received !
+SIPUNIT TRACE:  1365105316556       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105316556       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105316556       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK03077c0f3b41f1becba988d91eaa8510
+CSeq: 2 BYE
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=988938397
+Method-Name: testGetPathURI101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1346333397
+Call-ID: c1bf2cae20aa0aff01a7b3c92a0e26da@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105316556  SipSession: notifying block object
+SIPUNIT TRACE:  1365105316556  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105316556  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105316556  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105316556  SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK03077c0f3b41f1becba988d91eaa8510
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=988938397
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1346333397
+Call-ID: c1bf2cae20aa0aff01a7b3c92a0e26da@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105316562  Asynchronous response received: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK03077c0f3b41f1becba988d91eaa8510
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=988938397
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1346333397
+Call-ID: c1bf2cae20aa0aff01a7b3c92a0e26da@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105316566  SipStack: request received !
+[2013-04-04 20:55:19,572] ProxyTest:1008 INFO  - === testCancel001() ===
+[2013-04-04 20:55:19,573] TestBase:351 DEBUG - === created message:INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: f9fea922e597e66472e76f55167fa08e@192.168.1.65
+CSeq: 1 INVITE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1985078767
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105319577  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105319590  SipStack: request received !
+SIPUNIT TRACE:  1365105319590  SipStack: calling listener
+SIPUNIT TRACE:  1365105319590  SipSession: request received !
+SIPUNIT TRACE:  1365105319590       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105319590       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105319590       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Method-Name: testCancel001
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1985078767
+Call-ID: f9fea922e597e66472e76f55167fa08e@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKjreaivr35b5!v56na+t.y8pq06tez-;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb9be3ebf37ec3bae5af093504992e125
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 4
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105319590  SipSession: notifying block object
+SIPUNIT TRACE:  1365105319590  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105319591  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105319594  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105329591  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105329591  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:55:32,602] ProxyTest:1008 INFO  - === testCancel002() ===
+[2013-04-04 20:55:32,602] TestBase:351 DEBUG - === created message:INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: e9ab6fe8fc4ad209b30affc620692a82@192.168.1.65
+CSeq: 1 INVITE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1772486792
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105332607  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105332622  SipStack: request received !
+SIPUNIT TRACE:  1365105332622  SipStack: calling listener
+SIPUNIT TRACE:  1365105332623  SipSession: request received !
+SIPUNIT TRACE:  1365105332623       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105332623       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105332623       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Method-Name: testCancel002
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1772486792
+Call-ID: e9ab6fe8fc4ad209b30affc620692a82@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKhse.o4-qo911x!3isxlo3z4dswm-zm;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK08aa3dda7cf579e940138d0046b64d34
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 4
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105332623  SipSession: notifying block object
+SIPUNIT TRACE:  1365105332623  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105332623  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105332627  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105342623  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105342623  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:55:45,631] ProxyTest:1008 INFO  - === testCancel101() ===
+SIPUNIT TRACE:  1365105345636  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105345637  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: da3965596035715084e27f3b613932f8@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1664641925
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK94a8ef9edbcfcc95a7b76ded37f0d11d
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Servlet-Name: Proxy
+Method-Name: testCancel101
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105345637  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105345637  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105345637  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105345651  SipStack: request received !
+SIPUNIT TRACE:  1365105345651  SipStack: calling listener
+SIPUNIT TRACE:  1365105345651  SipSession: request received !
+SIPUNIT TRACE:  1365105345651       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105345651       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105345651       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testCancel101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1664641925
+Call-ID: da3965596035715084e27f3b613932f8@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK-9ajlmklavbxyk6mat6ixmk!icr0y9;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK94a8ef9edbcfcc95a7b76ded37f0d11d
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105345651  SipSession: notifying block object
+SIPUNIT TRACE:  1365105345651  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105345651  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105345651  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105345652  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testCancel101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1664641925
+Call-ID: da3965596035715084e27f3b613932f8@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK-9ajlmklavbxyk6mat6ixmk!icr0y9;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK94a8ef9edbcfcc95a7b76ded37f0d11d
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105345652  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105345652  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105345653  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105345653  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1590483398
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1664641925
+Call-ID: da3965596035715084e27f3b613932f8@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK-9ajlmklavbxyk6mat6ixmk!icr0y9;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK94a8ef9edbcfcc95a7b76ded37f0d11d
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105345654  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105345656  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1664641925
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK94a8ef9edbcfcc95a7b76ded37f0d11d
+Call-ID: da3965596035715084e27f3b613932f8@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105345665  Outgoing call response received: SIP/2.0 200 OK
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1590483398
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1664641925
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK94a8ef9edbcfcc95a7b76ded37f0d11d
+Call-ID: da3965596035715084e27f3b613932f8@192.168.1.65
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105345770  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105345773  SipStack: request received !
+SIPUNIT TRACE:  1365105345773  SipStack: calling listener
+SIPUNIT TRACE:  1365105345773  SipSession: request received !
+SIPUNIT TRACE:  1365105345773       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105345774       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105345774       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1946369bc0d48b4a97ac3e34fbe2fd0f
+CSeq: 1 ACK
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1590483398
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1664641925
+Call-ID: da3965596035715084e27f3b613932f8@192.168.1.65
+Max-Forwards: 70
+Servlet-Name: Proxy
+private-uri: testCancel101
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105345774  SipSession: notifying block object
+SIPUNIT TRACE:  1365105345774  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105345774  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105345779  SipStack: request received !
+SIPUNIT TRACE:  1365105345780  SipStack: calling listener
+SIPUNIT TRACE:  1365105345780  SipSession: request received !
+SIPUNIT TRACE:  1365105345780       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105345780       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105345780       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK870caab7c055504c6b3cb26063ad4e9a
+CSeq: 2 BYE
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1590483398
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1664641925
+Call-ID: da3965596035715084e27f3b613932f8@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105345780  SipSession: not interested in blocking requests
+[2013-04-04 20:55:48,788] ProxyTest:1008 INFO  - === testSetProxyTimeout101() ===
+SIPUNIT TRACE:  1365105348793  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105348793  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: bb6ba009a4eee83ac5c161d134e36b8f@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1721172180
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfef4ce0b2061e68edb0ef51e5f420999
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Servlet-Name: Proxy
+Method-Name: testSetProxyTimeout101
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105348793  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105348793  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105348793  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105348806  SipStack: request received !
+SIPUNIT TRACE:  1365105348806  SipStack: calling listener
+SIPUNIT TRACE:  1365105348806  SipSession: request received !
+SIPUNIT TRACE:  1365105348806       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105348806       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105348806       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testSetProxyTimeout101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1721172180
+Call-ID: bb6ba009a4eee83ac5c161d134e36b8f@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKt9_o1xb-qa42fwhf72xj8ae+wg0d5p;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfef4ce0b2061e68edb0ef51e5f420999
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105348807  SipSession: notifying block object
+SIPUNIT TRACE:  1365105348807  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105348807  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105348807  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105348807  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testSetProxyTimeout101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1721172180
+Call-ID: bb6ba009a4eee83ac5c161d134e36b8f@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKt9_o1xb-qa42fwhf72xj8ae+wg0d5p;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfef4ce0b2061e68edb0ef51e5f420999
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+Test-Result: OK
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105348807  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105348807  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105348809  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105348809  SIP/2.0 200 OK
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=463390731
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1721172180
+Call-ID: bb6ba009a4eee83ac5c161d134e36b8f@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKt9_o1xb-qa42fwhf72xj8ae+wg0d5p;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfef4ce0b2061e68edb0ef51e5f420999
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Servlet-Name: Proxy
+Method-Name: testSetProxyTimeout101
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105348811  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1721172180
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfef4ce0b2061e68edb0ef51e5f420999
+Call-ID: bb6ba009a4eee83ac5c161d134e36b8f@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105348820  Outgoing call response received: SIP/2.0 200 OK
+Servlet-Name: Proxy
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=463390731
+Method-Name: testSetProxyTimeout101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1721172180
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfef4ce0b2061e68edb0ef51e5f420999
+Call-ID: bb6ba009a4eee83ac5c161d134e36b8f@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105348924  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105348927  SipStack: request received !
+SIPUNIT TRACE:  1365105348927  SipStack: calling listener
+SIPUNIT TRACE:  1365105348927  SipSession: request received !
+SIPUNIT TRACE:  1365105348927       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105348927       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105348927       ACK sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK5ed29505ee12c99bf2195917df87661c
+CSeq: 1 ACK
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=463390731
+Method-Name: testSetProxyTimeout101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1721172180
+Call-ID: bb6ba009a4eee83ac5c161d134e36b8f@192.168.1.65
+Max-Forwards: 70
+Route: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105348927  SipSession: notifying block object
+SIPUNIT TRACE:  1365105348927  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105348927  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105348931  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105348933  SipStack: request received !
+SIPUNIT TRACE:  1365105348933  SipStack: calling listener
+SIPUNIT TRACE:  1365105348933  SipSession: request received !
+SIPUNIT TRACE:  1365105348934       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105348934       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105348934       BYE sip:bob@192.168.1.65:5072;lr;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKffac690e2b639caf98bc0f1872f3ade0
+CSeq: 2 BYE
+Servlet-Name: Proxy
+Expires: 0
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=463390731
+Method-Name: testSetProxyTimeout101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1721172180
+Call-ID: bb6ba009a4eee83ac5c161d134e36b8f@192.168.1.65
+Max-Forwards: 70
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105348934  SipSession: notifying block object
+SIPUNIT TRACE:  1365105348934  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105348934  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105348934  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105348934  SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKffac690e2b639caf98bc0f1872f3ade0
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=463390731
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1721172180
+Call-ID: bb6ba009a4eee83ac5c161d134e36b8f@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105348939  Asynchronous response received: SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKffac690e2b639caf98bc0f1872f3ade0
+CSeq: 2 BYE
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=463390731
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1721172180
+Call-ID: bb6ba009a4eee83ac5c161d134e36b8f@192.168.1.65
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+Expires: 0
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105348943  SipStack: request received !
+[2013-04-04 20:55:51,948] ProxyTest:1008 INFO  - === testSetRecordRoute101() ===
+SIPUNIT TRACE:  1365105351954  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1365105351954  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: ac945bc9b1799a0adcb0be0fddf4e3fd@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1162896992
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc058ff2ed19a29f3ed7288a9e8f1bee2
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;lr;transport=udp&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Servlet-Name: Proxy
+Method-Name: testSetRecordRoute101
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105351954  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1365105351954  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105351954  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105351968  SipStack: request received !
+SIPUNIT TRACE:  1365105351968  SipStack: calling listener
+SIPUNIT TRACE:  1365105351968  SipSession: request received !
+SIPUNIT TRACE:  1365105351968       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105351968       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105351968       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testSetRecordRoute101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1162896992
+Call-ID: ac945bc9b1799a0adcb0be0fddf4e3fd@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKaxige49x544r-j1e2i23lbvme-1_7g;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc058ff2ed19a29f3ed7288a9e8f1bee2
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105351968  SipSession: notifying block object
+SIPUNIT TRACE:  1365105351968  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105351968  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365105351968  INVITE after received by stack..........
+SIPUNIT TRACE:  1365105351968  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+Contact: &lt;sip:alice@192.168.1.65:5071;lr;transport=udp&gt;
+Method-Name: testSetRecordRoute101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1162896992
+Call-ID: ac945bc9b1799a0adcb0be0fddf4e3fd@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKaxige49x544r-j1e2i23lbvme-1_7g;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc058ff2ed19a29f3ed7288a9e8f1bee2
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 69
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105351968  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1365105351968  RouteHeader address: "Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+SIPUNIT TRACE:  1365105351971  Response before sending out through stack..........
+SIPUNIT TRACE:  1365105351971  SIP/2.0 180 Ringing
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1675695029
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1162896992
+Call-ID: ac945bc9b1799a0adcb0be0fddf4e3fd@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKaxige49x544r-j1e2i23lbvme-1_7g;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc058ff2ed19a29f3ed7288a9e8f1bee2
+CSeq: 1 INVITE
+Contact: &lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;
+Expires: 0
+Servlet-Name: Proxy
+Method-Name: testSetRecordRoute101
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105351974  Outgoing call response received: SIP/2.0 100 Trying
+To: &lt;sip:bob@192.168.1.65:5072&gt;
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1162896992
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc058ff2ed19a29f3ed7288a9e8f1bee2
+Call-ID: ac945bc9b1799a0adcb0be0fddf4e3fd@192.168.1.65
+Server: Elaina
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105351983  Outgoing call response received: SIP/2.0 180 Ringing
+Servlet-Name: Proxy
+Expires: 0
+Contact: &lt;sip:bob@192.168.1.65:5072;lr;transport=udp&gt;
+To: &lt;sip:bob@192.168.1.65:5072&gt;;tag=1675695029
+Method-Name: testSetRecordRoute101
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1162896992
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc058ff2ed19a29f3ed7288a9e8f1bee2
+Call-ID: ac945bc9b1799a0adcb0be0fddf4e3fd@192.168.1.65
+CSeq: 1 INVITE
+Content-Length: 0
+
+
+[2013-04-04 20:55:54,992] ProxyTest:1008 INFO  - === testGetOriginalRequest001() ===
+[2013-04-04 20:55:54,993] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 78844e06ff36239664cefcbcf6f8078d@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=498978938
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105354997  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105355033  SipStack: request received !
+SIPUNIT TRACE:  1365105355033  SipStack: calling listener
+SIPUNIT TRACE:  1365105355033  SipSession: request received !
+SIPUNIT TRACE:  1365105355033       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105355033       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105355033       MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Method-Name: testGetOriginalRequest001
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=498978938
+Call-ID: 78844e06ff36239664cefcbcf6f8078d@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKc_uz991zd9nnss2hllx16vl_4qzvej;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb05dbebeb22db84ad7b0306cc01d3eb8
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 4
+CSeq: 1 MESSAGE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105355033  SipSession: notifying block object
+SIPUNIT TRACE:  1365105355034  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105355034  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:55:58,067] ProxyTest:1008 INFO  - === testGetSetParallel001() ===
+[2013-04-04 20:55:58,067] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: bee4dfbacd6a1583710c9af3910770b1@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=776931170
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105358071  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105358082  SipStack: request received !
+SIPUNIT TRACE:  1365105358082  SipStack: calling listener
+SIPUNIT TRACE:  1365105358082  SipSession: request received !
+SIPUNIT TRACE:  1365105358082       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105358082       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105358082       MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Method-Name: testGetSetParallel001
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=776931170
+Call-ID: bee4dfbacd6a1583710c9af3910770b1@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKfyz0v_q7+80h8f8!s!7o8w9hh8i7sv;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK5c4cab870ec0ac608e636cb2181a95d9
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 4
+CSeq: 1 MESSAGE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105358082  SipSession: notifying block object
+SIPUNIT TRACE:  1365105358082  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105358082  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:56:01,099] ProxyTest:1008 INFO  - === testGetSetProxyTimeout001() ===
+[2013-04-04 20:56:01,100] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 2984f13e33eba429aadd43ccc1e29a99@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=21821941
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105361104  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105361113  SipStack: request received !
+SIPUNIT TRACE:  1365105361113  SipStack: calling listener
+SIPUNIT TRACE:  1365105361114  SipSession: request received !
+SIPUNIT TRACE:  1365105361114       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105361114       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105361114       MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Method-Name: testGetSetProxyTimeout001
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=21821941
+Call-ID: 2984f13e33eba429aadd43ccc1e29a99@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK.6w9ununot2lx6+ge+12e6bgs8k2wz;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK087d6a02ba1ef68ea5646de0f968fd71
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 4
+Fail-Reason: Fail to set and get "ProxyTimeout" parameter of Proxy.
+CSeq: 1 MESSAGE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105361114  SipSession: notifying block object
+SIPUNIT TRACE:  1365105361114  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105361114  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:56:04,122] ProxyTest:1008 INFO  - === testGetSetRecordRoute001() ===
+[2013-04-04 20:56:04,123] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 2c50d80470b112055e32f6162aee5520@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=856247620
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105364127  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105374123  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105374123  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:56:17,133] ProxyTest:1008 INFO  - === testGetSetRecurse001() ===
+[2013-04-04 20:56:17,134] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 453ed9651fa7b3e8f641b6585410e477@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1995794871
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105377138  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105377148  SipStack: request received !
+SIPUNIT TRACE:  1365105377148  SipStack: calling listener
+SIPUNIT TRACE:  1365105377148  SipSession: request received !
+SIPUNIT TRACE:  1365105377148       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105377148       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105377148       MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Method-Name: testGetSetRecurse001
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1995794871
+Call-ID: 453ed9651fa7b3e8f641b6585410e477@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK+6qrecev5rmz18.es93qgzx4kwdlwc;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKd9052b78958466304b50ca03218797c3
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 4
+CSeq: 1 MESSAGE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105377148  SipSession: notifying block object
+SIPUNIT TRACE:  1365105377148  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105377148  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:56:20,165] ProxyTest:1008 INFO  - === testGetSetSequentialSearchTimeout001() ===
+[2013-04-04 20:56:23,174] ProxyTest:1008 INFO  - === testGetSetStateful001() ===
+[2013-04-04 20:56:26,185] ProxyTest:1008 INFO  - === testGetSetSupervised001() ===
+[2013-04-04 20:56:26,185] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: aab653cba450363972e66c424ed3b16e@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=2043221385
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105386190  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105386200  SipStack: request received !
+SIPUNIT TRACE:  1365105386200  SipStack: calling listener
+SIPUNIT TRACE:  1365105386200  SipSession: request received !
+SIPUNIT TRACE:  1365105386200       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105386200       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105386201       MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Method-Name: testGetSetSupervised001
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=2043221385
+Call-ID: aab653cba450363972e66c424ed3b16e@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKl304s5b7pc3o0-ure-fv1893h96fi4;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK88342f535c1c569c81483b29d0d90256
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 4
+CSeq: 1 MESSAGE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105386201  SipSession: notifying block object
+SIPUNIT TRACE:  1365105386201  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105386201  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:56:29,219] ProxyTest:1008 INFO  - === testProxyTo001() ===
+[2013-04-04 20:56:29,220] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 07ae436bcdf16e44f9f64bd9efbc04f6@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1690557206
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105389224  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105389235  SipStack: request received !
+SIPUNIT TRACE:  1365105389235  SipStack: calling listener
+SIPUNIT TRACE:  1365105389235  SipSession: request received !
+SIPUNIT TRACE:  1365105389235       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105389235       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105389235       MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Method-Name: testProxyTo001
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1690557206
+Call-ID: 07ae436bcdf16e44f9f64bd9efbc04f6@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKv_1q9v9ugmd1nr19gn+be3vic+b!ym;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKde5ad562c2e656a475355e2ad164042b
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 4
+CSeq: 1 MESSAGE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105389235  SipSession: notifying block object
+SIPUNIT TRACE:  1365105389235  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105389235  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:56:32,251] ProxyTest:1008 INFO  - === testProxyTo002() ===
+[2013-04-04 20:56:32,251] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: ef3932a6f199a805fd28dbc03b464ae3@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=483078720
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105392255  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105392267  SipStack: request received !
+SIPUNIT TRACE:  1365105392267  SipStack: calling listener
+SIPUNIT TRACE:  1365105392267  SipSession: request received !
+SIPUNIT TRACE:  1365105392267       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1365105392267       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1365105392267       MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Servlet-Name: Proxy
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Method-Name: testProxyTo002
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=483078720
+Call-ID: ef3932a6f199a805fd28dbc03b464ae3@192.168.1.65
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK2!d!7d5pv4td3su2zzcjgsmdgsmufi;maddr=192.168.1.65,SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4156659e4692a7acd66343a835528950
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,"Bob" &lt;sip:bob@192.168.1.65:5072;lr&gt;
+Max-Forwards: 4
+CSeq: 1 MESSAGE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365105392268  SipSession: notifying block object
+SIPUNIT TRACE:  1365105392268  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105392268  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:56:35,286] ProxyTest:1008 INFO  - === testSetOutboundInterface001() ===
+[2013-04-04 20:56:35,287] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: ea6afc728f864ca28fdf6060b1d1b25a@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=788948428
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105395291  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105405287  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105405287  SS.waitRequest() - either we got the request, or timed out
+[2013-04-04 20:56:48,294] ProxyTest:1008 INFO  - === testSetOutboundInterface002() ===
+[2013-04-04 20:56:48,294] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: e920ac9c6de5eef27a3f6c02f84fb3c5@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1389386991
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1365105408298  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365105418295  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365105418295  SS.waitRequest() - either we got the request, or timed out

@@ -1,0 +1,73 @@
+[2013-04-04 20:49:40,980] AuthInfoTest:1008 INFO  - === testAddAuthInfo001() ===
+[2013-04-04 20:49:41,089] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: b4619f74e4ddb0aa23b250a9e7c79624@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1932252321
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-04 20:49:41,126] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: b4619f74e4ddb0aa23b250a9e7c79624@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1932252321
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK3539e3350483dccd43ad3cdeb1d3c04c
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: AuthInfo
+Method-Name: testAddAuthInfo001
+Content-Length: 0
+
+ ---
+SIPUNIT TRACE:  1365104981149  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365104981166  SipStack: request received !
+SIPUNIT TRACE:  1365104981166  SipStack: calling listener
+SIPUNIT TRACE:  1365104981167  SipSession: request received !
+SIPUNIT TRACE:  1365104981167       me ('To' check) = sip:alice@192.168.1.65
+SIPUNIT TRACE:  1365104981167       my local contact info ('Request URI' check) = sip:alice@192.168.1.65:5071;transport=udp;lr
+SIPUNIT TRACE:  1365104981167       INVITE sip:alice@192.168.1.65:5071 SIP/2.0
+To: &lt;sip:alice@192.168.1.65:5071&gt;
+Contact: &lt;sip:192.168.1.65&gt;
+From: &lt;sip:JSR289_TCK@localhost:5060&gt;;tag=_auwcfmnvg
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKbpegags0tfm60+.nu81czi2c40myp4;maddr=192.168.1.65
+Call-ID: 6wvwwextn1gcg4so.z-p
+Max-Forwards: 70
+CSeq: 62618 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365104981167  SipSession: notifying block object
+SIPUNIT TRACE:  1365104981167  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365104981167  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1365104981167  INVITE after received by stack..........
+SIPUNIT TRACE:  1365104981168  INVITE sip:alice@192.168.1.65:5071 SIP/2.0
+To: &lt;sip:alice@192.168.1.65:5071&gt;
+Contact: &lt;sip:192.168.1.65&gt;
+From: &lt;sip:JSR289_TCK@localhost:5060&gt;;tag=_auwcfmnvg
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKbpegags0tfm60+.nu81czi2c40myp4;maddr=192.168.1.65
+Call-ID: 6wvwwextn1gcg4so.z-p
+Max-Forwards: 70
+CSeq: 62618 INVITE
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365104981176  Response before sending out through stack..........
+SIPUNIT TRACE:  1365104981177  SIP/2.0 401 Unauthorized
+To: &lt;sip:alice@192.168.1.65:5071&gt;;tag=887944598
+From: &lt;sip:JSR289_TCK@localhost:5060&gt;;tag=_auwcfmnvg
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKbpegags0tfm60+.nu81czi2c40myp4;maddr=192.168.1.65
+Call-ID: 6wvwwextn1gcg4so.z-p
+CSeq: 62618 INVITE
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Expires: 1
+WWW-Authenticate: Digest realm ="beasys.com", nonce="dbffb13c8a4d30117c25c753d1fa7710", opaque="", stale=FALSE, algorithm=MD5, qop="auth" 
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1365104981181  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1365104991178  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1365104991178  SS.waitRequest() - either we got the request, or timed out

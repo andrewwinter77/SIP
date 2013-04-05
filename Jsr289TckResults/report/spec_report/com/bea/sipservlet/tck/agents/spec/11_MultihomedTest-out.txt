@@ -1,0 +1,75 @@
+[2013-01-13 19:09:11,017] MultihomedTest:1008 INFO  - === testMultihomedProxy() ===
+SIPUNIT TRACE:  1358104151171  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104151171  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 35de6b00805e72e8b94a0a47b944c917@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=139087288
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK5dc0829d8fe6a8e2b139864dc3f06421
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,&lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;,&lt;sip:localhost:5060;lr&gt;
+Servlet-Name: MultihomedProxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104151171  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1358104151171  RouteHeader address: sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1358104151171  RouteHeader address: &lt;sip:localhost:5060;lr&gt;
+SIPUNIT TRACE:  1358104151171  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104161168  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104161168  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:09:24,187] MultihomedTest:1008 INFO  - === testMultihomedProxyBranch() ===
+SIPUNIT TRACE:  1358104164192  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104164193  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 226b50eca5234cc32d78ae0edf15afdc@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1714501829
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4fca78c704cffb80897d13dda4613406
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,&lt;sip:bob@192.168.1.65:5072;transport=udp;lr&gt;,&lt;sip:localhost:5060;lr&gt;
+Servlet-Name: MultihomedProxyBranch
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104164193  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1358104164193  RouteHeader address: sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1358104164193  RouteHeader address: &lt;sip:localhost:5060;lr&gt;
+SIPUNIT TRACE:  1358104164193  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104174189  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104174189  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:09:37,200] MultihomedTest:1008 INFO  - === testMultihomedProxyForRegister() ===
+[2013-01-13 19:09:37,201] TestBase:351 DEBUG - === created message:REGISTER sip:localhost SIP/2.0
+Call-ID: 181db2fe2fd4c755f2a82717d33551bd@192.168.1.65
+CSeq: 1 REGISTER
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1401178196
+To: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+SIPUNIT TRACE:  1358104177207  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104187204  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104187204  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:09:50,217] MultihomedTest:1008 INFO  - === testMultihomedUas() ===
+SIPUNIT TRACE:  1358104190223  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104190223  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: d7647fe431115ac5a7800c0c761e50e2@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=348992192
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK13a5a620432560029d14a9dc5d4e651a
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Servlet-Name: MultihomedUas
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.uas
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104190223  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;

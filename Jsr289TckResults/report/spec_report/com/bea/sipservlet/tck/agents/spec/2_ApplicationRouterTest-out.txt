@@ -1,0 +1,85 @@
+SIPUNIT TRACE:  1358103788895  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358103788895  INVITE sip:sipservlet.spec.approuter.case05@localhost:5060 SIP/2.0
+Call-ID: 0608760d1119769d4985e776aed1c1fc@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1324514455
+To: &lt;sip:sipservlet.spec.approuter.case05@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc75f5bba7e14b251b8db666012459645
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"JSR289-TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358103788895  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1358103788895  RouteHeader address: "JSR289-TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;
+SIPUNIT TRACE:  1358103788922  Outgoing call response received: SIP/2.0 100 Trying
+CSeq: 1 INVITE
+To: &lt;sip:sipservlet.spec.approuter.case05@localhost:5060&gt;
+Call-ID: 0608760d1119769d4985e776aed1c1fc@192.168.1.65
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1324514455
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc75f5bba7e14b251b8db666012459645
+Server: Elaina
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358103841941  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358103841941  INVITE sip:sipservlet.spec.approuter.case01@localhost:5060 SIP/2.0
+Call-ID: b7f0088b8b5100ce0b218c6361939677@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=132176115
+To: &lt;sip:sipservlet.spec.approuter.case01@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4103997c7b02c4a2f8237afe3d9011a7
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"JSR289-TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358103841941  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1358103841941  RouteHeader address: "JSR289-TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;
+SIPUNIT TRACE:  1358103876996  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358103876996  INVITE sip:sipservlet.spec.approuter.case04@localhost:5060 SIP/2.0
+Call-ID: b990e4f952942741497339ce1429a04b@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=836958301
+To: &lt;sip:sipservlet.spec.approuter.case04@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1f1f5e23ac82204c2a91b43ee78bb465
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"JSR289-TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358103876996  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1358103876996  RouteHeader address: "JSR289-TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;
+SIPUNIT TRACE:  1358103912050  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358103912050  INVITE sip:sipservlet.spec.approuter.case02@localhost:5060 SIP/2.0
+Call-ID: 9103c5845ac608e2e7d3123a7596cadc@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1886081256
+To: &lt;sip:sipservlet.spec.approuter.case02@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK019e3c8e0e1505dad9d4344b6fe662e2
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"JSR289-TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358103912050  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1358103912050  RouteHeader address: "JSR289-TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;
+SIPUNIT TRACE:  1358103947115  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358103947115  INVITE sip:sipservlet.spec.approuter.case03@localhost:5060 SIP/2.0
+Call-ID: 7885e58cf25637ef395fc5257137c32d@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=152019174
+To: &lt;sip:sipservlet.spec.approuter.case03@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfc98df06ed5ad2967ddec4300c2cd259
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,"JSR289-TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358103947115  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1358103947115  RouteHeader address: "JSR289-TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;

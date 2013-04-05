@@ -1,0 +1,46 @@
+SIPUNIT TRACE:  1358104049560  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104049560  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: fc9c860f84bea24f808dd089cda680ad@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1277255557
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKeebecbacd9b97c38428eb20b5313165c
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;,&lt;sip:bob@192.168.1.65:5072&gt;
+Servlet-Name: CommittedStateUnderProxy
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.proxy
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104049560  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1358104049560  RouteHeader address: sip:bob@192.168.1.65:5072
+SIPUNIT TRACE:  1358104049561  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104059557  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104059557  SS.waitRequest() - either we got the request, or timed out
+[2013-01-13 19:07:42,577] CommittedStateTest:1008 INFO  - === testCommittedStateUnderB2bua() ===
+[2013-01-13 19:07:42,580] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 708328103c3113d2cb1bebcc8604d14a@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=677206827
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-01-13 19:07:42,584] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 708328103c3113d2cb1bebcc8604d14a@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=677206827
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc4b7a368cf4c4109ac5b1dd714a0bf91
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.b2bua
+Servlet-Name: CommittedStateUnderB2bua
+Call-Info: &lt;sip:bob@192.168.1.65:5072&gt;
+TCK: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+ ---

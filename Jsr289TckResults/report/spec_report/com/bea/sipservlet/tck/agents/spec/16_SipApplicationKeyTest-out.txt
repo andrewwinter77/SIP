@@ -1,0 +1,22 @@
+[2013-01-13 19:14:29,763] SipApplicationKeyTest:1008 INFO  - === testGetApplicationSessionKey2() ===
+[2013-01-13 19:14:29,898] TestBase:351 DEBUG - === created message:INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: 64522ebb36ebd8c2f7c9e5e28d97f00a@192.168.1.65
+CSeq: 1 INVITE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=255572778
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-01-13 19:14:33,483] SipApplicationKeyTest:1008 INFO  - === testGetApplicationSessionKey1() ===
+[2013-01-13 19:14:33,484] TestBase:351 DEBUG - === created message:MESSAGE sip:bob@192.168.1.65:5072 SIP/2.0
+Call-ID: ee67c6a467d8fe7d4450d830cc3a7069@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=321617910
+To: "Bob" &lt;sip:bob@192.168.1.65:5072&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===

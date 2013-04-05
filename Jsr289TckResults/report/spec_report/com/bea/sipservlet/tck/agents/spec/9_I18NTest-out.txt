@@ -1,0 +1,22 @@
+[2013-01-13 19:08:25,335] I18NTest:1008 INFO  - === testI18N1() ===
+[2013-01-13 19:08:25,480] TestBase:351 DEBUG - === created message:MESSAGE sip:I18N-1@localhost:5060 SIP/2.0
+Call-ID: 6b915fc8ece66d39132e562ed38a0700@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=736247907
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-01-13 19:08:40,553] I18NTest:1008 INFO  - === testI18N2() ===
+[2013-01-13 19:08:40,554] TestBase:351 DEBUG - === created message:MESSAGE sip:I18N-2@localhost:5060 SIP/2.0
+Call-ID: 4acf4a6a9902ecfc5076dfc65fa0f377@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1591901037
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===

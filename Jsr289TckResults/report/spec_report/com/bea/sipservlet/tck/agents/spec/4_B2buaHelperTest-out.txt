@@ -1,0 +1,21 @@
+[2013-01-13 19:06:47,532] B2buaHelperTest:1008 INFO  - === testB2buaHelper() ===
+SIPUNIT TRACE:  1358104007716  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1358104007716  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 3eddb5168bff13f6156dd74df24ef2a1@192.168.1.65
+CSeq: 1 INVITE
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1956975213
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK846de36bcc85a8a0b28831838cc37c42
+Max-Forwards: 70
+Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
+Route: &lt;sip:localhost:5060;transport=udp;lr&gt;
+Servlet-Name: B2buaHelper
+Application-Name: com.bea.sipservlet.tck.apps.spectestapp.b2bua
+private-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1358104007716  RouteHeader address: &lt;sip:localhost:5060;transport=udp;lr&gt;
+SIPUNIT TRACE:  1358104007716  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1358104017712  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1358104017712  SS.waitRequest() - either we got the request, or timed out

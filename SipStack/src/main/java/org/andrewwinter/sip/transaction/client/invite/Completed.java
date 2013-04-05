@@ -1,7 +1,7 @@
 package org.andrewwinter.sip.transaction.client.invite;
 
+import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.parser.SipRequest;
-import org.andrewwinter.sip.parser.SipResponse;
 import org.andrewwinter.sip.transaction.client.ClientTransactionState;
 import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
 
@@ -23,16 +23,16 @@ class Completed extends ClientTransactionState {
     }
 
     @Override
-    public void handleResponseFromTransportLayer(final SipResponse response) {
+    public void handleResponseFromTransportLayer(final InboundSipResponse isr) {
         
-        if (response.getStatusCode() >= 200) {
+        if (isr.getResponse().getStatusCode() >= 200) {
         
             // Any retransmissions of the final response that are received while
             // in the "Completed" state MUST cause the ACK to be re-passed to
             // the transport layer for retransmission, but the newly received
             // response MUST NOT be passed up to the TU.
             
-            txn.ackNon2XX(response, txn.getRequest());
+            txn.ackNon2XX(isr.getResponse(), txn.getRequest());
         }
     }
 }

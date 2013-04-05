@@ -1,7 +1,7 @@
 package org.andrewwinter.sip.transaction.client.noninvite;
 
+import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.parser.SipRequest;
-import org.andrewwinter.sip.parser.SipResponse;
 import org.andrewwinter.sip.transaction.client.ClientTransactionState;
 import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
 
@@ -24,7 +24,7 @@ class Trying extends ClientTransactionState {
     }
 
     @Override
-    public void handleResponseFromTransportLayer(final SipResponse response) {
+    public void handleResponseFromTransportLayer(final InboundSipResponse isr) {
         
         // If a provisional response is received while in the ???Trying??? state,
         // the response MUST be passed to the TU, and then the client
@@ -34,12 +34,12 @@ class Trying extends ClientTransactionState {
         // ???Trying??? state, the response MUST be passed to the TU, and the client
         // transaction MUST transition to the ???Completed??? state.
         
-        if (response.getStatusCode() < 200) {
+        if (isr.getResponse().getStatusCode() < 200) {
             txn.changeState(new Proceeding(txn));
         } else {
             txn.changeState(new Completed(txn));
         }
         
-        txn.sendResponseToTU(response, txn.getDialog());
+        txn.sendResponseToTU(isr, txn.getDialog());
     }
 }

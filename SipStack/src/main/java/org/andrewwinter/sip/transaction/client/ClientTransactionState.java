@@ -1,7 +1,7 @@
 package org.andrewwinter.sip.transaction.client;
 
+import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.parser.SipRequest;
-import org.andrewwinter.sip.parser.SipResponse;
 
 /**
  *
@@ -24,7 +24,7 @@ public abstract class ClientTransactionState {
      *
      * @param response
      */
-    public abstract void handleResponseFromTransportLayer(SipResponse response);
+    public abstract void handleResponseFromTransportLayer(InboundSipResponse response);
     
     /**
      *

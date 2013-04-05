@@ -1,5 +1,6 @@
 package org.andrewwinter.sip.message;
 
+import java.net.InetSocketAddress;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.parser.SipResponse;
@@ -9,13 +10,11 @@ import org.andrewwinter.sip.transaction.client.ClientTransaction;
  *
  * @author andrew
  */
-public class InboundSipResponse {
+public class InboundSipResponse extends InboundSipMessage {
 
-    private final SipResponse response;
-    
     private final ClientTransaction clientTransaction;
 
-    private final Dialog dialog;
+    private Dialog dialog;
     
     /**
      * 
@@ -23,12 +22,19 @@ public class InboundSipResponse {
      * @param txn
      * @param dialog  
      */
-    public InboundSipResponse(final SipResponse response, final ClientTransaction txn, final Dialog dialog) {
-        this.response = response;
+    public InboundSipResponse(final SipResponse response, final InetSocketAddress initialRemoteAddr, final ClientTransaction txn) {
+        super(initialRemoteAddr, response);
         this.clientTransaction = txn;
-        this.dialog = dialog;
+    }
+
+    public SipResponse getResponse() {
+        return (SipResponse) getMessage();
     }
     
+    public void setDialog(final Dialog dialog) {
+        this.dialog = dialog;
+    }
+
     /**
      *
      * @return
@@ -51,13 +57,5 @@ public class InboundSipResponse {
      */
     public ClientTransaction getClientTransaction() {
         return clientTransaction;
-    }
-
-    /**
-     * 
-     * @return 
-     */
-    public SipResponse getResponse() {
-        return response;
     }
 }

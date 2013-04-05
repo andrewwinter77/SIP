@@ -20,6 +20,7 @@ import javax.servlet.sip.SipApplicationSession;
 import javax.servlet.sip.SipServletMessage;
 import javax.servlet.sip.SipSession;
 import org.andrewwinter.sip.dialog.Dialog;
+import org.andrewwinter.sip.message.InboundSipMessage;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.parser.HeaderName;
@@ -43,8 +44,7 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
     protected final Object sendLock = new Object();
     private final boolean isIncoming;
     private boolean sent;
-    private final InboundSipRequest inboundSipRequest;
-    private final InboundSipResponse inboundSipResponse;
+    private final InboundSipMessage inboundSipMessage;
 
     protected SipServletMessageImpl(final InboundSipRequest isr) {
         this.message = isr.getRequest();
@@ -52,8 +52,7 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
         headerForm = HeaderForm.DEFAULT;
         this.isIncoming = true;
         sent = false;
-        this.inboundSipRequest = isr;
-        this.inboundSipResponse = null;
+        inboundSipMessage = isr;
     }
 
     protected SipServletMessageImpl(final InboundSipRequest isr, final SipResponse response) {
@@ -62,8 +61,7 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
         headerForm = HeaderForm.DEFAULT;
         this.isIncoming = false;
         sent = false;
-        this.inboundSipRequest = isr;
-        this.inboundSipResponse = null;
+        inboundSipMessage = isr;
     }
 
     /**
@@ -79,8 +77,7 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
         headerForm = HeaderForm.DEFAULT;
         this.isIncoming = false;
         sent = true;
-        this.inboundSipRequest = null;
-        this.inboundSipResponse = isr;
+        inboundSipMessage = isr;
     }
 
     protected SipServletMessageImpl(final InboundSipResponse isr) {
@@ -89,8 +86,7 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
         headerForm = HeaderForm.DEFAULT;
         this.isIncoming = true;
         sent = false;
-        this.inboundSipRequest = null;
-        this.inboundSipResponse = isr;
+        inboundSipMessage = isr;
     }
 
     protected SipServletMessageImpl(final SipRequest request) {
@@ -99,10 +95,13 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
         headerForm = HeaderForm.DEFAULT;
         this.isIncoming = false;
         sent = false;
-        this.inboundSipRequest = null;
-        this.inboundSipResponse = null;
+        inboundSipMessage = null;
     }
 
+    protected boolean isSent() {
+        return sent;
+    }
+    
     protected void flagMessageAsSent() {
         sent = true;
     }
@@ -416,7 +415,7 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
 
     @Override
     public byte[] getRawContent() throws IOException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return message.getBody().getBytes(); // TODO: This is temporary
     }
 
     @Override
@@ -429,7 +428,9 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
         if (sent) {
             throw new IllegalStateException("Message has already been sent.");
         }
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        message.setBody(new String((byte[]) content));// TODO: Temporary
+        SipMessageHelper.setContentType(contentType, message);
     }
 
     @Override
@@ -488,10 +489,10 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
         if (create && sipSession == null) {
 
             Dialog dialog = null;
-            if (inboundSipRequest != null) {
-                dialog = inboundSipRequest.getServerTransaction().getDialog();
-            } else if (inboundSipResponse != null) {
-                dialog = inboundSipResponse.getDialog();
+            if (inboundSipMessage instanceof InboundSipRequest) {
+                dialog = ((InboundSipRequest) inboundSipMessage).getServerTransaction().getDialog();
+            } else if (inboundSipMessage instanceof InboundSipResponse) {
+                dialog = ((InboundSipResponse) inboundSipMessage).getDialog();
             }
             if (dialog == null) {
                 
@@ -635,13 +636,19 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
     }
 
     @Override
-    public String getRemoteAddr() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public String getInitialRemoteAddr() {
+        if (isIncoming) {
+            return inboundSipMessage.getInitialRemoteAddr();
+        }
+        return null;
     }
 
     @Override
-    public int getRemotePort() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int getInitialRemotePort() {
+        if (isIncoming) {
+            return inboundSipMessage.getInitialRemotePort();
+        }
+        return -1;
     }
 
     @Override
@@ -650,12 +657,12 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
     }
 
     @Override
-    public String getInitialRemoteAddr() {
+    public String getRemoteAddr() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public int getInitialRemotePort() {
+    public int getRemotePort() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

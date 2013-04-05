@@ -165,7 +165,7 @@ public class CoreJavaServerTransport extends ServerTransport implements Runnable
                         
                         handleIncomingMessage(
                                 messageAsString,
-                                remoteAddress,
+                                (InetSocketAddress) remoteAddress,
                                 tcpSocketWrapper);
                         
                         receiveBuffer.clear();

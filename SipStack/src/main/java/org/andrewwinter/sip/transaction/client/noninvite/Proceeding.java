@@ -1,6 +1,6 @@
 package org.andrewwinter.sip.transaction.client.noninvite;
 
-import org.andrewwinter.sip.parser.SipResponse;
+import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.transaction.client.ClientTransactionState;
 import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
 
@@ -18,8 +18,8 @@ class Proceeding extends ClientTransactionState {
     }
 
     @Override
-    public void handleResponseFromTransportLayer(final SipResponse response) {
-        if (response.getStatusCode() >= 200) {
+    public void handleResponseFromTransportLayer(final InboundSipResponse isr) {
+        if (isr.getResponse().getStatusCode() >= 200) {
             
             // If a final response (status codes 200-699) is received while in
             // the ???Proceeding??? state, the response MUST be passed to the TU,
@@ -27,7 +27,7 @@ class Proceeding extends ClientTransactionState {
             // state.
             
             txn.changeState(new Completed(txn));
-            txn.sendResponseToTU(response, txn.getDialog());
+            txn.sendResponseToTU(isr, txn.getDialog());
         }
     }
 }

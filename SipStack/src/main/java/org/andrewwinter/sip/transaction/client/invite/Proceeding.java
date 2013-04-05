@@ -53,16 +53,17 @@ class Proceeding extends ClientTransactionState {
     }
 
     @Override
-    public void handleResponseFromTransportLayer(final SipResponse response) {
+    public void handleResponseFromTransportLayer(final InboundSipResponse isr) {
 
-        final Dialog dialog = txn.getOrCreateDialog(response);
+        final Dialog dialog = txn.getOrCreateDialog(isr.getResponse());
         
-        if (response.getStatusCode() < 200) {
+        final int status = isr.getResponse().getStatusCode();
+        if (status < 200) {
             
             // Any further provisional responses MUST be passed up to the TU
             // while in the "Proceeding" state.
 
-        } else if (response.getStatusCode() >= 300 && response.getStatusCode() < 700) {
+        } else if (status >= 300 && status < 700) {
 
             // When in either the "Calling" or "Proceeding" states, reception of
             // a response with status code from 300-699 MUST cause the client
@@ -80,9 +81,9 @@ class Proceeding extends ClientTransactionState {
             // transaction handles the generation of ACKs for the response (see
             // Section 17).
             
-            txn.ackNon2XX(response, txn.getRequest());
+            txn.ackNon2XX(isr.getResponse(), txn.getRequest());
             
-        } else if (response.getStatusCode() >= 200 && response.getStatusCode() < 300) {
+        } else if (status >= 200 && status < 300) {
             
             // When in either the "Calling" or "Proceeding" states, reception of
             // a 2xx response MUST cause the client transaction to enter the
@@ -91,6 +92,6 @@ class Proceeding extends ClientTransactionState {
             txn.changeState(new Terminated(txn));
         }
         
-        txn.sendResponseToTU(response, dialog);
+        txn.sendResponseToTU(isr, dialog);
     }
 }

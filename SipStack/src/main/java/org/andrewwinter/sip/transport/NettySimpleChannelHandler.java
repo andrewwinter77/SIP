@@ -1,5 +1,6 @@
 package org.andrewwinter.sip.transport;
 
+import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;
@@ -26,7 +27,7 @@ class NettySimpleChannelHandler extends SimpleChannelHandler {
         final String sipMessageAsString = buf.toString(Charset.forName("UTF-8"));
         serverTransport.handleIncomingMessage(
                 sipMessageAsString,
-                e.getRemoteAddress(),
+                (InetSocketAddress) e.getRemoteAddress(),
                 null);
     }
 

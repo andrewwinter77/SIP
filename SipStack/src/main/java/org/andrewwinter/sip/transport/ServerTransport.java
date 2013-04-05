@@ -3,13 +3,13 @@ package org.andrewwinter.sip.transport;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.dialog.DialogId;
 import org.andrewwinter.sip.dialog.DialogStore;
 import org.andrewwinter.sip.message.InboundSipRequest;
+import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.parser.ParseException;
 import org.andrewwinter.sip.parser.SipMessage;
 import org.andrewwinter.sip.parser.SipMessageHelper;
@@ -40,6 +40,7 @@ public abstract class ServerTransport {
      */
     private void handleIncomingRequest(
             final SipRequest request,
+            final InetSocketAddress remoteAddress,
             final TcpSocketWrapper tcpSocket) {
 
         Dialog dialog = null;
@@ -58,7 +59,7 @@ public abstract class ServerTransport {
             
             request.setMatchesExistingServerTransaction(false);
 
-            final InboundSipRequest isr = new InboundSipRequest(request, new ResponseSender(tcpSocket));
+            final InboundSipRequest isr = new InboundSipRequest(request, remoteAddress, new ResponseSender(tcpSocket));
 
             // TODO: Create a new thread for this.
 
@@ -75,7 +76,7 @@ public abstract class ServerTransport {
 
             if (request.isCANCEL()) {
 
-                final InboundSipRequest isr = new InboundSipRequest(request, new ResponseSender(tcpSocket));
+                final InboundSipRequest isr = new InboundSipRequest(request, remoteAddress, new ResponseSender(tcpSocket));
 
                 NonInviteServerTransaction.create(dialog, isr, txn, sipListener);
 
@@ -95,7 +96,7 @@ public abstract class ServerTransport {
      *
      * @param response
      */
-    private static void handleIncomingResponse(final SipResponse response) {
+    private static void handleIncomingResponse(final SipResponse response, final InetSocketAddress remoteAddress) {
         final ClientTransaction txn = ClientTransactionStore.getInstance().get(response);
         if (txn == null) {
             // TODO: Forward response to the core, p104-105
@@ -103,12 +104,13 @@ public abstract class ServerTransport {
 
             // If there is a match, the response MUST be passed to that
             // transaction.
-
-            txn.handleResponseFromTransportLayer(response);
+            
+            final InboundSipResponse isr = new InboundSipResponse(response, remoteAddress, txn);
+            txn.handleResponseFromTransportLayer(isr);
         }
     }
 
-    private static void updateVia(final SipMessage message, final SocketAddress remoteAddress) {
+    private static void updateVia(final SipMessage message, final InetSocketAddress remoteAddress) {
 
         // When the server transport receives a request over any transport, it
         // MUST examine the value of the sent-by parameter in the top Via header
@@ -120,7 +122,7 @@ public abstract class ServerTransport {
 
         try {
             final InetAddress viaAddress = InetAddress.getByName(message.getTopmostVia().getHost());
-            final InetAddress addr = ((InetSocketAddress) remoteAddress).getAddress();
+            final InetAddress addr = remoteAddress.getAddress();
 
             String rport = message.getTopmostVia().getParameter("rport");
             if (!addr.equals(viaAddress) || (rport != null && rport.isEmpty())) {
@@ -142,7 +144,7 @@ public abstract class ServerTransport {
 
     void handleIncomingMessage(
             final String messageAsString,
-            final SocketAddress remoteAddress,
+            final InetSocketAddress remoteAddress,
             final TcpSocketWrapper tcpSocketWrapper) {
 
         SipMessage message;
@@ -171,9 +173,9 @@ public abstract class ServerTransport {
 
             if (message instanceof SipRequest) {
                 updateVia(message, remoteAddress);
-                handleIncomingRequest((SipRequest) message, tcpSocketWrapper);
+                handleIncomingRequest((SipRequest) message, remoteAddress, tcpSocketWrapper);
             } else {
-                handleIncomingResponse((SipResponse) message);
+                handleIncomingResponse((SipResponse) message, remoteAddress);
             }
         }
     }

@@ -384,17 +384,26 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
             final SipApplicationRoutingDirective directive,
             final SipServletRequest origRequest) throws IllegalStateException {
 
-        if (isOutboundRequest()) {
-            
-            if (isInitial()) {
-                throw new UnsupportedOperationException("Not supported yet.");
-            } else {
-                throw new IllegalStateException("Request must be initial to set routing directive.");
-            }
-            
-        } else {
+        if (isSent()) {
+            throw new IllegalStateException("Request has already been sent.");
+        }
+        
+        if (!isOutboundRequest()) {
             throw new IllegalStateException("Cannot set routing directive on inbound requests.");
         }
+        
+        // If directive is CONTINUE or REVERSE, the parameter origRequest must
+        // be an initial request dispatched by the container to this
+        // application, i.e. origRequest.isInitial() must be true.
+        
+        if ((directive == SipApplicationRoutingDirective.CONTINUE || directive == SipApplicationRoutingDirective.REVERSE)
+                && !origRequest.isInitial()) {
+            throw new IllegalStateException("origRequest must be initial for CONTINUE or REVERSE but is not.");
+        }
+        
+        // TODO: Add check for: This request must be a request created in a new SipSession or from an initial request
+        
+        this.routingDirective = directive;
     }
 
     @Override
@@ -509,7 +518,9 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
     @Override
     public void send() throws IOException {
 
-        // TODO: Use something like if (!hasBeenSent()) { }
+        if (isSent()) {
+            throw new IllegalStateException("Request has already been sent.");
+        }
         
         if (userAgentClient == null) {
             synchronized (super.sendLock) {
@@ -518,8 +529,6 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
             }
         } else if (request.isCANCEL()) {
             userAgentClient.cancel(request);
-        } else {
-            throw new IllegalStateException("Request has already been sent.");
         }
     }
 

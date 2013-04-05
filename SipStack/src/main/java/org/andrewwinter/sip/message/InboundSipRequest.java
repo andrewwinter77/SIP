@@ -1,5 +1,6 @@
 package org.andrewwinter.sip.message;
 
+import java.net.InetSocketAddress;
 import java.util.List;
 import org.andrewwinter.sip.element.StatefulProxy;
 import org.andrewwinter.sip.parser.Address;
@@ -16,10 +17,8 @@ import org.andrewwinter.sip.util.RandomStringFactory;
  *
  * @author andrew
  */
-public class InboundSipRequest {
+public class InboundSipRequest extends InboundSipMessage {
 
-    private final SipRequest request;
-    
     private ServerTransaction serverTransaction;
 
     private final ResponseSender responseSender;
@@ -31,9 +30,13 @@ public class InboundSipRequest {
      * @param request
      * @param responseSender
      */
-    public InboundSipRequest(final SipRequest request, final ResponseSender responseSender) {
-        this.request = request;
+    public InboundSipRequest(final SipRequest request, final InetSocketAddress initialRemoteAddr, final ResponseSender responseSender) {
+        super(initialRemoteAddr, request);
         this.responseSender = responseSender;
+    }
+    
+    public SipRequest getRequest() {
+        return (SipRequest) getMessage();
     }
     
     /**
@@ -58,14 +61,6 @@ public class InboundSipRequest {
      */
     public void setServerTransaction(final ServerTransaction serverTransaction) {
         this.serverTransaction = serverTransaction;
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    public SipRequest getRequest() {
-        return request;
     }
     
     // TODO: This method is temporary. When we introduce dialogs we probably
@@ -114,6 +109,8 @@ public class InboundSipRequest {
      */
     public SipResponse createResponse(final int statusCode, final String reasonPhrase) {
         final SipResponse response = new SipResponse(statusCode, reasonPhrase);
+        
+        final SipRequest request = (SipRequest) getMessage();
         
         // The From field of the response MUST equal the From header field of
         // the request.

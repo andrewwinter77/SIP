@@ -4,7 +4,6 @@ import org.andrewwinter.sip.SipResponseHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.parser.SipRequest;
-import org.andrewwinter.sip.parser.SipResponse;
 import org.andrewwinter.sip.transport.RequestSender;
 
 /**
@@ -30,7 +29,6 @@ public abstract class ClientTransaction {
      * @param sender  
      */
     protected ClientTransaction(
-            
             final SipResponseHandler txnUser,
             final SipRequest request,
             final RequestSender sender) {
@@ -49,8 +47,8 @@ public abstract class ClientTransaction {
      * 
      * @param response 
      */
-    public void handleResponseFromTransportLayer(final SipResponse response) {
-        state.handleResponseFromTransportLayer(response);
+    public void handleResponseFromTransportLayer(final InboundSipResponse isr) {
+        state.handleResponseFromTransportLayer(isr);
     }
 
     /**
@@ -84,11 +82,11 @@ public abstract class ClientTransaction {
      * @param response
      * @param dialog  
      */
-    public void sendResponseToTU(final SipResponse response, final Dialog dialog) {
+    public void sendResponseToTU(final InboundSipResponse isr, final Dialog dialog) {
         
         // Valid responses are passed up to the TU from the client transaction.
         
-        final InboundSipResponse isr = new InboundSipResponse(response, this, dialog);
+        isr.setDialog(dialog);
         sipListener.doResponse(isr);
     }
 

@@ -1,7 +1,7 @@
 package org.andrewwinter.sip.transaction.client.invite;
 
+import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.parser.SipRequest;
-import org.andrewwinter.sip.parser.SipResponse;
 import org.andrewwinter.sip.transaction.client.ClientTransactionState;
 import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
 
@@ -25,6 +25,6 @@ class Terminated extends ClientTransactionState {
     }
 
     @Override
-    public void handleResponseFromTransportLayer(final SipResponse response) {
+    public void handleResponseFromTransportLayer(final InboundSipResponse isr) {
     }
 }

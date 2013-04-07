@@ -8,6 +8,7 @@ import org.jboss.as.server.deployment.DeploymentPhaseContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.as.server.deployment.module.ResourceRoot;
+import org.jboss.as.weld.WeldDeploymentMarker;
 import org.jboss.vfs.VirtualFile;
 
 /**
@@ -40,6 +41,8 @@ public class Structure extends AbstractDeploymentUnitProcessor {
         // considered converged SIP components.
 
         if ((name.endsWith(WAR_EXTENSION) || name.endsWith(SAR_EXTENSION)) && sipXml.exists()) {
+
+            WeldDeploymentMarker.mark(dpc.getDeploymentUnit());            
 
             CustomAttachments.setMarker(
                     CustomAttachments.SIP_SERVLET_APPLICATION_MARKER, du);

@@ -20,7 +20,6 @@ import org.andrewwinter.jsr289.jboss.metadata.SipServletInfo;
 import org.jboss.as.ee.component.Attachments;
 import org.jboss.as.ee.component.BindingConfiguration;
 import org.jboss.as.ee.component.EEModuleDescription;
-import org.jboss.as.ee.component.InjectionSource;
 import org.jboss.as.ee.component.deployers.EEResourceReferenceProcessor;
 import org.jboss.as.ee.component.deployers.EEResourceReferenceProcessorRegistry;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
@@ -88,8 +87,26 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
             processSipApplicationKeyAnnotation(entry.getValue(), sipMetadata);
             processSipListenerAnnotation(entry.getValue(), sipMetadata);
         }
-    }
+        
+        for (final String prefix : new String[] { "java:comp/env/sip/", "java:app/sip/" }) {
+            bind(registry, eeModuleDescription, SIP_FACTORY_TYPE_NAME, prefix + sipMetadata.getAppName() + "/SipFactory");
+            bind(registry, eeModuleDescription, SIP_SESSIONS_UTIL_TYPE_NAME, prefix + sipMetadata.getAppName() + "/SipSessionsUtil");
+            bind(registry, eeModuleDescription, TIMER_SERVICE_TYPE_NAME, prefix + sipMetadata.getAppName() + "/TimerService");
+        }
+    } 
 
+    private void bind(
+            final EEResourceReferenceProcessorRegistry registry,
+            final EEModuleDescription description,
+            final DotName typeName,
+            final String bindingName) throws DeploymentUnitProcessingException {
+        final EEResourceReferenceProcessor processor = registry.getResourceReferenceProcessor(typeName.toString());
+        final BindingConfiguration bindingConfiguration = new BindingConfiguration(
+                bindingName,
+                processor.getResourceReferenceBindingSource());
+        description.getBindingConfigurations().add(bindingConfiguration);
+    }
+    
     /**
      * {@code
      *
@@ -99,7 +116,10 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      * @TimerService}</li> </ul>
      * @param index
      */
-    private void processResourceAnnotation(final Index index, final EEResourceReferenceProcessorRegistry registry, final EEModuleDescription eeModuleDescription) throws DeploymentUnitProcessingException {
+    private void processResourceAnnotation(
+            final Index index,
+            final EEResourceReferenceProcessorRegistry registry,
+            final EEModuleDescription eeModuleDescription) throws DeploymentUnitProcessingException {
 
         final List<AnnotationInstance> annotations = index.getAnnotations(RESOURCE_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
@@ -110,17 +130,13 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
                 final DotName type = fi.type().name();
                 if (RESOURCE_INJECTED_TYPES.contains(type)) {
 
-                    final String localContextName = fi.declaringClass().name().toString() + "/" + fi.name();
+                    final String name = "java:comp/env/" + fi.declaringClass().name().toString() + "/" + fi.name();
+                    bind(registry, eeModuleDescription, type, name);
 
-                    final EEResourceReferenceProcessor resourceReferenceProcessor = registry.getResourceReferenceProcessor(type.toString());
-                    if (resourceReferenceProcessor != null) {
-                        final InjectionSource valueSource = resourceReferenceProcessor.getResourceReferenceBindingSource();
-                        final BindingConfiguration bindingConfiguration = new BindingConfiguration(localContextName, valueSource);
-                        eeModuleDescription.getBindingConfigurations().add(bindingConfiguration);
-                        
-//                        final EEModuleClassDescription classDescription = eeModuleDescription.addOrGetLocalClassDescription(fi.declaringClass().name().toString());
-//                        classDescription.getBindingConfigurations().add(bindingConfiguration);
-                    }
+                    // I don't think it's necessary to put the binding here but I tried it once.
+                    // Delete these lines when we know for sure this isn't required.
+                    // final EEModuleClassDescription classDescription = eeModuleDescription.addOrGetLocalClassDescription(fi.declaringClass().name().toString());
+                    // classDescription.getBindingConfigurations().add(bindingConfiguration);
                 }
             }
         }

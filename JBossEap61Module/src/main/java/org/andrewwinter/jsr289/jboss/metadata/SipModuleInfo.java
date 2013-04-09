@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
 import javax.servlet.sip.SipServlet;
+import org.andrewwinter.jsr289.ManagedClassInstantiator;
 import org.andrewwinter.jsr289.jboss.ServletContextDelegate;
 import org.andrewwinter.jsr289.jboss.SipServletService;
 import org.apache.catalina.core.StandardContext;
@@ -143,9 +144,9 @@ public class SipModuleInfo {
         return servletContext;
     }
     
-    private void instantiateSipServlets() throws Exception {
+    private void instantiateSipServlets(final ManagedClassInstantiator managedClassInstantiator) throws Exception {
         for (final SipServletInfo servlet : sipServlets.values()) {
-            servlet.prepare(servletContext, classLoader);
+            servlet.prepare(servletContext, classLoader, managedClassInstantiator);
         }
     }
     
@@ -162,7 +163,7 @@ public class SipModuleInfo {
      * Prepares this SipModule for use. This must be called before the module
      * is used.
      */
-    public void prepare(final SipServletService service) throws DeploymentUnitProcessingException {
+    public void prepare(final SipServletService service, final ManagedClassInstantiator managedClassInstantiator) throws DeploymentUnitProcessingException {
         
         final ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
         
@@ -177,7 +178,7 @@ public class SipModuleInfo {
                 throw new DeploymentUnitProcessingException("Unable to determine main servlet name");
             }
             
-            instantiateSipServlets();
+            instantiateSipServlets(managedClassInstantiator);
             
             for (final Class clazz : org.andrewwinter.jsr289.Util.LISTENER_CLASSES) {
                 instantiateSipListeners(clazz);

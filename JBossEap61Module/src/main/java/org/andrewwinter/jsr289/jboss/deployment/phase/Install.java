@@ -4,18 +4,22 @@ import java.util.Iterator;
 import java.util.ServiceLoader;
 import javax.servlet.sip.ar.SipApplicationRouter;
 import javax.servlet.sip.ar.spi.SipApplicationRouterProvider;
+import org.andrewwinter.jsr289.jboss.SipDeploymentService;
 import org.andrewwinter.jsr289.jboss.SipServletService;
-import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
-import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.jboss.as.server.deployment.Attachments;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
+import org.jboss.as.server.deployment.DeploymentUnit;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
+import org.jboss.as.weld.services.BeanManagerService;
 import org.jboss.modules.Module;
 import org.jboss.modules.ModuleClassLoader;
+import org.jboss.msc.service.ServiceController;
+import org.jboss.msc.service.ServiceName;
+import org.jboss.msc.service.ServiceTarget;
 
 /**
  * Installs new services coming from the deployment.
- * 
+ *
  * @author andrew
  */
 public class Install extends AbstractDeploymentUnitProcessor {
@@ -46,16 +50,21 @@ public class Install extends AbstractDeploymentUnitProcessor {
     }
 
     private void deployApplication(final DeploymentPhaseContext dpc) throws DeploymentUnitProcessingException {
-        final SipModuleInfo moduleInfo = dpc.getDeploymentUnit().getAttachment(CustomAttachments.SIP_MODULE_INFO);
-        
-        moduleInfo.setClassLoader(getClassLoader(dpc));
-        
-        // This will throw an exception if there is anything wrong with the metadata. For example,
-        // if there is no app name, no servlets, etc. It also instantiates the servlets ready
-        // for use.
-        moduleInfo.prepare(getSipServletService(dpc));
-        final SipServletService service = getSipServletService(dpc);
-        service.deployApplication(moduleInfo);
+
+        final DeploymentUnit du = dpc.getDeploymentUnit();
+        final ServiceTarget serviceTarget = dpc.getServiceTarget();
+        final ServiceName serviceName = du.getServiceName().append(SipDeploymentService.NAME);
+        final SipDeploymentService service = new SipDeploymentService(du);
+
+        final ServiceName beanManagerServiceName = du.getServiceName().append(BeanManagerService.NAME);
+
+        serviceTarget
+                .addService(serviceName, service)
+                .addDependency(beanManagerServiceName)
+                .addDependency(serviceName)
+                .addDependency(SipServletService.SERVICE_NAME)
+                .setInitialMode(ServiceController.Mode.ACTIVE)
+                .install();
     }
 
     @Override

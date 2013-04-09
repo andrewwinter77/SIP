@@ -4,6 +4,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.sip.SipServlet;
+import org.andrewwinter.jsr289.ManagedClassInstantiator;
 import org.andrewwinter.servlet.ServletConfigImpl;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.modules.ModuleClassLoader;
@@ -100,18 +101,21 @@ public class SipServletInfo {
     
     void prepare(
             final ServletContext servletContext,
-            final ModuleClassLoader classLoader) throws DeploymentUnitProcessingException {
+            final ModuleClassLoader classLoader,
+            ManagedClassInstantiator managedClassInstantiator) throws DeploymentUnitProcessingException {
         
         try {
             // TODO: Pass init params into ServletConfig.
             servletConfig = new ServletConfigImpl(name, servletContext);
             final Class<?> clazz = classLoader.loadClass(className, true);
-            servlet = (SipServlet) clazz.newInstance();
+            
+            servlet = (SipServlet) managedClassInstantiator.instantiate(clazz);
+            //servlet = (SipServlet) clazz.newInstance();
             
             // TODO: Honour loadOnStartup.
             servlet.init(servletConfig);
-        } catch (InstantiationException | IllegalAccessException e) {
-            throw new DeploymentUnitProcessingException(e);
+//        } catch (InstantiationException | IllegalAccessException e) {
+//            throw new DeploymentUnitProcessingException(e);
         } catch (ClassNotFoundException | ServletException e) {
             throw new DeploymentUnitProcessingException(e);
         }

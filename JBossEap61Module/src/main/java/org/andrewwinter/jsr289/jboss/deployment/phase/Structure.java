@@ -42,6 +42,9 @@ public class Structure extends AbstractDeploymentUnitProcessor {
 
         if ((name.endsWith(WAR_EXTENSION) || name.endsWith(SAR_EXTENSION)) && sipXml.exists()) {
 
+            // IMPORTANT NOTE:
+            // This makes WeldProcess() do nothing. We need to revisit this
+            // at some point to decide if this is the correct things to do.
             WeldDeploymentMarker.mark(dpc.getDeploymentUnit());            
 
             CustomAttachments.setMarker(

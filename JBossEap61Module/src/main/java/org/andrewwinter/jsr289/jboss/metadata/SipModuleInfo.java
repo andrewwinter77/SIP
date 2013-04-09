@@ -13,7 +13,7 @@ import javax.servlet.sip.SipServlet;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.jsr289.jboss.ServletContextDelegate;
 import org.andrewwinter.jsr289.jboss.SipServletService;
-import org.andrewwinter.jsr289.model.SipServletWrapper;
+import org.andrewwinter.jsr289.model.SipServletManager;
 import org.apache.catalina.core.StandardContext;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.modules.ModuleClassLoader;
@@ -24,7 +24,7 @@ import org.jboss.modules.ModuleClassLoader;
  */
 public class SipModuleInfo {
 
-    private final Map<String, SipServletWrapper> sipServlets;
+    private final Map<String, SipServletManager> sipServlets;
     
     private final List<SipApplicationInfo> sipApplicationMetadataList;
     
@@ -62,7 +62,7 @@ public class SipModuleInfo {
     
     public List<SipServlet> getSipServlets() {
         final List<SipServlet> list = new ArrayList<>();
-        for (final SipServletWrapper ssi : sipServlets.values()) {
+        for (final SipServletManager ssi : sipServlets.values()) {
             list.add(ssi.getServlet());
         }
         return Collections.unmodifiableList(list);
@@ -99,7 +99,7 @@ public class SipModuleInfo {
                 return sam.getMainServlet();
             }
         }
-        for (final SipServletWrapper ssi : sipServlets.values()) {
+        for (final SipServletManager ssi : sipServlets.values()) {
             return ssi.getName();
         }
         return null;
@@ -121,7 +121,7 @@ public class SipModuleInfo {
         listeners.add(sli);
     }
     
-    public void add(final SipServletWrapper ssi) {
+    public void add(final SipServletManager ssi) {
         sipServlets.put(ssi.getName(), ssi);
     }
     
@@ -146,7 +146,7 @@ public class SipModuleInfo {
     }
     
     private void instantiateSipServlets(final ManagedClassInstantiator managedClassInstantiator) throws Exception {
-        for (final SipServletWrapper servlet : sipServlets.values()) {
+        for (final SipServletManager servlet : sipServlets.values()) {
             servlet.init(servletContext, classLoader, managedClassInstantiator);
         }
     }

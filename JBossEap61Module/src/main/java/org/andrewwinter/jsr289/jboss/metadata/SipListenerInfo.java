@@ -1,8 +1,6 @@
 package org.andrewwinter.jsr289.jboss.metadata;
 
 import java.util.EventListener;
-import javax.servlet.ServletException;
-import javax.servlet.sip.SipServlet;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.modules.ModuleClassLoader;
 

@@ -13,7 +13,7 @@ import org.andrewwinter.servlet.ServletConfigImpl;
  *
  * @author andrew
  */
-public class SipServletWrapper {
+public class SipServletManager {
 
     /**
      *      */
@@ -49,7 +49,7 @@ public class SipServletWrapper {
      * @param description
      * @throws IllegalArgumentException
      */
-    public SipServletWrapper(
+    public SipServletManager(
             final String className,
             final String name,
             final String loadOnStartup,

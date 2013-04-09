@@ -16,7 +16,7 @@ import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipApplicationInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
-import org.andrewwinter.jsr289.jboss.metadata.SipServletInfo;
+import org.andrewwinter.jsr289.model.SipServletWrapper;
 import org.jboss.as.ee.component.Attachments;
 import org.jboss.as.ee.component.BindingConfiguration;
 import org.jboss.as.ee.component.EEModuleDescription;
@@ -165,7 +165,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
             if (annotation.target() instanceof ClassInfo) {
                 final ClassInfo info = (ClassInfo) annotation.target();
 
-                final SipServletInfo metadata = new SipServletInfo(
+                final SipServletWrapper metadata = new SipServletWrapper(
                         info.name().toString(),
                         annotationValueAsString(annotation, "name"),
                         annotationValueAsString(annotation, "loadOnStartup"),

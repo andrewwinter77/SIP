@@ -12,7 +12,7 @@ import javax.xml.bind.Unmarshaller;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipApplicationInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
-import org.andrewwinter.jsr289.jboss.metadata.SipServletInfo;
+import org.andrewwinter.jsr289.model.SipServletWrapper;
 import org.jboss.as.server.deployment.Attachments;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
@@ -110,7 +110,7 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
         }
     }
     
-    private SipServletInfo processServletType(final ServletType type) throws DeploymentUnitProcessingException {
+    private SipServletWrapper processServletType(final ServletType type) throws DeploymentUnitProcessingException {
         
         if (type.getServletClass() == null) {
             throw new DeploymentUnitProcessingException("Servlet class not specified.");
@@ -120,7 +120,7 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
             throw new DeploymentUnitProcessingException("Servlet name not specified.");
         }
         
-        final SipServletInfo ssi = new SipServletInfo(
+        final SipServletWrapper ssi = new SipServletWrapper(
                 type.getServletClass().getValue(),
                 type.getServletName().getValue(),
                 type.getLoadOnStartup(),

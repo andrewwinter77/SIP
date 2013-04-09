@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
 import javax.servlet.sip.SipServlet;
-import org.andrewwinter.jsr289.ManagedClassInstantiator;
+import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.jsr289.jboss.ServletContextDelegate;
 import org.andrewwinter.jsr289.jboss.SipServletService;
 import org.apache.catalina.core.StandardContext;
@@ -180,7 +180,7 @@ public class SipModuleInfo {
             
             instantiateSipServlets(managedClassInstantiator);
             
-            for (final Class clazz : org.andrewwinter.jsr289.Util.LISTENER_CLASSES) {
+            for (final Class clazz : org.andrewwinter.jsr289.util.Util.LISTENER_CLASSES) {
                 instantiateSipListeners(clazz);
             }
             

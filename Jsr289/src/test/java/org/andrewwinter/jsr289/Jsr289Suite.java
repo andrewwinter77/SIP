@@ -1,5 +1,7 @@
 package org.andrewwinter.jsr289;
 
+import org.andrewwinter.jsr289.api.SipApplicationSessionImplTest;
+import org.andrewwinter.jsr289.api.AddressImplTest;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

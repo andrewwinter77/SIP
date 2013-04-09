@@ -2,7 +2,7 @@ package org.andrewwinter.jsr289.jboss.deployment.phase;
 
 import javax.servlet.ServletContext;
 import javax.servlet.sip.SipFactory;
-import org.andrewwinter.jsr289.SipFactoryImpl;
+import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.jboss.as.ee.component.InjectionSource;

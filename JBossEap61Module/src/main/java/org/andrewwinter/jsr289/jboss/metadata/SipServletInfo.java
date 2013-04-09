@@ -4,7 +4,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.sip.SipServlet;
-import org.andrewwinter.jsr289.ManagedClassInstantiator;
+import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.servlet.ServletConfigImpl;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.modules.ModuleClassLoader;

@@ -6,7 +6,7 @@ package org.andrewwinter.jsr289.jboss.deployment.attachment;
 
 import java.io.File;
 import javax.servlet.sip.SipFactory;
-import org.andrewwinter.jsr289.SipFactoryImpl;
+import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.jboss.SipServletService;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.jboss.as.server.deployment.AttachmentKey;

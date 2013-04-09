@@ -17,12 +17,12 @@ import javax.servlet.sip.ar.SipApplicationRouterInfo;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import javax.servlet.sip.ar.SipRouteModifier;
 import javax.servlet.sip.ar.SipTargetedRequestInfo;
-import org.andrewwinter.jsr289.SipFactoryImpl;
-import org.andrewwinter.jsr289.SipListenerStore;
-import org.andrewwinter.jsr289.SipServletRequestImpl;
-import org.andrewwinter.jsr289.SipServletStore;
-import org.andrewwinter.jsr289.SipSessionImpl;
-import org.andrewwinter.jsr289.SipSessionStore;
+import org.andrewwinter.jsr289.api.SipFactoryImpl;
+import org.andrewwinter.jsr289.store.SipListenerStore;
+import org.andrewwinter.jsr289.api.SipServletRequestImpl;
+import org.andrewwinter.jsr289.store.SipServletStore;
+import org.andrewwinter.jsr289.api.SipSessionImpl;
+import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.andrewwinter.sip.SipRequestHandler;
@@ -74,7 +74,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
                 SipServletStore.getInstance().put(appName, servlet.getServletName(), servlet);
             }
             
-            for (final Class clazz : org.andrewwinter.jsr289.Util.LISTENER_CLASSES) {
+            for (final Class clazz : org.andrewwinter.jsr289.util.Util.LISTENER_CLASSES) {
                 final Set<SipListenerInfo> listeners = metadata.getSipListeners(clazz);
                 if (listeners != null) {
                     for (final SipListenerInfo listener : listeners) {
@@ -106,7 +106,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
 
             final ServletContext context = moduleInfo.getServletContext();
             
-            org.andrewwinter.jsr289.Util.invokeServlet(
+            org.andrewwinter.jsr289.util.Util.invokeServlet(
                     sipServlet,
                     request,
                     null,

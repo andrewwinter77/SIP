@@ -19,8 +19,8 @@ import javax.servlet.ServletRegistration.Dynamic;
 import javax.servlet.SessionCookieConfig;
 import javax.servlet.SessionTrackingMode;
 import javax.servlet.descriptor.JspConfigDescriptor;
-import org.andrewwinter.jsr289.SipFactoryImpl;
-import org.andrewwinter.jsr289.SipSessionsUtilImpl;
+import org.andrewwinter.jsr289.api.SipFactoryImpl;
+import org.andrewwinter.jsr289.api.SipSessionsUtilImpl;
 
 /**
  *

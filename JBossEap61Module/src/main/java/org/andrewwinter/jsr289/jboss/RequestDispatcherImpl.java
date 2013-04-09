@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.sip.SipServlet;
-import org.andrewwinter.jsr289.SipServletRequestImpl;
+import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 
 /**

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import org.andrewwinter.jsr289.ConvergedHttpSessionImpl;
+import org.andrewwinter.jsr289.api.ConvergedHttpSessionImpl;
 
 /**
  *

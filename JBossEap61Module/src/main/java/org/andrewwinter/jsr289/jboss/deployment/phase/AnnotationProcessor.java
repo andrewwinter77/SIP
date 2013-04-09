@@ -269,7 +269,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
                         throw new DeploymentUnitProcessingException(e);
                     }
                     
-                    if (org.andrewwinter.jsr289.Util.LISTENER_CLASSES.contains(ifaceAsClass)) {
+                    if (org.andrewwinter.jsr289.util.Util.LISTENER_CLASSES.contains(ifaceAsClass)) {
                         
                         final SipListenerInfo listenerInfo = new SipListenerInfo(
                                 ifaceAsClass,

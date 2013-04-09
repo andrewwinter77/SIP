@@ -47,6 +47,13 @@ public class Dependencies extends AbstractDeploymentUnitProcessor {
                 false, // import services?
                 false)); // user specified?
 
+        moduleSpecification.addLocalDependency(new ModuleDependency(
+                moduleLoader,
+                ModuleIdentifier.create("org.andrewwinter.jsr289.jboss"),
+                false, // is optional?
+                false, // export?
+                false, // import services?
+                false)); // user specified?
         
         
         // Add module dependencies on Java EE apis

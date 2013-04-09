@@ -1,7 +1,6 @@
 package org.andrewwinter.jsr289;
 
 import java.util.Iterator;
-import java.util.Locale;
 import java.util.Map.Entry;
 import java.util.Set;
 import javax.servlet.sip.Parameterable;

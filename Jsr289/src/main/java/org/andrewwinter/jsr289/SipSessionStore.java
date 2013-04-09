@@ -2,7 +2,6 @@ package org.andrewwinter.jsr289;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.sip.SipSession;
 import org.andrewwinter.sip.dialog.DialogId;
 
 /**

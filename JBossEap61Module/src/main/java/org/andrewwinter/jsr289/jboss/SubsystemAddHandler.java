@@ -27,7 +27,7 @@ import org.jboss.msc.service.ServiceController.Mode;
  */
 class SubsystemAddHandler extends AbstractBoottimeAddStepHandler {
 
-    private static final Logger log = Logger.getLogger(Constants.MODULE_NAME);
+    private static final Logger LOG = Logger.getLogger(Constants.MODULE_NAME);
 
     static final SubsystemAddHandler INSTANCE = new SubsystemAddHandler();
 
@@ -70,7 +70,7 @@ class SubsystemAddHandler extends AbstractBoottimeAddStepHandler {
             @Override
             public void execute(final DeploymentProcessorTarget processorTarget) {
                 
-                log.info("Activating SIP Servlet 1.1 Subsystem");
+                LOG.info("Activating SIP Servlet 1.1 Subsystem");
                 
                 // Get in just ahead of the WAR deployer.
                 processorTarget.addDeploymentProcessor(Phase.STRUCTURE, Phase.STRUCTURE_WAR_DEPLOYMENT_INIT-1 /*0x2000*/, new Structure());

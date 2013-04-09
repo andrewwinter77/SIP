@@ -45,7 +45,10 @@ import javax.servlet.sip.SipSession;
  */
 @javax.servlet.sip.annotation.SipServlet
 public class ClickToCallServlet extends SipServlet {
-    
+
+//    @Resource
+//    private SipFactory sf;
+
     @Override
     protected void doSuccessResponse(final SipServletResponse response) throws ServletException, IOException {
         

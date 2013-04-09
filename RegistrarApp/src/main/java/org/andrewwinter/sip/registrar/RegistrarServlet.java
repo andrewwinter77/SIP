@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 import java.util.TimeZone;
+import javax.annotation.Resource;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
@@ -29,6 +30,9 @@ import org.andrewwinter.sip.location.BindingsManager;
 public class RegistrarServlet extends SipServlet {
 
     private static final int LOCALLY_CONFIGURED_DEFAULT_EXPIRES = 3600;
+
+//    @Resource
+//    private SipFactory sf;
 
     private static BindingsManager getBindingsManager() {
         try {

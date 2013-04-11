@@ -1,7 +1,7 @@
 package org.andrewwinter.sip;
 
-
 import java.io.IOException;
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.sip.Address;
 import javax.servlet.sip.B2buaHelper;
@@ -46,8 +46,8 @@ import javax.servlet.sip.SipSession;
 @javax.servlet.sip.annotation.SipServlet
 public class ClickToCallServlet extends SipServlet {
 
-//    @Resource
-//    private SipFactory sf;
+    @Resource
+    private SipFactory sf;
 
     @Override
     protected void doSuccessResponse(final SipServletResponse response) throws ServletException, IOException {
@@ -59,10 +59,6 @@ public class ClickToCallServlet extends SipServlet {
             if (response.getRequest().isInitial()) {
             
                 response.createAck().send();
-
-                // TODO: Inject SipFactory when we're capable
-                final SipFactory sf = (SipFactory) getServletContext().getAttribute(SipServlet.SIP_FACTORY);
-
 
                 final Address aliceAddress = (Address) response.getSession().getAttribute(Util.ALICE_ADDRESS_KEY);
                 final Address bobAddress = (Address) response.getSession().getAttribute(Util.BOB_ADDRESS_KEY);

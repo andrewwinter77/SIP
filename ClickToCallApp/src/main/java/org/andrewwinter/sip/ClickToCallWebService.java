@@ -1,6 +1,5 @@
 package org.andrewwinter.sip;
 
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import javax.annotation.Resource;
@@ -18,9 +17,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
 import org.andrewwinter.sip.sdp.AddressType;
-import org.andrewwinter.sip.sdp.Attribute;
-import org.andrewwinter.sip.sdp.AttributeBuilder;
-import org.andrewwinter.sip.sdp.AttributeName;
 import org.andrewwinter.sip.sdp.ConnectionData;
 import org.andrewwinter.sip.sdp.ConnectionDataBuilder;
 import org.andrewwinter.sip.sdp.Media;
@@ -105,14 +101,8 @@ public class ClickToCallWebService extends Application {
         mediaBuilder = mediaBuilder.port(1);
         final Media media = mediaBuilder.build();
         
-//        AttributeBuilder attributeBuilder = new AttributeBuilder();
-//        attributeBuilder = attributeBuilder.name(AttributeName.RTPMAP);
-//        attributeBuilder = attributeBuilder.value("0 PCMU/8000");
-//        final Attribute attribute = attributeBuilder.build();
-
         MediaDescriptionBuilder mediaDescriptionBuilder = new MediaDescriptionBuilder();
         mediaDescriptionBuilder = mediaDescriptionBuilder.media(media);
-//        mediaDescriptionBuilder = mediaDescriptionBuilder.attribute(attribute);
         final MediaDescription mediaDescription = mediaDescriptionBuilder.build();
         
         ConnectionDataBuilder connectionDataBuilder = new ConnectionDataBuilder();
@@ -125,11 +115,6 @@ public class ClickToCallWebService extends Application {
         builder = builder.mediaDescription(mediaDescription);
         builder = builder.connectionData(connetionData);
         
-        // temp
-//        builder = builder.name("-");
-        // end temp
-        final SessionDescription sdp = builder.build();
-        
-        return sdp;
+        return builder.build();
     }
 }

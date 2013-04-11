@@ -67,7 +67,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
         if (!isSipApplication(du)) {
             return;
         }
-        
+
         final EEResourceReferenceProcessorRegistry registry = du.getAttachment(
                 Attachments.RESOURCE_REFERENCE_PROCESSOR_REGISTRY);
         registry.registerResourceReferenceProcessor(new SipFactoryResourceReferenceProcessor(du));
@@ -87,13 +87,13 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
             processSipApplicationKeyAnnotation(entry.getValue(), sipMetadata);
             processSipListenerAnnotation(entry.getValue(), sipMetadata);
         }
-        
+
         for (final String prefix : new String[] { "java:comp/env/sip/", "java:app/sip/" }) {
             bind(registry, eeModuleDescription, SIP_FACTORY_TYPE_NAME, prefix + sipMetadata.getAppName() + "/SipFactory");
             bind(registry, eeModuleDescription, SIP_SESSIONS_UTIL_TYPE_NAME, prefix + sipMetadata.getAppName() + "/SipSessionsUtil");
             bind(registry, eeModuleDescription, TIMER_SERVICE_TYPE_NAME, prefix + sipMetadata.getAppName() + "/TimerService");
         }
-    } 
+    }
 
     private void bind(
             final EEResourceReferenceProcessorRegistry registry,
@@ -106,7 +106,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
                 processor.getResourceReferenceBindingSource());
         description.getBindingConfigurations().add(bindingConfiguration);
     }
-    
+
     /**
      * {@code
      *
@@ -130,13 +130,8 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
                 final DotName type = fi.type().name();
                 if (RESOURCE_INJECTED_TYPES.contains(type)) {
 
-                    final String name = "java:comp/env/" + fi.declaringClass().name().toString() + "/" + fi.name();
+                    final String name = fi.declaringClass().name().toString() + "/" + fi.name();
                     bind(registry, eeModuleDescription, type, name);
-
-                    // I don't think it's necessary to put the binding here but I tried it once.
-                    // Delete these lines when we know for sure this isn't required.
-                    // final EEModuleClassDescription classDescription = eeModuleDescription.addOrGetLocalClassDescription(fi.declaringClass().name().toString());
-                    // classDescription.getBindingConfigurations().add(bindingConfiguration);
                 }
             }
         }
@@ -202,7 +197,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
                 metadata.setProxyTimeout(annotationValueAsString(annotation, "proxyTimeout"));
                 metadata.setSessionTimeout(annotationValueAsString(annotation, "sessionTimeout"));
                 metadata.setSmallIcon(annotationValueAsString(annotation, "smallIcon"));
-                
+
                 sipMetadata.add(metadata);
             } else {
                 throw new DeploymentUnitProcessingException("@SipApplication appeared on something other than a class.");
@@ -220,9 +215,9 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
 
             if (annotation.target() instanceof MethodInfo) {
                 final MethodInfo info = (MethodInfo) annotation.target();
-                
+
                 System.out.println("___________________________TODO____________ process @SipApplicationKey");
-                
+
 //                final String packageName = info.getClass().getPackage().getName().toString();
 //
 //                final SipApplicationInfo metadata = new SipApplicationInfo();
@@ -238,9 +233,9 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
 //                metadata.setSmallIcon(annotationValueAsString(annotation, "smallIcon"));
 //                
 //                sipMetadata.add(metadata);
-                
+
 //                System.out.println(metadata);
-                
+
             } else {
                 throw new DeploymentUnitProcessingException("@SipApplicationKey appeared on something other than a method.");
             }
@@ -257,37 +252,35 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
 
             if (annotation.target() instanceof ClassInfo) {
                 final ClassInfo info = (ClassInfo) annotation.target();
-                
+
                 System.out.println("___________________________TODO____________ process @SipListener");
-                
+
                 for (final DotName iface : info.interfaces()) {
-                    
+
                     final Class ifaceAsClass;
                     try {
                         ifaceAsClass = Class.forName(iface.toString());
                     } catch (ClassNotFoundException e) {
                         throw new DeploymentUnitProcessingException(e);
                     }
-                    
+
                     if (org.andrewwinter.jsr289.util.Util.LISTENER_CLASSES.contains(ifaceAsClass)) {
-                        
+
                         final SipListenerInfo listenerInfo = new SipListenerInfo(
                                 ifaceAsClass,
                                 info.name().toString());
-                        
+
                         sipMetadata.add(listenerInfo);
                     }
                 }
 
                 // TODO: Add support for applicationName and description
-                
+
             } else {
                 throw new DeploymentUnitProcessingException("@SipListener appeared on something other than a class.");
             }
         }
     }
-
-    
     //    private void processAnnotation(final Index index, final String annotationClassName) {
 //
 //        final DotName dotName = DotName.createSimple(annotationClassName);

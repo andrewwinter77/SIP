@@ -127,7 +127,6 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
             // Call the @PostConstruct method.
             it.postConstruct(instance);
 
-            unbindContexts();
             return instance;
         } catch (RuntimeException e) {
             throw e;

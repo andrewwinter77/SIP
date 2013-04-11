@@ -9,7 +9,6 @@ import org.andrewwinter.jsr289.jboss.deployment.phase.Install;
 import org.andrewwinter.jsr289.jboss.deployment.phase.PostModule;
 import org.andrewwinter.jsr289.jboss.deployment.phase.SipXmlParser;
 import org.andrewwinter.jsr289.jboss.deployment.phase.Structure;
-import org.andrewwinter.jsr289.jboss.deployment.phase.WeldProcessor;
 import org.jboss.as.controller.AbstractBoottimeAddStepHandler;
 import org.jboss.as.controller.OperationContext;
 import org.jboss.as.controller.OperationFailedException;
@@ -75,11 +74,6 @@ class SubsystemAddHandler extends AbstractBoottimeAddStepHandler {
                 // Get in just ahead of the WAR deployer.
                 processorTarget.addDeploymentProcessor(Phase.STRUCTURE, Phase.STRUCTURE_WAR_DEPLOYMENT_INIT-1 /*0x2000*/, new Structure());
                 
-                // IMPORTANT NOTE:
-                // Although we set this here, WeldProcessor() effectively does nothing due to
-                // having marked the module as a weld module in Structure(). Rethink this.
-                processorTarget.addDeploymentProcessor(Phase.PARSE, Phase.PARSE_WELD_DEPLOYMENT+1, new WeldProcessor());
-
                 processorTarget.addDeploymentProcessor(Phase.PARSE, 0x4000, new SipXmlParser());
                 processorTarget.addDeploymentProcessor(Phase.DEPENDENCIES, 0x3000, new Dependencies());
                 processorTarget.addDeploymentProcessor(Phase.CONFIGURE_MODULE, 0x200, new ConfigureModule());

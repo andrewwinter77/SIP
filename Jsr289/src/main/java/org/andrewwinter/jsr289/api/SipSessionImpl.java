@@ -13,7 +13,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.sip.Address;
 import javax.servlet.sip.SipApplicationSession;
-import javax.servlet.sip.SipServlet;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipServletResponse;
 import javax.servlet.sip.SipSession;
@@ -25,6 +24,7 @@ import javax.servlet.sip.SipSessionEvent;
 import javax.servlet.sip.SipSessionListener;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRoutingRegion;
+import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.MainServletNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
@@ -549,7 +549,7 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
             servletName = handler;
         }
         
-        final SipServlet servlet = SipServletStore.getInstance().get(appName, servletName);
+        final SipServletDelegate servlet = SipServletStore.getInstance().get(appName, servletName);
         if (servlet == null) {
             
         } else {
@@ -615,7 +615,7 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
             servletName = handler;
         }
         
-        final SipServlet servlet = SipServletStore.getInstance().get(appName, servletName);
+        final SipServletDelegate servlet = SipServletStore.getInstance().get(appName, servletName);
         if (servlet == null) {
             
         } else {

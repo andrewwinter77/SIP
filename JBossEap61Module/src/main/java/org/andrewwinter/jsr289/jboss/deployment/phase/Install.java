@@ -6,6 +6,8 @@ import javax.servlet.sip.ar.SipApplicationRouter;
 import javax.servlet.sip.ar.spi.SipApplicationRouterProvider;
 import org.andrewwinter.jsr289.jboss.SipDeploymentService;
 import org.andrewwinter.jsr289.jboss.SipServletService;
+import org.jboss.as.ee.component.EEModuleDescription;
+import org.jboss.as.naming.context.NamespaceContextSelector;
 import org.jboss.as.server.deployment.Attachments;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
@@ -52,9 +54,13 @@ public class Install extends AbstractDeploymentUnitProcessor {
     private void deployApplication(final DeploymentPhaseContext dpc) throws DeploymentUnitProcessingException {
 
         final DeploymentUnit du = dpc.getDeploymentUnit();
+        
+        final EEModuleDescription description = du.getAttachment(org.jboss.as.ee.component.Attachments.EE_MODULE_DESCRIPTION);
+        final NamespaceContextSelector namespaceContextSelector = description.getNamespaceContextSelector();
+        
         final ServiceTarget serviceTarget = dpc.getServiceTarget();
         final ServiceName serviceName = du.getServiceName().append(SipDeploymentService.NAME);
-        final SipDeploymentService service = new SipDeploymentService(du);
+        final SipDeploymentService service = new SipDeploymentService(du, namespaceContextSelector);
 
         final ServiceName beanManagerServiceName = du.getServiceName().append(BeanManagerService.NAME);
 
@@ -72,7 +78,6 @@ public class Install extends AbstractDeploymentUnitProcessor {
         if (isApplicationRouter(dpc.getDeploymentUnit())) {
             deployApplicationRouter(dpc);
         } else if (isSipApplication(dpc.getDeploymentUnit())) {
-            
             deployApplication(dpc);
         }
     }

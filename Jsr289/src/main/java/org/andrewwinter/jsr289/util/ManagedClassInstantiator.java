@@ -8,6 +8,10 @@ package org.andrewwinter.jsr289.util;
  * @author andrew
  */
 public interface ManagedClassInstantiator {
+
+    void bindContexts();
+    
+    void unbindContexts();
     
     Object instantiate(Class clazz);
 }

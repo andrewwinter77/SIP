@@ -18,8 +18,8 @@ import javax.servlet.ServletRegistration.Dynamic;
 import javax.servlet.SessionCookieConfig;
 import javax.servlet.SessionTrackingMode;
 import javax.servlet.descriptor.JspConfigDescriptor;
-import javax.servlet.sip.SipServlet;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipServletDelegate;
 
 /**
  *
@@ -44,7 +44,7 @@ public class ServletContextDelegate implements ServletContext {
         RequestDispatcher dispatcher = context.getNamedDispatcher(sipServletName);
         if (dispatcher == null) {
             
-            final SipServlet servletInfo = moduleInfo.getServlet(sipServletName);
+            final SipServletDelegate servletInfo = moduleInfo.getServlet(sipServletName);
             if (servletInfo != null) {
                 dispatcher = new RequestDispatcherImpl(service, moduleInfo, servletInfo);
             } else {

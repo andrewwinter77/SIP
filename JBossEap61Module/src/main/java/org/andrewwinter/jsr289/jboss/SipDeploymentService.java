@@ -7,6 +7,7 @@ import javax.enterprise.inject.spi.InjectionTarget;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
+import org.jboss.as.naming.context.NamespaceContextSelector;
 import org.jboss.as.server.deployment.Attachments;
 import org.jboss.as.server.deployment.DeploymentUnit;
 import org.jboss.as.weld.services.BeanManagerService;
@@ -24,13 +25,14 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
 
     public static final ServiceName NAME = ServiceName.JBOSS.append("sipdeployment");
     private final DeploymentUnit du;
+    private final NamespaceContextSelector namespaceContextSelector;
 
-    public SipDeploymentService(final DeploymentUnit du) {
+    public SipDeploymentService(final DeploymentUnit du, final NamespaceContextSelector namespaceContextSelector) {
         this.du = du;
+        this.namespaceContextSelector = namespaceContextSelector;
     }
 
     private ModuleClassLoader getClassLoader() {
-
         // Andrew discovered the Module attachment by reading the source code
         // of the JBoss AS 7 class 'InstallReflectionIndexProcessor'.
 
@@ -81,6 +83,15 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
         return this;
     }
 
+    @Override
+    public void bindContexts() {
+        NamespaceContextSelector.pushCurrentSelector(namespaceContextSelector);
+    }
+
+    @Override
+    public void unbindContexts() {
+        NamespaceContextSelector.popCurrentSelector();
+    }
     /**
      * Use BeanManager to instantiate the objects.
      * 
@@ -90,29 +101,38 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
     @Override
     public Object instantiate(final Class clazz) {
 
-        final BeanManager bm = getBeanManager();
+        bindContexts();
         
-        final AnnotatedType<Object> type = bm.createAnnotatedType(clazz);
-        
-        // The extension uses an InjectionTarget to delegate instantiation,
-        // dependency injection and lifecycle callbacks to the CDI
-        // container.
-        final InjectionTarget<Object> it = bm.createInjectionTarget(type);
+        try {
+            final BeanManager bm = getBeanManager();
 
-        // Each instance needs its own CDI CreationalContext
-        final CreationalContext ctx = bm.createCreationalContext(null);
+            final AnnotatedType<Object> type = bm.createAnnotatedType(clazz);
 
-        // Instantiate the framework component and inject its dependencies.
+            // The extension uses an InjectionTarget to delegate instantiation,
+            // dependency injection and lifecycle callbacks to the CDI
+            // container.
+            final InjectionTarget<Object> it = bm.createInjectionTarget(type);
 
-        // Call the SipServlet's constructor.
-        final Object instance = it.produce(ctx);
+            // Each instance needs its own CDI CreationalContext
+            final CreationalContext ctx = bm.createCreationalContext(null);
 
-        // Call initializer methods and perform field injection.
-        it.inject(instance, ctx);
+            // Instantiate the framework component and inject its dependencies.
 
-        // Call the @PostConstruct method.
-        it.postConstruct(instance);
-        
-        return instance;
+            // Call the SipServlet's constructor.
+            final Object instance = it.produce(ctx);
+
+            // Call initializer methods and perform field injection.
+            it.inject(instance, ctx);
+
+            // Call the @PostConstruct method.
+            it.postConstruct(instance);
+
+            unbindContexts();
+            return instance;
+        } catch (RuntimeException e) {
+            throw e;
+        } finally {
+            unbindContexts();
+        }
     }
 }

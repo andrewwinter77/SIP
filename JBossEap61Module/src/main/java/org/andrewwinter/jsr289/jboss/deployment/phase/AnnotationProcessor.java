@@ -16,7 +16,7 @@ import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipApplicationInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
-import org.andrewwinter.jsr289.model.SipServletManager;
+import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.jboss.as.ee.component.Attachments;
 import org.jboss.as.ee.component.BindingConfiguration;
 import org.jboss.as.ee.component.EEModuleDescription;
@@ -153,21 +153,21 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipServletAnnotation(final Index index, final SipModuleInfo sipMetadata) throws DeploymentUnitProcessingException {
+    private void processSipServletAnnotation(final Index index, final SipModuleInfo moduleInfo) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_SERVLET_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 
             if (annotation.target() instanceof ClassInfo) {
                 final ClassInfo info = (ClassInfo) annotation.target();
 
-                final SipServletManager metadata = new SipServletManager(
+                final SipServletDelegate servlet = new SipServletDelegate(
                         info.name().toString(),
                         annotationValueAsString(annotation, "name"),
                         annotationValueAsString(annotation, "loadOnStartup"),
                         annotationValueAsString(annotation, "applicationName"),
                         annotationValueAsString(annotation, "description"));
 
-                sipMetadata.add(metadata);
+                moduleInfo.add(servlet);
             } else {
                 throw new DeploymentUnitProcessingException("@SipServlet appeared on something other than a class.");
             }
@@ -178,7 +178,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipApplicationAnnotation(final Index index, final SipModuleInfo sipMetadata) throws DeploymentUnitProcessingException {
+    private void processSipApplicationAnnotation(final Index index, final SipModuleInfo moduleInfo) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_APPLICATION_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 
@@ -186,19 +186,19 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
                 final ClassInfo info = (ClassInfo) annotation.target();
                 final String packageName = info.getClass().getPackage().getName().toString();
 
-                final SipApplicationInfo metadata = new SipApplicationInfo();
-                metadata.setAppName(annotationValueAsString(annotation, "name"));
-                metadata.setPackageName(packageName);
-                metadata.setDescription(annotationValueAsString(annotation, "description"));
-                metadata.setDisplayName(annotationValueAsString(annotation, "displayName"));
-                metadata.setDistributable(annotationValueAsString(annotation, "distributable"));
-                metadata.setLargeIcon(annotationValueAsString(annotation, "largeIcon"));
-                metadata.setMainServlet(annotationValueAsString(annotation, "mainServlet"));
-                metadata.setProxyTimeout(annotationValueAsString(annotation, "proxyTimeout"));
-                metadata.setSessionTimeout(annotationValueAsString(annotation, "sessionTimeout"));
-                metadata.setSmallIcon(annotationValueAsString(annotation, "smallIcon"));
+                final SipApplicationInfo appInfo = new SipApplicationInfo();
+                appInfo.setAppName(annotationValueAsString(annotation, "name"));
+                appInfo.setPackageName(packageName);
+                appInfo.setDescription(annotationValueAsString(annotation, "description"));
+                appInfo.setDisplayName(annotationValueAsString(annotation, "displayName"));
+                appInfo.setDistributable(annotationValueAsString(annotation, "distributable"));
+                appInfo.setLargeIcon(annotationValueAsString(annotation, "largeIcon"));
+                appInfo.setMainServlet(annotationValueAsString(annotation, "mainServlet"));
+                appInfo.setProxyTimeout(annotationValueAsString(annotation, "proxyTimeout"));
+                appInfo.setSessionTimeout(annotationValueAsString(annotation, "sessionTimeout"));
+                appInfo.setSmallIcon(annotationValueAsString(annotation, "smallIcon"));
 
-                sipMetadata.add(metadata);
+                moduleInfo.add(appInfo);
             } else {
                 throw new DeploymentUnitProcessingException("@SipApplication appeared on something other than a class.");
             }
@@ -209,7 +209,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipApplicationKeyAnnotation(final Index index, final SipModuleInfo sipMetadata) throws DeploymentUnitProcessingException {
+    private void processSipApplicationKeyAnnotation(final Index index, final SipModuleInfo moduleInfo) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_APPLICATION_KEY_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 
@@ -246,7 +246,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipListenerAnnotation(final Index index, final SipModuleInfo sipMetadata) throws DeploymentUnitProcessingException {
+    private void processSipListenerAnnotation(final Index index, final SipModuleInfo moduleInfo) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_LISTENER_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 
@@ -270,7 +270,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
                                 ifaceAsClass,
                                 info.name().toString());
 
-                        sipMetadata.add(listenerInfo);
+                        moduleInfo.add(listenerInfo);
                     }
                 }
 

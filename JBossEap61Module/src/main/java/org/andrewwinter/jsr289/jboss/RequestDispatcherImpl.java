@@ -5,9 +5,9 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.sip.SipServlet;
 import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipServletDelegate;
 
 /**
  *
@@ -19,9 +19,9 @@ public class RequestDispatcherImpl implements RequestDispatcher {
     
     private final SipModuleInfo moduleInfo;
     
-    private final SipServlet servlet;
+    private final SipServletDelegate servlet;
     
-    public RequestDispatcherImpl(final SipServletService service, final SipModuleInfo moduleInfo, final SipServlet servlet) {
+    public RequestDispatcherImpl(final SipServletService service, final SipModuleInfo moduleInfo, final SipServletDelegate servlet) {
         this.service = service;
         this.moduleInfo = moduleInfo;
         this.servlet = servlet;

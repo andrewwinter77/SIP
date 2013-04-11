@@ -1,6 +1,7 @@
 package org.andrewwinter.jsr289.jboss.metadata;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.EventListener;
 import java.util.HashMap;
@@ -9,11 +10,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
-import javax.servlet.sip.SipServlet;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.jsr289.jboss.ServletContextDelegate;
 import org.andrewwinter.jsr289.jboss.SipServletService;
-import org.andrewwinter.jsr289.model.SipServletManager;
+import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.apache.catalina.core.StandardContext;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.modules.ModuleClassLoader;
@@ -24,7 +24,7 @@ import org.jboss.modules.ModuleClassLoader;
  */
 public class SipModuleInfo {
 
-    private final Map<String, SipServletManager> sipServlets;
+    private final Map<String, SipServletDelegate> sipServlets;
     
     private final List<SipApplicationInfo> sipApplicationMetadataList;
     
@@ -60,12 +60,8 @@ public class SipModuleInfo {
 //        impls.add(impl);
 //    }
     
-    public List<SipServlet> getSipServlets() {
-        final List<SipServlet> list = new ArrayList<>();
-        for (final SipServletManager ssi : sipServlets.values()) {
-            list.add(ssi.getServlet());
-        }
-        return Collections.unmodifiableList(list);
+    public Collection<SipServletDelegate> getSipServlets() {
+        return Collections.unmodifiableCollection((Collection<SipServletDelegate>) sipServlets.values());
     }
     
     /**
@@ -99,7 +95,7 @@ public class SipModuleInfo {
                 return sam.getMainServlet();
             }
         }
-        for (final SipServletManager ssi : sipServlets.values()) {
+        for (final SipServletDelegate ssi : sipServlets.values()) {
             return ssi.getName();
         }
         return null;
@@ -121,7 +117,7 @@ public class SipModuleInfo {
         listeners.add(sli);
     }
     
-    public void add(final SipServletManager ssi) {
+    public void add(final SipServletDelegate ssi) {
         sipServlets.put(ssi.getName(), ssi);
     }
     
@@ -129,11 +125,11 @@ public class SipModuleInfo {
         sipApplicationMetadataList.add(metadata);
     }
 
-    public SipServlet getServlet(final String name) {
-        return sipServlets.get(name).getServlet();
+    public SipServletDelegate getServlet(final String name) {
+        return sipServlets.get(name);
     }
     
-    public SipServlet getMainServlet() {
+    public SipServletDelegate getMainServlet() {
         return getServlet(mainServletName);
     }
     
@@ -145,9 +141,11 @@ public class SipModuleInfo {
         return servletContext;
     }
     
-    private void instantiateSipServlets(final ManagedClassInstantiator managedClassInstantiator) throws Exception {
-        for (final SipServletManager servlet : sipServlets.values()) {
-            servlet.init(servletContext, classLoader, managedClassInstantiator);
+    private void configureSipServletDelegators(final ManagedClassInstantiator managedClassInstantiator) throws Exception {
+        for (final SipServletDelegate servlet : sipServlets.values()) {
+            servlet.setClassLoader(classLoader);
+            servlet.setManagedClassInstantiator(managedClassInstantiator);
+            servlet.setServletContext(servletContext);
         }
     }
     
@@ -179,7 +177,7 @@ public class SipModuleInfo {
                 throw new DeploymentUnitProcessingException("Unable to determine main servlet name");
             }
             
-            instantiateSipServlets(managedClassInstantiator);
+            configureSipServletDelegators(managedClassInstantiator);
             
             for (final Class clazz : org.andrewwinter.jsr289.util.Util.LISTENER_CLASSES) {
                 instantiateSipListeners(clazz);

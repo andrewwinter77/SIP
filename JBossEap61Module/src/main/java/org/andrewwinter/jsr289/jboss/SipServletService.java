@@ -3,13 +3,13 @@ package org.andrewwinter.jsr289.jboss;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
 import javax.servlet.sip.ServletParseException;
-import javax.servlet.sip.SipServlet;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipServletResponse;
 import javax.servlet.sip.ar.SipApplicationRouter;
@@ -25,6 +25,7 @@ import org.andrewwinter.jsr289.api.SipSessionImpl;
 import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipRequest;
@@ -69,8 +70,8 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             appRouter.applicationDeployed(appNames);
             APP_NAME_TO_MODULE_INFO.put(appName, metadata);
             
-            final List<SipServlet> servlets = metadata.getSipServlets();
-            for (final SipServlet servlet : servlets) {
+            final Collection<SipServletDelegate> servlets = metadata.getSipServlets();
+            for (final SipServletDelegate servlet : servlets) {
                 SipServletStore.getInstance().put(appName, servlet.getServletName(), servlet);
             }
             
@@ -98,7 +99,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         return this;
     }
 
-    public void doRequest(final SipServletRequestImpl request, final SipModuleInfo moduleInfo, final SipServlet sipServlet) {
+    public void doRequest(final SipServletRequestImpl request, final SipModuleInfo moduleInfo, final SipServletDelegate sipServlet) {
 
         try {
             final ModuleClassLoader cl = moduleInfo.getClassLoader();
@@ -283,7 +284,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
                 respondWith500(sipServletRequest, "No such application " + appName);
                 LOG.error("No such application " + appName);
             } else {
-                final SipServlet servlet = moduleInfo.getMainServlet();
+                final SipServletDelegate servlet = moduleInfo.getMainServlet();
                 doRequest(sipServletRequest, moduleInfo, servlet);
             }
         } else {

@@ -16,7 +16,6 @@ import javax.servlet.sip.SipApplicationSessionAttributeListener;
 import javax.servlet.sip.SipApplicationSessionBindingListener;
 import javax.servlet.sip.SipApplicationSessionListener;
 import javax.servlet.sip.SipErrorListener;
-import javax.servlet.sip.SipServlet;
 import javax.servlet.sip.SipServletListener;
 import javax.servlet.sip.SipServletResponse;
 import javax.servlet.sip.SipSessionActivationListener;
@@ -25,6 +24,7 @@ import javax.servlet.sip.SipSessionBindingListener;
 import javax.servlet.sip.SipSessionListener;
 import javax.servlet.sip.TimerListener;
 import javax.servlet.sip.TooManyHopsException;
+import org.andrewwinter.jsr289.model.SipServletDelegate;
 
 /**
  *
@@ -51,7 +51,7 @@ public class Util {
     }
 
     public static void invokeServlet(
-            final SipServlet servlet,
+            final SipServletDelegate servlet,
             final SipServletRequestImpl request,
             SipServletResponseImpl response,
             final ServletContext context,

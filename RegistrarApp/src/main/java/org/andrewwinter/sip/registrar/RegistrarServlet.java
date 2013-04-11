@@ -31,8 +31,8 @@ public class RegistrarServlet extends SipServlet {
 
     private static final int LOCALLY_CONFIGURED_DEFAULT_EXPIRES = 3600;
 
-//    @Resource
-//    private SipFactory sf;
+    @Resource
+    private SipFactory sf;
 
     private static BindingsManager getBindingsManager() {
         try {
@@ -158,7 +158,7 @@ public class RegistrarServlet extends SipServlet {
                 // removed.
 
                 getBindingsManager().addAndRemoveBindings(
-                        canonicalizedUri, bindingsToAdd, contactAddressesToRemove, getSipFactory());
+                        canonicalizedUri, bindingsToAdd, contactAddressesToRemove, sf);
                 
                 response = createOK(request, canonicalizedUri.toString());
             }
@@ -202,8 +202,6 @@ public class RegistrarServlet extends SipServlet {
         final List<Binding> bindings = getBindingsManager().getBindings(canonicalizedUri);
         if (bindings != null && !bindings.isEmpty()) {
 
-            final SipFactory sf = getSipFactory();
-
             for (final Binding binding : bindings) {
 
                 int expires = (int) ((binding.getExpiryTime().getTime() - now + 1) / 1000);
@@ -222,10 +220,6 @@ public class RegistrarServlet extends SipServlet {
         }
 
         return ok;
-    }
-
-    private SipFactory getSipFactory() {
-        return (SipFactory) getServletContext().getAttribute(SIP_FACTORY);
     }
 
     /**
@@ -294,7 +288,7 @@ public class RegistrarServlet extends SipServlet {
             Binding binding = getBindingsManager().getBinding(
                     canonicalizedUri,
                     contact.getURI(),
-                    getSipFactory());
+                    sf);
             if (binding == null) {
 
                 // If the binding does not exist, it is tentatively

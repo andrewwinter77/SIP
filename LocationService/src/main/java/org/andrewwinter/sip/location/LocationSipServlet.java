@@ -3,19 +3,22 @@ package org.andrewwinter.sip.location;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Resource;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.sip.Proxy;
 import javax.servlet.sip.SipFactory;
 import javax.servlet.sip.SipServlet;
-import static javax.servlet.sip.SipServlet.SIP_FACTORY;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipURI;
 import javax.servlet.sip.URI;
 
 @javax.servlet.sip.annotation.SipServlet
 public class LocationSipServlet extends SipServlet {
+    
+    @Resource
+    private SipFactory sf;
     
     private static BindingsManager getBindingsManager() {
         try {
@@ -24,10 +27,6 @@ public class LocationSipServlet extends SipServlet {
         } catch (NamingException e) {
             return null;
         }
-    }
-    
-    private SipFactory getSipFactory() {
-        return (SipFactory) getServletContext().getAttribute(SIP_FACTORY);
     }
     
     private static void deleteExpiredBindings(final String publicAddress) {
@@ -49,7 +48,7 @@ public class LocationSipServlet extends SipServlet {
             final List<Binding> bindings = getBindingsManager().getBindings(canonicalizedUri);
             if (bindings != null) {
                 for (final Binding binding : bindings) {
-                    final URI destUri = getSipFactory().createURI(binding.getContactAddress());
+                    final URI destUri = sf.createURI(binding.getContactAddress());
                     destUris.add(destUri);
                 }
             }

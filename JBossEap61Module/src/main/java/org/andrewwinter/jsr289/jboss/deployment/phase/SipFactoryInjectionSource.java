@@ -1,6 +1,5 @@
 package org.andrewwinter.jsr289.jboss.deployment.phase;
 
-import javax.servlet.ServletContext;
 import javax.servlet.sip.SipFactory;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;

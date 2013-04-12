@@ -2,8 +2,6 @@ package org.andrewwinter.jsr289.jboss;
 
 import java.util.List;
 import org.andrewwinter.jsr289.jboss.deployment.phase.AnnotationProcessor;
-import org.andrewwinter.jsr289.jboss.deployment.phase.CleanUp;
-import org.andrewwinter.jsr289.jboss.deployment.phase.ConfigureModule;
 import org.andrewwinter.jsr289.jboss.deployment.phase.Dependencies;
 import org.andrewwinter.jsr289.jboss.deployment.phase.Install;
 import org.andrewwinter.jsr289.jboss.deployment.phase.PostModule;
@@ -71,19 +69,12 @@ class SubsystemAddHandler extends AbstractBoottimeAddStepHandler {
                 
                 LOG.info("Activating SIP Servlet 1.1 Subsystem");
                 
-                // Get in just ahead of the WAR deployer.
                 processorTarget.addDeploymentProcessor(Phase.STRUCTURE, Phase.STRUCTURE_WAR_DEPLOYMENT_INIT-1 /*0x2000*/, new Structure());
-                
                 processorTarget.addDeploymentProcessor(Phase.PARSE, 0x4000, new SipXmlParser());
                 processorTarget.addDeploymentProcessor(Phase.DEPENDENCIES, 0x3000, new Dependencies());
-                processorTarget.addDeploymentProcessor(Phase.CONFIGURE_MODULE, 0x200, new ConfigureModule());
-
                 processorTarget.addDeploymentProcessor(Phase.POST_MODULE, 0, new AnnotationProcessor());
-                
                 processorTarget.addDeploymentProcessor(Phase.POST_MODULE, 0x3000, new PostModule());
                 processorTarget.addDeploymentProcessor(Phase.INSTALL, 0x3000, new Install());
-                processorTarget.addDeploymentProcessor(Phase.CLEANUP, 0x400, new CleanUp());
-
             }
         }, OperationContext.Stage.RUNTIME);
     }

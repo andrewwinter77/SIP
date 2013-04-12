@@ -3,17 +3,19 @@ package org.andrewwinter.jsr289.jboss.deployment.phase;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
+import javax.servlet.sip.SipServlet;
 import javax.servlet.sip.SipURI;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.api.SipSessionsUtilImpl;
 import org.andrewwinter.jsr289.api.TimerServiceImpl;
-import org.andrewwinter.jsr289.jboss.SipServletService;
+import org.andrewwinter.jsr289.jboss.Constants;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.apache.catalina.core.StandardContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.as.web.ext.WebContextFactory;
+import org.jboss.logging.Logger;
 
 /**
  *
@@ -31,30 +33,22 @@ public class ServletContextFactory implements WebContextFactory {
 
     @Override
     public void postProcessContext(DeploymentUnit du, StandardContext sc) {
-        SipServletService service;
-        try {
-            service = Util.getSipServletService(du.getServiceRegistry());
-        } catch (DeploymentUnitProcessingException e) {
-            System.out.println("Error getting service.");
-            e.printStackTrace();
-        }
-        
         final SipModuleInfo sipMetadata = du.getAttachment(CustomAttachments.SIP_MODULE_INFO);
         final String appName = sipMetadata.getAppName();
         
         final ServletContext context = sc.getServletContext();
-        context.setAttribute("javax.servlet.sip.SipFactory", new SipFactoryImpl(
+        context.setAttribute(SipServlet.SIP_FACTORY, new SipFactoryImpl(
                 sipMetadata.getAppName(),
                 sipMetadata.getMainServletName(),
                 sipMetadata.getServletContext()));
-        context.setAttribute("javax.servlet.sip.SipSessionsUtil", new SipSessionsUtilImpl(appName));
-        context.setAttribute("javax.servlet.sip.TimerService", new TimerServiceImpl());
+        context.setAttribute(SipServlet.SIP_SESSIONS_UTIL, new SipSessionsUtilImpl(appName));
+        context.setAttribute(SipServlet.TIMER_SERVICE, new TimerServiceImpl());
         
         final List<SipURI> outboundInterfaces = new ArrayList<>();
         // TODO: Add outbound interfaces to this list
-        context.setAttribute("javax.servlet.sip.outboundInterfaces", outboundInterfaces);
+        context.setAttribute(SipServlet.OUTBOUND_INTERFACES, outboundInterfaces);
         
         // UasActiveServlet in the 289 TCK checks this is present.
-        context.setAttribute("javax.servlet.context.tempdir", du.getAttachment(CustomAttachments.TEMP_DIRECTORY));
+        context.setAttribute(ServletContext.TEMPDIR, du.getAttachment(CustomAttachments.TEMP_DIRECTORY));
     }
 }

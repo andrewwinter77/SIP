@@ -168,11 +168,16 @@ public class SipServletDelegate {
 
     public void service(final SipServletRequest request, final SipServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         instantiator.bindContexts();
-        if (servlet == null) {
-            init();
+        try {
+            if (servlet == null) {
+                init();
+            }
+            servlet.service(request, response);
+        } catch (ClassNotFoundException | ServletException | IOException | RuntimeException e) {
+            throw e;
+        } finally {
+            instantiator.unbindContexts();
         }
-        servlet.service(request, response);
-        instantiator.unbindContexts();
     }
     
     public void init() throws ClassNotFoundException, ServletException {

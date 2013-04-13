@@ -1,0 +1,668 @@
+/*
+	Comcast Customer Central CSS declarations - Global CSS styles
+*/
+
+
+/* [=] Baseline Style Reset
+------------------------------------------------ */
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+td, th {
+	text-align: left;
+}
+
+
+/* [=] Global Elements
+------------------------------------------------ */
+html {
+	background: #000 url("../../images/cmn/bg.png") repeat-x top;
+}
+
+body {
+	position: relative;
+	margin: 0 auto;
+	width: 1000px;
+	font: 12px/1.35 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #434343;
+}
+
+a {
+	color: #4b8bfa;
+}
+
+a:hover {
+	color: #000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+img {
+	margin: 0;
+	display: block;
+}
+
+.skiplink {
+	position: absolute;
+	top: 0;
+	left: -9999px;
+	width: 99%;
+	padding: 5px 0;
+	font-size: 1.3em;
+	font-weight: bold;
+	background: #fff;
+	text-align: center;
+}
+
+.skiplink:hover, .skiplink:focus, .skiplink:active {
+	left: 0;
+}
+
+
+/* [=] Header Elements
+------------------------------------------------ */
+
+
+/* [=] Footer Elements
+------------------------------------------------ */
+#voice-settings {
+	top: 830px;
+	left: 460px;
+	position: absolute;
+}
+
+#voice-settings li {
+	margin-bottom: 9px;
+}
+
+#voice-settings a {
+	top: 0;
+	left: 0;
+	width: 50px;
+	height: 16px;
+	display: block;
+	background: red;
+	opacity: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+	#call-forwarding a {
+		top: 924px;
+		left: 460px;
+	}
+
+	#call-routing a {
+		top: 949px;
+		left: 460px;
+	}
+
+	#call-screening a {
+		top: 974px;
+		left: 460px;
+	}
+
+	#do-not-disturb a {
+		top: 998px;
+		left: 460px;
+	}
+
+#overlay {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: url("../../images/cmn/ie-fallback-opacity.png");
+	background: rgba(0, 0, 0, 0.6);
+	display: none;
+}
+
+#overlay > div {
+	padding: 15px;
+	margin-left: -305px;
+	margin-top: -159px;
+	top: 50%;
+	left: 50%;
+	width: 580px;
+/*	height: 296px;*/
+	position: absolute;
+	border: 1px solid #000;
+	background: #eee;
+}
+
+#overlay .close-overlay {
+	margin: -15px -15px 15px;
+	display: block;
+	width: 610px;
+	height: 22px;
+	background: url("../../images/cmn/overlay-close.png") no-repeat;
+	text-indent: -9999px;
+}
+
+#overlay h3 {
+	font-size: 18px;
+}
+
+#overlay h5 {
+	font-size: 12px;
+}
+
+#overlay .overlay-inner {
+	margin: 5px 0 30px;
+	padding: 10px 10px 20px;
+	min-height: 140px;
+	background: #fff;
+	border: 1px solid #e3e3e3;
+}
+
+#overlay .overlay-inner li {
+	margin-bottom: 10px;
+}
+
+#overlay .overlay-inner li > div {
+	margin-top: 5px;
+	margin-left: 18px;
+}
+
+#overlay td {
+	padding: 5px 3px;
+}
+
+#overlay tfoot td {
+	padding-top: 15px;
+}
+
+#overlay input[type="reset"], #overlay input[type="submit"] {
+	cursor: pointer;
+	float: left;
+	font: bold 16.6px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	display: inline-block;
+	background: #f2f2f2;
+	color: #797979;
+	border: 1px solid #87979f;
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#overlay input[type="submit"] {
+	float: right;
+}
+
+#overlay > #wait-overlay {
+	border: 0;
+	padding: 0 15px;
+	margin-left: -304px;
+	margin-top: -137px;
+	background: url("../../images/cmn/wait-overlay.png") no-repeat;
+	z-index: 300;
+}
+
+#overlay > #wait-overlay img {
+	top: 88px;
+	left: 203px;
+	position: absolute;
+}
+
+#overlay > #saved-overlay {
+	padding: 0 15px;
+	height: 113px;
+	background: url("../../images/cmn/saved-overlay.png") no-repeat;
+	z-index: 400;
+}
+
+#overlay .overlay-inner-tabs {
+	margin: 10px 0 15px;
+	min-height: 340px;
+}
+
+#overlay > .call-routing {
+	margin-top: -197px;
+	min-height: 457px;
+}
+
+#overlay .overlay-inner-tabs > ul {
+	position: relative;
+	border-left: 1px solid #e4e4e4;
+}
+
+#overlay .overlay-inner-tabs > ul > li {
+	margin: 0 -2px 0 -1px;
+	display: inline-block;
+	background: #e4e4e4;
+	border-top: 1px solid #e4e4e4;
+}
+
+#overlay .overlay-inner-tabs > ul > li > a {
+	font-size: 14px;
+	color: #b6b6b6;
+	padding: 0 20px;
+	height: 30px;
+	line-height: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	display: block;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div {
+	padding: 10px;
+	top: 30px;
+	left: -2px;
+	background: #fff;
+	border: 1px solid #e4e4e4;
+	border-top: 0;
+	position: absolute;
+	display: none;
+	width: 560px;
+	min-height: 290px;
+}
+
+#overlay .overlay-inner-tabs > ul > li.active > a {
+	color: #7f7f7f;
+	background: #fff;
+}
+
+#overlay .overlay-inner-tabs > ul > li.active > div {
+	display: block;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li {
+	width: 120px;
+	display: block;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > a {
+	padding: 0 10px;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	color: #7f7f7f;
+	text-decoration: none;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div {
+	top: 0px;
+	left: 160px;
+	width: 410px;
+	position: absolute;
+	display: none;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div li {
+	display: inline;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div h5 {
+	margin-top: 30px;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div label {
+	display: block;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div p label {
+	display: inline;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li.active > a {
+	background: #e8f5e7;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li.active > div {
+	display: block;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div {
+	top: 0px;
+	left: 140px;
+	width: 410px;
+	position: absolute;
+	display: none;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div > ul.contacts {
+	margin-top: 10px;
+	width: 120px;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div > ul.contacts > li {
+	display: block;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div > ul.contacts > li > a {
+	padding: 0 10px;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	color: #7f7f7f;
+	text-decoration: none;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div > ul.contacts > li.active > a {
+	background: #ffe5ff;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div > ul.contacts > li > div {
+	display: none;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div > ul.contacts > li.active > div {
+	top: 16px;
+	left: 160px;
+	position: absolute;
+	display: block;
+}
+
+#overlay .overlay-inner-tabs > ul > li > div > ol > li > div > ul.contacts h5 {
+	margin-top: 15px;
+}
+
+#overlay .overlay-inner-tabs ul.contacts span.radio {
+	display: none;
+}
+
+#overlay.editable .overlay-inner-tabs ul.contacts .screening-options label {
+	display: block !important;
+}
+
+#overlay .overlay-inner-tabs ul.contacts .screening-options label:last-child {
+	display: none;
+}
+
+#overlay .overlay-inner-tabs ul.contacts .screening-options.on label:first-child {
+	display: none;
+}
+
+#overlay .overlay-inner-tabs ul.contacts .screening-options.on label:last-child {
+	display: block;
+}
+
+#overlay .overlay-inner-tabs ul.contacts span.checkbox {
+	margin-right: 6px;
+	display: inline-block;
+	width: 11px;
+	height: 10px;
+	text-indent: -9999px;
+	background: url("../../images/cmn/checkbox-unchecked.png");
+}
+
+#overlay .overlay-inner-tabs ul.contacts span.checkbox.checked {
+	background: url("../../images/cmn/checkbox.png");
+}
+
+#overlay .overlay-inner-tabs ul.contacts p label {
+	margin-right: 15px;
+}
+
+#overlay .overlay-inner-tabs .record-options {
+	display: none;
+}
+
+#overlay .overlay-inner-tabs .edit-contact {
+	margin-left: 3px;
+	font-size: 11px;
+	font-weight: normal;
+	color: #fff;
+	background: #b7b7b7;
+	float: right;
+	display: inline-block;
+	width: 50px;
+	height: 16px;
+	line-height: 16px;
+	text-align: center;
+	text-decoration: none;
+
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	border-radius: 8px;
+}
+
+#overlay .overlay-inner-tabs ul.contacts span.checkbox * {
+	display: none;
+}
+
+#overlay .overlay-inner-tabs ul.contacts span.non-editable select {
+	display: none;
+}
+
+#overlay .overlay-inner-tabs ul.contacts span.non-editable span {
+	font-weight: bold;
+	color: #222;
+}
+
+
+
+
+#overlay.editable .overlay-inner-tabs ul.contacts span.radio {
+	display: inline-block;
+}
+
+#overlay.editable .overlay-inner-tabs ul.contacts span.non-editable span {
+	display: none;
+}
+
+#overlay.editable .overlay-inner-tabs ul.contacts span.checkbox {
+	margin-right: 0;
+	display: inline-block;
+	width: auto;
+	height: auto;
+	text-indent: 0;
+	background: none;
+}
+
+#overlay.editable .overlay-inner-tabs ul.contacts span.checkbox input {
+	display: inline-block;
+}
+
+#overlay.editable .overlay-inner-tabs ul.contacts span.non-editable select {
+	display: inline-block;
+}
+
+#overlay.editable form > fieldset > input {
+	opacity: 0.5;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	cursor: default;
+}
+
+#overlay .ringer-options p {
+	display: none;
+}
+
+#voice-settings-status {
+	top: 884px;
+	left: 399px;
+	position: absolute;
+}
+
+#voice-settings-status li {
+	display: block;
+	margin-bottom: 14px;
+}
+
+#voice-settings-status a {
+	width: 26px;
+	height: 11px;
+	display: block;
+}
+
+#voice-settings-status .on a {
+	background: url("../../images/cmn/on.png") no-repeat;
+}
+
+/* call blocking */
+
+.editable-phone {
+	height: 24px;
+}
+
+.editable-phone input {
+	border: 0;
+	height: 23px;
+	width: 92px;
+	line-height: 23px;
+	padding: 0 5px;
+	font-size: 10px;
+	vertical-align: middle;
+}
+
+.editable-phone.focus input,
+.editable-phone.empty input {
+	background: url(../../images/cmn/bg-phone.png) no-repeat;
+}
+
+.editable-phone a {
+	visibility: hidden;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	text-align: center;
+	line-height: 20px;
+	text-decoration: none;
+	background: url(../../images/cmn/bg-phone-add.png) 0 1px no-repeat;
+	color: #000;
+	font-size: 1.5em;
+	margin-top: 1px;
+	position: relative;
+	top: 1px;
+}
+
+.editable-phone.focus a,
+.editable-phone.empty a {
+	visibility: visible;
+}
+
+.call-blocking .blocked-numbers {
+	display: inline-block;
+	vertical-align: top;
+	width: 132px;
+	margin-left: 8px;
+}
+
+/* single-number-service */
+
+.single-number-service p {
+	margin: 0 0 0 1em;
+}
+
+#overlay .single-number-service {
+/*	height: 316px;*/
+}
+
+#overlay .single-number-service .overlay-inner {
+	padding-bottom: 10px;
+}
+
+/* call routing */
+
+#overlay > .call-routing {
+	margin-top: -240px;
+	min-height: 480px;
+}
+
+.call-routing table {
+	width: 100%;
+}
+
+.call-routing th {
+	padding-bottom: 20px;
+}
+
+.call-routing .alt {
+	background: #e8f5e7;
+}
+
+.call-routing .edit-btn {
+	display: block;
+	width: 52px;
+	height: 20px;
+	background: url(../../images/cmn/edit-button.png) no-repeat;
+	margin: 4px 6px;
+}
+
+.call-routing .edit-screen {
+	display: none;
+}
+
+.call-routing .edit-screen label {
+	display: block;
+}
+
+.call-routing .edit-screen .hint {
+	display: block;
+	font-size: 10px;
+	margin: 0 0 10px 20px;
+}
+
+#overlay .call-routing .audio li {
+	margin: 0;
+	line-height: 1;
+}
+
+.call-routing .audio a {
+	font-size: 10px;
+	text-decoration: none;
+}
+
+.edited { display: none; }
+
+hr.clearfix {
+	visibility: hidden;
+	border: 0;
+	clear: both;
+	height: 0;
+}

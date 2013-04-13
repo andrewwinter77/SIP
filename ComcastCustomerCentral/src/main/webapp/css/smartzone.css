@@ -1,0 +1,122 @@
+/*
+	Comcast Customer Central CSS declarations - "home Page" CSS styles
+*/
+
+
+/* [=] Global Elements
+------------------------------------------------ */
+html {
+	background: #fff;
+}
+
+body {
+	margin: 0;
+	width: 1280px;
+}
+
+.smartzone-tooltip {
+	position: absolute;
+	display: none;
+	cursor: pointer;
+}
+
+.smartzone-tooltip.one {
+	top: 172px;
+	left: 278px;
+}
+
+
+.smartzone-tooltip.two {
+	top: 312px;
+	left: 140px;
+}
+
+#smartzone-overlay {
+	top: 210px;
+	left: 530px;
+	position: absolute;
+	color: #169521;
+	font-style: italic;
+	display: none;
+	cursor: pointer;
+}
+
+#smartzone-overlay * {
+	position: absolute;
+}
+
+#smartzone-overlay div {
+	width: 180px;
+	top: 120px;
+	left: 29px;
+	position: absolute;
+	z-index: 100;
+}
+
+.tooltip-link {
+	position: absolute;
+	width: 240px;
+	height: 20px;
+	top: 150px;
+	left: 270px;
+	background: red;
+	opacity: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+#message {
+	background: #fff;
+	position: absolute;
+	left: 205px;
+	top: 214px;
+}
+
+#message .tooltip-link {
+	position: relative;
+	width: auto;
+	height: auto;
+	top: auto;
+	left: auto;
+	background: transparent;
+	opacity: 1;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
+}
+
+#smartzone-select-overlay {
+	display: none;
+	width: 220px;
+	top: 210px;
+	left: 530px;
+	position: absolute;
+	z-index: 100;
+}
+
+#smartzone-select-overlay .radios {
+	position: absolute;
+	top: 58px;
+	left: 30px;
+}
+
+#smartzone-select-overlay label {
+	display: block;
+	margin-bottom: 2px;
+}
+/*
+#smartzone-select-overlay label span {
+	display: inline-block;
+	width: 64px;
+}*/
+
+#smartzone-call-btn {
+	position: absolute;
+	top: 162px;
+	left: 27px;
+	cursor: pointer;
+}
+
+#smartzone-cancel-btn {
+	position: absolute;
+	text-align: center;
+	top: 206px;
+	width: 100%;
+}

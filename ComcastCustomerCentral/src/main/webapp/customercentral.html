@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		
+		<!-- Meta Elements Required to pass WAI Priority 2 -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
+		<!-- Treat IE8 as IE8, Fall back to Google Chrome Frame -->
+		<meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1" />
+		
+		<title>Comcast Customer Central - Customer Central</title>
+		
+		<!-- Meta Elements Required to pass WAI Priority 2 -->
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		
+		<!-- Start [CSS Includes] -->
+		<!-- Global CSS -->
+		<link rel="stylesheet" href="css/cmn/global.css" type="text/css" media="all" />
+
+		
+		<!-- IE Specific Code -->
+		<!--[if IE]><link rel="stylesheet" href="/css/cmn/ie.css" type="text/css" media="all" /><![endif]-->
+		<!--[if IE 6]><link rel="stylesheet" href="/css/cmn/ie6.css" type="text/css" media="all" /><![endif]-->
+		<!-- End [CSS Includes] -->
+		
+	</head>
+	<body class="customer central">
+		
+		<!-- Start [Bootstrap] -->
+		<!-- Allows for JavaScript to exist at the bottom of the page, while still including inline JavaScript -->
+		<script src="js/cmn/bootstrap.js" type="text/javascript"></script>
+		<script src="js/cmn/lib/LAB.js" type="text/javascript"></script>
+		<!-- End [Bootstrap] -->
+		
+		<!-- Start [#wrapper] -->
+		<div id="wrapper">
+			<!-- Start [#header] -->
+			<div id="header">
+	
+				<img src="images/cmn/hdr_top.png" width="1000" height="22" alt="" />
+				<img src="images/cmn/hdr_bottom.png" width="1000" height="137" alt="" />
+				
+			</div>
+			<!-- End [#header] -->
+
+			<!-- Start [#content] -->
+			<div id="content">
+				<img src="images/cmn/content.png" width="1000" height="1059" alt="" />
+				
+				<ul id="voice-settings-status">
+					<li id="call-routing-status"><a href="#"></a></li>
+					<li id="call-screening-status"><a href="#"></a></li>
+					<li id="call-blocking-status"><a href="#"></a></li>
+					<li id="do-not-disturb-status"><a href="#"></a></li>
+				</ul>
+			</div>
+			<!-- End [#content] -->
+			
+			<!-- Start [#footer] -->
+			<div id="footer">
+				
+				<ul id="voice-settings">
+										<li id="single-number-service"><a href="#single-number-service"></a></li>
+					<li><a href="#"></a></li>
+					<li id="call-routing"><a href="#call-routing">Edit</a></li>
+					<li id="call-screening"><a href="#call-screening">Edit</a></li>
+					<li id="call-blocking"><a href="#call-blocking">Edit</a></li>
+					<li id="do-not-disturb"><a href="#do-not-disturb">Edit</a></li>
+				</ul>
+				
+				<div id="overlay">
+					
+										
+					<div class="single-number-service">
+						<form action="#" method="get">
+							<fieldset>
+								<a href="#" class="close-overlay">Close</a>
+								
+								<h3>Single Number Service</h3>
+																		
+
+								<h5>Send calls to the following phones:</h5>
+								
+								<div class="overlay-inner">
+									<ul>
+										<li><label><input type="checkbox" name="sns[home]" value="1" checked="checked" /> Home (123) 456-7890</label></li>
+										<li><label><input type="checkbox" name="sns[soft]" value="1" checked="checked" /> Softphone (123) 456-7890</label></li>
+										<li><input type="checkbox" name="sns[2]" value="1" /> 
+											<select>
+												<option>Work</option>
+												<option>Custom 1</option>
+												<option>Custom 2</option>
+											</select> 
+											<span class="editable-phone"><input type="text" name="sns[2][num]" value="(123) 456-7890" /></span>
+										</li>
+										<li><input type="checkbox" name="sns[3]" value="1" checked="checked" /> 
+											<select>
+												<option>Mobile 1</option>
+												<option>Custom 1</option>
+												<option>Custom 2</option>
+											</select> 
+											<span class="editable-phone"><input type="text" name="sns[3][num]" value="(123) 456-7890" /></span></li>
+										<li><input type="checkbox" name="sns[4]" value="1" /> 
+											<select>
+												<option>Mobile 2</option>
+												<option>Custom 1</option>
+												<option>Custom 2</option>
+											</select> 
+											<span class="editable-phone"><input type="text" name="sns[4][num]" value="(123) 456-7890" /></span></li>
+									</ul>
+									
+									<p><a href="#">Add phone</a></p>
+								</div>
+								
+								<input type="reset" value="Cancel" />
+								<input type="submit" value="Save" />
+								<!-- <hr class="clearfix" /> -->
+							</fieldset>
+						</form>
+					</div>
+					
+					<div class="call-routing">
+						<form action="#" method="get">
+							<fieldset>
+								<a href="#" class="close-overlay">Close</a>
+								
+								<h3>Call Routing</h3>
+
+								<h5>Manage Call Routing</h5>
+								
+								<div class="overlay-inner">
+									<div id="routing-home">
+										<table border="0" cellspacing="0" cellpadding="5">
+											<tr>
+												<th width="120">Group</th>
+												<th>Forwards to</th>
+												<th>Greeting</th>
+												<th>Call Screening</th>
+											</tr>
+											<tr>
+												<td>Family <a href="#routing-family" class="edit-btn"></a></td>
+												<td>
+													<div class="not-edited">Default</div>
+													<div class="edited">
+														Custom:<br />
+														Home<br />
+														Softphone<br />
+														Mobile 1<br />
+														Work<br />
+														Mobile 2
+													</div>
+												</td>
+												<td><div class="not-edited">Default</div>
+													<div class="edited">Family</div></td>
+												<td>Off</td>
+											</tr>
+											<tr class="alt">
+												<td>Friends <a href="#" class="edit-btn"></a></td>
+												<td>Default</td>
+												<td>Default</td>
+												<td>Off</td>
+											</tr>
+											<tr>
+												<td>Coworkers <a href="#" class="edit-btn"></a></td>
+												<td>
+													Custom:<br />
+													Work<br />
+													Mobile 2
+												</td>
+												<td>Work</td>
+												<td>Off</td>
+											</tr>
+											<tr class="alt">
+												<td>Professional <a href="#" class="edit-btn"></a></td>
+												<td>
+													Custom:<br />
+													Work<br />
+													Mobile 2
+												</td>
+												<td>Work</td>
+												<td>Off</td>
+											</tr>
+											<tr>
+												<td>Fishing Buddies <a href="#" class="edit-btn"></a></td>
+												<td>Default</td>
+												<td>Default</td>
+												<td>Off</td>
+											</tr>
+										</table>
+									</div>
+									<div id="routing-family" class="edit-screen">
+										<table border="0" cellspacing="0" cellpadding="5">
+											<tr>
+												<th width="120">Group</th>
+												<th>Forwards to</th>
+												<th>Greeting</th>
+												<th>Call Screening</th>
+											</tr>
+											<tr>
+												<td>Family</td>
+												<td>
+													<label>
+														<input type="radio" name="routing[family][forwards]" value="0" checked="checked" class="default-radio" />
+														Default<br />
+														<span class="hint">(Home, Softphone, Mobile 1)</span>
+													</label>
+													
+													<label>
+														<input type="radio" name="routing[family][forwards]" value="1" class="custom-radio" />
+														Custom
+													</label>
+													
+													<label>
+														<input type="checkbox" name="routing[family][custom]" value="0" disabled="disabled" />
+														Home
+													</label>
+													
+													<label>
+														<input type="checkbox" name="routing[family][custom]" value="1" disabled="disabled" />
+														Softphone
+													</label>
+													
+													<label>
+														<input type="checkbox" name="routing[family][custom]" value="2" disabled="disabled" />
+														Mobile 1
+													</label>
+													
+													<label>
+														<input type="checkbox" name="routing[family][custom]" value="3" disabled="disabled" />
+														Work
+													</label>
+													
+													<label>
+														<input type="checkbox" name="routing[family][custom]" value="4" disabled="disabled" />
+														Mobile 2
+													</label>
+												</td>
+												<td>
+													<select>
+														<option selected="selected">Default</option>
+														<option>Family</option>
+														<option>Work</option>
+													</select>
+													<br />
+													<ul class="audio">
+														<li><a href="#">Play</a></li>
+														<li><a href="#">Re-record</a></li>
+														<li><a href="#">Rename</a></li>
+														<li><a href="#">Delete</a></li>
+														<li><a href="#">Record New</a></li>
+													</ul>
+												</td>
+												<td>
+													<label>
+														<input type="radio" name="routing[family][screening]" value="0" checked="checked" />
+														Off
+													</label>
+													<label>
+														<input type="radio" name="routing[family][screening]" value="1" />
+														On
+													</label>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								
+								<input type="reset" value="Cancel" />
+								<input type="submit" value="Save" />
+							</fieldset>
+						</form>
+					</div>
+					
+					<div class="call-screening">
+						<form action="#" method="get">
+							<fieldset>
+								<a href="#" class="close-overlay">Close</a>
+								
+								<h3>Edit Call Screening</h3>
+																		
+
+								<h5>Screen all calls and have them go directly to voicemail.</h5>
+								
+								<div class="overlay-inner">
+									<ul>
+										<li>
+											<label><input class="on" type="radio" name="screening[]" value="1" /> On (Caller is announced and you may listen in as they leave you a voicemail).</label>
+											<div>
+												<label><input type="checkbox" /> Ask unknown callers to say their name.</label>
+											</div>
+										</li>
+										<li>
+											<label><input class="off" type="radio" name="screening[]" value="0" checked="checked" /> Off (Callers are connected directly to your phone).</label>
+										</li>
+									</ul>
+								</div>
+								
+								<input type="reset" value="Cancel" />
+								<input type="submit" value="Save" />
+							</fieldset>
+						</form>
+					</div>
+					
+					<div class="call-blocking">
+						<form action="#" method="get">
+							<fieldset>
+								<a href="#" class="close-overlay">Close</a>
+								
+								<h3>Edit Call Blocking</h3>
+								
+								<h5>Manage blocked calls.</h5>
+								
+								<div class="overlay-inner">
+									<h5>Ignore calls from Blocked Callers List below.</h5>
+									<ul>
+										<li>
+											<label><input class="on" type="radio" name="screening[]" value="1" /> On (Blocked Callers will receive a message that your number has been disconnected).</label>
+										</li>
+										<li>
+											<label><input class="off" type="radio" name="screening[]" value="0" checked="checked" /> Off (Blocked Callers will be forwarded to your phones).</label>
+										</li>
+									</ul>
+									
+									<h5>Blocked Callers List</h5>
+									
+									<ul class="blocked-numbers">
+										<li class="editable-phone empty">
+											<input type="text" name="blocked[]" value="add number to list" />
+											<a href="#">+</a>
+										</li>
+									</ul>
+								</div>
+								
+								<input type="reset" value="Cancel" />
+								<input type="submit" value="Save" />
+							</fieldset>
+						</form>
+					</div>
+					
+					<div class="do-not-disturb">
+						<form action="#" method="get">
+							<fieldset>
+								<a href="#" class="close-overlay">Close</a>
+								
+								<h3>Edit Do Not Disturb</h3>
+																		
+
+								<h5>Sends calls directly to voicemail.</h5>
+								
+								<div class="overlay-inner">
+									<ul>
+										<li>
+											<label><input class="on" type="checkbox" /> Enable Do Not Disturb</label>
+											<div>
+												<span>
+													<input type="checkbox" /> Ends in <input type="text" size="1" /> 
+													<select>
+														<option value="Hours" selected="selected">Hours</option>
+														<option value="Days">Days</option>
+														<option value="Weeks">Weeks</option>
+													</select>
+												</span>
+											</div>
+										</li>
+									</ul>
+								</div>
+								
+								<input type="reset" value="Cancel" />
+								<input type="submit" value="Save" />
+							</fieldset>
+						</form>
+					</div>
+					
+					<div id="wait-overlay">
+						<img src="images/cmn/ajaxload.gif" alt="" />
+					</div>
+					<div id="saved-overlay"></div>
+				</div>
+				
+			</div>
+			<!-- End [#footer] -->
+			
+		</div>
+		<!-- End [#wrapper] -->
+		
+		<!-- Start [JavaScript Includes] -->
+		
+		<script type="text/javascript">
+			// Global Includes
+			// Loaded using LABjs
+			$LAB
+			
+			// jQuery
+			.script("js/cmn/lib/jquery-latest.js").wait()
+			
+			// Global JS
+			.script("js/cmn/global.js").wait()
+			
+			// Page-level Includes				
+//			.script("js/foo.js")
+			
+			// Fire when everything is loaded
+			.wait(function() {
+				CCC.utils.init();
+			});
+		</script>
+
+	</body>
+</html>

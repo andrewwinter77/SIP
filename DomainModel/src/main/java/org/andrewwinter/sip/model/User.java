@@ -1,6 +1,7 @@
 package org.andrewwinter.sip.model;
 
 import java.io.Serializable;
+import java.util.Locale;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
  */
 @Table(name="users")
 @NamedQueries(value = {
-    @NamedQuery(name="User.findUser", query="SELECT u FROM User u WHERE u.email=:email"), // TODO: AND pbx.domainName = ...
+    @NamedQuery(name="User.findUserByEmail", query="SELECT u FROM User u WHERE u.email=:email"), // TODO: AND pbx.domainName = ...
 //    @NamedQuery(name="User.deleteBindings", query="DELETE FROM User u WHERE b.publicAddress=:publicAddress"),
 //    @NamedQuery(name="User.deleteBinding", query="DELETE FROM User u WHERE b.publicAddress=:publicAddress AND b.contactAddress=:contactAddress"),
 //    @NamedQuery(name="User.deleteExpiredBindings", query="DELETE FROM User u WHERE b.expiryTime<:expiryTime"),
@@ -64,7 +65,7 @@ public class User implements Serializable {
         this.pbx = pbx;
         this.forename = forename;
         this.surname = surname;
-        this.email = email;
+        this.email = email.toLowerCase(Locale.US);
         this.password = password;
         this.adminUser = adminUser;
 //        this.userPart = userPart;

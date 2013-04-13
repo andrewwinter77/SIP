@@ -1,0 +1,15 @@
+/* 
+    Document   : webapp
+    Created on : Apr 13, 2013, 10:13:55 PM
+    Author     : andrew
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.hidden {
+    display: none;
+}

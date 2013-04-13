@@ -113,7 +113,8 @@
         <module>DefaultAppRouter</module>
         <module>RegistrarApp</module>
         <module>LocationService</module>
-        <module>LocationServiceCommon</module>
+	<module>LocationServiceCommon</module>
         <module>Sdp</module>
+        <module>ComcastCustomerCentral</module>
   </modules>
 </project>

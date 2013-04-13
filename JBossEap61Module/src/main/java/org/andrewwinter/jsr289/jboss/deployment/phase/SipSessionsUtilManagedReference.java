@@ -3,14 +3,18 @@ package org.andrewwinter.jsr289.jboss.deployment.phase;
 import javax.servlet.sip.SipApplicationSession;
 import javax.servlet.sip.SipSession;
 import javax.servlet.sip.SipSessionsUtil;
+import org.andrewwinter.jsr289.jboss.Constants;
 import org.jboss.as.naming.ManagedReference;
 import org.jboss.as.server.deployment.DeploymentUnit;
+import org.jboss.logging.Logger;
 
 /**
  *
  * @author andrew
  */
 public class SipSessionsUtilManagedReference implements ManagedReference {
+
+    private static final Logger LOG = Logger.getLogger(Constants.MODULE_NAME);
 
     private final DeploymentUnit du;
     
@@ -24,7 +28,7 @@ public class SipSessionsUtilManagedReference implements ManagedReference {
 
     @Override
     public Object getInstance() {
-        System.out.println("+++++++++++++++++++++++++++++++++ returning SipSessionsUtil instance");
+        LOG.info("+++++++++++++++++++++++++++++++++ returning SipSessionsUtil instance");
         return new SipSessionsUtil() {
 
             @Override
@@ -41,11 +45,6 @@ public class SipSessionsUtilManagedReference implements ManagedReference {
             public SipSession getCorrespondingSipSession(SipSession ss, String string) {
                 throw new UnsupportedOperationException("Not supported yet.");
             }
-
-            
         };
-        
-        
-//        return (SipFactory) du.getAttachment(CustomAttachments.SIP_FACTORY);
     }
 }

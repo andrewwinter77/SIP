@@ -160,7 +160,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             SipServletResponse response = request.createResponse(SipServletResponse.SC_SERVER_INTERNAL_ERROR, reasonPhrase);
             response.send();
         } catch (final Exception e) {
-            System.out.println(e);
+            LOG.debug("Exception generating/sending 500.", e);
         }
     }
     
@@ -307,7 +307,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             final Dialog dialog = isr.getServerTransaction().getDialog();
             if (dialog == null) {
                 // TODO: Why don't we have a dialog? Maybe we forgot to set one in this scenario.
-                System.out.println("_____________________________________________ subsequent request but we don't have a dialog?");
+                LOG.error("_____________________________________________ subsequent request but we don't have a dialog?");
             } else {
                 final SipSessionImpl session = SipSessionStore.getInstance().getUsingDialogId(dialog.getId());
                 if (session == null) {
@@ -316,7 +316,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
                     // TODO: In such a case, if a subsequent request or response belonging to the corresponding dialog is received, the container is free to handle it in either of the following ways
                     
                     
-                    System.out.println("_____________________________________________ subsequent request but we don't have a session?");
+                    LOG.error("_____________________________________________ subsequent request but we don't have a session?");
                 } else {
                     session.doRequest(isr);
                 }
@@ -334,7 +334,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         try {
             serverTransport.stopListening();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("Error while stopping listening for SIP traffic.", e);
         }
         
         if (appRouter != null) {

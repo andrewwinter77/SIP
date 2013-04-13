@@ -12,6 +12,7 @@ import javax.servlet.sip.annotation.SipApplication;
 import javax.servlet.sip.annotation.SipApplicationKey;
 import javax.servlet.sip.annotation.SipListener;
 import javax.servlet.sip.annotation.SipServlet;
+import org.andrewwinter.jsr289.jboss.Constants;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipApplicationInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
@@ -34,6 +35,7 @@ import org.jboss.jandex.DotName;
 import org.jboss.jandex.FieldInfo;
 import org.jboss.jandex.Index;
 import org.jboss.jandex.MethodInfo;
+import org.jboss.logging.Logger;
 
 /**
  *
@@ -52,6 +54,11 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
     private static final DotName TIMER_SERVICE_TYPE_NAME = DotName.createSimple(TimerService.class.getName());
     
     private static final Set<DotName> RESOURCE_INJECTED_TYPES = new HashSet<>();
+
+    /**
+     * Logger.
+     */
+    private static final Logger LOG = Logger.getLogger(Constants.MODULE_NAME);
 
     static {
         RESOURCE_INJECTED_TYPES.add(SIP_FACTORY_TYPE_NAME);
@@ -216,7 +223,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
             if (annotation.target() instanceof MethodInfo) {
                 final MethodInfo info = (MethodInfo) annotation.target();
 
-                System.out.println("___________________________TODO____________ process @SipApplicationKey");
+                LOG.error("___________________________TODO____________ process @SipApplicationKey");
 
 //                final String packageName = info.getClass().getPackage().getName().toString();
 //
@@ -233,8 +240,6 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
 //                metadata.setSmallIcon(annotationValueAsString(annotation, "smallIcon"));
 //                
 //                sipMetadata.add(metadata);
-
-//                System.out.println(metadata);
 
             } else {
                 throw new DeploymentUnitProcessingException("@SipApplicationKey appeared on something other than a method.");
@@ -253,7 +258,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
             if (annotation.target() instanceof ClassInfo) {
                 final ClassInfo info = (ClassInfo) annotation.target();
 
-                System.out.println("___________________________TODO____________ process @SipListener");
+                LOG.error("___________________________TODO____________ process @SipListener");
 
                 for (final DotName iface : info.interfaces()) {
 
@@ -281,21 +286,4 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
             }
         }
     }
-    //    private void processAnnotation(final Index index, final String annotationClassName) {
-//
-//        final DotName dotName = DotName.createSimple(annotationClassName);
-//        final List<AnnotationInstance> annotations = index.getAnnotations(dotName);
-//
-//        for (final AnnotationInstance annotation : annotations) {
-//
-////ClassInfo
-////FieldInfo
-////MethodInfo
-////MethodParameterInfo            
-//
-////            annotation.target().
-//
-//            System.out.println("============ annotation: " + annotationClassName + " " + annotation.target());
-//        }
-//    }
 }

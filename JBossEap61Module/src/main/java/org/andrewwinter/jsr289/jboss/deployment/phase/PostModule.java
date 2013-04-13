@@ -14,6 +14,7 @@ import org.jboss.as.server.deployment.DeploymentUnit;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.as.web.deployment.WarMetaData;
 import org.jboss.as.web.ext.WebContextFactory;
+import org.jboss.logging.Logger;
 import org.jboss.metadata.web.jboss.JBossWebMetaData;
 import org.jboss.metadata.web.jboss.ValveMetaData;
 
@@ -28,15 +29,17 @@ import org.jboss.metadata.web.jboss.ValveMetaData;
  */
 public class PostModule extends AbstractDeploymentUnitProcessor {
 
+    private static final Logger LOG = Logger.getLogger(Constants.MODULE_NAME);
+
     private void addConvergedHttpSessionValve(final DeploymentPhaseContext dpc) {
         WarMetaData wmd = dpc.getDeploymentUnit().getAttachment(WarMetaData.ATTACHMENT_KEY);
         if (wmd == null) {
-            System.out.println("=============== null WAR metadata");
+            LOG.error("=============== null WAR metadata");
         } else {
 
             JBossWebMetaData jwmd = wmd.getMergedJBossWebMetaData();
             if (jwmd == null) {
-                System.out.println("=============== null JBossWebMetaData ");
+                LOG.error("=============== null JBossWebMetaData ");
             } else {
                 List<ValveMetaData> valves = jwmd.getValves();
 

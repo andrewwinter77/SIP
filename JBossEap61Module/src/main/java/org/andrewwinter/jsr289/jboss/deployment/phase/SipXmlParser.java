@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import org.andrewwinter.jsr289.jboss.Constants;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipApplicationInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
@@ -18,6 +19,7 @@ import org.jboss.as.server.deployment.DeploymentPhaseContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.as.server.deployment.module.ResourceRoot;
+import org.jboss.logging.Logger;
 import org.jboss.vfs.VirtualFile;
 import org.jcp.xml.ns.sipservlet.SipAppType;
 
@@ -28,6 +30,8 @@ import org.jcp.xml.ns.sipservlet.SipAppType;
  * @author andrew
  */
 public class SipXmlParser extends AbstractDeploymentUnitProcessor {
+
+    private static final Logger LOG = Logger.getLogger(Constants.MODULE_NAME);
 
     @Override
     public void deploy(final DeploymentPhaseContext context) throws DeploymentUnitProcessingException {
@@ -81,8 +85,7 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
             if ("app-name".equalsIgnoreCase(localPart)) {
                 sipAppInfo.setAppName(type.getValue());
             } else {
-                
-                System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unknown String type in sip.xml: " + element.getName().getLocalPart() + ", id: " + type.getId() + ", value: " + type.getValue());
+                throw new DeploymentUnitProcessingException("Unknown String type in sip.xml: " + element.getName().getLocalPart() + ", id: " + type.getId() + ", value: " + type.getValue());
             }
             
             
@@ -98,7 +101,7 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
                         type.getParamValue().getValue());
                 
             } else {
-                System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unhandled attribute " + element.getName().getLocalPart() + ", id: " + type.getId() + ", param: " + type.getParamName().getValue() + ", value: " + type.getParamValue().getValue());
+                throw new DeploymentUnitProcessingException("Unhandled attribute " + element.getName().getLocalPart() + ", id: " + type.getId() + ", param: " + type.getParamName().getValue() + ", value: " + type.getParamValue().getValue());
             }
             
         } else if (element.getDeclaredType().equals(ServletType.class)) {
@@ -106,7 +109,7 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
             sipDeploymentInfo.add(processServletType(type));
             
         } else {
-            System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Unknown type " + element.getDeclaredType().getName());
+            throw new DeploymentUnitProcessingException("Unknown type " + element.getDeclaredType().getName());
         }
     }
     
@@ -126,7 +129,8 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
                 type.getLoadOnStartup(),
                 null, // Application name not set in servlet declaration in deployment descriptor.
                 ""); // TODO: Do something with description
-        
+
+        LOG.error("TODO: Handle init-params");
         // TODO: Handle init-params
         
         return ssi;

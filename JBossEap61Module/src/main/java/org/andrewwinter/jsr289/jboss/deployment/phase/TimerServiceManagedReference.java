@@ -4,14 +4,18 @@ import java.io.Serializable;
 import javax.servlet.sip.ServletTimer;
 import javax.servlet.sip.SipApplicationSession;
 import javax.servlet.sip.TimerService;
+import org.andrewwinter.jsr289.jboss.Constants;
 import org.jboss.as.naming.ManagedReference;
 import org.jboss.as.server.deployment.DeploymentUnit;
+import org.jboss.logging.Logger;
 
 /**
  *
  * @author andrew
  */
 public class TimerServiceManagedReference implements ManagedReference {
+
+    private static final Logger LOG = Logger.getLogger(Constants.MODULE_NAME);
 
     private final DeploymentUnit du;
     
@@ -25,7 +29,7 @@ public class TimerServiceManagedReference implements ManagedReference {
 
     @Override
     public Object getInstance() {
-        System.out.println("+++++++++++++++++++++++++++++++++ returning TimerService instance");
+        LOG.info("+++++++++++++++++++++++++++++++++ returning TimerService instance");
         return new TimerService() {
 
             @Override
@@ -38,8 +42,5 @@ public class TimerServiceManagedReference implements ManagedReference {
                 throw new UnsupportedOperationException("Not supported yet.");
             }
         };
-        
-        
-//        return (SipFactory) du.getAttachment(CustomAttachments.SIP_FACTORY);
     }
 }

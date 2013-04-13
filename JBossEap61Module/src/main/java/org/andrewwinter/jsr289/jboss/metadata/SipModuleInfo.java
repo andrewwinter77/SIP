@@ -10,12 +10,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
+import org.andrewwinter.jsr289.jboss.Constants;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.jsr289.jboss.ServletContextDelegate;
 import org.andrewwinter.jsr289.jboss.SipServletService;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.apache.catalina.core.StandardContext;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
+import org.jboss.logging.Logger;
 import org.jboss.modules.ModuleClassLoader;
 
 /**
@@ -23,6 +25,8 @@ import org.jboss.modules.ModuleClassLoader;
  * @author andrew
  */
 public class SipModuleInfo {
+
+    private static final Logger LOG = Logger.getLogger(Constants.MODULE_NAME);
 
     private final Map<String, SipServletDelegate> sipServlets;
     
@@ -102,8 +106,9 @@ public class SipModuleInfo {
     }
     
     public void addContextParam(final String name, final String value) {
-        if (contextParams.containsKey(name)) {
-            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!! Context param already set.");
+        final String origValue = contextParams.get(name);
+        if (origValue != null && !origValue.equals(value)) {
+            LOG.info("Context param '" + name + "' is being redefined.");
         }
         contextParams.put(name, value);
     }

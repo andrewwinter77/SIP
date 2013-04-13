@@ -11,6 +11,8 @@ import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipServletResponse;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.servlet.ServletConfigImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -19,28 +21,48 @@ import org.andrewwinter.servlet.ServletConfigImpl;
 public class SipServletDelegate {
 
     /**
-     *      */
+     * Logger.
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(SipServletDelegate.class);
+    
+    /**
+     *
+     */
     private final String className;
+
     /**
-     *      */
+     *
+     */
     private final String name;
+
     /**
-     *      */
+     *
+     */
     private final String applicationName;
+
     /**
-     *      */
+     *
+     */
     private final String description;
+
     /**
-     *      */
+     *
+     */
     private final int loadOnStartup;
+
     /**
-     *      */
+     *
+     */
     private final String displayName;
+
     /**
-     *      */
+     *
+     */
     private ServletConfig servletConfig;
+
     /**
-     *      */
+     *
+     */
     private SipServlet servlet;
 
     private ClassLoader classLoader;
@@ -182,16 +204,14 @@ public class SipServletDelegate {
     
     public void init() throws ClassNotFoundException, ServletException {
 
-        System.out.println("Initialising SipServlet... " + name);
+        LOG.info("Initialising SipServlet {} ", name);
         
         // TODO: Pass init params into ServletConfig.
         servletConfig = new ServletConfigImpl(name, servletContext);
 //            final Class<?> clazz = classLoader.loadClass(className, true);
         final Class<?> clazz = classLoader.loadClass(className);
 
-
         servlet = (SipServlet) instantiator.instantiate(clazz);
-        //servlet = (SipServlet) clazz.newInstance();
 
         // TODO: Honour loadOnStartup.
         servlet.init(servletConfig);

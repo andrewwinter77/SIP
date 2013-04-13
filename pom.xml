@@ -115,6 +115,7 @@
         <module>LocationService</module>
 	<module>LocationServiceCommon</module>
         <module>Sdp</module>
-        <module>ComcastCustomerCentral</module>
+	<module>ComcastCustomerCentral</module>
+	<module>WebApp</module>
   </modules>
 </project>

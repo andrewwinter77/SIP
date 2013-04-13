@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Table(name="users")
 @NamedQueries(value = {
-    @NamedQuery(name="User.findUser", query="SELECT u FROM User u WHERE u.publicAddress=:publicAddress"),
+    @NamedQuery(name="User.findUser", query="SELECT u FROM User u WHERE u.userPart=:userPart"), // TODO: AND pbx.domainName = ...
 //    @NamedQuery(name="User.deleteBindings", query="DELETE FROM User u WHERE b.publicAddress=:publicAddress"),
 //    @NamedQuery(name="User.deleteBinding", query="DELETE FROM User u WHERE b.publicAddress=:publicAddress AND b.contactAddress=:contactAddress"),
 //    @NamedQuery(name="User.deleteExpiredBindings", query="DELETE FROM User u WHERE b.expiryTime<:expiryTime"),

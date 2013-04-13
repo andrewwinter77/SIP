@@ -1,9 +1,8 @@
 package org.andrewwinter.sip.webapp;
 
-import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.sip.SipFactory;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -18,8 +17,8 @@ import javax.ws.rs.core.Context;
 @Path("/")
 public class WebService extends Application {
 
-    @Resource
-    private SipFactory sf;
+    @EJB
+    private PbxManager pbxMgr;
 
     /**
      * Replace this method with something of your own.
@@ -33,6 +32,8 @@ public class WebService extends Application {
             @FormParam("password") final String password,
             @Context ServletContext servletContext,
             @Context HttpServletRequest request) {
+        
+        pbxMgr.createPbx(domain, email, password);
         
         return "Finished create PBX";
     }

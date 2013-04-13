@@ -17,13 +17,13 @@ import javax.persistence.TemporalType;
  *
  * @author andrewwinter77
  */
-@Table(name="bindings")
+@Table(name="bindingstemp")
 @NamedQueries(value = {
-    @NamedQuery(name="Binding.findBindings", query="SELECT b FROM Binding b WHERE b.publicAddress=:publicAddress"),
-    @NamedQuery(name="Binding.deleteBindings", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress"),
-    @NamedQuery(name="Binding.deleteBinding", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress AND b.contactAddress=:contactAddress"),
-    @NamedQuery(name="Binding.deleteExpiredBindings", query="DELETE FROM Binding b WHERE b.expiryTime<:expiryTime"),
-    @NamedQuery(name="Binding.deleteExpiredBindingsForPublicAddress", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress AND b.expiryTime<:expiryTime")
+//    @NamedQuery(name="Binding.findBindings", query="SELECT b FROM Binding b WHERE b.publicAddress=:publicAddress"),
+//    @NamedQuery(name="Binding.deleteBindings", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress"),
+//    @NamedQuery(name="Binding.deleteBinding", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress AND b.contactAddress=:contactAddress"),
+//    @NamedQuery(name="Binding.deleteExpiredBindings", query="DELETE FROM Binding b WHERE b.expiryTime<:expiryTime"),
+//    @NamedQuery(name="Binding.deleteExpiredBindingsForPublicAddress", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress AND b.expiryTime<:expiryTime")
 })
 @Entity
 public class Binding implements Serializable {
@@ -38,8 +38,8 @@ public class Binding implements Serializable {
     @Column(name="cseq", nullable=false, unique=false)
     private int cseqValue;
     
-    @Column(name="user", nullable=false, unique=false)
-    private User user;
+    @Column(name="pbx_user", nullable=false, unique=false)
+    private User pbxUser;
 
     @Column(name="contact_address", nullable=false, unique=false)
     private String contactAddress;
@@ -61,14 +61,14 @@ public class Binding implements Serializable {
      * @param cseq
      * @param contactAddress Contact URI.
      * @param expiryTime  
-     * @param user
+     * @param pbxUser
      */
-    public Binding(final String callId, final int cseq, final String contactAddress, final Date expiryTime, final User user) {
+    public Binding(final String callId, final int cseq, final String contactAddress, final Date expiryTime, final User pbxUser) {
         this.callId = callId;
         this.cseqValue = cseq;
         this.contactAddress = contactAddress;
         this.expiryTime = expiryTime;
-        this.user = user;
+        this.pbxUser = pbxUser;
     }
     
     /**
@@ -119,11 +119,11 @@ public class Binding implements Serializable {
         this.expiryTime = expiryTime;
     }
 
-    public User getUser() {
-        return user;
+    public User getPbxUser() {
+        return pbxUser;
     }
 
-    public void setUser(final User user) {
-        this.user = user;
+    public void setUser(final User pbxUser) {
+        this.pbxUser = pbxUser;
     }
 }

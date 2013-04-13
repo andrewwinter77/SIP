@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web App</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body>
+        <div>
+            <h1>Create PBX</h1>
+            <form action="service/createpbx" method="POST">
+                Domain: <input type="text" name="domain" value="example.com"/><br/>
+                Email: <input type="text" name="email" value="alice@example.com"/><br/>
+                Password: <input type="password" name="password"/><br/>
+                <input type="submit" value="Create"/>
+            </form>
+        </div>
+        
+        <div>
+            <h1>Existing Users</h1>
+            <form action="createpbx" method="POST">
+                Domain: <input type="text" name="domain" value="example.com"/><br/>
+                Email: <input type="text" name="email" value="alice@example.com"/><br/>
+                Password: <input type="password" name="password"/><br/>
+                <input type="submit" value="Log in"/>
+            </form>
+        </div>
+    </body>
+</html>

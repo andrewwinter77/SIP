@@ -6,14 +6,15 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
-import org.andrewwinter.sip.kitchensink.model.Pbx;
+import org.andrewwinter.sip.model.Pbx;
+import org.andrewwinter.sip.model.User;
 
 /**
  *
  * @author andrew
  */
 @Stateless
-public class PbxManager {
+public class DataManager {
     @PersistenceContext(type = PersistenceContextType.TRANSACTION, unitName = "sipappPersistenceUnit")
     private EntityManager em;
 
@@ -21,14 +22,14 @@ public class PbxManager {
     public void createPbx(
             final String domain,
             final String email,
+            final String forename,
+            final String surname,
             final String password) {
         
         final Pbx pbx = new Pbx(domain);
-        put(pbx);
-    }
-    
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public void put(final Pbx pbx) {
         em.persist(pbx);
+        
+        final User user = new User(pbx, forename, surname, email, password, true);
+        em.persist(user);
     }
 }

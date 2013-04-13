@@ -6,9 +6,12 @@
     </head>
     <body>
         <div>
-            <h1>Create PBX</h1>
+            <h1>New Users</h1>
+            <p>Create a new PBX</p>
             <form action="service/createpbx" method="POST">
                 Domain: <input type="text" name="domain" value="example.com"/><br/>
+                Forename: <input type="text" name="forename" value="Alice"/><br/>
+                Surname: <input type="text" name="surname" value="Jones"/><br/>
                 Email: <input type="text" name="email" value="alice@example.com"/><br/>
                 Password: <input type="password" name="password"/><br/>
                 <input type="submit" value="Create"/>
@@ -17,8 +20,8 @@
         
         <div>
             <h1>Existing Users</h1>
-            <form action="createpbx" method="POST">
-                Domain: <input type="text" name="domain" value="example.com"/><br/>
+            <p>Log in</p>
+            <form action="login" method="POST">
                 Email: <input type="text" name="email" value="alice@example.com"/><br/>
                 Password: <input type="password" name="password"/><br/>
                 <input type="submit" value="Log in"/>

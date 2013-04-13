@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 @Table(name = "pbxs")
 @NamedQueries(value = {
-    @NamedQuery(name = "Pbx.findPbx", query = "SELECT pbx FROM Pbx b WHERE pbx.domainName=:domainName")
+    @NamedQuery(name = "Pbx.findPbx", query = "SELECT p FROM Pbx p WHERE p.domainName=:domainName")
 })
 @Entity
 public class Pbx implements Serializable {
@@ -24,6 +24,7 @@ public class Pbx implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @Column(name = "domain_name", nullable = false, unique = false)
     private String domainName;
 

@@ -19,6 +19,10 @@ $(function() {
         $('#login-div').hide();
     });
 
+    $('#admin-button').button().click(function() {
+        $('#admin-div').show();
+    });
+
     $('#logout-button').button().click(function() {
         post('service/logout', {}, null,
                 function(data, textStatus, jqXHR) {
@@ -53,11 +57,11 @@ $(function() {
                     
                     if (data.adminUser === true) {
                         $('#admin-button-span').show();
+                    } else {
+                        $('#admin-button-span').hide();
                     }
-                    
+                    $('#admin-div').hide();
                     $('#logged-in-div').show();
-                    
-                    
                 },
                 function(jqXHR, textStatus, errorThrown) {
                     if (jqXHR.status === 403) {

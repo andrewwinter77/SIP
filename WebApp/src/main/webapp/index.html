@@ -43,11 +43,19 @@
 
         <div id="logged-in-div" class="hidden">
             <span id="user-name-span"></span> |
-            <span id="admin-button-span" class="hidden">Admin | </span>
+            <span id="admin-button-span" class="hidden"><a href="#" onclick="return false;" id="admin-button">Admin</a> |</span>
             <a href="#" onclick="return false;" id="logout-button">Sign out</a>
             
             <div id="admin-div" class="hidden">
-                
+                <h1>Create user</h1>
+                <form id="create-user-form">
+                    Forename: <input type="text" name="forename" placeholder="Cuthbert"/><br/>
+                    Surname: <input type="text" name="surname" placeholder="Higgins"/><br/>
+                    Email: <input type="email" name="email" placeholder="cuthbert@higgins.com"/><br/>
+                    Password: <input type="password" name="password"/><br/>
+                    Administrator: <input type="checkbox" name="admin"/><br/>
+                    <input type="submit"/>
+                </form>
             </div>
         </div>
     </body>

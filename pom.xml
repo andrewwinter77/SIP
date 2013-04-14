@@ -118,5 +118,6 @@
 	<module>ComcastCustomerCentral</module>
 	<module>WebApp</module>
 	<module>DomainModel</module>
+	<module>DoNotDisturbApp</module>
   </modules>
 </project>

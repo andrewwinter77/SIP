@@ -320,7 +320,7 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
             throw new IllegalStateException("Session is already terminated.");
         }
 
-        // TODO: IllegalStateException when there's an ongoing transaction
+        // TODO: IllegalStateException if we're in the INITIAL state AND there's an ongoing transaction
         
         final SipRequest request;
         if (dialog == null) {

@@ -186,10 +186,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             // If request is received from an application, directive is set
             // either implicitly or explicitly by the application.
 
-            // TODO: Set this to the correct value
-            directive = SipApplicationRoutingDirective.CONTINUE;
-
-
+            directive = sipServletRequest.getRoutingDirective();
 
             if (directive == SipApplicationRoutingDirective.CONTINUE || directive == SipApplicationRoutingDirective.REVERSE) {
                 // If request is received from an application, and directive
@@ -289,7 +286,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             }
         } else {
             
-            // TODO: Handle case where no app router name is returned
+            // TODO: Handle case where no name is returned by the app router
         }
 
     }

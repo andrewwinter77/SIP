@@ -1,13 +1,36 @@
 $(function() {
 
-    $('#login-button').button().click(function() {
-        $('#login-div').show();
+    function resetNotLoggedInDiv() {
+        $('#login-div').hide();
         $('#signup-div').hide();
+        $('#login-div-error').hide();
+        $('#login-form-email').text('');
+        $('#login-form-password').text('');
+    }
+
+    $('#login-button').button().click(function() {
+        $('#signup-div').hide();
+        $('#login-div').show();
+        $('#login-form-email').focus();
     });
 
-    $('#signup-button').button().click(function() {
+    $('#register-button').button().click(function() {
         $('#signup-div').show();
         $('#login-div').hide();
+    });
+
+    $('#logout-button').button().click(function() {
+        post('service/logout', {}, null,
+                function(data, textStatus, jqXHR) {
+                    resetNotLoggedInDiv();
+                    $('#logged-in-div').hide();
+                    $('#not-logged-in-div').show();
+                },
+                function(jqXHR, textStatus, errorThrown) {
+                    resetNotLoggedInDiv();
+                    $('#logged-in-div').hide();
+                    $('#not-logged-in-div').show();
+                });
     });
 
     $('#signup-form').submit(function(e) {
@@ -16,7 +39,7 @@ $(function() {
                 function(data, textStatus, jqXHR) {
                     alert('worked!');
                 },
-                function() {
+                function(jqXHR, textStatus, errorThrown) {
                     alert('failed');
                 });
     });
@@ -25,10 +48,23 @@ $(function() {
         e.preventDefault();
         postForm('service/login', '#login-form',
                 function(data, textStatus, jqXHR) {
-                    alert('worked!');
+                    $('#not-logged-in-div').hide();
+                    $('#user-name-span').text(data.forename + ' ' + data.surname);
+                    
+                    if (data.adminUser === true) {
+                        $('#admin-button-span').show();
+                    }
+                    
+                    $('#logged-in-div').show();
+                    
+                    
                 },
-                function() {
-                    alert('failed');
+                function(jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status === 403) {
+                        $('#login-div-error').show();
+                    } else {
+                        alert('failed');
+                    }
                 });
     });
 });
@@ -45,20 +81,20 @@ function postForm(path, formId, successFn, errorFn) {
     });
 }
 
-function post(path, successFunction, jsonPayload, contentType, errorFunction) {
-    request(path, mediaType, successFunction, 'POST', jsonPayload, contentType, errorFunction);
+function post(path, jsonPayload, contentType, successFn, errorFn) {
+    request(path, 'POST', jsonPayload, contentType, successFn, errorFn);
 }
 
 
-function request(path, successFunction, httpMethod, jsonPayload, contentType, errorFunction) {
+function request(path, httpMethod, jsonPayload, contentType, successFn, errorFn) {
 
     $.ajax({
-        url: '/' + path,
+        url: path,
         type: httpMethod,
         data: jsonPayload,
         dataType: 'json',
-        success: successFunction,
-        error: errorFunction
+        success: successFn,
+        error: errorFn
 //        beforeSend: function setHeader(xhr) {
 //            xhr.setRequestHeader('Accept', mediaType);
 //

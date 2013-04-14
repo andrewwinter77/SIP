@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -19,13 +23,15 @@ import javax.persistence.Table;
  */
 @Table(name="users")
 @NamedQueries(value = {
-    @NamedQuery(name="User.findUserByEmail", query="SELECT u FROM User u WHERE u.email=:email"), // TODO: AND pbx.domainName = ...
+    @NamedQuery(name="User.findUserByEmail", query="SELECT u FROM User u WHERE u.email=:email"),
 //    @NamedQuery(name="User.deleteBindings", query="DELETE FROM User u WHERE b.publicAddress=:publicAddress"),
 //    @NamedQuery(name="User.deleteBinding", query="DELETE FROM User u WHERE b.publicAddress=:publicAddress AND b.contactAddress=:contactAddress"),
 //    @NamedQuery(name="User.deleteExpiredBindings", query="DELETE FROM User u WHERE b.expiryTime<:expiryTime"),
 //    @NamedQuery(name="User.deleteExpiredBindingsForPublicAddress", query="DELETE FROM User u WHERE b.publicAddress=:publicAddress AND b.expiryTime<:expiryTime")
 })
 @Entity
+@XmlRootElement(name="user")
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class User implements Serializable {
     
     @Id
@@ -71,6 +77,7 @@ public class User implements Serializable {
 //        this.userPart = userPart;
     }
     
+    @XmlElement(name="email")
     public String getEmail() {
         return email;
     }
@@ -83,6 +90,7 @@ public class User implements Serializable {
      *
      * @return
      */
+    @XmlElement(name="surname")
     public String getSurname() {
         return surname;
     }
@@ -91,6 +99,7 @@ public class User implements Serializable {
      *
      * @return
      */
+    @XmlElement(name="forename")
     public String getForename() {
         return forename;
     }
@@ -111,6 +120,7 @@ public class User implements Serializable {
 //        this.userPart = publicAddress;
 //    }
     
+    @XmlElement(name="pbx")
     public Pbx getPbx() {
         return pbx;
     }
@@ -127,6 +137,8 @@ public class User implements Serializable {
         return this.password;
     }
 
+    // TODO: Why is XmlElement being ignored?
+    @XmlElement(name="isAdminUser")
     public boolean isAdminUser() {
         return adminUser;
     }

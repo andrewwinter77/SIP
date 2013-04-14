@@ -8,8 +8,10 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
 import org.andrewwinter.sip.model.User;
 
 /**
@@ -44,20 +46,34 @@ public class WebService extends Application {
     
     @POST
     @Path("/login")
-    public String login(
+    @Produces("application/json")
+    public Response login(
             @FormParam("email") final String email,
             @FormParam("password") final String password,
             @Context HttpServletRequest request) {
         
-        if (!request.isRequestedSessionIdValid()) {
-            final User user = dataMgr.getUserByEmail(email);
+        final User user;
+        if (request.isRequestedSessionIdValid()) {
+            user = (User) request.getSession().getAttribute("user");
+        } else {
+            user = dataMgr.getUserByEmail(email);
             if (user == null || !user.getPassword().equals(password)) {
-                return "Incorrect password. Please check and try again.";
+                return Response.status(Response.Status.FORBIDDEN).build();
             } else {
                 final HttpSession session = request.getSession();
                 session.setAttribute("user", user);
             }
         }
-        return "logged in";
+        return Response.ok(user).build();
+    }
+    
+    @POST
+    @Path("/logout")
+    public Response logout(@Context HttpServletRequest request) {
+        final HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        return Response.ok().build();
     }
 }

@@ -1,50 +1,50 @@
-[2013-04-04 20:58:44,371] SipApplicationSessionProtocolTest:1008 INFO  - === testValueOf001() ===
-[2013-04-04 20:58:44,515] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 52d1410202d3f4970e25b9de2eb0bc97@192.168.1.65
+[2013-04-15 20:13:25,426] SipApplicationSessionProtocolTest:1008 INFO  - === testValues001() ===
+[2013-04-15 20:13:25,550] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: a791548d9a33e37e998df746814312b4@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=333635304
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1637664190
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:58:44,563] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 52d1410202d3f4970e25b9de2eb0bc97@192.168.1.65
+[2013-04-15 20:13:25,596] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: a791548d9a33e37e998df746814312b4@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=333635304
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1637664190
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK226f045062f15370ab365f02b507c88c
-Max-Forwards: 5
-Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: SipApplicationSessionProtocol
-Method-Name: testValueOf001
-Content-Length: 0
-
- ---
-[2013-04-04 20:58:47,598] SipApplicationSessionProtocolTest:1008 INFO  - === testValues001() ===
-[2013-04-04 20:58:47,599] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: b9e4ff41fdc40df2471d64f910393aca@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=741043561
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 20:58:47,604] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: b9e4ff41fdc40df2471d64f910393aca@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=741043561
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9184575ed59b1a0cd098835239d8004d
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK284ace4fee5098846bebb07ce679cc93
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Servlet-Name: SipApplicationSessionProtocol
 Method-Name: testValues001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:13:28,638] SipApplicationSessionProtocolTest:1008 INFO  - === testValueOf001() ===
+[2013-04-15 20:13:28,638] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: aa3b9bae680967aef786c420b1538a57@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=332255973
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:13:28,643] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: aa3b9bae680967aef786c420b1538a57@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=332255973
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK254e4e2cf395b2273a1ab2388662f95e
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: SipApplicationSessionProtocol
+Method-Name: testValueOf001
 Content-Length: 0
 
  ---

@@ -1,11 +1,11 @@
-[2013-04-04 21:13:30,203] SipSessionListenerTest:138 INFO  - === set listening for the incoming request:true===
-SIPUNIT TRACE:  1365106410396  INVITE after sending out through stack..........
-SIPUNIT TRACE:  1365106410397  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 07fc943bd3ea5f4a52cfbc7332d17ac2@192.168.1.65
+[2013-04-15 20:28:20,627] SipSessionListenerTest:138 INFO  - === set listening for the incoming request:true===
+SIPUNIT TRACE:  1366054100800  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1366054100800  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 80ecb5ef5604959710a3c189808ce576@192.168.1.65
 CSeq: 1 INVITE
-From: &lt;sip:alice@192.168.1.65&gt;;tag=1295056127
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1007411949
 To: &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK72967e53188427ede0aae13defc55087
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK26910573b33455b0070e3658c120823a
 Max-Forwards: 70
 Contact: &lt;sip:alice@192.168.1.65:5071;transport=udp;lr&gt;
 Route: &lt;sip:localhost:5060;lr;transport=udp&gt;
@@ -15,57 +15,57 @@ Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365106410397  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
-SIPUNIT TRACE:  1365106410416  Outgoing call response received: SIP/2.0 100 Trying
+SIPUNIT TRACE:  1366054100801  RouteHeader address: &lt;sip:localhost:5060;lr;transport=udp&gt;
+SIPUNIT TRACE:  1366054100822  Outgoing call response received: SIP/2.0 100 Trying
 To: &lt;sip:JSR289_TCK@localhost:5060&gt;
-From: &lt;sip:alice@192.168.1.65&gt;;tag=1295056127
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK72967e53188427ede0aae13defc55087
-Call-ID: 07fc943bd3ea5f4a52cfbc7332d17ac2@192.168.1.65
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1007411949
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK26910573b33455b0070e3658c120823a
+Call-ID: 80ecb5ef5604959710a3c189808ce576@192.168.1.65
 Server: Elaina
 CSeq: 1 INVITE
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365106410428  Outgoing call response received: SIP/2.0 200 OK
-To: &lt;sip:JSR289_TCK@localhost:5060&gt;;tag=k041uh.up-
-From: &lt;sip:alice@192.168.1.65&gt;;tag=1295056127
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK72967e53188427ede0aae13defc55087
-Call-ID: 07fc943bd3ea5f4a52cfbc7332d17ac2@192.168.1.65
+SIPUNIT TRACE:  1366054100827  Outgoing call response received: SIP/2.0 200 OK
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;;tag=ujxboag9ug
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1007411949
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK26910573b33455b0070e3658c120823a
+Call-ID: 80ecb5ef5604959710a3c189808ce576@192.168.1.65
 Server: Elaina
 CSeq: 1 INVITE
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365106410541  SS.waitRequest() - about to block, waiting
-SIPUNIT TRACE:  1365106410548  Asynchronous response received: SIP/2.0 200 OK
-To: &lt;sip:JSR289_TCK@localhost:5060&gt;;tag=k041uh.up-
-From: &lt;sip:alice@192.168.1.65&gt;;tag=1295056127
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK46ff135c5343e253bcc99adab5ac9db1
-Call-ID: 07fc943bd3ea5f4a52cfbc7332d17ac2@192.168.1.65
+SIPUNIT TRACE:  1366054100940  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1366054100947  Asynchronous response received: SIP/2.0 200 OK
+To: &lt;sip:JSR289_TCK@localhost:5060&gt;;tag=ujxboag9ug
+From: &lt;sip:alice@192.168.1.65&gt;;tag=1007411949
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe99d797d3b22d5518287c516f5697992
+Call-ID: 80ecb5ef5604959710a3c189808ce576@192.168.1.65
 Server: Elaina
 CSeq: 2 BYE
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365106420537  SS.waitRequest() - we've come out of the block
-SIPUNIT TRACE:  1365106420537  SS.waitRequest() - either we got the request, or timed out
-[2013-04-04 21:13:43,552] SipSessionListenerTest:1008 INFO  - === testSessionCreated001() ===
-[2013-04-04 21:13:43,553] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: b2c1fe5ea2c56473bca39e5ca11abeb2@192.168.1.65
+SIPUNIT TRACE:  1366054110941  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1366054110941  SS.waitRequest() - either we got the request, or timed out
+[2013-04-15 20:28:33,961] SipSessionListenerTest:1008 INFO  - === testSessionCreated001() ===
+[2013-04-15 20:28:33,962] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: c397833eefff96fca887041a408324e5@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=796888483
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=542282637
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:13:43,558] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: b2c1fe5ea2c56473bca39e5ca11abeb2@192.168.1.65
+[2013-04-15 20:28:33,967] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: c397833eefff96fca887041a408324e5@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=796888483
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=542282637
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK04ecb52a5a99140e8b32e23fe88dd3b2
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1b44c25114defaa6e89eb46595908356
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp

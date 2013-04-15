@@ -1,20 +1,45 @@
-[2013-04-04 20:57:49,401] SipApplicationSessionAttributeListenerTest:1008 INFO  - === testAttributeRemoved001() ===
-[2013-04-04 20:57:49,521] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 7f0c1a11c7cb4b8756f0b59a1c22943e@192.168.1.65
+[2013-04-15 20:12:30,654] SipApplicationSessionAttributeListenerTest:1008 INFO  - === testAttributeAdded001() ===
+[2013-04-15 20:12:30,766] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 94a58d4fdc31d6e5b91f042de8ec9db1@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=633760631
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=2029641085
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:57:49,567] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 7f0c1a11c7cb4b8756f0b59a1c22943e@192.168.1.65
+[2013-04-15 20:12:30,807] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 94a58d4fdc31d6e5b91f042de8ec9db1@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=633760631
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=2029641085
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK749cf3379a74d2ad79725d7a65c2ff97
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK248139c4ebbace23670bd68fb122d8da
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: SipApplicationSessionAttributeListener
+Method-Name: testAttributeAdded001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:12:33,841] SipApplicationSessionAttributeListenerTest:1008 INFO  - === testAttributeRemoved001() ===
+[2013-04-15 20:12:33,842] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ad48a8da366e6a699d45c6a3fbe16875@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1251252098
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:12:33,847] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ad48a8da366e6a699d45c6a3fbe16875@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1251252098
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK01bbe2cb448493f7ea0a4135437c9c5f
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -23,53 +48,28 @@ Method-Name: testAttributeRemoved001
 Content-Length: 0
 
  ---
-[2013-04-04 20:57:52,594] SipApplicationSessionAttributeListenerTest:1008 INFO  - === testAttributeReplaced001() ===
-[2013-04-04 20:57:52,595] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: f4a18249d523019ad2efb36e2ae272a8@192.168.1.65
+[2013-04-15 20:12:36,865] SipApplicationSessionAttributeListenerTest:1008 INFO  - === testAttributeReplaced001() ===
+[2013-04-15 20:12:36,865] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: e346047cb87d9057d369deb7b5e0cc8a@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1800298073
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=803471779
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:57:52,600] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: f4a18249d523019ad2efb36e2ae272a8@192.168.1.65
+[2013-04-15 20:12:36,870] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: e346047cb87d9057d369deb7b5e0cc8a@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1800298073
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=803471779
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK8c00894ac99145b34fb39372febd86ab
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9a3ce2784a44178e105e12452756cfd5
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Servlet-Name: SipApplicationSessionAttributeListener
 Method-Name: testAttributeReplaced001
-Content-Length: 0
-
- ---
-[2013-04-04 20:57:55,619] SipApplicationSessionAttributeListenerTest:1008 INFO  - === testAttributeAdded001() ===
-[2013-04-04 20:57:55,620] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 1f9c391deb53cee35cd852f14c68b591@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1735944128
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 20:57:55,624] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 1f9c391deb53cee35cd852f14c68b591@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1735944128
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK442be66ff5f547de9eb3b83f311f4a7e
-Max-Forwards: 5
-Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: SipApplicationSessionAttributeListener
-Method-Name: testAttributeAdded001
 Content-Length: 0
 
  ---

@@ -1,50 +1,50 @@
-[2013-04-04 21:03:46,312] SipServletMessageHeaderFormTest:1008 INFO  - === testValueOf001() ===
-[2013-04-04 21:03:46,438] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 100805e89ea99ee8009cce0f1c7d1f4f@192.168.1.65
+[2013-04-15 20:18:27,030] SipServletMessageHeaderFormTest:1008 INFO  - === testValues001() ===
+[2013-04-15 20:18:27,128] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 325d326a9a9b8d7ebac6a48c0d1dceef@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=999006821
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=755939696
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:03:46,483] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 100805e89ea99ee8009cce0f1c7d1f4f@192.168.1.65
+[2013-04-15 20:18:27,163] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 325d326a9a9b8d7ebac6a48c0d1dceef@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=999006821
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=755939696
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfb117e3085f6df5b01e61addf7606c2e
-Max-Forwards: 5
-Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: SipServletMessageHeaderForm
-Method-Name: testValueOf001
-Content-Length: 0
-
- ---
-[2013-04-04 21:03:49,518] SipServletMessageHeaderFormTest:1008 INFO  - === testValues001() ===
-[2013-04-04 21:03:49,519] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 70a2705cf013c53af160ac14fdbe1b53@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=112323480
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 21:03:49,524] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 70a2705cf013c53af160ac14fdbe1b53@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=112323480
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK3711bd78dc97f26916f2b7c61bff9f01
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK16ce12c0155135f667bee168961c9eba
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Servlet-Name: SipServletMessageHeaderForm
 Method-Name: testValues001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:18:30,195] SipServletMessageHeaderFormTest:1008 INFO  - === testValueOf001() ===
+[2013-04-15 20:18:30,196] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 8af706baab9a9616a09340246ffe4a91@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=863494857
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:18:30,201] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 8af706baab9a9616a09340246ffe4a91@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=863494857
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf2f2cf8413d5e0687c46da0f27e94d79
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: SipServletMessageHeaderForm
+Method-Name: testValueOf001
 Content-Length: 0
 
  ---

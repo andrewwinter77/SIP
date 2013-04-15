@@ -1,47 +1,19 @@
-[2013-04-04 21:17:51,302] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 6f99a8cb11e2a5c3ae84437db7265375@192.168.1.65
+[2013-04-15 20:32:41,225] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 7b26940104773064701e57f0290a6490@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=248915486
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=2115365336
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:17:51,350] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 6f99a8cb11e2a5c3ae84437db7265375@192.168.1.65
+[2013-04-15 20:32:41,284] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 7b26940104773064701e57f0290a6490@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=248915486
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=2115365336
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4864889b7112e4b7e07263133b4b9048
-Max-Forwards: 5
-Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: SipErrorEventListener
-Method-Name: testCreateTimer001
-Content-Length: 0
-
- ---
-[2013-04-04 21:17:51,373] TestBase:595 DEBUG - the responseEvent=null?javax.sip.ResponseEvent[source=gov.nist.javax.sip.SipProviderImpl@133e39e8]
-SIPUNIT TRACE:  1365106671373  SS.waitRequest() - about to block, waiting
-SIPUNIT TRACE:  1365106681369  SS.waitRequest() - we've come out of the block
-SIPUNIT TRACE:  1365106681369  SS.waitRequest() - either we got the request, or timed out
-[2013-04-04 21:18:04,388] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 93f19cd173263b84e0c98b86112f23d4@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=311009261
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 21:18:04,393] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 93f19cd173263b84e0c98b86112f23d4@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=311009261
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK2224949ec94d1b393fa6bbd69f5f8a4e
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe66d3c8ed0078cb7f3cae0a5996661db
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -50,27 +22,27 @@ Method-Name: testCreateTimer002
 Content-Length: 0
 
  ---
-[2013-04-04 21:18:04,403] TestBase:595 DEBUG - the responseEvent=null?javax.sip.ResponseEvent[source=gov.nist.javax.sip.SipProviderImpl@298932dc]
-SIPUNIT TRACE:  1365106684404  SS.waitRequest() - about to block, waiting
-SIPUNIT TRACE:  1365106694400  SS.waitRequest() - we've come out of the block
-SIPUNIT TRACE:  1365106694400  SS.waitRequest() - either we got the request, or timed out
-[2013-04-04 21:18:17,411] TimerServiceTest:1008 INFO  - === testCreateTimer101() ===
-[2013-04-04 21:18:17,412] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 5dfb59488e03093c78b3648c3163024a@192.168.1.65
+[2013-04-15 20:32:41,304] TestBase:595 DEBUG - the responseEvent=null?javax.sip.ResponseEvent[source=gov.nist.javax.sip.SipProviderImpl@62b84cb8]
+SIPUNIT TRACE:  1366054361305  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1366054371306  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1366054371306  SS.waitRequest() - either we got the request, or timed out
+[2013-04-15 20:32:54,324] TimerServiceTest:1008 INFO  - === testCreateTimer101() ===
+[2013-04-15 20:32:54,325] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: b9b2e6ce1253388c9486064a57770d31@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1032516714
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=57132823
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:18:17,417] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 5dfb59488e03093c78b3648c3163024a@192.168.1.65
+[2013-04-15 20:32:54,329] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: b9b2e6ce1253388c9486064a57770d31@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1032516714
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=57132823
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfff6abd57895842ad9cf245664468bd2
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKbe05a903ea50f29a1d68e1bf04c2318e
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -79,23 +51,23 @@ Method-Name: testCreateTimer101
 Content-Length: 0
 
  ---
-[2013-04-04 21:18:20,438] TimerServiceTest:1008 INFO  - === testCreateTimer102() ===
-[2013-04-04 21:18:20,439] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 72f9c8da56b79a50e29b7ffa582152c7@192.168.1.65
+[2013-04-15 20:32:57,354] TimerServiceTest:1008 INFO  - === testCreateTimer102() ===
+[2013-04-15 20:32:57,355] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: b54b987413e9bd6fe7eaaa24a311c3fe@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1232057950
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1926379747
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:18:20,443] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 72f9c8da56b79a50e29b7ffa582152c7@192.168.1.65
+[2013-04-15 20:32:57,360] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: b54b987413e9bd6fe7eaaa24a311c3fe@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1232057950
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1926379747
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK517edea38400c96637ee036649c5c11b
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf33b6db7e15cd49c5d2c0e7fec99bcaf
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -104,3 +76,31 @@ Method-Name: testCreateTimer102
 Content-Length: 0
 
  ---
+[2013-04-15 20:33:00,387] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 05615802ca50fb5846db22fb4d26e366@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1686929239
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:33:00,392] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 05615802ca50fb5846db22fb4d26e366@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1686929239
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe7e45bfb44fefade8f9332e9b4c5cebc
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: SipErrorEventListener
+Method-Name: testCreateTimer001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:33:00,406] TestBase:595 DEBUG - the responseEvent=null?javax.sip.ResponseEvent[source=gov.nist.javax.sip.SipProviderImpl@2d668cab]
+SIPUNIT TRACE:  1366054380407  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1366054390408  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1366054390408  SS.waitRequest() - either we got the request, or timed out

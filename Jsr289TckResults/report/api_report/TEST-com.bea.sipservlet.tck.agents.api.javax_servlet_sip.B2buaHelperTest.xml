@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="5" name="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" tests="17" time="82.043">
+<testsuite errors="0" failures="5" name="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" tests="17" time="82.119">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="env.SIPUNIT_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib" />
@@ -92,15 +92,16 @@
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="java.class.path" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/ant-contrib-1.0b3.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/javax.annotation_1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/servlet-2_5-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sigtest.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipservlet-1_1-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipunit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/tck-junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipApi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipRi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/concurrent.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/dom.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jax-qname.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-impl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-libs.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/log4j-1.2.8.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/namespace.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/nist-sdp-1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/relaxngDatatype.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/tracesviewer.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xalan.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xercesImpl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xsdlib.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/classes:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/lib/tools.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf:/usr/share/java/ant-1.8.2/lib/ant-launcher.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar" />
-    <property name="sun.java.command" value="com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit1035181561.properties" />
+    <property name="sun.java.command" value="com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit84061552.properties" />
     <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on June 20 2012" />
-    <property name="env.TERM_SESSION_ID" value="7818A790-16A8-47B8-9DFE-BD2903CA9C1F" />
+    <property name="env.TERM_SESSION_ID" value="992028FA-2937-460F-90A8-E989AB5B64C8" />
     <property name="env.JSR289TCK_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/.." />
     <property name="env.JBOSS_HOME" value="/opt/jboss-eap-6.1" />
     <property name="signature.property" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/signature.properties" />
     <property name="jsr289.dir" value=".." />
     <property name="api.report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="env.JAVA_MAIN_CLASS_54325" value="org.apache.tools.ant.launch.Launcher" />
     <property name="ant.file.type" value="file" />
     <property name="java.vm.specification.version" value="1.7" />
     <property name="conf" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf" />
@@ -119,7 +120,6 @@
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
     <property name="java.ext.dirs" value="/Users/andrew/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
     <property name="ar.appname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-approuter.jar" />
-    <property name="env.JAVA_MAIN_CLASS_46883" value="org.apache.tools.ant.launch.Launcher" />
     <property name="user.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
     <property name="applications.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications" />
     <property name="line.separator" value="&#xa;" />
@@ -138,7 +138,7 @@
     <property name="ant.project.invoked-targets" value="run-api-tests" />
     <property name="tck.earname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-apps.ear" />
   </properties>
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - test IllegalArgumentException of createRequest(session,origRequest,headerMap)" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest104" time="3.41">
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - test IllegalArgumentException of createRequest(session,origRequest,headerMap)" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest104" time="3.458">
     <failure message="the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)
@@ -153,8 +153,8 @@
 	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
 </failure>
   </testcase>
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - test NullPointerException of createRequest(session,origRequest,headerMap)" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest105" time="3.03" />
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper4] - test IllegalStateException for createResponseToOriginalRequest" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateResponseToOriginalRequest101" time="13.025">
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - test NullPointerException of createRequest(session,origRequest,headerMap)" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest105" time="3.025" />
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper4] - test IllegalStateException for createResponseToOriginalRequest" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateResponseToOriginalRequest101" time="13.029">
     <failure message="Did not receive MESSGE from server side." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Did not receive MESSGE from server side.
 	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest.testCreateResponseToOriginalRequest101(B2buaHelperTest.java:254)
 	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
@@ -167,29 +167,15 @@
 	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
 </failure>
   </testcase>
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper4] - test IllegalArgumentException for createResponseToOriginalRequest" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateResponseToOriginalRequest102" time="3.039" />
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper5] - test IllegalArgumentException for getLinkedSession" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testGetLinkedSession101" time="3.028" />
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper7] - test IllegalArgumentException for getLinkedSession" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testGetPendingMessages101" time="3.028" />
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper8][SipServlet:JAVADOC:B2buaHelper9] - User agents can link and unlink the specified sessions, such that there is a 1-1 mapping between them." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testLinkUnlinkSipSessions001" time="3.027" />
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper8] - test IllegalArgumentException for linkSipSessions" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testLinkSipSessions101" time="3.04" />
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper4] - test IllegalArgumentException for createResponseToOriginalRequest" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateResponseToOriginalRequest102" time="3.036" />
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper5] - test IllegalArgumentException for getLinkedSession" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testGetLinkedSession101" time="3.029" />
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper7] - test IllegalArgumentException for getLinkedSession" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testGetPendingMessages101" time="3.034" />
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper8][SipServlet:JAVADOC:B2buaHelper9] - User agents can link and unlink the specified sessions, such that there is a 1-1 mapping between them." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testLinkUnlinkSipSessions001" time="3.028" />
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper8] - test IllegalArgumentException for linkSipSessions" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testLinkSipSessions101" time="3.038" />
   <testcase assertions="[SipServlet:JAVADOC:B2buaHelper8] - test NullPointerException for linkSipSessions" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testLinkSipSessions102" time="3.026" />
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper9] - test IllegalArgumentException for unlinkSipSessions" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testUnlinkSipSessions101" time="3.022" />
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper10] - test Creates a new CANCEL request to cancel the initial request sent on the other call leg" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateCancel101" time="3.023" />
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper10] - test Creates a new CANCEL request to cancel the initial request sent on the other call leg" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateCancel001" time="13.049">
-    <failure message="wait response - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: wait response - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed.
-	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
-	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest.testCreateCancel001(B2buaHelperTest.java:401)
-	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
-	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
-	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
-	at $Proxy0.run(Unknown Source)
-	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
-	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
-	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
-	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
-</failure>
-  </testcase>
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - User agents can create a new request object belonging to a new SipSession." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest001" time="3.025">
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper9] - test IllegalArgumentException for unlinkSipSessions" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testUnlinkSipSessions101" time="3.024" />
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper10] - test Creates a new CANCEL request to cancel the initial request sent on the other call leg" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateCancel101" time="3.024" />
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - User agents can create a new request object belonging to a new SipSession." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest001" time="3.026">
     <failure message="the reason gotten from Server:The new Via headers are incorrect.  expected:&lt;200&gt; but was:&lt;500&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: the reason gotten from Server:The new Via headers are incorrect.  expected:&lt;200&gt; but was:&lt;500&gt;
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)
@@ -204,7 +190,7 @@
 	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
 </failure>
   </testcase>
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper2][SipServlet:JAVADOC:B2buaHelper3][SipServlet:JAVADOC:B2buaHelper4][SipServlet:JAVADOC:B2buaHelper5][SipServlet:JAVADOC:B2buaHelper6][SipServlet:JAVADOC:B2buaHelper7] - User agents can create a new request, get linked SipSession or SipServletRequest, and check pending messages in the SipSession." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest002" time="13.021">
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper2][SipServlet:JAVADOC:B2buaHelper3][SipServlet:JAVADOC:B2buaHelper4][SipServlet:JAVADOC:B2buaHelper5][SipServlet:JAVADOC:B2buaHelper6][SipServlet:JAVADOC:B2buaHelper7] - User agents can create a new request, get linked SipSession or SipServletRequest, and check pending messages in the SipSession." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest002" time="13.04">
     <failure message="callerB wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: callerB wait incoming call - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.
 	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
 	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest.testCreateRequest002(B2buaHelperTest.java:100)
@@ -218,26 +204,40 @@
 	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
 </failure>
   </testcase>
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - IllegalArgumentException should be thrown if the headerMap contains system header other than From, To, Contact or Route." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest101" time="3.026" />
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - NullPointerException should be thrown if the original request is null" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest102" time="3.024" />
-  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - TooManyHopsException should be thrown if the original request&apos;sMax-Forwards header value is 0" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest103" time="3.023" />
-  <system-out><![CDATA[[2013-04-04 20:49:55,326] B2buaHelperTest:1008 INFO  - === testCreateRequest104() ===
-[2013-04-04 20:49:55,423] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: e50cb10cdcfb5e643b98ef58c7fbeba3@192.168.1.65
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - IllegalArgumentException should be thrown if the headerMap contains system header other than From, To, Contact or Route." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest101" time="3.031" />
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - NullPointerException should be thrown if the original request is null" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest102" time="3.026" />
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper1] - TooManyHopsException should be thrown if the original request&apos;sMax-Forwards header value is 0" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateRequest103" time="3.025" />
+  <testcase assertions="[SipServlet:JAVADOC:B2buaHelper10] - test Creates a new CANCEL request to cancel the initial request sent on the other call leg" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest" name="testCreateCancel001" time="13.042">
+    <failure message="wait response - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: wait response - Timeout Occurred: The maximum amount of time to wait for a response message has elapsed.
+	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.B2buaHelperTest.testCreateCancel001(B2buaHelperTest.java:401)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <system-out><![CDATA[[2013-04-15 20:04:36,839] B2buaHelperTest:1008 INFO  - === testCreateRequest104() ===
+[2013-04-15 20:04:36,941] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ee244dcef6b73f3824328a6fdc7470ef@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1397780066
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=106082353
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:49:55,466] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: e50cb10cdcfb5e643b98ef58c7fbeba3@192.168.1.65
+[2013-04-15 20:04:36,989] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ee244dcef6b73f3824328a6fdc7470ef@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1397780066
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=106082353
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKcee178092e98e25aefc577164cf064cd
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa3ed49d8829f47ccb7377a5ef6c424b2
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -246,23 +246,23 @@ Method-Name: testCreateRequest104
 Content-Length: 0
 
  ---
-[2013-04-04 20:49:58,514] B2buaHelperTest:1008 INFO  - === testCreateRequest105() ===
-[2013-04-04 20:49:58,515] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: c7734bdf5515a8c5eba25a130c3e013b@192.168.1.65
+[2013-04-15 20:04:40,055] B2buaHelperTest:1008 INFO  - === testCreateRequest105() ===
+[2013-04-15 20:04:40,056] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: e8d2adf3ea6b81dc903be29ac04af8a3@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1603095631
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1788447810
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:49:58,521] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: c7734bdf5515a8c5eba25a130c3e013b@192.168.1.65
+[2013-04-15 20:04:40,060] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: e8d2adf3ea6b81dc903be29ac04af8a3@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1603095631
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1788447810
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK729d4cd21b5a689f6f4aaa87a5c6edda
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa8f51184218ea1a50fee2225e15fa02f
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -271,23 +271,23 @@ Method-Name: testCreateRequest105
 Content-Length: 0
 
  ---
-[2013-04-04 20:50:01,545] B2buaHelperTest:1008 INFO  - === testCreateResponseToOriginalRequest101() ===
-[2013-04-04 20:50:01,546] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: fdbd15052ade8d7aeef9944656873e1c@192.168.1.65
+[2013-04-15 20:04:43,083] B2buaHelperTest:1008 INFO  - === testCreateResponseToOriginalRequest101() ===
+[2013-04-15 20:04:43,084] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: c92f6fe8b243010807b8bd01a2de9450@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1657814320
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1115736822
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:50:01,550] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: fdbd15052ade8d7aeef9944656873e1c@192.168.1.65
+[2013-04-15 20:04:43,088] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: c92f6fe8b243010807b8bd01a2de9450@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1657814320
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1115736822
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK5a8514daee2ec03516bc5840c2773754
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK07f77e7af820e799e2034801f9a8bd16
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -296,27 +296,27 @@ Method-Name: testCreateResponseToOriginalRequest101
 Content-Length: 0
 
  ---
-[2013-04-04 20:50:01,564] B2buaHelperTest:249 DEBUG - the responseEvent=null?javax.sip.ResponseEvent[source=gov.nist.javax.sip.SipProviderImpl@629abc40]
-SIPUNIT TRACE:  1365105001564  SS.waitRequest() - about to block, waiting
-SIPUNIT TRACE:  1365105011561  SS.waitRequest() - we've come out of the block
-SIPUNIT TRACE:  1365105011561  SS.waitRequest() - either we got the request, or timed out
-[2013-04-04 20:50:14,569] B2buaHelperTest:1008 INFO  - === testCreateResponseToOriginalRequest102() ===
-[2013-04-04 20:50:14,570] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: c6d8d2eafe7ee6a46e44aa6b3d81b685@192.168.1.65
+[2013-04-15 20:04:43,098] B2buaHelperTest:249 DEBUG - the responseEvent=null?javax.sip.ResponseEvent[source=gov.nist.javax.sip.SipProviderImpl@34af77fa]
+SIPUNIT TRACE:  1366052683098  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1366052693099  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1366052693099  SS.waitRequest() - either we got the request, or timed out
+[2013-04-15 20:04:56,110] B2buaHelperTest:1008 INFO  - === testCreateResponseToOriginalRequest102() ===
+[2013-04-15 20:04:56,110] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: c11ca90c2ea0d225dbb739f0c6a22fe1@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1327783577
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=703870913
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:50:14,575] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: c6d8d2eafe7ee6a46e44aa6b3d81b685@192.168.1.65
+[2013-04-15 20:04:56,115] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: c11ca90c2ea0d225dbb739f0c6a22fe1@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1327783577
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=703870913
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa506a9f7c9eeb7d4c9b14b319a24610b
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc4563d624920447976a507d59962476c
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -325,43 +325,43 @@ Method-Name: testCreateResponseToOriginalRequest102
 Content-Length: 0
 
  ---
-[2013-04-04 20:50:14,586] B2buaHelperTest:310 DEBUG - the responseEvent=null?javax.sip.ResponseEvent[source=gov.nist.javax.sip.SipProviderImpl@3d1cda9]
-SIPUNIT TRACE:  1365105014586  SS.waitRequest() - about to block, waiting
-SIPUNIT TRACE:  1365105014597  SipStack: request received !
-SIPUNIT TRACE:  1365105014597  SipStack: calling listener
-SIPUNIT TRACE:  1365105014597  SipSession: request received !
-SIPUNIT TRACE:  1365105014597       me ('To' check) = sip:alice@192.168.1.65
-SIPUNIT TRACE:  1365105014597       my local contact info ('Request URI' check) = sip:alice@192.168.1.65:5071;transport=udp;lr
-SIPUNIT TRACE:  1365105014597       MESSAGE sip:alice@192.168.1.65:5071 SIP/2.0
-To: "Alice" <sip:alice@192.168.1.65:5071>;tag=1327783577
-From: <sip:JSR289_TCK@localhost:5060>;tag=09a!ojgoxj
-Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKqqk2yamx3bceqm2028tqkzo5ivpq6k;maddr=192.168.1.65
-Call-ID: v+gik!7q5wc-kiw57a+e
+[2013-04-15 20:04:56,124] B2buaHelperTest:310 DEBUG - the responseEvent=null?javax.sip.ResponseEvent[source=gov.nist.javax.sip.SipProviderImpl@139444b1]
+SIPUNIT TRACE:  1366052696125  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1366052696133  SipStack: request received !
+SIPUNIT TRACE:  1366052696133  SipStack: calling listener
+SIPUNIT TRACE:  1366052696134  SipSession: request received !
+SIPUNIT TRACE:  1366052696134       me ('To' check) = sip:alice@192.168.1.65
+SIPUNIT TRACE:  1366052696134       my local contact info ('Request URI' check) = sip:alice@192.168.1.65:5071;transport=udp;lr
+SIPUNIT TRACE:  1366052696134       MESSAGE sip:alice@192.168.1.65:5071 SIP/2.0
+To: "Alice" <sip:alice@192.168.1.65:5071>;tag=703870913
+From: <sip:JSR289_TCK@localhost:5060>;tag=w99bumf8!0
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKf!zdzj5i56c02!g9958wmt4hil1l!a;maddr=192.168.1.65
+Call-ID: t_6.li8jtvs!gj.7va21
 Max-Forwards: 70
-CSeq: 30522 MESSAGE
+CSeq: 61499 MESSAGE
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365105014597  SipSession: notifying block object
-SIPUNIT TRACE:  1365105014597  SS.waitRequest() - we've come out of the block
-SIPUNIT TRACE:  1365105014597  SS.waitRequest() - either we got the request, or timed out
-[2013-04-04 20:50:17,608] B2buaHelperTest:1008 INFO  - === testGetLinkedSession101() ===
-[2013-04-04 20:50:17,609] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 46c267bfc73a1fb8df5b4cd0a652d8c0@192.168.1.65
+SIPUNIT TRACE:  1366052696134  SipSession: notifying block object
+SIPUNIT TRACE:  1366052696134  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1366052696134  SS.waitRequest() - either we got the request, or timed out
+[2013-04-15 20:04:59,146] B2buaHelperTest:1008 INFO  - === testGetLinkedSession101() ===
+[2013-04-15 20:04:59,147] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: b9cc9455a8bba95d5386e04305e2af0c@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=603188994
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=511346901
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:50:17,614] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 46c267bfc73a1fb8df5b4cd0a652d8c0@192.168.1.65
+[2013-04-15 20:04:59,153] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: b9cc9455a8bba95d5386e04305e2af0c@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=603188994
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=511346901
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK7f12c28f70b125ba6a36b3e14c5876fa
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKd4a628c00d5618b11e55a3f58e467fd3
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -370,23 +370,23 @@ Method-Name: testGetLinkedSession101
 Content-Length: 0
 
  ---
-[2013-04-04 20:50:20,636] B2buaHelperTest:1008 INFO  - === testGetPendingMessages101() ===
-[2013-04-04 20:50:20,637] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: f82620bfec133a27417ddba2d27d6c23@192.168.1.65
+[2013-04-15 20:05:02,176] B2buaHelperTest:1008 INFO  - === testGetPendingMessages101() ===
+[2013-04-15 20:05:02,177] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: db81cbb29e415b6bfd1ef4a026f9da16@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=193146499
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=549974373
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:50:20,642] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: f82620bfec133a27417ddba2d27d6c23@192.168.1.65
+[2013-04-15 20:05:02,181] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: db81cbb29e415b6bfd1ef4a026f9da16@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=193146499
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=549974373
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKecb48d07e7bcb376b3f1c7bde9dea7bb
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK297e7c1c868bc0fe8ef0347069d17f30
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -395,23 +395,23 @@ Method-Name: testGetPendingMessages101
 Content-Length: 0
 
  ---
-[2013-04-04 20:50:23,664] B2buaHelperTest:1008 INFO  - === testLinkUnlinkSipSessions001() ===
-[2013-04-04 20:50:23,665] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 8cd57b0fd85c2b039a05ed2079c28ba6@192.168.1.65
+[2013-04-15 20:05:05,211] B2buaHelperTest:1008 INFO  - === testLinkUnlinkSipSessions001() ===
+[2013-04-15 20:05:05,211] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ba047ad8eb6d0b2c38f7ff9064e5dc2e@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=244260254
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=172360039
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:50:23,669] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 8cd57b0fd85c2b039a05ed2079c28ba6@192.168.1.65
+[2013-04-15 20:05:05,216] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ba047ad8eb6d0b2c38f7ff9064e5dc2e@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=244260254
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=172360039
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb1134ff0886b226418cebf3d5fd6c6f2
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf6be0b2187abac4af2debb2902b20a96
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -420,23 +420,23 @@ Method-Name: testLinkUnlinkSipSessions001
 Content-Length: 0
 
  ---
-[2013-04-04 20:50:26,692] B2buaHelperTest:1008 INFO  - === testLinkSipSessions101() ===
-[2013-04-04 20:50:26,694] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 5d806a2fc8fd0cc8807e2f767714709d@192.168.1.65
+[2013-04-15 20:05:08,238] B2buaHelperTest:1008 INFO  - === testLinkSipSessions101() ===
+[2013-04-15 20:05:08,247] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: e1c042523bc9ab0ba1eb63d36f134e4b@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=2080663764
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1684211963
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:50:26,708] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 5d806a2fc8fd0cc8807e2f767714709d@192.168.1.65
+[2013-04-15 20:05:08,254] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: e1c042523bc9ab0ba1eb63d36f134e4b@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=2080663764
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1684211963
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1135bec0fdd56f94351747e5f398d5e9
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc82dbe531575cb90bbf9e32a0155070e
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -445,23 +445,23 @@ Method-Name: testLinkSipSessions101
 Content-Length: 0
 
  ---
-[2013-04-04 20:50:29,731] B2buaHelperTest:1008 INFO  - === testLinkSipSessions102() ===
-[2013-04-04 20:50:29,732] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 54a70c7556447134e3ba1dc5d1ea2f82@192.168.1.65
+[2013-04-15 20:05:11,276] B2buaHelperTest:1008 INFO  - === testLinkSipSessions102() ===
+[2013-04-15 20:05:11,277] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 84265f5f323ee1f6ef2836385559fca8@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1830487326
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=433337344
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:50:29,736] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 54a70c7556447134e3ba1dc5d1ea2f82@192.168.1.65
+[2013-04-15 20:05:11,281] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 84265f5f323ee1f6ef2836385559fca8@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1830487326
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=433337344
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKcd8b5c9882141db174e834651ba92227
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9ada98b00699adba8749f816571fa18f
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -470,23 +470,23 @@ Method-Name: testLinkSipSessions102
 Content-Length: 0
 
  ---
-[2013-04-04 20:50:32,758] B2buaHelperTest:1008 INFO  - === testUnlinkSipSessions101() ===
-[2013-04-04 20:50:32,759] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 89513c7a584cafec58914721eb27a238@192.168.1.65
+[2013-04-15 20:05:14,303] B2buaHelperTest:1008 INFO  - === testUnlinkSipSessions101() ===
+[2013-04-15 20:05:14,303] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: a86a8e522be58462513b696cadd72539@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=386155100
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=252771280
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:50:32,763] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 89513c7a584cafec58914721eb27a238@192.168.1.65
+[2013-04-15 20:05:14,307] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: a86a8e522be58462513b696cadd72539@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=386155100
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=252771280
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK549f1661acc05aa842d7178025557e53
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK043f9a6ab5f8c5f039f25e6d8b896be0
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -495,23 +495,23 @@ Method-Name: testUnlinkSipSessions101
 Content-Length: 0
 
  ---
-[2013-04-04 20:50:35,780] B2buaHelperTest:1008 INFO  - === testCreateCancel101() ===
-[2013-04-04 20:50:35,780] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 9c233db7a95de67c7b196bc34492c0fb@192.168.1.65
+[2013-04-15 20:05:17,325] B2buaHelperTest:1008 INFO  - === testCreateCancel101() ===
+[2013-04-15 20:05:17,326] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: c615a41fcc05b79c0ca3c52dfbd5e444@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1222130284
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=100861171
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:50:35,784] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 9c233db7a95de67c7b196bc34492c0fb@192.168.1.65
+[2013-04-15 20:05:17,331] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: c615a41fcc05b79c0ca3c52dfbd5e444@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1222130284
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=100861171
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK25d4351d9c5da63f314d097487112414
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKc308ecdee2e36d1b95a7b842f40ba4a4
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -520,14 +520,121 @@ Method-Name: testCreateCancel101
 Content-Length: 0
 
  ---
-[2013-04-04 20:50:38,803] B2buaHelperTest:1008 INFO  - === testCreateCancel001() ===
-SIPUNIT TRACE:  1365105038817  INVITE after sending out through stack..........
-SIPUNIT TRACE:  1365105038817  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: ced961844b591758955b793b540acdfe@192.168.1.65
+[2013-04-15 20:05:20,350] B2buaHelperTest:1008 INFO  - === testCreateRequest001() ===
+[2013-04-15 20:05:20,351] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 73eacbf16cf2762f4194027fefabce6c@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=871313081
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:05:20,354] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 73eacbf16cf2762f4194027fefabce6c@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=871313081
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK14ef3511255e58c1d252d6558d1a3309
+Max-Forwards: 5
+Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: B2buaHelper
+Method-Name: testCreateRequest001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:05:23,375] B2buaHelperTest:1008 INFO  - === testCreateRequest002() ===
+SIPUNIT TRACE:  1366052723402  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1366052723402  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 7076d0f64cfcef7682c650a16c34ffd6@192.168.1.65
 CSeq: 1 INVITE
-From: <sip:alice@192.168.1.65>;tag=2040703239
+From: <sip:alice@192.168.1.65>;tag=359747801
 To: <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK41913aa148d1c2352b810a2be63d6c64
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKdb468d0c39ad90feeb59f7adb657ef2f
+Max-Forwards: 70
+Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
+Route: <sip:localhost:5060;transport=udp;lr>
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: B2buaHelper
+Method-Name: testCreateRequest002
+private-uri: sip:bob@192.168.1.65:5072
+Content-Length: 0
+
+
+SIPUNIT TRACE:  1366052723402  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
+SIPUNIT TRACE:  1366052723402  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1366052733403  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1366052733403  SS.waitRequest() - either we got the request, or timed out
+[2013-04-15 20:05:36,417] B2buaHelperTest:1008 INFO  - === testCreateRequest101() ===
+[2013-04-15 20:05:36,418] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: e676c2e988eef73f0731dab880f8fd7c@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1639687519
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:05:36,425] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: e676c2e988eef73f0731dab880f8fd7c@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1639687519
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6e452333c8e65f94f7b2bbba70302187
+Max-Forwards: 5
+Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: B2buaHelper
+Method-Name: testCreateRequest101
+Content-Length: 0
+
+ ---
+[2013-04-15 20:05:39,448] B2buaHelperTest:1008 INFO  - === testCreateRequest102() ===
+[2013-04-15 20:05:39,449] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 69f46a7a715c7280ad4ddddf3389e25e@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=740929769
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:05:39,454] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 69f46a7a715c7280ad4ddddf3389e25e@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=740929769
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKdc7cf5a3e72d586c7109d3bb18a242c5
+Max-Forwards: 5
+Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: B2buaHelper
+Method-Name: testCreateRequest102
+Content-Length: 0
+
+ ---
+[2013-04-15 20:05:42,474] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 3d4b3c23557fa9e89396bb13e573962f@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1378710214
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:05:45,498] B2buaHelperTest:1008 INFO  - === testCreateCancel001() ===
+SIPUNIT TRACE:  1366052745503  INVITE after sending out through stack..........
+SIPUNIT TRACE:  1366052745503  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: baabb89bc6de7336a5bfe20cff11cb1c@192.168.1.65
+CSeq: 1 INVITE
+From: <sip:alice@192.168.1.65>;tag=1977831658
+To: <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK5a3a6813649c7bf5c34db7739bb053b2
 Max-Forwards: 70
 Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
 Route: <sip:localhost:5060;lr;transport=udp>
@@ -541,168 +648,61 @@ private-uri: sip:bob@192.168.1.65:5072
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365105038818  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
-SIPUNIT TRACE:  1365105038818  SS.waitRequest() - about to block, waiting
-SIPUNIT TRACE:  1365105038837  SipStack: request received !
-SIPUNIT TRACE:  1365105038837  SipStack: calling listener
-SIPUNIT TRACE:  1365105038837  SipSession: request received !
-SIPUNIT TRACE:  1365105038837       me ('To' check) = sip:bob@192.168.1.65
-SIPUNIT TRACE:  1365105038837       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
-SIPUNIT TRACE:  1365105038837       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+SIPUNIT TRACE:  1366052745503  RouteHeader address: <sip:localhost:5060;lr;transport=udp>
+SIPUNIT TRACE:  1366052745503  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1366052745518  SipStack: request received !
+SIPUNIT TRACE:  1366052745518  SipStack: calling listener
+SIPUNIT TRACE:  1366052745518  SipSession: request received !
+SIPUNIT TRACE:  1366052745518       me ('To' check) = sip:bob@192.168.1.65
+SIPUNIT TRACE:  1366052745518       my local contact info ('Request URI' check) = sip:bob@192.168.1.65:5072;transport=udp;lr
+SIPUNIT TRACE:  1366052745518       INVITE sip:bob@192.168.1.65:5072 SIP/2.0
 To: <sip:bob@192.168.1.65:5072>
 Contact: <sip:JSR289_TCK@localhost:5060>
 From: <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKihk4su!9wud!5yvam0bibzm6zwd46q;maddr=192.168.1.65
-Call-ID: f3iz35x7zj1rilw7et.a
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK17yyjpft_3u6wqb-1m+.vj7mtuboct;maddr=192.168.1.65
+Call-ID: e7r31q012+9hy1ge31h2
 Max-Forwards: 69
-CSeq: 54766 INVITE
+CSeq: 45351 INVITE
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365105038837  SipSession: notifying block object
-SIPUNIT TRACE:  1365105038837  SS.waitRequest() - we've come out of the block
-SIPUNIT TRACE:  1365105038837  SS.waitRequest() - either we got the request, or timed out
-SIPUNIT TRACE:  1365105038838  INVITE after received by stack..........
-SIPUNIT TRACE:  1365105038838  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
+SIPUNIT TRACE:  1366052745518  SipSession: notifying block object
+SIPUNIT TRACE:  1366052745518  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1366052745518  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1366052745519  INVITE after received by stack..........
+SIPUNIT TRACE:  1366052745519  INVITE sip:bob@192.168.1.65:5072 SIP/2.0
 To: <sip:bob@192.168.1.65:5072>
 Contact: <sip:JSR289_TCK@localhost:5060>
 From: <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKihk4su!9wud!5yvam0bibzm6zwd46q;maddr=192.168.1.65
-Call-ID: f3iz35x7zj1rilw7et.a
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK17yyjpft_3u6wqb-1m+.vj7mtuboct;maddr=192.168.1.65
+Call-ID: e7r31q012+9hy1ge31h2
 Max-Forwards: 69
-CSeq: 54766 INVITE
+CSeq: 45351 INVITE
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365105038840  Response before sending out through stack..........
-SIPUNIT TRACE:  1365105038840  SIP/2.0 180 OK
-To: <sip:bob@192.168.1.65:5072>;tag=287693855
+SIPUNIT TRACE:  1366052745521  Response before sending out through stack..........
+SIPUNIT TRACE:  1366052745521  SIP/2.0 180 OK
+To: <sip:bob@192.168.1.65:5072>;tag=1903673131
 From: <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKihk4su!9wud!5yvam0bibzm6zwd46q;maddr=192.168.1.65
-Call-ID: f3iz35x7zj1rilw7et.a
-CSeq: 54766 INVITE
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK17yyjpft_3u6wqb-1m+.vj7mtuboct;maddr=192.168.1.65
+Call-ID: e7r31q012+9hy1ge31h2
+CSeq: 45351 INVITE
 Contact: <sip:bob@192.168.1.65:5072;transport=udp;lr>
 Expires: 0
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365105038845  Outgoing call response received: SIP/2.0 100 Trying
+SIPUNIT TRACE:  1366052745526  Outgoing call response received: SIP/2.0 100 Trying
 To: <sip:JSR289_TCK@localhost:5060>
-From: <sip:alice@192.168.1.65>;tag=2040703239
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK41913aa148d1c2352b810a2be63d6c64
-Call-ID: ced961844b591758955b793b540acdfe@192.168.1.65
+From: <sip:alice@192.168.1.65>;tag=1977831658
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK5a3a6813649c7bf5c34db7739bb053b2
+Call-ID: baabb89bc6de7336a5bfe20cff11cb1c@192.168.1.65
 Server: Elaina
 CSeq: 1 INVITE
 Content-Length: 0
 
 
-[2013-04-04 20:50:51,851] B2buaHelperTest:1008 INFO  - === testCreateRequest001() ===
-[2013-04-04 20:50:51,852] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 49a1904b3ed4bbf6299789c44353aa79@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1183744653
-To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 20:50:51,856] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 49a1904b3ed4bbf6299789c44353aa79@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1183744653
-To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK21f2c1e73db1c7b1d2d1978746a18f8e
-Max-Forwards: 5
-Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: B2buaHelper
-Method-Name: testCreateRequest001
-Content-Length: 0
-
- ---
-[2013-04-04 20:50:54,876] B2buaHelperTest:1008 INFO  - === testCreateRequest002() ===
-SIPUNIT TRACE:  1365105054892  INVITE after sending out through stack..........
-SIPUNIT TRACE:  1365105054893  INVITE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: fda1cc7b0b5d3eb059188959eb4b29f3@192.168.1.65
-CSeq: 1 INVITE
-From: <sip:alice@192.168.1.65>;tag=1151665138
-To: <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKec216f0bf67e81b7d1c388107cacbb6e
-Max-Forwards: 70
-Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
-Route: <sip:localhost:5060;transport=udp;lr>
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: B2buaHelper
-Method-Name: testCreateRequest002
-private-uri: sip:bob@192.168.1.65:5072
-Content-Length: 0
-
-
-SIPUNIT TRACE:  1365105054893  RouteHeader address: <sip:localhost:5060;transport=udp;lr>
-SIPUNIT TRACE:  1365105054893  SS.waitRequest() - about to block, waiting
-SIPUNIT TRACE:  1365105064889  SS.waitRequest() - we've come out of the block
-SIPUNIT TRACE:  1365105064889  SS.waitRequest() - either we got the request, or timed out
-[2013-04-04 20:51:07,898] B2buaHelperTest:1008 INFO  - === testCreateRequest101() ===
-[2013-04-04 20:51:07,899] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 562c3a12a88031454d8ee4e5389bed08@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1151574636
-To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 20:51:07,905] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 562c3a12a88031454d8ee4e5389bed08@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1151574636
-To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK840d01dfb156489b2a454e4420983ab0
-Max-Forwards: 5
-Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: B2buaHelper
-Method-Name: testCreateRequest101
-Content-Length: 0
-
- ---
-[2013-04-04 20:51:10,924] B2buaHelperTest:1008 INFO  - === testCreateRequest102() ===
-[2013-04-04 20:51:10,924] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 9e5b02102b7a56fc88e6f66747052b4a@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=132606114
-To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 20:51:10,930] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 9e5b02102b7a56fc88e6f66747052b4a@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=132606114
-To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK85fcd24022a931b4bbb60dd130d3d5fd
-Max-Forwards: 5
-Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: B2buaHelper
-Method-Name: testCreateRequest102
-Content-Length: 0
-
- ---
-[2013-04-04 20:51:13,948] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: f7aff68480a91a7f19cf068167314a54@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=892873265
-To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

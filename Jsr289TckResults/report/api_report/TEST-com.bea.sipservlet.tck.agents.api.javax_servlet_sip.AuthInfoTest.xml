@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="1" name="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.AuthInfoTest" tests="1" time="13.613">
+<testsuite errors="0" failures="1" name="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.AuthInfoTest" tests="1" time="13.618">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="env.SIPUNIT_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib" />
@@ -92,15 +92,16 @@
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="java.class.path" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/ant-contrib-1.0b3.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/javax.annotation_1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/servlet-2_5-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sigtest.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipservlet-1_1-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipunit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/tck-junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipApi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipRi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/concurrent.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/dom.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jax-qname.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-impl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-libs.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/log4j-1.2.8.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/namespace.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/nist-sdp-1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/relaxngDatatype.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/tracesviewer.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xalan.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xercesImpl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xsdlib.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/classes:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/lib/tools.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf:/usr/share/java/ant-1.8.2/lib/ant-launcher.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar" />
-    <property name="sun.java.command" value="com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.AuthInfoTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.AuthInfoTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit185228459.properties" />
+    <property name="sun.java.command" value="com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.AuthInfoTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.AuthInfoTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit322577280.properties" />
     <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on June 20 2012" />
-    <property name="env.TERM_SESSION_ID" value="7818A790-16A8-47B8-9DFE-BD2903CA9C1F" />
+    <property name="env.TERM_SESSION_ID" value="992028FA-2937-460F-90A8-E989AB5B64C8" />
     <property name="env.JSR289TCK_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/.." />
     <property name="env.JBOSS_HOME" value="/opt/jboss-eap-6.1" />
     <property name="signature.property" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/signature.properties" />
     <property name="jsr289.dir" value=".." />
     <property name="api.report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="env.JAVA_MAIN_CLASS_54325" value="org.apache.tools.ant.launch.Launcher" />
     <property name="ant.file.type" value="file" />
     <property name="java.vm.specification.version" value="1.7" />
     <property name="conf" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf" />
@@ -119,7 +120,6 @@
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
     <property name="java.ext.dirs" value="/Users/andrew/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
     <property name="ar.appname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-approuter.jar" />
-    <property name="env.JAVA_MAIN_CLASS_46883" value="org.apache.tools.ant.launch.Launcher" />
     <property name="user.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
     <property name="applications.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications" />
     <property name="line.separator" value="&#xa;" />
@@ -138,7 +138,7 @@
     <property name="ant.project.invoked-targets" value="run-api-tests" />
     <property name="tck.earname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-apps.ear" />
   </properties>
-  <testcase assertions="[SipServlet:JAVADOC:AuthInfo1] - Add authentication info into the AuthInfo object for a challenge response of a specific type (401/407) and realm. " classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.AuthInfoTest" name="testAddAuthInfo001" time="13.432">
+  <testcase assertions="[SipServlet:JAVADOC:AuthInfo1] - Add authentication info into the AuthInfo object for a challenge response of a specific type (401/407) and realm. " classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.AuthInfoTest" name="testAddAuthInfo001" time="13.445">
     <failure message="a wait for INVITE - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: a wait for INVITE - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.
 	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)
 	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.AuthInfoTest.testAddAuthInfo001(AuthInfoTest.java:115)
@@ -152,23 +152,23 @@
 	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
 </failure>
   </testcase>
-  <system-out><![CDATA[[2013-04-04 20:49:40,980] AuthInfoTest:1008 INFO  - === testAddAuthInfo001() ===
-[2013-04-04 20:49:41,089] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: b4619f74e4ddb0aa23b250a9e7c79624@192.168.1.65
+  <system-out><![CDATA[[2013-04-15 20:04:22,459] AuthInfoTest:1008 INFO  - === testAddAuthInfo001() ===
+[2013-04-15 20:04:22,592] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ceeea85e703cef8912ea27078c894195@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1932252321
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1447552971
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:49:41,126] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: b4619f74e4ddb0aa23b250a9e7c79624@192.168.1.65
+[2013-04-15 20:04:22,629] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ceeea85e703cef8912ea27078c894195@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1932252321
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1447552971
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK3539e3350483dccd43ad3cdeb1d3c04c
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfa1271cf4309b5568c9852a28e2ad5da
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -177,54 +177,54 @@ Method-Name: testAddAuthInfo001
 Content-Length: 0
 
  ---
-SIPUNIT TRACE:  1365104981149  SS.waitRequest() - about to block, waiting
-SIPUNIT TRACE:  1365104981166  SipStack: request received !
-SIPUNIT TRACE:  1365104981166  SipStack: calling listener
-SIPUNIT TRACE:  1365104981167  SipSession: request received !
-SIPUNIT TRACE:  1365104981167       me ('To' check) = sip:alice@192.168.1.65
-SIPUNIT TRACE:  1365104981167       my local contact info ('Request URI' check) = sip:alice@192.168.1.65:5071;transport=udp;lr
-SIPUNIT TRACE:  1365104981167       INVITE sip:alice@192.168.1.65:5071 SIP/2.0
+SIPUNIT TRACE:  1366052662654  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1366052662662  SipStack: request received !
+SIPUNIT TRACE:  1366052662662  SipStack: calling listener
+SIPUNIT TRACE:  1366052662663  SipSession: request received !
+SIPUNIT TRACE:  1366052662663       me ('To' check) = sip:alice@192.168.1.65
+SIPUNIT TRACE:  1366052662663       my local contact info ('Request URI' check) = sip:alice@192.168.1.65:5071;transport=udp;lr
+SIPUNIT TRACE:  1366052662663       INVITE sip:alice@192.168.1.65:5071 SIP/2.0
 To: <sip:alice@192.168.1.65:5071>
 Contact: <sip:192.168.1.65>
-From: <sip:JSR289_TCK@localhost:5060>;tag=_auwcfmnvg
-Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKbpegags0tfm60+.nu81czi2c40myp4;maddr=192.168.1.65
-Call-ID: 6wvwwextn1gcg4so.z-p
+From: <sip:JSR289_TCK@localhost:5060>;tag=og_bn-za3d
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK5yws_wv51s4y__naz9kz2j2xzs!km8;maddr=192.168.1.65
+Call-ID: 75losdme_0hi!5rauygt
 Max-Forwards: 70
-CSeq: 62618 INVITE
+CSeq: 28018 INVITE
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365104981167  SipSession: notifying block object
-SIPUNIT TRACE:  1365104981167  SS.waitRequest() - we've come out of the block
-SIPUNIT TRACE:  1365104981167  SS.waitRequest() - either we got the request, or timed out
-SIPUNIT TRACE:  1365104981167  INVITE after received by stack..........
-SIPUNIT TRACE:  1365104981168  INVITE sip:alice@192.168.1.65:5071 SIP/2.0
+SIPUNIT TRACE:  1366052662663  SipSession: notifying block object
+SIPUNIT TRACE:  1366052662663  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1366052662663  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1366052662664  INVITE after received by stack..........
+SIPUNIT TRACE:  1366052662664  INVITE sip:alice@192.168.1.65:5071 SIP/2.0
 To: <sip:alice@192.168.1.65:5071>
 Contact: <sip:192.168.1.65>
-From: <sip:JSR289_TCK@localhost:5060>;tag=_auwcfmnvg
-Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKbpegags0tfm60+.nu81czi2c40myp4;maddr=192.168.1.65
-Call-ID: 6wvwwextn1gcg4so.z-p
+From: <sip:JSR289_TCK@localhost:5060>;tag=og_bn-za3d
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK5yws_wv51s4y__naz9kz2j2xzs!km8;maddr=192.168.1.65
+Call-ID: 75losdme_0hi!5rauygt
 Max-Forwards: 70
-CSeq: 62618 INVITE
+CSeq: 28018 INVITE
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365104981176  Response before sending out through stack..........
-SIPUNIT TRACE:  1365104981177  SIP/2.0 401 Unauthorized
-To: <sip:alice@192.168.1.65:5071>;tag=887944598
-From: <sip:JSR289_TCK@localhost:5060>;tag=_auwcfmnvg
-Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bKbpegags0tfm60+.nu81czi2c40myp4;maddr=192.168.1.65
-Call-ID: 6wvwwextn1gcg4so.z-p
-CSeq: 62618 INVITE
+SIPUNIT TRACE:  1366052662674  Response before sending out through stack..........
+SIPUNIT TRACE:  1366052662674  SIP/2.0 401 Unauthorized
+To: <sip:alice@192.168.1.65:5071>;tag=168441950
+From: <sip:JSR289_TCK@localhost:5060>;tag=og_bn-za3d
+Via: SIP/2.0/UDP 192.168.1.65:5060;branch=z9hG4bK5yws_wv51s4y__naz9kz2j2xzs!km8;maddr=192.168.1.65
+Call-ID: 75losdme_0hi!5rauygt
+CSeq: 28018 INVITE
 Contact: <sip:alice@192.168.1.65:5071;transport=udp;lr>
 Expires: 1
 WWW-Authenticate: Digest realm ="beasys.com", nonce="dbffb13c8a4d30117c25c753d1fa7710", opaque="", stale=FALSE, algorithm=MD5, qop="auth" 
 Content-Length: 0
 
 
-SIPUNIT TRACE:  1365104981181  SS.waitRequest() - about to block, waiting
-SIPUNIT TRACE:  1365104991178  SS.waitRequest() - we've come out of the block
-SIPUNIT TRACE:  1365104991178  SS.waitRequest() - either we got the request, or timed out
+SIPUNIT TRACE:  1366052662678  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1366052672679  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1366052672679  SS.waitRequest() - either we got the request, or timed out
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

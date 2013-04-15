@@ -1,50 +1,50 @@
-[2013-04-04 21:19:26,847] SipTargetedRequestTypeTest:1008 INFO  - === testValues001() ===
-[2013-04-04 21:19:26,994] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: ecd0dab19116c521e79d8968784a89f4@192.168.1.65
+[2013-04-15 20:34:16,442] SipTargetedRequestTypeTest:1008 INFO  - === testValueOf001() ===
+[2013-04-15 20:34:16,565] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 37605eeb748cdc8194ca7b7831b6dabe@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=2072937495
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=442463970
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:19:27,034] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: ecd0dab19116c521e79d8968784a89f4@192.168.1.65
+[2013-04-15 20:34:16,611] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 37605eeb748cdc8194ca7b7831b6dabe@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=2072937495
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=442463970
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK91b6f570908e529bfbc15442526c50f4
-Max-Forwards: 5
-Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: SipTargetedRequestType
-Method-Name: testValues001
-Content-Length: 0
-
- ---
-[2013-04-04 21:19:30,067] SipTargetedRequestTypeTest:1008 INFO  - === testValueOf001() ===
-[2013-04-04 21:19:30,068] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 1b61b0d1f42a95355db63ff337491b23@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1050765752
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 21:19:30,072] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 1b61b0d1f42a95355db63ff337491b23@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1050765752
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6a0175201ccfbd5b91ed670093ffddf2
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK3bcd3a2f155c59f805b5943d219f9a66
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Servlet-Name: SipTargetedRequestType
 Method-Name: testValueOf001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:34:19,643] SipTargetedRequestTypeTest:1008 INFO  - === testValues001() ===
+[2013-04-15 20:34:19,644] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 1c7943a3be3ed26956bc5eb5d39cd3c1@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=192624131
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:34:19,648] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 1c7943a3be3ed26956bc5eb5d39cd3c1@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=192624131
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK70ddd1f978124fbe0d179f194d984ac9
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: SipTargetedRequestType
+Method-Name: testValues001
 Content-Length: 0
 
  ---

@@ -1,45 +1,20 @@
-[2013-04-04 20:57:03,512] ServletParseExceptionTest:1008 INFO  - === testServletParseException002() ===
-[2013-04-04 20:57:03,655] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 436d129fd1f48c2f6d6a3210cb8cf62a@192.168.1.65
+[2013-04-15 20:11:44,757] ServletParseExceptionTest:1008 INFO  - === testServletParseException003() ===
+[2013-04-15 20:11:44,867] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 27fd82c0661f2510406f39febd3e6f32@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1690752323
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1715431536
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:57:03,698] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 436d129fd1f48c2f6d6a3210cb8cf62a@192.168.1.65
+[2013-04-15 20:11:44,909] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 27fd82c0661f2510406f39febd3e6f32@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1690752323
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1715431536
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK532380956ff3d7e90090e4d74a86d720
-Max-Forwards: 5
-Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: ServletParseException
-Method-Name: testServletParseException002
-Content-Length: 0
-
- ---
-[2013-04-04 20:57:06,729] ServletParseExceptionTest:1008 INFO  - === testServletParseException003() ===
-[2013-04-04 20:57:06,730] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 5d2276ccaee59a11420192fe6d8874d1@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1765253188
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 20:57:06,734] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 5d2276ccaee59a11420192fe6d8874d1@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1765253188
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK7c36add29b6e225c624fda8cf00032ba
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKb00dc0a17d38caca052fbc03ed17a699
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -48,23 +23,23 @@ Method-Name: testServletParseException003
 Content-Length: 0
 
  ---
-[2013-04-04 20:57:09,752] ServletParseExceptionTest:1008 INFO  - === testServletParseException004() ===
-[2013-04-04 20:57:09,753] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: eb6c7d75a499e542082c2f63d14383ca@192.168.1.65
+[2013-04-15 20:11:47,940] ServletParseExceptionTest:1008 INFO  - === testServletParseException004() ===
+[2013-04-15 20:11:47,941] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: aa2b57731ba71a05801fab79d722cff6@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=663296338
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1613908752
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:57:09,757] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: eb6c7d75a499e542082c2f63d14383ca@192.168.1.65
+[2013-04-15 20:11:47,946] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: aa2b57731ba71a05801fab79d722cff6@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=663296338
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1613908752
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK366f5bb7141f03fc1444d4cf8c20e06a
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKeca1451b5f69e20cfb7b4b5ed13dbef1
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -73,28 +48,53 @@ Method-Name: testServletParseException004
 Content-Length: 0
 
  ---
-[2013-04-04 20:57:12,774] ServletParseExceptionTest:1008 INFO  - === testServletParseException001() ===
-[2013-04-04 20:57:12,775] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: e406e185f828430fdc476eaa6a68aa5b@192.168.1.65
+[2013-04-15 20:11:50,962] ServletParseExceptionTest:1008 INFO  - === testServletParseException001() ===
+[2013-04-15 20:11:50,963] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 6d4865f0b84c869b7fdc8e25c8791349@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1533947805
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1308077396
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:57:12,779] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: e406e185f828430fdc476eaa6a68aa5b@192.168.1.65
+[2013-04-15 20:11:50,967] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 6d4865f0b84c869b7fdc8e25c8791349@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1533947805
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1308077396
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK60acc8b56facf74a2360123f01f0dcf9
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4ca48e5c33269d813e65c288128f3671
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Servlet-Name: ServletParseException
 Method-Name: testServletParseException001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:11:53,984] ServletParseExceptionTest:1008 INFO  - === testServletParseException002() ===
+[2013-04-15 20:11:53,984] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 3d95d5eb7641eadc143e85474bfc0a68@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=828786546
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:11:53,989] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 3d95d5eb7641eadc143e85474bfc0a68@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=828786546
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe1d387bf09941464a0158e8dd3432097
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: ServletParseException
+Method-Name: testServletParseException002
 Content-Length: 0
 
  ---

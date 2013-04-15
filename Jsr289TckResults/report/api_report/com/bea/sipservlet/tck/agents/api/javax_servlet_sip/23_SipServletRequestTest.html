@@ -77,7 +77,7 @@
     
         cur['env.JAVA_HOME'] = '/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home';
     
-        cur['env.JAVA_MAIN_CLASS_46883'] = 'org.apache.tools.ant.launch.Launcher';
+        cur['env.JAVA_MAIN_CLASS_54325'] = 'org.apache.tools.ant.launch.Launcher';
     
         cur['env.JBOSS_HOME'] = '/opt/jboss-eap-6.1';
     
@@ -137,7 +137,7 @@
     
         cur['env.TERM_PROGRAM_VERSION'] = '309';
     
-        cur['env.TERM_SESSION_ID'] = '7818A790-16A8-47B8-9DFE-BD2903CA9C1F';
+        cur['env.TERM_SESSION_ID'] = '992028FA-2937-460F-90A8-E989AB5B64C8';
     
         cur['env.TMPDIR'] = '/var/folders/qt/j9kz_nw12bqfytwz9kfyjvq00000gn/T/';
     
@@ -254,7 +254,7 @@
     
         cur['sun.io.unicode.encoding'] = 'UnicodeBig';
     
-        cur['sun.java.command'] = 'com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit237630217.properties';
+        cur['sun.java.command'] = 'com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit834046678.properties';
     
         cur['sun.java.launcher'] = 'SUN_STANDARD';
     
@@ -324,7 +324,7 @@
 <th width="80%">Name</th><th>Tests</th><th>Errors</th><th>Failures</th><th nowrap>Time(s)</th>
 </tr>
 <tr valign="top" class="Error">
-<td><a href="23_SipServletRequestTest.html">SipServletRequestTest</a></td><td>33</td><td>2</td><td>5</td><td>132.729</td>
+<td><a href="23_SipServletRequestTest.html">SipServletRequestTest</a></td><td>33</td><td>2</td><td>4</td><td>142.729</td>
 </tr>
 </table>
 <h2>Tests</h2>
@@ -332,118 +332,116 @@
 <tr valign="top">
 <th>Name</th><th>Assertions</th><th>Status</th><th width="70%">Type</th><th nowrap>Time(s)</th>
 </tr>
-<tr valign="top" class="Error">
-<td>testAddAuthHeader001</td><td>[SipServlet:JAVADOC:SipServletRequest1]</td><td>Error</td><td>N/A<br>
+<tr valign="top" class="Failure">
+<td>testGetPoppedRoute001</td><td>[SipServlet:JAVADOC:SipServletRequest10]</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
 <br>
-<code>java.lang.NullPointerException	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.send401ByUa1(SipServletRequestTest.java:605)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testAddAuthHeader001(SipServletRequestTest.java:76)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.433</td>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testGetPoppedRoute001(SipServletRequestTest.java:139)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.438</td>
 </tr>
-<tr valign="top" class="Error">
-<td>testAddAuthHeader002</td><td>[SipServlet:JAVADOC:SipServletRequest2]</td><td>Error</td><td>N/A<br>
+<tr valign="top" class="Failure">
+<td>testGetProxy002</td><td>[SipServlet:JAVADOC:SipServletRequest12]</td><td>Failure</td><td>Wait MESSAGE failed - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.<br>
 <br>
-<code>java.lang.NullPointerException	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.send401ByUa1(SipServletRequestTest.java:605)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testAddAuthHeader002(SipServletRequestTest.java:85)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.037</td>
+<code>junit.framework.AssertionFailedError: Wait MESSAGE failed - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.sendMessageProxyByUa1(SipServletRequestTest.java:532)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testGetProxy002(SipServletRequestTest.java:151)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.018</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testCreateCancel001</td><td>[SipServlet:JAVADOC:SipServletRequest3]</td><td>Success</td><td></td><td>3.046</td>
+<td>testGetReader001</td><td>[SipServlet:JAVADOC:SipServletRequest13]</td><td>Success</td><td></td><td>3.025</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetSetRoutingDirective001</td><td>[SipServlet:JAVADOC:SipServletRequest15][SipServlet:JAVADOC:SipServletRequest23] - test getRoutingDirective and setRoutingDirective</td><td>Success</td><td></td><td>3.033</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testIsInitial001</td><td>[SipServlet:JAVADOC:SipServletRequest16]</td><td>Success</td><td></td><td>3.024</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testPushRoute001</td><td>[SipServlet:JAVADOC:SipServletRequest18]</td><td>Success</td><td></td><td>3.039</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testPushRoute002</td><td>[SipServlet:JAVADOC:SipServletRequest19]</td><td>Success</td><td></td><td>3.035</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSend001</td><td>[SipServlet:JAVADOC:SipServletRequest20]</td><td>Success</td><td></td><td>3.028</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetSetMaxForwards001</td><td>[SipServlet:JAVADOC:SipServletRequest9][SipServlet:JAVADOC:SipServletRequest21] - test getMaxForwards and setMaxForwards</td><td>Success</td><td></td><td>3.027</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetSetRequestURI001</td><td>[SipServlet:JAVADOC:SipServletRequest14][SipServlet:JAVADOC:SipServletRequest22] - test getRequestURI and setRequestURI</td><td>Success</td><td></td><td>3.030</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testCreateCancel001</td><td>[SipServlet:JAVADOC:SipServletRequest3]</td><td>Success</td><td></td><td>3.067</td>
 </tr>
 <tr valign="top" class="TableRowColor">
 <td>testCreateResponse001</td><td>[SipServlet:JAVADOC:SipServletRequest4]</td><td>Success</td><td></td><td>3.023</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testCreateResponse002</td><td>[SipServlet:JAVADOC:SipServletRequest5]</td><td>Success</td><td></td><td>3.029</td>
+<td>testCreateResponse002</td><td>[SipServlet:JAVADOC:SipServletRequest5]</td><td>Success</td><td></td><td>3.023</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetB2buaHelper001</td><td>[SipServlet:JAVADOC:SipServletRequest6]</td><td>Success</td><td></td><td>3.020</td>
+<td>testGetB2buaHelper001</td><td>[SipServlet:JAVADOC:SipServletRequest6]</td><td>Success</td><td></td><td>3.022</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testGetInitialPoppedRoute001</td><td>[SipServlet:JAVADOC:SipServletRequest7]</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
 <br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testGetInitialPoppedRoute001(SipServletRequestTest.java:127)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.025</td>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testGetInitialPoppedRoute001(SipServletRequestTest.java:127)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.030</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetInputStream001</td><td>[SipServlet:JAVADOC:SipServletRequest8]</td><td>Success</td><td></td><td>3.025</td>
+<td>testGetInputStream001</td><td>[SipServlet:JAVADOC:SipServletRequest8]</td><td>Success</td><td></td><td>3.021</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetProxy001</td><td>[SipServlet:JAVADOC:SipServletRequest11]</td><td>Success</td><td></td><td>3.030</td>
+</tr>
+<tr valign="top" class="Error">
+<td>testAddAuthHeader001</td><td>[SipServlet:JAVADOC:SipServletRequest1]</td><td>Error</td><td>N/A<br>
+<br>
+<code>java.lang.NullPointerException	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.send401ByUa1(SipServletRequestTest.java:605)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testAddAuthHeader001(SipServletRequestTest.java:76)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.035</td>
+</tr>
+<tr valign="top" class="Error">
+<td>testAddAuthHeader002</td><td>[SipServlet:JAVADOC:SipServletRequest2]</td><td>Error</td><td>N/A<br>
+<br>
+<code>java.lang.NullPointerException	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.send401ByUa1(SipServletRequestTest.java:605)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testAddAuthHeader002(SipServletRequestTest.java:85)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.035</td>
 </tr>
 <tr valign="top" class="Failure">
-<td>testGetPoppedRoute001</td><td>[SipServlet:JAVADOC:SipServletRequest10]</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<td>testCreateCancel101</td><td>[SipServlet:JAVADOC:SipServletRequest3] - IllegalStateException should be thrown if the transaction state is such that it doesn't allow a CANCEL request to be sent</td><td>Failure</td><td>a wait BYE - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.<br>
 <br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testGetPoppedRoute001(SipServletRequestTest.java:139)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.025</td>
+<code>junit.framework.AssertionFailedError: a wait BYE - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.assertReqInvite(SipServletRequestTest.java:1029)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testCreateCancel101(SipServletRequestTest.java:707)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.048</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetProxy001</td><td>[SipServlet:JAVADOC:SipServletRequest11]</td><td>Success</td><td></td><td>3.032</td>
-</tr>
-<tr valign="top" class="Failure">
-<td>testGetProxy002</td><td>[SipServlet:JAVADOC:SipServletRequest12]</td><td>Failure</td><td>Wait MESSAGE failed - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.<br>
-<br>
-<code>junit.framework.AssertionFailedError: Wait MESSAGE failed - Timeout Occurred: The maximum amount of time to wait for a request message has elapsed.	at org.cafesip.sipunit.SipTestCase.assertLastOperationSuccess(SipTestCase.java:241)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.sendMessageProxyByUa1(SipServletRequestTest.java:532)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testGetProxy002(SipServletRequestTest.java:151)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.012</td>
+<td>testCreateResponse101</td><td>[SipServlet:JAVADOC:SipServletRequest4] - IllegalArgumentException should be thrown if the statuscode is not a valid SIP status code</td><td>Success</td><td></td><td>3.021</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetReader001</td><td>[SipServlet:JAVADOC:SipServletRequest13]</td><td>Success</td><td></td><td>3.024</td>
-</tr>
-<tr valign="top" class="Failure">
-<td>testGetSetRoutingDirective001</td><td>[SipServlet:JAVADOC:SipServletRequest15][SipServlet:JAVADOC:SipServletRequest23] - test getRoutingDirective and setRoutingDirective</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
-<br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testGetSetRoutingDirective001(SipServletRequestTest.java:165)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.028</td>
+<td>testCreateResponse102</td><td>[SipServlet:JAVADOC:SipServletRequest4] - IllegalStateException should be thrown if this request has already been responded to with a final status code with statuscode parameter.</td><td>Success</td><td></td><td>3.033</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testIsInitial001</td><td>[SipServlet:JAVADOC:SipServletRequest16]</td><td>Success</td><td></td><td>3.020</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testPushRoute001</td><td>[SipServlet:JAVADOC:SipServletRequest18]</td><td>Success</td><td></td><td>3.041</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testPushRoute002</td><td>[SipServlet:JAVADOC:SipServletRequest19]</td><td>Success</td><td></td><td>3.030</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testSend001</td><td>[SipServlet:JAVADOC:SipServletRequest20]</td><td>Success</td><td></td><td>3.032</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testGetSetMaxForwards001</td><td>[SipServlet:JAVADOC:SipServletRequest9][SipServlet:JAVADOC:SipServletRequest21] - test getMaxForwards and setMaxForwards</td><td>Success</td><td></td><td>3.030</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testGetSetRequestURI001</td><td>[SipServlet:JAVADOC:SipServletRequest14][SipServlet:JAVADOC:SipServletRequest22] - test getRequestURI and setRequestURI</td><td>Success</td><td></td><td>3.029</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testCreateCancel101</td><td>[SipServlet:JAVADOC:SipServletRequest3] - IllegalStateException should be thrown if the transaction state is such that it doesn't allow a CANCEL request to be sent</td><td>Success</td><td></td><td>3.040</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testCreateResponse101</td><td>[SipServlet:JAVADOC:SipServletRequest4] - IllegalArgumentException should be thrown if the statuscode is not a valid SIP status code</td><td>Success</td><td></td><td>3.020</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testCreateResponse102</td><td>[SipServlet:JAVADOC:SipServletRequest4] - IllegalStateException should be thrown if this request has already been responded to with a final status code with statuscode parameter.</td><td>Success</td><td></td><td>3.038</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testCreateResponse103</td><td>[SipServlet:JAVADOC:SipServletRequest5] - IllegalArgumentException should be thrown if the statuscode is not a valid SIP status with statuscode and reasonPhrase parameters.</td><td>Success</td><td></td><td>3.028</td>
+<td>testCreateResponse103</td><td>[SipServlet:JAVADOC:SipServletRequest5] - IllegalArgumentException should be thrown if the statuscode is not a valid SIP status with statuscode and reasonPhrase parameters.</td><td>Success</td><td></td><td>3.021</td>
 </tr>
 <tr valign="top" class="TableRowColor">
 <td>testCreateResponse104</td><td>[SipServlet:JAVADOC:SipServletRequest5] - IllegalStateException should be thrown if this request has already been responded to with a final status code with statuscode and reasonPhrase parameters.</td><td>Success</td><td></td><td>3.028</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetB2buaHelper101</td><td>[SipServlet:JAVADOC:SipServletRequest6] - IllegalStateException should be thrown if getProxy() had already been called</td><td>Success</td><td></td><td>3.021</td>
+<td>testGetB2buaHelper101</td><td>[SipServlet:JAVADOC:SipServletRequest6] - IllegalStateException should be thrown if getProxy() had already been called</td><td>Success</td><td></td><td>3.019</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testSetMaxForwards101</td><td>[SipServlet:JAVADOC:SipServletRequest21] - IllegalArgumentException should be thrown if the argument is not in the range 0 to 255</td><td>Success</td><td></td><td>3.024</td>
+<td>testSetMaxForwards101</td><td>[SipServlet:JAVADOC:SipServletRequest21] - IllegalArgumentException should be thrown if the argument is not in the range 0 to 255</td><td>Success</td><td></td><td>3.020</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testSetRequestURI101</td><td>[SipServlet:JAVADOC:SipServletRequest22] - NullPointerException should be thrown on null uri.</td><td>Success</td><td></td><td>3.021</td>
+<td>testSetRequestURI101</td><td>[SipServlet:JAVADOC:SipServletRequest22] - NullPointerException should be thrown on null uri.</td><td>Success</td><td></td><td>3.019</td>
 </tr>
 <tr valign="top" class="TableRowColor">
 <td>testGetProxy101</td><td>[SipServlet:JAVADOC:SipServletRequest11] - TooManyHopsException should be thrown if the request has a Max-Forwards header field value of 0 </td><td>Success</td><td></td><td>3.019</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetProxy102</td><td>[SipServlet:JAVADOC:SipServletRequest11] - IllegalStateException should be thrown if the transaction has already completed.</td><td>Success</td><td></td><td>3.032</td>
+<td>testGetProxy102</td><td>[SipServlet:JAVADOC:SipServletRequest11] - IllegalStateException should be thrown if the transaction has already completed.</td><td>Success</td><td></td><td>3.028</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetProxy103</td><td>[SipServlet:JAVADOC:SipServletRequest12] - TooManyHopsException should be thrown if the request has a Max-Forwards header field value of 0.</td><td>Success</td><td></td><td>3.020</td>
+<td>testGetProxy103</td><td>[SipServlet:JAVADOC:SipServletRequest12] - TooManyHopsException should be thrown if the request has a Max-Forwards header field value of 0.</td><td>Success</td><td></td><td>3.019</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetProxy104</td><td>[SipServlet:JAVADOC:SipServletRequest12] - IllegalStateException should be thrown if the transaction has already completed.</td><td>Success</td><td></td><td>3.029</td>
+<td>testGetProxy104</td><td>[SipServlet:JAVADOC:SipServletRequest12] - IllegalStateException should be thrown if the transaction has already completed.</td><td>Success</td><td></td><td>3.030</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetRoutingDirective101</td><td>[SipServlet:JAVADOC:SipServletRequest15] - IllegalStateException should be thrown if called on a request that is not initial.</td><td>Success</td><td></td><td>4.148</td>
+<td>testGetRoutingDirective101</td><td>[SipServlet:JAVADOC:SipServletRequest15] - IllegalStateException should be thrown if called on a request that is not initial.</td><td>Success</td><td></td><td>4.137</td>
 </tr>
-<tr valign="top" class="Failure">
-<td>testSetRoutingDirective101</td><td>[SipServlet:JAVADOC:SipServletRequest23] - llegalStateException should be thrown if called on a request that is not initial.</td><td>Failure</td><td>Unexpected default reason expected:&lt;200&gt; but was:&lt;500&gt;<br>
-<br>
-<code>junit.framework.AssertionFailedError: Unexpected default reason expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.assertInviteBye(SipServletRequestTest.java:966)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipServletRequestTest.testSetRoutingDirective101(SipServletRequestTest.java:886)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>4.137</td>
+<tr valign="top" class="TableRowColor">
+<td>testSetRoutingDirective101</td><td>[SipServlet:JAVADOC:SipServletRequest23] - llegalStateException should be thrown if called on a request that is not initial.</td><td>Success</td><td></td><td>4.138</td>
 </tr>
 </table>
 <div class="Properties">

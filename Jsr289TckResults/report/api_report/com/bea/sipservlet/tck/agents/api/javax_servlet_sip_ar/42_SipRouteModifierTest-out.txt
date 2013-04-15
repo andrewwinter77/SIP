@@ -1,50 +1,50 @@
-[2013-04-04 21:19:19,572] SipRouteModifierTest:1008 INFO  - === testValues001() ===
-[2013-04-04 21:19:19,664] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: c2f8cf3da66a000ee7b00234a23c15a6@192.168.1.65
+[2013-04-15 20:34:09,139] SipRouteModifierTest:1008 INFO  - === testValueOf001() ===
+[2013-04-15 20:34:09,271] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 3e25e46e839c97b2eb6c8e0ecb89b61d@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1928419762
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1448488903
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:19:19,699] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: c2f8cf3da66a000ee7b00234a23c15a6@192.168.1.65
+[2013-04-15 20:34:09,316] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 3e25e46e839c97b2eb6c8e0ecb89b61d@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1928419762
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1448488903
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKa28111f3cc2cefa9d8dcf33b095b0c18
-Max-Forwards: 5
-Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: SipRouteModifier
-Method-Name: testValues001
-Content-Length: 0
-
- ---
-[2013-04-04 21:19:22,727] SipRouteModifierTest:1008 INFO  - === testValueOf001() ===
-[2013-04-04 21:19:22,728] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 2f7af1962dd141d567b1eaf33de79abb@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1750077096
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 21:19:22,733] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 2f7af1962dd141d567b1eaf33de79abb@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1750077096
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4b7c34bf7dafd3e4a438a28cb1b5f981
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK3b572208417ba64908b9f9398ac727c8
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Servlet-Name: SipRouteModifier
 Method-Name: testValueOf001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:34:12,344] SipRouteModifierTest:1008 INFO  - === testValues001() ===
+[2013-04-15 20:34:12,344] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 0423ff636a380dc91248a38ea4c8bb21@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=167794940
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:34:12,349] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 0423ff636a380dc91248a38ea4c8bb21@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=167794940
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK2501bfd9157e5fc7a3122aa4f460127e
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: SipRouteModifier
+Method-Name: testValues001
 Content-Length: 0
 
  ---

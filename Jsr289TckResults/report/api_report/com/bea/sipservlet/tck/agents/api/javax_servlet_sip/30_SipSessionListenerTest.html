@@ -77,7 +77,7 @@
     
         cur['env.JAVA_HOME'] = '/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home';
     
-        cur['env.JAVA_MAIN_CLASS_46883'] = 'org.apache.tools.ant.launch.Launcher';
+        cur['env.JAVA_MAIN_CLASS_54325'] = 'org.apache.tools.ant.launch.Launcher';
     
         cur['env.JBOSS_HOME'] = '/opt/jboss-eap-6.1';
     
@@ -137,7 +137,7 @@
     
         cur['env.TERM_PROGRAM_VERSION'] = '309';
     
-        cur['env.TERM_SESSION_ID'] = '7818A790-16A8-47B8-9DFE-BD2903CA9C1F';
+        cur['env.TERM_SESSION_ID'] = '992028FA-2937-460F-90A8-E989AB5B64C8';
     
         cur['env.TMPDIR'] = '/var/folders/qt/j9kz_nw12bqfytwz9kfyjvq00000gn/T/';
     
@@ -254,7 +254,7 @@
     
         cur['sun.io.unicode.encoding'] = 'UnicodeBig';
     
-        cur['sun.java.command'] = 'com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionListenerTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionListenerTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit2123918123.properties';
+        cur['sun.java.command'] = 'com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionListenerTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionListenerTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit1385326972.properties';
     
         cur['sun.java.launcher'] = 'SUN_STANDARD';
     
@@ -324,7 +324,7 @@
 <th width="80%">Name</th><th>Tests</th><th>Errors</th><th>Failures</th><th nowrap>Time(s)</th>
 </tr>
 <tr valign="top" class="Error">
-<td><a href="30_SipSessionListenerTest.html">SipSessionListenerTest</a></td><td>2</td><td>1</td><td>0</td><td>18.773</td>
+<td><a href="30_SipSessionListenerTest.html">SipSessionListenerTest</a></td><td>2</td><td>1</td><td>0</td><td>18.733</td>
 </tr>
 </table>
 <h2>Tests</h2>
@@ -335,10 +335,10 @@
 <tr valign="top" class="Error">
 <td>testSessionReadyToInvalidate001</td><td>[SipServlet:JAVADOC:SipSessionListener3] - Test the notification fired when Sip session is in the ready-to-invalidate state</td><td>Error</td><td>N/A<br>
 <br>
-<code>java.lang.NullPointerException	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionListenerTest.recvUasMessageAndCheck(SipSessionListenerTest.java:160)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionListenerTest.testSessionReadyToInvalidate001(SipSessionListenerTest.java:155)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.560</td>
+<code>java.lang.NullPointerException	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionListenerTest.recvUasMessageAndCheck(SipSessionListenerTest.java:160)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionListenerTest.testSessionReadyToInvalidate001(SipSessionListenerTest.java:155)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.542</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testSessionCreated001</td><td>[SipServlet:JAVADOC:SipSessionListener1][SipServlet:JAVADOC:SipSessionEvent2] - Test the notification fired when Sip session was created, and testSipSessionEvent APIs. Please NOTE if the container implements the SipApplicationSessionListener in multi-thread style, this case might fail because it is hard to decide how long to wait the sessionCreated() method to be called back. So this case is optional.</td><td>Success</td><td></td><td>5.029</td>
+<td>testSessionCreated001</td><td>[SipServlet:JAVADOC:SipSessionListener1][SipServlet:JAVADOC:SipSessionEvent2] - Test the notification fired when Sip session was created, and testSipSessionEvent APIs. Please NOTE if the container implements the SipApplicationSessionListener in multi-thread style, this case might fail because it is hard to decide how long to wait the sessionCreated() method to be called back. So this case is optional.</td><td>Success</td><td></td><td>5.027</td>
 </tr>
 </table>
 <div class="Properties">

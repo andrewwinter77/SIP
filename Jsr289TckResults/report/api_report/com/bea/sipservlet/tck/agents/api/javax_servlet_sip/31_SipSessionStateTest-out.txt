@@ -1,50 +1,50 @@
-[2013-04-04 21:13:49,763] SipSessionStateTest:1008 INFO  - === testValues001() ===
-[2013-04-04 21:13:49,926] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 35aca57a5531e13f59a29eaf5b20e6d9@192.168.1.65
+[2013-04-15 20:28:40,065] SipSessionStateTest:1008 INFO  - === testValueOf001() ===
+[2013-04-15 20:28:40,184] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 54bf64db46fa2fbc07504f9140fe8d7e@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=476561995
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=946292756
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:13:49,972] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 35aca57a5531e13f59a29eaf5b20e6d9@192.168.1.65
+[2013-04-15 20:28:40,225] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 54bf64db46fa2fbc07504f9140fe8d7e@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=476561995
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=946292756
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKbe871a76462380ad570742796569f3ec
-Max-Forwards: 5
-Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: SipSessionState
-Method-Name: testValues001
-Content-Length: 0
-
- ---
-[2013-04-04 21:13:53,010] SipSessionStateTest:1008 INFO  - === testValueOf001() ===
-[2013-04-04 21:13:53,010] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 0c57367c6167cf2afbfe7e0297a83d5c@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1412683926
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 21:13:53,016] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 0c57367c6167cf2afbfe7e0297a83d5c@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1412683926
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6ee1efab6ef355ddf83b79b6daa5bae2
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKfe9ac2331e8327f37d7476e21eb1175b
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Servlet-Name: SipSessionState
 Method-Name: testValueOf001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:28:43,254] SipSessionStateTest:1008 INFO  - === testValues001() ===
+[2013-04-15 20:28:43,255] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 60c4bdea0db2d30a88d9a1e57e93503c@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1723414230
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:28:43,260] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 60c4bdea0db2d30a88d9a1e57e93503c@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1723414230
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK69f5aee86d816e97ae6ec8463dc83b5a
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: SipSessionState
+Method-Name: testValues001
 Content-Length: 0
 
  ---

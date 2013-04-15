@@ -1,50 +1,50 @@
-[2013-04-04 21:19:04,863] SipApplicationRoutingDirectiveTest:1008 INFO  - === testValues001() ===
-[2013-04-04 21:19:05,008] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: c9350750a6ffdbb0ad333585f6ad9b91@192.168.1.65
+[2013-04-15 20:33:54,568] SipApplicationRoutingDirectiveTest:1008 INFO  - === testValueOf001() ===
+[2013-04-15 20:33:54,668] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: d0dc0c4cd345aea442fee6f28daff829@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=765343646
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=551806062
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:19:05,048] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: c9350750a6ffdbb0ad333585f6ad9b91@192.168.1.65
+[2013-04-15 20:33:54,708] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: d0dc0c4cd345aea442fee6f28daff829@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=765343646
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=551806062
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK62dbb191dd4855589bb67e3cd5e36125
-Max-Forwards: 5
-Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: SipApplicationRoutingDirective
-Method-Name: testValues001
-Content-Length: 0
-
- ---
-[2013-04-04 21:19:08,079] SipApplicationRoutingDirectiveTest:1008 INFO  - === testValueOf001() ===
-[2013-04-04 21:19:08,080] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 9debe257d3c7bd1a7a11c7d6a361d1a8@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=614223099
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 21:19:08,085] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 9debe257d3c7bd1a7a11c7d6a361d1a8@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=614223099
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK5ed9a51479dfcec81549eb351d17021d
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK219a5bc6b8edf6ffc318ceabeb1ccb04
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Servlet-Name: SipApplicationRoutingDirective
 Method-Name: testValueOf001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:33:57,736] SipApplicationRoutingDirectiveTest:1008 INFO  - === testValues001() ===
+[2013-04-15 20:33:57,737] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: f4d3dc4dcac134e784230badf29ad274@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=288098774
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:33:57,742] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: f4d3dc4dcac134e784230badf29ad274@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=288098774
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4244b02bfd1fc0d0bc5d67d7d5451dbd
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: SipApplicationRoutingDirective
+Method-Name: testValues001
 Content-Length: 0
 
  ---

@@ -1,70 +1,20 @@
-[2013-04-04 20:58:04,144] SipApplicationSessionBindingListenerTest:1008 INFO  - === testGetApplicationSession001() ===
-[2013-04-04 20:58:04,246] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: b99a2715d404a74a699293be7352c2af@192.168.1.65
+[2013-04-15 20:12:45,238] SipApplicationSessionBindingListenerTest:1008 INFO  - === testValueUnbound001() ===
+[2013-04-15 20:12:45,344] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 5e1070f62e05bfeee5576e5d2adb60f9@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=197102014
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1650656229
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:58:04,281] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: b99a2715d404a74a699293be7352c2af@192.168.1.65
+[2013-04-15 20:12:45,384] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 5e1070f62e05bfeee5576e5d2adb60f9@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=197102014
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1650656229
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1e6ee59df7ed6cb80d7507323c28c938
-Max-Forwards: 5
-Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: SipApplicationSessionBindingListener
-Method-Name: testGetApplicationSession001
-Content-Length: 0
-
- ---
-[2013-04-04 20:58:07,321] SipApplicationSessionBindingListenerTest:1008 INFO  - === testValueBound001() ===
-[2013-04-04 20:58:07,321] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 74f58645a3ae41065fa765ac21877e83@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1200398473
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 20:58:07,326] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 74f58645a3ae41065fa765ac21877e83@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1200398473
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK611045ea40262007f2ef3b9c91d3c38f
-Max-Forwards: 5
-Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: SipApplicationSessionBindingListener
-Method-Name: testValueBound001
-Content-Length: 0
-
- ---
-[2013-04-04 20:58:10,344] SipApplicationSessionBindingListenerTest:1008 INFO  - === testValueUnbound001() ===
-[2013-04-04 20:58:10,345] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 7f687346fbc0d527b59ab0747f96f060@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=693383555
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 20:58:10,349] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 7f687346fbc0d527b59ab0747f96f060@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=693383555
-To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK1934c02c3424bdd4534c6c310e66d208
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9fb57cd304b8b587271038c8e2c1a8d3
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -73,28 +23,78 @@ Method-Name: testValueUnbound001
 Content-Length: 0
 
  ---
-[2013-04-04 20:58:13,374] SipApplicationSessionBindingListenerTest:1008 INFO  - === testGetName001() ===
-[2013-04-04 20:58:13,375] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: d1f8f22a03e16ecd882c5c3ad33f4759@192.168.1.65
+[2013-04-15 20:12:48,421] SipApplicationSessionBindingListenerTest:1008 INFO  - === testGetName001() ===
+[2013-04-15 20:12:48,422] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: d3d1a2b624ad5057aa445d0869d05913@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1168138298
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=554325958
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:58:13,380] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: d1f8f22a03e16ecd882c5c3ad33f4759@192.168.1.65
+[2013-04-15 20:12:48,427] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: d3d1a2b624ad5057aa445d0869d05913@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1168138298
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=554325958
 To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK0ab7aa8072b203fc1ef4e6eb8c15b696
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe26b69198afc499276bacc3562b07efe
 Max-Forwards: 5
 Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Servlet-Name: SipApplicationSessionBindingListener
 Method-Name: testGetName001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:12:51,444] SipApplicationSessionBindingListenerTest:1008 INFO  - === testValueBound001() ===
+[2013-04-15 20:12:51,445] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: fe345f46d3838bda870b19b4079fe976@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1330250917
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:12:51,449] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: fe345f46d3838bda870b19b4079fe976@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1330250917
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK5a127be613cd7255e4114a08c3a1578c
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: SipApplicationSessionBindingListener
+Method-Name: testValueBound001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:12:54,468] SipApplicationSessionBindingListenerTest:1008 INFO  - === testGetApplicationSession001() ===
+[2013-04-15 20:12:54,469] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: c5aafbec528c9971fe8ca6af15955881@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1298171402
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:12:54,473] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: c5aafbec528c9971fe8ca6af15955881@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" &lt;sip:alice@192.168.1.65:5071&gt;;tag=1298171402
+To: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060&gt;
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK71c79c494938672516d9f7002c39124e
+Max-Forwards: 5
+Route: "JSR289_TCK" &lt;sip:JSR289_TCK@localhost:5060;lr&gt;,&lt;sip:localhost:5060;transport=udp;lr&gt;
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: SipApplicationSessionBindingListener
+Method-Name: testGetApplicationSession001
 Content-Length: 0
 
  ---

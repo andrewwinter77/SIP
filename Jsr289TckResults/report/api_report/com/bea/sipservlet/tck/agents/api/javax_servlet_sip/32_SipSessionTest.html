@@ -77,7 +77,7 @@
     
         cur['env.JAVA_HOME'] = '/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home';
     
-        cur['env.JAVA_MAIN_CLASS_46883'] = 'org.apache.tools.ant.launch.Launcher';
+        cur['env.JAVA_MAIN_CLASS_54325'] = 'org.apache.tools.ant.launch.Launcher';
     
         cur['env.JBOSS_HOME'] = '/opt/jboss-eap-6.1';
     
@@ -137,7 +137,7 @@
     
         cur['env.TERM_PROGRAM_VERSION'] = '309';
     
-        cur['env.TERM_SESSION_ID'] = '7818A790-16A8-47B8-9DFE-BD2903CA9C1F';
+        cur['env.TERM_SESSION_ID'] = '992028FA-2937-460F-90A8-E989AB5B64C8';
     
         cur['env.TMPDIR'] = '/var/folders/qt/j9kz_nw12bqfytwz9kfyjvq00000gn/T/';
     
@@ -254,7 +254,7 @@
     
         cur['sun.io.unicode.encoding'] = 'UnicodeBig';
     
-        cur['sun.java.command'] = 'com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit1427053493.properties';
+        cur['sun.java.command'] = 'com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit1428992846.properties';
     
         cur['sun.java.launcher'] = 'SUN_STANDARD';
     
@@ -324,7 +324,7 @@
 <th width="80%">Name</th><th>Tests</th><th>Errors</th><th>Failures</th><th nowrap>Time(s)</th>
 </tr>
 <tr valign="top" class="Failure">
-<td><a href="32_SipSessionTest.html">SipSessionTest</a></td><td>38</td><td>0</td><td>13</td><td>147.706</td>
+<td><a href="32_SipSessionTest.html">SipSessionTest</a></td><td>38</td><td>0</td><td>13</td><td>147.633</td>
 </tr>
 </table>
 <h2>Tests</h2>
@@ -332,100 +332,100 @@
 <tr valign="top">
 <th>Name</th><th>Assertions</th><th>Status</th><th width="70%">Type</th><th nowrap>Time(s)</th>
 </tr>
-<tr valign="top" class="Failure">
-<td>testCreateRequest001</td><td>[SipServlet:JAVADOC:SipSession1] - User agents can create a request.</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
-<br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testCreateRequest001(SipSessionTest.java:48)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.461</td>
+<tr valign="top" class="TableRowColor">
+<td>testSetAttribute102</td><td>[SipServlet:JAVADOC:SipSession18] - Throw NullPointerException if the name is null.</td><td>Success</td><td></td><td>3.416</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testCreateRequest101</td><td>[SipServlet:JAVADOC:SipSession1] - Throw IllegalArgumentException if method is ACK.</td><td>Success</td><td></td><td>3.156</td>
+<td>testRemoveAttribute101</td><td>[SipServlet:JAVADOC:SipSession19] - Throw IllegalStateException if this method is called on an invalidated session .</td><td>Success</td><td></td><td>3.028</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testCreateRequest102</td><td>[SipServlet:JAVADOC:SipSession1] - Throw IllegalStateException if this SipSession has been invalidated.</td><td>Success</td><td></td><td>3.031</td>
+<td>testGetAttributeNames001</td><td>[SipServlet:JAVADOC:SipSession4] - User agents can get an Enumeration over the String  objects containing the names of all the objects bound to this session.</td><td>Success</td><td></td><td>3.021</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetApplicationSession001</td><td>[SipServlet:JAVADOC:SipSession2] - User agents can get the application session with which this SipSession is associated.</td><td>Success</td><td></td><td>3.025</td>
+<td>testGetAttributeNames101</td><td>[SipServlet:JAVADOC:SipSession4] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.021</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetSetRemoveAttribute001</td><td>[SipServlet:JAVADOC:SipSession3][SipServlet:JAVADOC:SipSession18][SipServlet:JAVADOC:SipSession19] - User agents can get/set/remove the object bound with the specified name in this session, or null if no object is bound under the name.</td><td>Success</td><td></td><td>3.025</td>
+<td>testGetCallId001</td><td>[SipServlet:JAVADOC:SipSession5] - User agents can get the Call-ID for this SipSession.</td><td>Success</td><td></td><td>3.023</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetAttribute101</td><td>[SipServlet:JAVADOC:SipSession3] - Throw IllegalStateException if this method is called on an invalidated session .</td><td>Success</td><td></td><td>3.028</td>
+<td>testGetCreationTime001</td><td>[SipServlet:JAVADOC:SipSession6] - User agents can get the time when this session was created, measured in milliseconds since midnight January 1, 1970 GMT.</td><td>Success</td><td></td><td>3.022</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetAttribute102</td><td>[SipServlet:JAVADOC:SipSession3] - Throw NullPointerException if the name is null.</td><td>Success</td><td></td><td>3.025</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testSetAttribute101</td><td>[SipServlet:JAVADOC:SipSession18] - Throw IllegalStateException if this method is called on an invalidated session .</td><td>Success</td><td></td><td>3.026</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testSetAttribute102</td><td>[SipServlet:JAVADOC:SipSession18] - Throw NullPointerException if the name is null.</td><td>Success</td><td></td><td>3.022</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testRemoveAttribute101</td><td>[SipServlet:JAVADOC:SipSession19] - Throw IllegalStateException if this method is called on an invalidated session .</td><td>Success</td><td></td><td>3.024</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testGetAttributeNames001</td><td>[SipServlet:JAVADOC:SipSession4] - User agents can get an Enumeration over the String  objects containing the names of all the objects bound to this session.</td><td>Success</td><td></td><td>3.023</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testGetAttributeNames101</td><td>[SipServlet:JAVADOC:SipSession4] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.028</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testGetCallId001</td><td>[SipServlet:JAVADOC:SipSession5] - User agents can get the Call-ID for this SipSession.</td><td>Success</td><td></td><td>3.022</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testGetCreationTime001</td><td>[SipServlet:JAVADOC:SipSession6] - User agents can get the time when this session was created, measured in milliseconds since midnight January 1, 1970 GMT.</td><td>Success</td><td></td><td>3.021</td>
-</tr>
-<tr valign="top" class="TableRowColor">
-<td>testGetId001</td><td>[SipServlet:JAVADOC:SipSession7] - User agents can get a string containing the unique identifier assigned to this session.</td><td>Success</td><td></td><td>3.025</td>
+<td>testGetId001</td><td>[SipServlet:JAVADOC:SipSession7] - User agents can get a string containing the unique identifier assigned to this session.</td><td>Success</td><td></td><td>3.021</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testGetSetInvalidateWhenReady001</td><td>[SipServlet:JAVADOC:SipSession8][SipServlet:JAVADOC:SipSession21] - Returns true if the container will notify the application when this SipSession is in the ready-to-invalidate state.</td><td>Failure</td><td>N/A<br>
 <br>
-<code>junit.framework.AssertionFailedError	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.assertCommonCallBiWay(SipSessionTest.java:459)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testGetSetInvalidateWhenReady001(SipSessionTest.java:173)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.651</td>
+<code>junit.framework.AssertionFailedError	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.assertCommonCallBiWay(SipSessionTest.java:459)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testGetSetInvalidateWhenReady001(SipSessionTest.java:173)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.680</td>
 </tr>
 <tr valign="top" class="TableRowColor">
 <td>testGetInvalidateWhenReady101</td><td>[SipServlet:JAVADOC:SipSession8] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.022</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testSetInvalidateWhenReady101</td><td>[SipServlet:JAVADOC:SipSession21] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.026</td>
+<td>testSetInvalidateWhenReady101</td><td>[SipServlet:JAVADOC:SipSession21] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.021</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testGetLastAccessedTime001</td><td>[SipServlet:JAVADOC:SipSession9] - User agents can get the last time the client sent a request associated with this session, as the number of milliseconds since midnight January 1, 1970 GMT.</td><td>Failure</td><td>the reason gotten from Server:Fail to get correct LastAccessedTime from SipSession.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
 <br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Fail to get correct LastAccessedTime from SipSession.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testGetLastAccessedTime001(SipSessionTest.java:199)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.021</td>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Fail to get correct LastAccessedTime from SipSession.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testGetLastAccessedTime001(SipSessionTest.java:199)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.022</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testGetLocalParty001</td><td>[SipServlet:JAVADOC:SipSession10] - User agents can get the Address identifying the local party.</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
 <br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testGetLocalParty001(SipSessionTest.java:206)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.026</td>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testGetLocalParty001(SipSessionTest.java:206)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.028</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testGetRemoteParty001</td><td>[SipServlet:JAVADOC:SipSession12] - User agents can get the Address identifying the remote party.</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
 <br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testGetRemoteParty001(SipSessionTest.java:213)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.029</td>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testGetRemoteParty001(SipSessionTest.java:213)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.030</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testGetState001</td><td>[SipServlet:JAVADOC:SipSession13] - User agents can get the current SIP dialog state, which is one of INITIAL, EARLY, CONFIRMED, or TERMINATED.</td><td>Failure</td><td>N/A<br>
 <br>
-<code>junit.framework.AssertionFailedError	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.assertCommonCallBiWay(SipSessionTest.java:459)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testGetState001(SipSessionTest.java:221)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.647</td>
+<code>junit.framework.AssertionFailedError	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.assertCommonCallBiWay(SipSessionTest.java:459)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testGetState001(SipSessionTest.java:221)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.661</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetState101</td><td>[SipServlet:JAVADOC:SipSession13] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.032</td>
+<td>testGetSetRemoveAttribute001</td><td>[SipServlet:JAVADOC:SipSession3][SipServlet:JAVADOC:SipSession18][SipServlet:JAVADOC:SipSession19] - User agents can get/set/remove the object bound with the specified name in this session, or null if no object is bound under the name.</td><td>Success</td><td></td><td>3.019</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testInvalidate001</td><td>[SipServlet:JAVADOC:SipSession15] - User agents can invalidate this session and unbinds any objects bound to it.</td><td>Success</td><td></td><td>3.033</td>
+<td>testGetAttribute101</td><td>[SipServlet:JAVADOC:SipSession3] - Throw IllegalStateException if this method is called on an invalidated session .</td><td>Success</td><td></td><td>3.023</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testInvalidate101</td><td>[SipServlet:JAVADOC:SipSession15] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.026</td>
+<td>testGetAttribute102</td><td>[SipServlet:JAVADOC:SipSession3] - Throw NullPointerException if the name is null.</td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testSetAttribute101</td><td>[SipServlet:JAVADOC:SipSession18] - Throw IllegalStateException if this method is called on an invalidated session .</td><td>Success</td><td></td><td>3.020</td>
+</tr>
+<tr valign="top" class="Failure">
+<td>testCreateRequest001</td><td>[SipServlet:JAVADOC:SipSession1] - User agents can create a request.</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
+<br>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testCreateRequest001(SipSessionTest.java:48)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.028</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testCreateRequest101</td><td>[SipServlet:JAVADOC:SipSession1] - Throw IllegalArgumentException if method is ACK.</td><td>Success</td><td></td><td>3.138</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testCreateRequest102</td><td>[SipServlet:JAVADOC:SipSession1] - Throw IllegalStateException if this SipSession has been invalidated.</td><td>Success</td><td></td><td>3.029</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetApplicationSession001</td><td>[SipServlet:JAVADOC:SipSession2] - User agents can get the application session with which this SipSession is associated.</td><td>Success</td><td></td><td>3.017</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testGetState101</td><td>[SipServlet:JAVADOC:SipSession13] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.021</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testInvalidate001</td><td>[SipServlet:JAVADOC:SipSession15] - User agents can invalidate this session and unbinds any objects bound to it.</td><td>Success</td><td></td><td>3.029</td>
+</tr>
+<tr valign="top" class="TableRowColor">
+<td>testInvalidate101</td><td>[SipServlet:JAVADOC:SipSession15] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.022</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testIsReadyToInvalidate001</td><td>[SipServlet:JAVADOC:SipSession16] - User agents can determine if this session is in a ready-to-invalidate state.</td><td>Failure</td><td>Unexpected default reason expected:&lt;200&gt; but was:&lt;500&gt;<br>
 <br>
-<code>junit.framework.AssertionFailedError: Unexpected default reason expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.assertCommonCall(SipSessionTest.java:514)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.assertCommonCallBiWay(SipSessionTest.java:455)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testIsReadyToInvalidate001(SipSessionTest.java:287)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.044</td>
+<code>junit.framework.AssertionFailedError: Unexpected default reason expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.assertCommonCall(SipSessionTest.java:514)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.assertCommonCallBiWay(SipSessionTest.java:455)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testIsReadyToInvalidate001(SipSessionTest.java:287)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.049</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testIsReadyToInvalidate101</td><td>[SipServlet:JAVADOC:SipSession16] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.024</td>
+<td>testIsReadyToInvalidate101</td><td>[SipServlet:JAVADOC:SipSession16] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.029</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testIsValid001</td><td>[SipServlet:JAVADOC:SipSession17] - User agents can determine if this SipSession if valid.</td><td>Failure</td><td>N/A<br>
@@ -433,25 +433,25 @@
 <code>junit.framework.AssertionFailedError	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.assertCommonCallBiWay(SipSessionTest.java:459)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testIsValid001(SipSessionTest.java:302)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>13.649</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testSetHandler001</td><td>[SipServlet:JAVADOC:SipSession20] - User agents can set the handler for this SipSession.</td><td>Success</td><td></td><td>3.021</td>
+<td>testSetHandler001</td><td>[SipServlet:JAVADOC:SipSession20] - User agents can set the handler for this SipSession.</td><td>Success</td><td></td><td>3.020</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testSetHandler101</td><td>[SipServlet:JAVADOC:SipSession20] - Throw ServletException if no servlet with the specified name exists in this application .</td><td>Failure</td><td>the reason gotten from Server:Should throw ServletException,since no servlet with the specified name exists in this application..  expected:&lt;200&gt; but was:&lt;500&gt;<br>
 <br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Should throw ServletException,since no servlet with the specified name exists in this application..  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testSetHandler101(SipSessionTest.java:318)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.022</td>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Should throw ServletException,since no servlet with the specified name exists in this application..  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testSetHandler101(SipSessionTest.java:318)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.018</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testSetHandler102</td><td>[SipServlet:JAVADOC:SipSession20] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.024</td>
+<td>testSetHandler102</td><td>[SipServlet:JAVADOC:SipSession20] - Throw IllegalStateException if this method is called on an invalidated session.</td><td>Success</td><td></td><td>3.020</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testSetOutboundInterface001</td><td>[SipServlet:JAVADOC:SipSession22] - If multihoming is supported, user agents can select the outbound interface to use when sending requests for this SipSession.</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
 <br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testSetOutboundInterface001(SipSessionTest.java:335)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.025</td>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testSetOutboundInterface001(SipSessionTest.java:335)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.029</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testSetOutboundInterface101</td><td>[SipServlet:JAVADOC:SipSession22] - Throw IllegalStateException if this method is called on an invalidated session .</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
 <br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testSetOutboundInterface101(SipSessionTest.java:344)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.022</td>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testSetOutboundInterface101(SipSessionTest.java:344)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.029</td>
 </tr>
 <tr valign="top" class="TableRowColor">
 <td>testSetOutboundInterface102</td><td>[SipServlet:JAVADOC:SipSession22] - Throw NullPointerException  if the address is null.</td><td>Success</td><td></td><td>3.018</td>
@@ -459,18 +459,18 @@
 <tr valign="top" class="Failure">
 <td>testSetOutboundInterface002</td><td>[SipServlet:JAVADOC:SipSession23] - If multihoming is supported, user agents can select the outbound interface and source port number to use when sending requests for this SipSession.</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
 <br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testSetOutboundInterface002(SipSessionTest.java:360)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.027</td>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testSetOutboundInterface002(SipSessionTest.java:360)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.029</td>
 </tr>
 <tr valign="top" class="Failure">
 <td>testSetOutboundInterface103</td><td>[SipServlet:JAVADOC:SipSession23] - Throw IllegalStateException if this method is called on an invalidated session .</td><td>Failure</td><td>the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;<br>
 <br>
-<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testSetOutboundInterface103(SipSessionTest.java:369)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.023</td>
+<code>junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionTest.testSetOutboundInterface103(SipSessionTest.java:369)	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)	at $Proxy0.run(Unknown Source)	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)</code></td><td>3.028</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testSetOutboundInterface104</td><td>[SipServlet:JAVADOC:SipSession23] - Throw NullPointerException  if the address is null.</td><td>Success</td><td></td><td>3.019</td>
+<td>testSetOutboundInterface104</td><td>[SipServlet:JAVADOC:SipSession23] - Throw NullPointerException  if the address is null.</td><td>Success</td><td></td><td>3.018</td>
 </tr>
 <tr valign="top" class="TableRowColor">
-<td>testGetServletContext001</td><td>[SipServlet:JAVADOC:SipSession24] - Returns the ServletContext to which this session belongs</td><td>Success</td><td></td><td>3.136</td>
+<td>testGetServletContext001</td><td>[SipServlet:JAVADOC:SipSession24] - Returns the ServletContext to which this session belongs</td><td>Success</td><td></td><td>3.137</td>
 </tr>
 </table>
 <div class="Properties">

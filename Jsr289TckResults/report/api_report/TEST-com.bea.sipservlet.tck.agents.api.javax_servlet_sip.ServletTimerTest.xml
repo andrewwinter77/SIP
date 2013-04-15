@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="7" name="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" tests="7" time="31.764">
+<testsuite errors="0" failures="7" name="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" tests="7" time="31.843">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="env.SIPUNIT_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib" />
@@ -92,15 +92,16 @@
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="java.class.path" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/ant-contrib-1.0b3.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/javax.annotation_1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/servlet-2_5-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sigtest.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipservlet-1_1-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipunit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/tck-junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipApi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipRi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/concurrent.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/dom.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jax-qname.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-impl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-libs.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/log4j-1.2.8.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/namespace.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/nist-sdp-1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/relaxngDatatype.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/tracesviewer.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xalan.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xercesImpl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xsdlib.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/classes:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/lib/tools.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf:/usr/share/java/ant-1.8.2/lib/ant-launcher.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar" />
-    <property name="sun.java.command" value="com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit1384238939.properties" />
+    <property name="sun.java.command" value="com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit790089208.properties" />
     <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on June 20 2012" />
-    <property name="env.TERM_SESSION_ID" value="7818A790-16A8-47B8-9DFE-BD2903CA9C1F" />
+    <property name="env.TERM_SESSION_ID" value="992028FA-2937-460F-90A8-E989AB5B64C8" />
     <property name="env.JSR289TCK_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/.." />
     <property name="env.JBOSS_HOME" value="/opt/jboss-eap-6.1" />
     <property name="signature.property" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/signature.properties" />
     <property name="jsr289.dir" value=".." />
     <property name="api.report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="env.JAVA_MAIN_CLASS_54325" value="org.apache.tools.ant.launch.Launcher" />
     <property name="ant.file.type" value="file" />
     <property name="java.vm.specification.version" value="1.7" />
     <property name="conf" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf" />
@@ -119,7 +120,6 @@
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
     <property name="java.ext.dirs" value="/Users/andrew/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
     <property name="ar.appname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-approuter.jar" />
-    <property name="env.JAVA_MAIN_CLASS_46883" value="org.apache.tools.ant.launch.Launcher" />
     <property name="user.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
     <property name="applications.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications" />
     <property name="line.separator" value="&#xa;" />
@@ -138,7 +138,7 @@
     <property name="ant.project.invoked-targets" value="run-api-tests" />
     <property name="tck.earname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-apps.ear" />
   </properties>
-  <testcase assertions="[SipServlet:JAVADOC:ServletTimer5] - For a one-time timer that has already expired (i.e., current time &gt; scheduled expiry time) this method will return the time remaining as a negative value. " classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testGetTimeRemaining002" time="3.42">
+  <testcase assertions="[SipServlet:JAVADOC:ServletTimer5] - For a one-time timer that has already expired (i.e., current time &gt; scheduled expiry time) this method will return the time remaining as a negative value. " classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testGetTimeRemaining002" time="3.486">
     <failure message="the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)
@@ -153,7 +153,7 @@
 	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
 </failure>
   </testcase>
-  <testcase assertions="[SipServlet:JAVADOC:ServletTimer6] - Return the scheduled expiration time of the most recent actual expiration of this timer." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testScheduledExecutionTime001" time="3.026">
+  <testcase assertions="[SipServlet:JAVADOC:ServletTimer6] - Return the scheduled expiration time of the most recent actual expiration of this timer." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testScheduledExecutionTime001" time="3.032">
     <failure message="the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)
@@ -168,7 +168,22 @@
 	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
 </failure>
   </testcase>
-  <testcase assertions="[SipServlet:JAVADOC:ServletTimer4] - Get the information associated with the timer at the time of creation." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testGetInfo001" time="3.026">
+  <testcase assertions="[SipServlet:JAVADOC:ServletTimer3] - Return a string containing the unique identifier assigned to this timer task. The identifier is assigned by the servlet container and is implementation dependent." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testGetId001" time="3.033">
+    <failure message="the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;
+	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)
+	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)
+	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest.testGetId001(ServletTimerTest.java:54)
+	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
+	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
+	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
+	at $Proxy0.run(Unknown Source)
+	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
+	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
+</failure>
+  </testcase>
+  <testcase assertions="[SipServlet:JAVADOC:ServletTimer4] - Get the information associated with the timer at the time of creation." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testGetInfo001" time="3.031">
     <failure message="the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)
@@ -183,7 +198,7 @@
 	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
 </failure>
   </testcase>
-  <testcase assertions="[SipServlet:JAVADOC:ServletTimer5] - Test getTimeRemaining for a repeating ServletTimer" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testGetTimeRemaining001" time="13.021">
+  <testcase assertions="[SipServlet:JAVADOC:ServletTimer5] - Test getTimeRemaining for a repeating ServletTimer" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testGetTimeRemaining001" time="13.025">
     <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
 	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest.testGetTimeRemaining001(ServletTimerTest.java:107)
 	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
@@ -196,7 +211,7 @@
 	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
 </failure>
   </testcase>
-  <testcase assertions="[SipServlet:JAVADOC:ServletTimer1] - Cancel this timer." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testCancel001" time="3.029">
+  <testcase assertions="[SipServlet:JAVADOC:ServletTimer1] - Cancel this timer." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testCancel001" time="3.037">
     <failure message="the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)
@@ -226,38 +241,23 @@
 	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
 </failure>
   </testcase>
-  <testcase assertions="[SipServlet:JAVADOC:ServletTimer3] - Return a string containing the unique identifier assigned to this timer task. The identifier is assigned by the servlet container and is implementation dependent." classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest" name="testGetId001" time="3.032">
-    <failure message="the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: the reason gotten from Server:Server Internal Error.  expected:&lt;200&gt; but was:&lt;500&gt;
-	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)
-	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)
-	at com.bea.sipservlet.tck.agents.api.javax_servlet_sip.ServletTimerTest.testGetId001(ServletTimerTest.java:54)
-	at com.bea.wcp.ant.ext.junit.TestHandler.runTest(TestHandler.java:73)
-	at com.bea.wcp.ant.ext.junit.TestHandler.run(TestHandler.java:58)
-	at com.bea.wcp.ant.ext.junit.TestHandler.invoke(TestHandler.java:34)
-	at $Proxy0.run(Unknown Source)
-	at com.bea.wcp.ant.ext.junit.TestProxy.run(TestProxy.java:24)
-	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.run(TckJUnitTestRunner.java:272)
-	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.launch(TckJUnitTestRunner.java:647)
-	at com.bea.wcp.ant.ext.junit.TckJUnitTestRunner.main(TckJUnitTestRunner.java:542)
-</failure>
-  </testcase>
-  <system-out><![CDATA[[2013-04-04 20:57:16,907] ServletTimerTest:1008 INFO  - === testGetTimeRemaining002() ===
-[2013-04-04 20:57:17,030] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 247fc4dcaac7db211e7fd48d4eb5e7d8@192.168.1.65
+  <system-out><![CDATA[[2013-04-15 20:11:58,175] ServletTimerTest:1008 INFO  - === testGetTimeRemaining002() ===
+[2013-04-15 20:11:58,280] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 113c8bf6f40d47fbc936ba4e1014d961@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1268971648
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=537436678
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:57:17,088] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 247fc4dcaac7db211e7fd48d4eb5e7d8@192.168.1.65
+[2013-04-15 20:11:58,314] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 113c8bf6f40d47fbc936ba4e1014d961@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1268971648
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=537436678
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4fc2024f88086140f3890412f6db56dd
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf03668b8cd9bf31e5d3aaae7e2e6942b
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -266,23 +266,23 @@ Method-Name: testGetTimeRemaining002
 Content-Length: 0
 
  ---
-[2013-04-04 20:57:20,116] ServletTimerTest:1008 INFO  - === testScheduledExecutionTime001() ===
-[2013-04-04 20:57:20,117] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: ac90858d51501556d86a774c2d162ac7@192.168.1.65
+[2013-04-15 20:12:01,375] ServletTimerTest:1008 INFO  - === testScheduledExecutionTime001() ===
+[2013-04-15 20:12:01,376] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: a25a8e8220ed6080cc9780fec1ac60d9@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1611082908
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1175418148
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:57:20,122] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: ac90858d51501556d86a774c2d162ac7@192.168.1.65
+[2013-04-15 20:12:01,381] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: a25a8e8220ed6080cc9780fec1ac60d9@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1611082908
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1175418148
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK4cdd562d4c00416c15d77fb878d3725e
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKca7c62645c373b258b2160881f97cea4
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -291,23 +291,48 @@ Method-Name: testScheduledExecutionTime001
 Content-Length: 0
 
  ---
-[2013-04-04 20:57:23,142] ServletTimerTest:1008 INFO  - === testGetInfo001() ===
-[2013-04-04 20:57:23,143] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 3920b098326a7f5422771a637b91f5c0@192.168.1.65
+[2013-04-15 20:12:04,408] ServletTimerTest:1008 INFO  - === testGetId001() ===
+[2013-04-15 20:12:04,409] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ae64d0c9a1dd961dd05238af6b745d2d@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1117720953
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=527242263
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:57:23,148] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 3920b098326a7f5422771a637b91f5c0@192.168.1.65
+[2013-04-15 20:12:04,414] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ae64d0c9a1dd961dd05238af6b745d2d@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1117720953
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=527242263
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKf10e1fe187002111ee459f72184f4704
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK0eb9b0ee134848db178a290f3ca0dd91
+Max-Forwards: 5
+Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: ServletTimer
+Method-Name: testGetId001
+Content-Length: 0
+
+ ---
+[2013-04-15 20:12:07,442] ServletTimerTest:1008 INFO  - === testGetInfo001() ===
+[2013-04-15 20:12:07,443] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 4ebbac3d50b8ad7829a1b9e73dc01f37@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=462319334
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:12:07,447] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 4ebbac3d50b8ad7829a1b9e73dc01f37@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=462319334
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9da5d0879345bc73f4f1f0083f70fce8
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -316,23 +341,23 @@ Method-Name: testGetInfo001
 Content-Length: 0
 
  ---
-[2013-04-04 20:57:26,168] ServletTimerTest:1008 INFO  - === testGetTimeRemaining001() ===
-[2013-04-04 20:57:26,169] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 9ec5f84278542b711bc2c6cfce6ead18@192.168.1.65
+[2013-04-15 20:12:10,472] ServletTimerTest:1008 INFO  - === testGetTimeRemaining001() ===
+[2013-04-15 20:12:10,473] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: f13512c42dac347aa94a8c01bb8238ef@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=431612328
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1190110317
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:57:26,174] ServletTimerTest:95 DEBUG - ---UAC send MESSAGE req is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 9ec5f84278542b711bc2c6cfce6ead18@192.168.1.65
+[2013-04-15 20:12:10,478] ServletTimerTest:95 DEBUG - ---UAC send MESSAGE req is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: f13512c42dac347aa94a8c01bb8238ef@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=431612328
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1190110317
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK37693e37e06666b6863ae81b31d2b926
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKe13eba055bca85e4f28d0cf15c817eae
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -341,26 +366,26 @@ Method-Name: testGetTimeRemaining001
 Content-Length: 0
 
 ---
-SIPUNIT TRACE:  1365105446183  SS.waitRequest() - about to block, waiting
-SIPUNIT TRACE:  1365105456180  SS.waitRequest() - we've come out of the block
-SIPUNIT TRACE:  1365105456180  SS.waitRequest() - either we got the request, or timed out
-[2013-04-04 20:57:39,191] ServletTimerTest:1008 INFO  - === testCancel001() ===
-[2013-04-04 20:57:39,191] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 3e8296104ed8be14f87e54ddb4b2a28b@192.168.1.65
+SIPUNIT TRACE:  1366053130486  SS.waitRequest() - about to block, waiting
+SIPUNIT TRACE:  1366053140486  SS.waitRequest() - we've come out of the block
+SIPUNIT TRACE:  1366053140486  SS.waitRequest() - either we got the request, or timed out
+[2013-04-15 20:12:23,498] ServletTimerTest:1008 INFO  - === testCancel001() ===
+[2013-04-15 20:12:23,499] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 0e7f0629e107aea592fa7e94e080a9a7@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1078727561
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1315037059
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:57:39,196] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 3e8296104ed8be14f87e54ddb4b2a28b@192.168.1.65
+[2013-04-15 20:12:23,506] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 0e7f0629e107aea592fa7e94e080a9a7@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1078727561
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1315037059
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK8e12639919b737828077d6e27f65494b
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK9817e5c20b587d71072c7fb7e71c83de
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -369,53 +394,28 @@ Method-Name: testCancel001
 Content-Length: 0
 
  ---
-[2013-04-04 20:57:42,218] ServletTimerTest:1008 INFO  - === testGetApplicationSession001() ===
-[2013-04-04 20:57:42,219] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 47c30cfbf2ee5f048819d654a63c0ba7@192.168.1.65
+[2013-04-15 20:12:26,533] ServletTimerTest:1008 INFO  - === testGetApplicationSession001() ===
+[2013-04-15 20:12:26,534] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: f21bfa2ff6c44bbee135849414a8ba6f@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1580846561
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=2010585140
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 20:57:42,229] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 47c30cfbf2ee5f048819d654a63c0ba7@192.168.1.65
+[2013-04-15 20:12:26,538] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: f21bfa2ff6c44bbee135849414a8ba6f@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1580846561
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=2010585140
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKd34de10252b28c35cd14202f8d302706
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK8b5f0835ca02fe9c2f39d02b7f63faea
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Servlet-Name: ServletTimer
 Method-Name: testGetApplicationSession001
-Content-Length: 0
-
- ---
-[2013-04-04 20:57:45,251] ServletTimerTest:1008 INFO  - === testGetId001() ===
-[2013-04-04 20:57:45,252] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: bf2a548501e97bbb2cb32e9e5fa33e88@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1538767548
-To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 20:57:45,256] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: bf2a548501e97bbb2cb32e9e5fa33e88@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1538767548
-To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKd5e3e9930d9ce9766c3f59f5c5f7ce43
-Max-Forwards: 5
-Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: ServletTimer
-Method-Name: testGetId001
 Content-Length: 0
 
  ---

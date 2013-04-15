@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="1" name="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest" tests="4" time="12.685">
+<testsuite errors="0" failures="1" name="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest" tests="4" time="12.634">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="env.SIPUNIT_LIB" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/../sipunit/lib" />
@@ -92,15 +92,16 @@
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="java.class.path" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/ant-contrib-1.0b3.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/javax.annotation_1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/servlet-2_5-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sigtest.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipservlet-1_1-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/sipunit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/lib/tck-junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipApi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/JainSipRi1.2.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/concurrent.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/dom.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jax-qname.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-api.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-impl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/jaxb-libs.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/junit.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/log4j-1.2.8.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/namespace.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/nist-sdp-1.0.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/relaxngDatatype.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/tracesviewer.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xalan.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xercesImpl.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/sipunit/lib/xsdlib.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/build/classes:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/lib/tools.jar:/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf:/usr/share/java/ant-1.8.2/lib/ant-launcher.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar" />
-    <property name="sun.java.command" value="com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit2038730063.properties" />
+    <property name="sun.java.command" value="com.bea.wcp.ant.ext.junit.TckJUnitTestRunner com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false formatter=com.bea.wcp.ant.ext.junit.TckXMLFormatter,/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report/TEST-com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest.xml propsfile=/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/junit1915540915.properties" />
     <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on June 20 2012" />
-    <property name="env.TERM_SESSION_ID" value="7818A790-16A8-47B8-9DFE-BD2903CA9C1F" />
+    <property name="env.TERM_SESSION_ID" value="992028FA-2937-460F-90A8-E989AB5B64C8" />
     <property name="env.JSR289TCK_HOME" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/.." />
     <property name="env.JBOSS_HOME" value="/opt/jboss-eap-6.1" />
     <property name="signature.property" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf/signature.properties" />
     <property name="jsr289.dir" value=".." />
     <property name="api.report" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/report/api_report" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="env.JAVA_MAIN_CLASS_54325" value="org.apache.tools.ant.launch.Launcher" />
     <property name="ant.file.type" value="file" />
     <property name="java.vm.specification.version" value="1.7" />
     <property name="conf" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/conf" />
@@ -119,7 +120,6 @@
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
     <property name="java.ext.dirs" value="/Users/andrew/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_10.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
     <property name="ar.appname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-approuter.jar" />
-    <property name="env.JAVA_MAIN_CLASS_46883" value="org.apache.tools.ant.launch.Launcher" />
     <property name="user.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck" />
     <property name="applications.dir" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/applications" />
     <property name="line.separator" value="&#xa;" />
@@ -138,9 +138,8 @@
     <property name="ant.project.invoked-targets" value="run-api-tests" />
     <property name="tck.earname" value="/Users/andrew/Documents/reference/sip/sipservlet-1_1-tck/tck/dist/tck-apps.ear" />
   </properties>
-  <testcase assertions="[SipServlet:JAVADOC:SipSessionUtil1] - Test to get the SipApplicationSession for a given applicationSessionId. " classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest" name="testGetApplicationSessionById001" time="3.436" />
-  <testcase assertions="[SipServlet:JAVADOC:SipSessionUtil1] - NullPointerException should be thrown if the applicationSessionId is null" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest" name="testGetApplicationSessionById101" time="3.019" />
-  <testcase assertions="[SipServlet:JAVADOC:SipSessionUtil2] - Test to get the SipApplicationSession for a given session applicationSessionKey. " classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest" name="testGetApplicationSessionByKey001" time="3.028">
+  <testcase assertions="[SipServlet:JAVADOC:SipSessionUtil1] - NullPointerException should be thrown if the applicationSessionId is null" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest" name="testGetApplicationSessionById101" time="3.394" />
+  <testcase assertions="[SipServlet:JAVADOC:SipSessionUtil2] - Test to get the SipApplicationSession for a given session applicationSessionKey. " classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest" name="testGetApplicationSessionByKey001" time="3.026">
     <failure message="the reason gotten from Server:session is null.  expected:&lt;200&gt; but was:&lt;500&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: the reason gotten from Server:session is null.  expected:&lt;200&gt; but was:&lt;500&gt;
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:675)
 	at com.bea.sipservlet.tck.agents.TestBase.assertSipMessage(TestBase.java:627)
@@ -156,48 +155,24 @@
 </failure>
   </testcase>
   <testcase assertions="[SipServlet:JAVADOC:SipSessionUtil2] - NullPointerException should be thrown if the applicationSessionKey is null" classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest" name="testGetApplicationSessionByKey101" time="3.023" />
-  <system-out><![CDATA[[2013-04-04 21:16:25,646] SipSessionsUtilTest:1008 INFO  - === testGetApplicationSessionById001() ===
-[2013-04-04 21:16:25,784] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 93b8cbad732e6d9d8eaeeda9ff1aab07@192.168.1.65
+  <testcase assertions="[SipServlet:JAVADOC:SipSessionUtil1] - Test to get the SipApplicationSession for a given applicationSessionId. " classname="com.bea.sipservlet.tck.agents.api.javax_servlet_sip.SipSessionsUtilTest" name="testGetApplicationSessionById001" time="3.021" />
+  <system-out><![CDATA[[2013-04-15 20:31:15,700] SipSessionsUtilTest:1008 INFO  - === testGetApplicationSessionById101() ===
+[2013-04-15 20:31:15,812] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 5997cfec011635fb5474bf7bb483d7d9@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=282422345
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=2065851036
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:16:25,828] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 93b8cbad732e6d9d8eaeeda9ff1aab07@192.168.1.65
+[2013-04-15 20:31:15,855] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 5997cfec011635fb5474bf7bb483d7d9@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=282422345
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=2065851036
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK8a32794b3e4d90b7ea380c3949eb762b
-Max-Forwards: 5
-Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
-Application-Name: com.bea.sipservlet.tck.apps.apitestapp
-Servlet-Name: SipSessionsUtil
-Method-Name: testGetApplicationSessionById001
-Content-Length: 0
-
- ---
-[2013-04-04 21:16:28,858] SipSessionsUtilTest:1008 INFO  - === testGetApplicationSessionById101() ===
-[2013-04-04 21:16:28,859] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 26f0d51965c9c9d9a753de0c2a7d0cfe@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1239881841
-To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
-Max-Forwards: 5
-Content-Length: 0
-
- ===
-[2013-04-04 21:16:28,864] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 26f0d51965c9c9d9a753de0c2a7d0cfe@192.168.1.65
-CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1239881841
-To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK97a33b1eb0b2d182cd895ffda560081c
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK84267dbfaaaabb71964dc5016c5cfa99
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -206,23 +181,23 @@ Method-Name: testGetApplicationSessionById101
 Content-Length: 0
 
  ---
-[2013-04-04 21:16:31,878] SipSessionsUtilTest:1008 INFO  - === testGetApplicationSessionByKey001() ===
-[2013-04-04 21:16:31,879] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 3c43e00f86c51c4059f9a8e4461be2c2@192.168.1.65
+[2013-04-15 20:31:18,890] SipSessionsUtilTest:1008 INFO  - === testGetApplicationSessionByKey001() ===
+[2013-04-15 20:31:18,891] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ea76f33c3aae2b365bf8322b0f466424@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=433942622
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=307221840
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:16:31,883] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 3c43e00f86c51c4059f9a8e4461be2c2@192.168.1.65
+[2013-04-15 20:31:18,895] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ea76f33c3aae2b365bf8322b0f466424@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=433942622
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=307221840
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK47fa253c11aa71ebd177f766a523ccf8
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bKcbdc5ff34a2d581c98e87488eb74a7ec
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
@@ -231,28 +206,53 @@ Method-Name: testGetApplicationSessionByKey001
 Content-Length: 0
 
  ---
-[2013-04-04 21:16:34,906] SipSessionsUtilTest:1008 INFO  - === testGetApplicationSessionByKey101() ===
-[2013-04-04 21:16:34,907] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 886a817a76e54b071a9fa61b17d71402@192.168.1.65
+[2013-04-15 20:31:21,917] SipSessionsUtilTest:1008 INFO  - === testGetApplicationSessionByKey101() ===
+[2013-04-15 20:31:21,918] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ac4074a8f8370ef46ff1b86a8db6c034@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=843985117
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=559478269
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
 Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
 Max-Forwards: 5
 Content-Length: 0
 
  ===
-[2013-04-04 21:16:34,911] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
-Call-ID: 886a817a76e54b071a9fa61b17d71402@192.168.1.65
+[2013-04-15 20:31:21,923] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: ac4074a8f8370ef46ff1b86a8db6c034@192.168.1.65
 CSeq: 1 MESSAGE
-From: "Alice" <sip:alice@192.168.1.65:5071>;tag=843985117
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=559478269
 To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
-Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK0d375d96f2efcdf44c5fa3a0768aa9d7
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK7b5dbe442962045bf22cebcfd15df080
 Max-Forwards: 5
 Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
 Application-Name: com.bea.sipservlet.tck.apps.apitestapp
 Servlet-Name: SipSessionsUtil
 Method-Name: testGetApplicationSessionByKey101
+Content-Length: 0
+
+ ---
+[2013-04-15 20:31:24,941] SipSessionsUtilTest:1008 INFO  - === testGetApplicationSessionById001() ===
+[2013-04-15 20:31:24,942] TestBase:351 DEBUG - === created message:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 6f46806f1fb2b63085c0d503b09fd534@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1569607993
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=somebranchvalue
+Max-Forwards: 5
+Content-Length: 0
+
+ ===
+[2013-04-15 20:31:24,947] TestBase:979 DEBUG - ---The Sip request is:MESSAGE sip:JSR289_TCK@localhost:5060 SIP/2.0
+Call-ID: 6f46806f1fb2b63085c0d503b09fd534@192.168.1.65
+CSeq: 1 MESSAGE
+From: "Alice" <sip:alice@192.168.1.65:5071>;tag=1569607993
+To: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060>
+Via: SIP/2.0/UDP 192.168.1.65:5071;branch=z9hG4bK6f48c83ec7bb92512b9db4a7a0e7410c
+Max-Forwards: 5
+Route: "JSR289_TCK" <sip:JSR289_TCK@localhost:5060;lr>,<sip:localhost:5060;transport=udp;lr>
+Application-Name: com.bea.sipservlet.tck.apps.apitestapp
+Servlet-Name: SipSessionsUtil
+Method-Name: testGetApplicationSessionById001
 Content-Length: 0
 
  ---

@@ -2,6 +2,8 @@ package org.andrewwinter.jsr289.api;
 
 import javax.servlet.ServletException;
 import javax.servlet.sip.Parameterable;
+import javax.servlet.sip.ServletParseException;
+import javax.servlet.sip.SipApplicationSession;
 import javax.servlet.sip.SipFactory;
 import javax.servlet.sip.SipServletRequest;
 import junit.framework.Assert;
@@ -44,5 +46,24 @@ public class SipFactoryImplTest extends TestCase {
         final Parameterable param = sf.createParameterable(hdr.toString());
         Assert.assertNotNull(param);
         Assert.assertTrue(param.equals(hdr));
+    }
+
+    public void testCreateRequest102() {
+        final SipFactory sf = new SipFactoryImpl(null, null, null);
+        final SipRequest request = (SipRequest) SipMessage.parse(MESSAGE);
+        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request);
+
+        SipApplicationSession appSession = sf.createApplicationSession();
+        if (appSession != null) {
+            try {
+                sf.createRequest(
+                        appSession,
+                        "MESSAGE",
+                        servletRequest.getTo().toString().replace("sip:", ""),
+                        servletRequest.getFrom().toString().replace("sip:", ""));
+                Assert.fail();
+            } catch (ServletParseException e) {
+            }
+        }
     }
 }

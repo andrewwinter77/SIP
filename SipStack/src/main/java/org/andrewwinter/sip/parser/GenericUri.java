@@ -45,7 +45,19 @@ public class GenericUri extends Uri {
         if (parts.length != 2) {
             throw new ParseException("Invalid URL.");
         }
-        uri.setScheme(parts[0]);
+        
+        final String scheme = parts[0];
+
+        // One TCK test uses a URI without a scheme, in the form
+        // <alice@localhost:5060>. Don't just assume everything before the
+        // colon is the scheme, because in the above case we can see that
+        // there is no scheme.
+        
+        if (!scheme.matches("[a-zA-Z]+")) {
+            throw new ParseException("Missing scheme.");
+        }
+        
+        uri.setScheme(scheme);
 
         uri.setUriAsString(str);
 

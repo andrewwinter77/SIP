@@ -4,8 +4,6 @@ import org.andrewwinter.jsr289.threadlocal.ServletNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.MainServletNameThreadLocal;
-import org.andrewwinter.jsr289.api.SipServletRequestImpl;
-import org.andrewwinter.jsr289.api.SipServletResponseImpl;
 import java.util.Collections;
 import java.util.EventListener;
 import java.util.HashSet;
@@ -24,6 +22,9 @@ import javax.servlet.sip.SipSessionBindingListener;
 import javax.servlet.sip.SipSessionListener;
 import javax.servlet.sip.TimerListener;
 import javax.servlet.sip.TooManyHopsException;
+import org.andrewwinter.jsr289.api.InboundSipServletRequestImpl;
+import org.andrewwinter.jsr289.api.InboundSipServletResponseImpl;
+import org.andrewwinter.jsr289.api.OutboundSipServletResponseImpl;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 
 /**
@@ -52,8 +53,8 @@ public class Util {
 
     public static void invokeServlet(
             final SipServletDelegate servlet,
-            final SipServletRequestImpl request,
-            SipServletResponseImpl response,
+            final InboundSipServletRequestImpl request,
+            InboundSipServletResponseImpl response,
             final ServletContext context,
             final String appName,
             final String mainServlet) throws Exception {
@@ -72,8 +73,8 @@ public class Util {
                 // container which must then generate a 483 (Too many hops)
                 // error response.
             
-                response = (SipServletResponseImpl) request.createResponse(SipServletResponse.SC_TOO_MANY_HOPS);
-                response.send();
+                final OutboundSipServletResponseImpl outboundResponse = (OutboundSipServletResponseImpl) request.createResponse(SipServletResponse.SC_TOO_MANY_HOPS);
+                outboundResponse.send();
             } else {
                 throw e;
             }

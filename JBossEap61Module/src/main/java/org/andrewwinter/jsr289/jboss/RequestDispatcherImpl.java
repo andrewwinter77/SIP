@@ -5,7 +5,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import org.andrewwinter.jsr289.api.SipServletRequestImpl;
+import org.andrewwinter.jsr289.api.InboundSipServletRequestImpl;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 
@@ -30,7 +30,7 @@ public class RequestDispatcherImpl implements RequestDispatcher {
     @Override
     public void forward(ServletRequest request, ServletResponse response) throws ServletException, IOException {
         if (request != null) {
-            service.doRequest((SipServletRequestImpl) request, moduleInfo, servlet);
+            service.doRequest((InboundSipServletRequestImpl) request, moduleInfo, servlet);
         } else if (response != null) {
             throw new UnsupportedOperationException("Not supported yet.");
         }

@@ -17,9 +17,9 @@ import javax.servlet.sip.ar.SipApplicationRouterInfo;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import javax.servlet.sip.ar.SipRouteModifier;
 import javax.servlet.sip.ar.SipTargetedRequestInfo;
+import org.andrewwinter.jsr289.api.InboundSipServletRequestImpl;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.store.SipListenerStore;
-import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 import org.andrewwinter.jsr289.store.SipServletStore;
 import org.andrewwinter.jsr289.api.SipSessionImpl;
 import org.andrewwinter.jsr289.store.SipSessionStore;
@@ -99,7 +99,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         return this;
     }
 
-    public void doRequest(final SipServletRequestImpl request, final SipModuleInfo moduleInfo, final SipServletDelegate sipServlet) {
+    public void doRequest(final InboundSipServletRequestImpl request, final SipModuleInfo moduleInfo, final SipServletDelegate sipServlet) {
 
         try {
             final ModuleClassLoader cl = moduleInfo.getClassLoader();
@@ -168,7 +168,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
      * Implements Section 15.4.1 of Sip Servlet 1.1.
      * @param sipServletRequest 
      */
-    private void routeInitialRequest(final SipServletRequestImpl sipServletRequest) {
+    private void routeInitialRequest(final InboundSipServletRequestImpl sipServletRequest) {
         if (appRouter == null) {
             // No app router deployed.
             respondWith500(sipServletRequest, "No app router");
@@ -297,7 +297,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
      */
     @Override
     public void doRequest(final InboundSipRequest isr) {
-        final SipServletRequestImpl sipServletRequest = new SipServletRequestImpl(isr);
+        final InboundSipServletRequestImpl sipServletRequest = new InboundSipServletRequestImpl(isr);
         if (sipServletRequest.isInitial()) {
             routeInitialRequest(sipServletRequest);
         } else {

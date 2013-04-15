@@ -9,58 +9,25 @@ import java.util.Locale;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.sip.Proxy;
 import javax.servlet.sip.ProxyBranch;
-import javax.servlet.sip.Rel100Exception;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipServletResponse;
-import javax.servlet.sip.SipSession;
-import org.andrewwinter.sip.dialog.Dialog;
-import org.andrewwinter.sip.message.InboundSipResponse;
-import org.andrewwinter.sip.message.SipMessageFactory;
 import org.andrewwinter.sip.parser.AuthenticationChallenge;
-import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.parser.SipResponse;
 
 /**
  *
  * @author andrew
  */
-public class SipServletResponseImpl extends SipServletMessageImpl implements SipServletResponse {
+public abstract class SipServletResponseImpl extends SipServletMessageImpl implements SipServletResponse {
 
     private final SipResponse response;
     
-    private SipServletRequestImpl servletRequest;
+    private final SipServletRequestImpl servletRequest;
     
-    /**
-     * Null if we are the UAS.
-     */
-    private final InboundSipResponse inboundSipResponse;
-    
-    /**
-     * UAS constructor.
-     * @param request Request created by us earlier.
-     * @param response  SipStack response object, to be wrapped by this object.
-     */
-    public SipServletResponseImpl(final SipServletRequestImpl request, final SipResponse response) {
-        super(request.getInboundSipRequest(), response);
+    protected SipServletResponseImpl(SipResponse response, SipServletRequestImpl servletRequest) {
+        super(response);
         this.response = response;
-        this.servletRequest = request;
-        this.inboundSipResponse = null;
-        setSipSession((SipSessionImpl) request.getSession());
-    }
-
-    /**
-     * UAC constructor.
-     * @param isr Response received from network.
-     */
-    public SipServletResponseImpl(final InboundSipResponse isr) {
-        super(isr);
-        this.response = isr.getResponse();
-
-        this.servletRequest = new SipServletRequestImpl(isr); // TODO: Do we want to pass null or create a new SipServletRequestImpl constructor for this?
-        final SipSession session = getSession(false);
-        servletRequest.setSipSession((SipSessionImpl) session);
-        
-        this.inboundSipResponse = isr;
+        this.servletRequest = servletRequest;
     }
     
     @Override
@@ -106,48 +73,10 @@ public class SipServletResponseImpl extends SipServletMessageImpl implements Sip
     }
 
     @Override
-    public Proxy getProxy() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public abstract Proxy getProxy();
 
     @Override
-    public ProxyBranch getProxyBranch() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void sendReliably() throws Rel100Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public SipServletRequest createAck() {
-        
-        if (inboundSipResponse == null) {
-            throw new IllegalStateException("Cannot create ACK for outgoing response.");
-        }
-        
-        if (!servletRequest.getSipRequest().isINVITE()) {
-            throw new IllegalStateException("Original request was not an INVITE.");
-        }
-        
-        if (response.getStatusCode() < 200) {
-            throw new IllegalStateException("Cannot create ACK for provisional response.");
-        }
-        
-        // TODO: IllegalStateException if ACK has already been generated.
-        // TODO: IllegalStateException if transaction state doesn't allow ACK to be sent now.
-        
-        final SipRequest ack = SipMessageFactory.createAck(inboundSipResponse);
-        final SipServletRequestImpl sipServletAck = new SipServletRequestImpl(ack);
-        sipServletAck.setSipSession((SipSessionImpl) getSession());
-        return sipServletAck;
-    }
-
-    @Override
-    public SipServletRequest createPrack() throws Rel100Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public abstract ProxyBranch getProxyBranch();
 
     @Override
     public Iterator<String> getChallengeRealms() {
@@ -174,9 +103,7 @@ public class SipServletResponseImpl extends SipServletMessageImpl implements Sip
     }
 
     @Override
-    public boolean isBranchResponse() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public abstract boolean isBranchResponse();
 
     @Override
     public void setBufferSize(final int size) {
@@ -221,29 +148,5 @@ public class SipServletResponseImpl extends SipServletMessageImpl implements Sip
     @Override
     public String toString() {
         return response.toString();
-    }
-
-    @Override
-    public void send() throws IOException {
-        
-        if (inboundSipResponse != null) {
-            throw new IllegalStateException("Response was received from downstream.");
-        }
-        
-        synchronized (super.sendLock) {
-            flagMessageAsSent();
-            
-            servletRequest.getInboundSipRequest().sendResponse(response);
-            final Dialog dialog = servletRequest.getInboundSipRequest().getServerTransaction().getDialog();
-            if (dialog != null) {
-                SipSessionImpl session = (SipSessionImpl) getSession();
-                if (session == null) {
-                    // TODO: Perhaps create a session if one doesn't already exist?
-                    System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ null session when sending response to " + servletRequest.getSipRequest().getMethod());
-                } else {
-                    session.setDialog(dialog);
-                }
-            }
-        }
     }
 }

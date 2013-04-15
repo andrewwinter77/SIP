@@ -198,7 +198,7 @@ public class SipFactoryImpl implements SipFactory {
             }
         }
         
-        final SipServletRequestImpl result = new SipServletRequestImpl(request);
+        final OutboundSipServletRequestImpl result = new OutboundSipServletRequestImpl(request);
         result.setSipSession(ss);
         return result;
     }

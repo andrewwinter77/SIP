@@ -1,7 +1,6 @@
 package org.andrewwinter.jsr289.api;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Locale;
@@ -16,34 +15,22 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.sip.Address;
 import javax.servlet.sip.AuthInfo;
-import javax.servlet.sip.B2buaHelper;
-import javax.servlet.sip.Proxy;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipServletResponse;
 import javax.servlet.sip.SipURI;
-import javax.servlet.sip.TooManyHopsException;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import javax.servlet.sip.ar.SipApplicationRoutingRegion;
 import org.andrewwinter.jsr289.auth.SingleAuthInfo;
-import org.andrewwinter.sip.element.UserAgentClient;
-import org.andrewwinter.sip.message.InboundSipRequest;
-import org.andrewwinter.sip.message.InboundSipResponse;
-import org.andrewwinter.sip.message.ResponseType;
-import org.andrewwinter.sip.message.SipMessageFactory;
 import org.andrewwinter.sip.parser.SipMessageHelper;
 import org.andrewwinter.sip.parser.SipRequest;
-import org.andrewwinter.sip.parser.SipResponse;
 import org.andrewwinter.sip.parser.Uri;
-import org.andrewwinter.sip.transaction.client.ClientTransaction;
-import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
-import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
 
 /**
  *
  * @author andrew
  */
-public class SipServletRequestImpl extends SipServletMessageImpl implements SipServletRequest {
+public abstract class SipServletRequestImpl extends SipServletMessageImpl implements SipServletRequest {
 
     /**
      * See Step 3 of Appendix B of SIP Servlet 1.1 spec.
@@ -60,9 +47,6 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
         SUBSEQUENT_REQUEST_METHODS.add("INFO");
     }
     private final SipRequest request;
-    private final InboundSipRequest inboundSipRequest;
-    private ProxyImpl proxy;
-    private B2bUaHelperImpl b2bUaHelper;
     /**
      * Null if not yet set.
      */
@@ -71,29 +55,23 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
     private SipApplicationRoutingDirective routingDirective;
     
     /**
-     * This is non-null when we're a UAC and have sent a request.
-     */
-    private UserAgentClient userAgentClient;
-    
-    /**
      * Use for requests where we are the UAC AND we've just received a response AND
      * we're reinstantiating the SipServletRequest from the response. This is to support
      * SipServletResponse.getRequest().
      *
      * @param request
      */
-    public SipServletRequestImpl(final InboundSipResponse isr) {
-        super(isr, isr.getRequest());
-        this.request = isr.getRequest();
-        this.inboundSipRequest = null;
-    }
+//    public SipServletRequestImpl(final InboundSipResponse isr) {
+//        super(isr, isr.getRequest());
+//        this.request = isr.getRequest();
+//    }
 
-    private SipServletRequestImpl(final UserAgentClient userAgentClient, final SipRequest cancel) {
-        super(cancel);
-        this.request = cancel;
-        this.inboundSipRequest = null;
-        this.userAgentClient = userAgentClient;
-    }
+//    private SipServletRequestImpl(final UserAgentClient userAgentClient, final SipRequest cancel) {
+//        super(cancel);
+//        this.request = cancel;
+//        this.inboundSipRequest = null;
+//        this.userAgentClient = userAgentClient;
+//    }
     
     /**
      * Use for requests where we are the UAC.
@@ -106,7 +84,6 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
             throw new NullPointerException("Request must not be null.");
         }
         this.request = request;
-        this.inboundSipRequest = null;
     }
 
     /**
@@ -114,27 +91,31 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
      *
      * @param isr
      */
-    public SipServletRequestImpl(final InboundSipRequest isr) {
-        super(isr);
-        if (isr == null || isr.getRequest() == null) {
-            throw new NullPointerException("Request must not be null.");
-        }
-        this.request = isr.getRequest();
-        this.inboundSipRequest = isr;
-    }
+//    public SipServletRequestImpl(final InboundSipRequest isr) {
+//        super(isr);
+//        if (isr == null || isr.getRequest() == null) {
+//            throw new NullPointerException("Request must not be null.");
+//        }
+//        this.request = isr.getRequest();
+//    }
 
     public SipRequest getSipRequest() {
         return request;
     }
     
-    private boolean isOutboundRequest() {
-        return inboundSipRequest == null;
+//    private boolean isOutboundRequest() {
+//        return inboundSipRequest == null;
+//    }
+//    
+//    public InboundSipRequest getInboundSipRequest() {
+//        return inboundSipRequest;
+//    }
+//
+    @Override
+    public ServletInputStream getInputStream() {
+        return null;
     }
     
-    public InboundSipRequest getInboundSipRequest() {
-        return inboundSipRequest;
-    }
-
     @Override
     public URI getRequestURI() {
         return URIImpl.create(request.getRequestUri());
@@ -150,12 +131,22 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
 
     @Override
     public void pushRoute(final SipURI uri) {
+        if (!isInitial()) {
+            // Any attempt to do a pushRoute on a subsequent request in a dialog
+            // MUST throw an IllegalStateException.
+            throw new IllegalStateException("Cannot push Route on subsequent requests.");
+        }
         final Uri rfc3261Uri = ((SipURIImpl) uri).getRfc3261Uri();
         request.pushRoute(rfc3261Uri);
     }
 
     @Override
     public void pushRoute(final Address uri) {
+        if (!isInitial()) {
+            // Any attempt to do a pushRoute on a subsequent request in a dialog
+            // MUST throw an IllegalStateException.
+            throw new IllegalStateException("Cannot push Route on subsequent requests.");
+        }
         if (uri.isWildcard()) {
             // Note: This is not in the spec but makes sense to me.
             throw new IllegalArgumentException("Wildcard is not a valid route header.");
@@ -252,122 +243,8 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
     }
 
     @Override
-    public ServletInputStream getInputStream() throws IOException {
-        // Always returns null.
-        return null;
-    }
-
-    @Override
-    public BufferedReader getReader() throws IOException {
-        // Always returns null.
-        return null;
-    }
-
-    @Override
-    public Proxy getProxy() throws TooManyHopsException {
-        return getProxy(true);
-    }
-
-    @Override
-    public Proxy getProxy(final boolean create) throws TooManyHopsException {
-
-        if (isOutboundRequest()) {
-            throw new IllegalStateException("Cannot proxy requests where we are the UAC.");
-        }
-        
-        if (b2bUaHelper == null) {
-
-            if (proxy == null) {
-
-                final Integer maxForwards = request.getMaxForwards();
-                if (maxForwards != null && maxForwards == 0) {
-
-                    // TODO: Generate 483
-
-                    throw new TooManyHopsException();
-                } else {
-                    proxy = new ProxyImpl(inboundSipRequest, this);
-                }
-
-            }
-            return proxy;
-        } else {
-            throw new IllegalStateException("Application is already a B2B.");
-        }
-    }
-
-    @Override
-    public SipServletResponse createResponse(final int statusCode) {
-        final ResponseType rt = ResponseType.get(statusCode);
-        final String reasonPhrase;
-        if (rt == null) {
-            reasonPhrase = "Custom response";
-        } else {
-            reasonPhrase = rt.getReasonPhrase();
-        }
-        return this.createResponse(statusCode, reasonPhrase);
-    }
-
-    @Override
-    public SipServletResponse createResponse(final int statusCode, String reasonPhrase) {
-        if (statusCode < 100 || statusCode > 699) {
-            throw new IllegalArgumentException("Invalid status code.");
-        }
-
-        if (inboundSipRequest == null) {
-            throw new IllegalStateException("Cannot create a response to an outbound request.");
-        }
-
-        if (reasonPhrase == null) {
-            throw new NullPointerException("Reason phrase must not be null.");
-        }
-
-        synchronized(inboundSipRequest.getServerTransaction()) {
-            final ServerTransactionStateName state = inboundSipRequest.getServerTransaction().getStateName();
-            if (state == ServerTransactionStateName.TRYING || state == ServerTransactionStateName.PROCEEDING) {
-                final SipResponse response = inboundSipRequest.createResponse(statusCode, reasonPhrase);
-                return new SipServletResponseImpl(this, response);
-            } else {
-                throw new IllegalStateException("Request already responded to with final status code.");
-            }
-        }
-    }
-
-    @Override
-    public SipServletRequest createCancel() {
-        
-        if (!isOutboundRequest() || !request.isINVITE()) {
-            throw new IllegalStateException("Only outbound INVITEs can be canceled.");
-        }
-        
-        if (userAgentClient == null) {
-            throw new IllegalStateException("Cannot cancel an INVITE that has not yet been sent.");
-        }
-        
-        final ClientTransaction txn = userAgentClient.getClientTransaction();
-        final ClientTransactionStateName state = txn.getStateName();
-        if (state != ClientTransactionStateName.PROCEEDING && state != ClientTransactionStateName.CALLING) {
-            throw new IllegalStateException("Cannot cancel since not in the CALLING or PROCEEDING states.");
-        }
-        
-        final SipRequest cancel = SipMessageFactory.createCancel(request);
-        final SipServletRequestImpl servletRequest = new SipServletRequestImpl(userAgentClient, cancel);
-        servletRequest.setSipSession((SipSessionImpl) getSession());
-        return servletRequest;
-    }
-
-    @Override
     public void pushPath(final Address uri) {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public B2buaHelper getB2buaHelper() {
-        if (proxy == null) {
-            return b2bUaHelper = new B2bUaHelperImpl();
-        } else {
-            throw new IllegalStateException("Application is already a proxy.");
-        }
     }
 
     @Override
@@ -380,33 +257,10 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public void setRoutingDirective(
-            final SipApplicationRoutingDirective directive,
-            final SipServletRequest origRequest) throws IllegalStateException {
-
-        if (isSent()) {
-            throw new IllegalStateException("Request has already been sent.");
-        }
-        
-        if (!isOutboundRequest()) {
-            throw new IllegalStateException("Cannot set routing directive on inbound requests.");
-        }
-        
-        // If directive is CONTINUE or REVERSE, the parameter origRequest must
-        // be an initial request dispatched by the container to this
-        // application, i.e. origRequest.isInitial() must be true.
-        
-        if ((directive == SipApplicationRoutingDirective.CONTINUE || directive == SipApplicationRoutingDirective.REVERSE)
-                && !origRequest.isInitial()) {
-            throw new IllegalStateException("origRequest must be initial for CONTINUE or REVERSE but is not.");
-        }
-        
-        // TODO: Add check for: This request must be a request created in a new SipSession or from an initial request
-        
+    protected void setRoutingDirective(final SipApplicationRoutingDirective directive) {
         this.routingDirective = directive;
     }
-
+    
     @Override
     public SipApplicationRoutingDirective getRoutingDirective() throws IllegalStateException {
         if (!isInitial()) {
@@ -507,6 +361,11 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
     }
 
     @Override
+    public BufferedReader getReader() {
+        return null;
+    }
+    
+    @Override
     public String getLocalName() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -514,23 +373,6 @@ public class SipServletRequestImpl extends SipServletMessageImpl implements SipS
     @Override
     public String toString() {
         return request.toString();
-    }
-
-    @Override
-    public void send() throws IOException {
-
-        if (isSent()) {
-            throw new IllegalStateException("Request has already been sent.");
-        }
-        
-        if (userAgentClient == null) {
-            synchronized (super.sendLock) {
-                flagMessageAsSent();
-                userAgentClient = UserAgentClient.create((SipSessionImpl) getSession(), request, null);
-            }
-        } else if (request.isCANCEL()) {
-            userAgentClient.cancel(request);
-        }
     }
 
     @Override

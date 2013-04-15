@@ -22,15 +22,10 @@ import javax.servlet.sip.SipSession;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
 import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.sip.dialog.Dialog;
-import org.andrewwinter.sip.message.InboundSipMessage;
-import org.andrewwinter.sip.message.InboundSipRequest;
-import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.parser.HeaderName;
 import org.andrewwinter.sip.parser.ParseException;
 import org.andrewwinter.sip.parser.SipMessage;
 import org.andrewwinter.sip.parser.SipMessageHelper;
-import org.andrewwinter.sip.parser.SipRequest;
-import org.andrewwinter.sip.parser.SipResponse;
 import org.andrewwinter.sip.parser.Util;
 
 /**
@@ -39,67 +34,17 @@ import org.andrewwinter.sip.parser.Util;
  */
 public abstract class SipServletMessageImpl implements SipServletMessage {
 
-    private HeaderForm headerForm;
+    private HeaderForm headerForm = HeaderForm.DEFAULT;
     private final SipMessage message;
-    private final Map<String, Object> attributes;
+    private final Map<String, Object> attributes = new HashMap<>();
     private SipSessionImpl sipSession;
     protected final Object sendLock = new Object();
-    private final boolean isIncoming;
     private boolean sent;
-    private final InboundSipMessage inboundSipMessage;
 
-    protected SipServletMessageImpl(final InboundSipRequest isr) {
-        this.message = isr.getRequest();
-        attributes = new HashMap<>();
-        headerForm = HeaderForm.DEFAULT;
-        this.isIncoming = true;
-        sent = false;
-        inboundSipMessage = isr;
+    protected SipServletMessageImpl(final SipMessage message) {
+        this.message = message;
     }
-
-    protected SipServletMessageImpl(final InboundSipRequest isr, final SipResponse response) {
-        this.message = response;
-        attributes = new HashMap<>();
-        headerForm = HeaderForm.DEFAULT;
-        this.isIncoming = false;
-        sent = false;
-        inboundSipMessage = isr;
-    }
-
-    /**
-     * For requests that have been sent earlier, retrieved with
-     * SipServletResponse.getRequest().
-     *
-     * @param isr
-     * @param request
-     */
-    protected SipServletMessageImpl(final InboundSipResponse isr, final SipRequest request) {
-        this.message = request;
-        attributes = new HashMap<>();
-        headerForm = HeaderForm.DEFAULT;
-        this.isIncoming = false;
-        sent = true;
-        inboundSipMessage = isr;
-    }
-
-    protected SipServletMessageImpl(final InboundSipResponse isr) {
-        this.message = isr.getResponse();
-        attributes = new HashMap<>();
-        headerForm = HeaderForm.DEFAULT;
-        this.isIncoming = true;
-        sent = false;
-        inboundSipMessage = isr;
-    }
-
-    protected SipServletMessageImpl(final SipRequest request) {
-        this.message = request;
-        attributes = new HashMap<>();
-        headerForm = HeaderForm.DEFAULT;
-        this.isIncoming = false;
-        sent = false;
-        inboundSipMessage = null;
-    }
-
+    
     protected boolean isSent() {
         return sent;
     }
@@ -436,18 +381,6 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
     }
 
     @Override
-    public void setContentLength(final int len) {
-        if (isIncoming) {
-            throw new IllegalStateException("Cannot set content on incoming messages.");
-        }
-
-        if (sent) {
-            throw new IllegalStateException("Message has already been sent.");
-        }
-        SipMessageHelper.setContentLength(len, message);
-    }
-
-    @Override
     public void setContentType(final String type) {
         SipMessageHelper.setContentType(type, message);
     }
@@ -486,20 +419,15 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
         return getSession(true);
     }
 
+    protected abstract Dialog getDialog();
+    
     @Override
     public SipSession getSession(final boolean create) {
         if (create && sipSession == null) {
 
-            Dialog dialog = null;
-            if (inboundSipMessage instanceof InboundSipRequest) {
-                dialog = ((InboundSipRequest) inboundSipMessage).getServerTransaction().getDialog();
-            } else if (inboundSipMessage instanceof InboundSipResponse) {
-                dialog = ((InboundSipResponse) inboundSipMessage).getDialog();
-            }
+            final Dialog dialog = getDialog();
             if (dialog == null) {
-                
                 sipSession = SipSessionImpl.createForInitialOutboundRequests(getCallId(), getApplicationSession());
-                
             } else { 
                 sipSession = SipSessionStore.getInstance().getUsingDialogId(dialog.getId());
 
@@ -624,52 +552,6 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
 
     @Override
     public Principal getUserPrincipal() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public String getLocalAddr() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public int getLocalPort() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public String getInitialRemoteAddr() {
-        if (isIncoming) {
-            return inboundSipMessage.getInitialRemoteAddr();
-        }
-        return null;
-    }
-
-    @Override
-    public int getInitialRemotePort() {
-        if (isIncoming) {
-            return inboundSipMessage.getInitialRemotePort();
-        }
-        return -1;
-    }
-
-    @Override
-    public String getTransport() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public String getRemoteAddr() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public int getRemotePort() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public String getInitialTransport() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

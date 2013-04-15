@@ -17,6 +17,11 @@ public class ParameterableImpl extends AbstractParameterable {
     }
     
     @Override
+    public String toString() {
+        return parameterable.toString();
+    }
+    
+    @Override
     public Object clone() {
         // Use null for the HeaderName because the application is creating a
         // new Parameterable.

@@ -5,6 +5,7 @@ import org.andrewwinter.jsr289.api.AddressImplTest;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.andrewwinter.jsr289.api.SipFactoryImplTest;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Jsr289Suite extends TestCase {
         TestSuite suite = new TestSuite("Jsr289Suite");
         suite.addTest(AddressImplTest.suite());
         suite.addTest(SipApplicationSessionImplTest.suite());
+        suite.addTest(SipFactoryImplTest.suite());
         return suite;
     }
     

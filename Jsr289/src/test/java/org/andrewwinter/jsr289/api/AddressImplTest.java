@@ -1,11 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.andrewwinter.jsr289.api;
 
-import org.andrewwinter.jsr289.api.SipFactoryImpl;
-import org.andrewwinter.jsr289.api.AddressImpl;
 import javax.servlet.sip.Address;
 import javax.servlet.sip.ServletParseException;
 import javax.servlet.sip.SipFactory;

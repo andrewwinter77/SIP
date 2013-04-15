@@ -50,28 +50,9 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
     /**
      * Null if not yet set.
      */
-    private transient Boolean requestIsInitial;
+    private transient Boolean initial;
 
-    private SipApplicationRoutingDirective routingDirective;
-    
-    /**
-     * Use for requests where we are the UAC AND we've just received a response AND
-     * we're reinstantiating the SipServletRequest from the response. This is to support
-     * SipServletResponse.getRequest().
-     *
-     * @param request
-     */
-//    public SipServletRequestImpl(final InboundSipResponse isr) {
-//        super(isr, isr.getRequest());
-//        this.request = isr.getRequest();
-//    }
-
-//    private SipServletRequestImpl(final UserAgentClient userAgentClient, final SipRequest cancel) {
-//        super(cancel);
-//        this.request = cancel;
-//        this.inboundSipRequest = null;
-//        this.userAgentClient = userAgentClient;
-//    }
+    private SipApplicationRoutingDirective directive;
     
     /**
      * Use for requests where we are the UAC.
@@ -86,31 +67,10 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         this.request = request;
     }
 
-    /**
-     * Use for inbound requests where we are the UAS.
-     *
-     * @param isr
-     */
-//    public SipServletRequestImpl(final InboundSipRequest isr) {
-//        super(isr);
-//        if (isr == null || isr.getRequest() == null) {
-//            throw new NullPointerException("Request must not be null.");
-//        }
-//        this.request = isr.getRequest();
-//    }
-
     public SipRequest getSipRequest() {
         return request;
     }
     
-//    private boolean isOutboundRequest() {
-//        return inboundSipRequest == null;
-//    }
-//    
-//    public InboundSipRequest getInboundSipRequest() {
-//        return inboundSipRequest;
-//    }
-//
     @Override
     public ServletInputStream getInputStream() {
         return null;
@@ -183,8 +143,8 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
     @Override
     public boolean isInitial() {
 
-        if (requestIsInitial != null) {
-            return requestIsInitial;
+        if (initial != null) {
+            return initial;
         }
 
         // 1. Request Detection - Upon reception of a SIP message, determine if
@@ -196,7 +156,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         // it does, stop. The request is not an initial request.
 
         if (request.matchesExistingServerTransaction()) {
-            return requestIsInitial = false;
+            return initial = false;
         }
 
         // 3. Examine Request Method. If it is CANCEL, BYE, PRACK, ACK, UPDATE
@@ -205,7 +165,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
 
         final String method = request.getMethod().toUpperCase(Locale.US);
         if (SUBSEQUENT_REQUEST_METHODS.contains(method)) {
-            return requestIsInitial = false;
+            return initial = false;
         }
 
         // 4. Existing Dialog Detection - If the request has a tag in the To
@@ -215,7 +175,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         // stop. The request is not an initial request.
 
         if (request.matchesExistingDialog()) {
-            return requestIsInitial = false;
+            return initial = false;
         }
 
         // 5. Detection of Requests Sent to Encoded URIs - Requests may be sent
@@ -239,7 +199,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         // application invocation process commences. In this case and in this
         // case only SipServletRequest.isInitial() MUST return true.
 
-        return requestIsInitial = true;
+        return initial = true;
     }
 
     @Override
@@ -258,7 +218,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
     }
 
     protected void setRoutingDirective(final SipApplicationRoutingDirective directive) {
-        this.routingDirective = directive;
+        this.directive = directive;
     }
     
     @Override
@@ -266,7 +226,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         if (!isInitial()) {
             throw new IllegalStateException("Request is not initial.");
         }
-        return routingDirective;
+        return directive;
     }
 
     @Override

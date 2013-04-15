@@ -57,13 +57,14 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl implemen
                 final Integer maxForwards = request.getMaxForwards();
                 if (maxForwards != null && maxForwards == 0) {
 
-                    // TODO: Generate 483
-
                     throw new TooManyHopsException();
+                    // If unhandled by the application, this will be caught by
+                    // the container which must then generate a 483 (Too many
+                    // hops) error response.
+                    
                 } else {
                     proxy = new ProxyImpl(inboundSipRequest, this);
                 }
-
             }
             return proxy;
         } else {

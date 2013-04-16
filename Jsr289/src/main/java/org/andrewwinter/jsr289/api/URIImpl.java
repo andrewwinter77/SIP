@@ -19,7 +19,7 @@ public abstract class URIImpl implements URI {
         this.uri = uri;
     }
 
-    static URI create(final Uri uri) {
+    public static URI create(final Uri uri) {
         if (uri instanceof SipUri) {
             return new SipURIImpl((SipUri) uri);
         } else if (uri instanceof TelUrl) {

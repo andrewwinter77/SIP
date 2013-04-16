@@ -5,6 +5,7 @@ import org.andrewwinter.jsr289.jboss.deployment.phase.AnnotationProcessor;
 import org.andrewwinter.jsr289.jboss.deployment.phase.Dependencies;
 import org.andrewwinter.jsr289.jboss.deployment.phase.Install;
 import org.andrewwinter.jsr289.jboss.deployment.phase.PostModule;
+import org.andrewwinter.jsr289.jboss.deployment.phase.ServletContextAttributeProcessor;
 import org.andrewwinter.jsr289.jboss.deployment.phase.SipXmlParser;
 import org.andrewwinter.jsr289.jboss.deployment.phase.Structure;
 import org.jboss.as.controller.AbstractBoottimeAddStepHandler;
@@ -14,6 +15,7 @@ import org.jboss.as.controller.ServiceVerificationHandler;
 import org.jboss.as.server.AbstractDeploymentChainStep;
 import org.jboss.as.server.DeploymentProcessorTarget;
 import org.jboss.as.server.deployment.Phase;
+import org.jboss.as.web.deployment.ServletContainerInitializerDeploymentProcessor;
 import org.jboss.dmr.ModelNode;
 import org.jboss.logging.Logger;
 import org.jboss.msc.service.ServiceController;
@@ -74,6 +76,7 @@ class SubsystemAddHandler extends AbstractBoottimeAddStepHandler {
                 processorTarget.addDeploymentProcessor(Phase.DEPENDENCIES, Integer.MAX_VALUE, new Dependencies());
                 processorTarget.addDeploymentProcessor(Phase.POST_MODULE, 0, new AnnotationProcessor());
                 processorTarget.addDeploymentProcessor(Phase.POST_MODULE, Integer.MAX_VALUE, new PostModule());
+                processorTarget.addDeploymentProcessor(Phase.INSTALL, Phase.INSTALL_WAR_DEPLOYMENT-1, new ServletContextAttributeProcessor());
                 processorTarget.addDeploymentProcessor(Phase.INSTALL, Integer.MAX_VALUE, new Install());
             }
         }, OperationContext.Stage.RUNTIME);

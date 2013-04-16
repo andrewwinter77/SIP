@@ -2,9 +2,12 @@ package org.andrewwinter.jsr289.jboss;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -55,11 +58,30 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
     private static Map<String, SipModuleInfo> APP_NAME_TO_MODULE_INFO = new HashMap<>();
     private SipApplicationRouter appRouter;
     private NettyServerTransport serverTransport;
+    private Set<String> sipInterfaces;
 
     public SipServletService() {
+        sipInterfaces = createLocalInterfaceList();
         serverTransport = new NettyServerTransport(this, 5060);
     }
 
+    private static Set<String> createLocalInterfaceList() {
+        final Set<String> sipInterfaces = new HashSet<>();
+        try {
+            InetAddress localhost = InetAddress.getLocalHost();
+            InetAddress[] allMyIps = InetAddress.getAllByName(localhost.getCanonicalHostName());
+            if (allMyIps != null) {
+                for (final InetAddress addr : allMyIps) {
+                    sipInterfaces.add(addr.getHostAddress());
+                }
+            }
+        } catch (UnknownHostException e) {
+            System.out.println("Exception enumerating IPs.");
+        }
+        return sipInterfaces;
+    }
+    
+    
     public void deployApplication(final SipModuleInfo metadata) throws DeploymentUnitProcessingException {
         if (appRouter == null) {
             // TODO: Handle case where 
@@ -164,6 +186,10 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         }
     }
     
+    private boolean isRequestFromExternalEntity(final SipServletRequest request) {
+        return !sipInterfaces.contains(request.getRemoteAddr());
+    }
+    
     /**
      * Implements Section 15.4.1 of Sip Servlet 1.1.
      * @param sipServletRequest 
@@ -177,7 +203,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
 
         final Serializable stateInfo;
         final SipApplicationRoutingDirective directive;
-        if (true) { // TODO: if request is received from external SIP entity
+        if (true) { // (isRequestFromExternalEntity(sipServletRequest)) {
             directive = SipApplicationRoutingDirective.NEW;
             stateInfo = null;
         } else {

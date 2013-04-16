@@ -1,8 +1,6 @@
 package org.andrewwinter.jsr289.api;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import javax.servlet.ServletContext;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.sip.Address;
 import javax.servlet.sip.AuthInfo;
@@ -10,6 +8,7 @@ import javax.servlet.sip.Parameterable;
 import javax.servlet.sip.ServletParseException;
 import javax.servlet.sip.SipApplicationSession;
 import javax.servlet.sip.SipFactory;
+import javax.servlet.sip.SipServlet;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipURI;
 import javax.servlet.sip.URI;
@@ -37,12 +36,12 @@ public class SipFactoryImpl implements SipFactory {
     
     private final String mainServletName;
 
-    private final ServletContext servletContext;
+    private final ServletContextProvider servletContextProvider;
     
-    public SipFactoryImpl(final String appName, final String mainServletName, final ServletContext servletContext) {
+    public SipFactoryImpl(final String appName, final String mainServletName, final ServletContextProvider servletContext) {
         this.appName = appName;
         this.mainServletName = mainServletName;
-        this.servletContext = servletContext;
+        this.servletContextProvider = servletContext;
     }
     
     @Override
@@ -146,7 +145,7 @@ public class SipFactoryImpl implements SipFactory {
      */
     private void setThreadLocalVariables() {
         if (ServletContextThreadLocal.get() == null) {
-            ServletContextThreadLocal.set(servletContext);
+            ServletContextThreadLocal.set(servletContextProvider.getServletContext());
         }
         if (AppNameThreadLocal.get() == null) {
             AppNameThreadLocal.set(appName);
@@ -157,6 +156,7 @@ public class SipFactoryImpl implements SipFactory {
     }
     
     @Override
+    // TODO: The logic should be in the other createRequest() method. We should construct Address objects here for to and from and pass them into the other one. That will help keep the Address objects passed into the other method 'live', instead of doing a toString() on them.
     public SipServletRequest createRequest(SipApplicationSession appSession, String method, String from, String to) throws ServletParseException {
         
         setThreadLocalVariables();
@@ -171,9 +171,10 @@ public class SipFactoryImpl implements SipFactory {
         
         final SipRequest request;
         try {
-            final String contactAddressAsString = "sip:" + InetAddress.getLocalHost().getHostAddress();
+            final List<SipURI> ifaces = (List<SipURI>) servletContextProvider.getServletContext().getAttribute(SipServlet.OUTBOUND_INTERFACES);
+            final SipURIImpl contactAsSipURI = (SipURIImpl) ifaces.get(0);
             final org.andrewwinter.sip.parser.Address contactHeader =
-                    org.andrewwinter.sip.parser.Address.parse(contactAddressAsString);
+                    new org.andrewwinter.sip.parser.Address(contactAsSipURI.getRfc3261Uri());
             
             request = SipMessageFactory.createOutOfDialogRequest(
                     method,
@@ -181,8 +182,6 @@ public class SipFactoryImpl implements SipFactory {
                     from,
                     null,
                     contactHeader);
-        } catch (UnknownHostException e) {
-            throw new RuntimeException("Unable to create Contact header address.");
         } catch (final ParseException e) {
             throw new ServletParseException("Attempting to construct a malformed message.");
         }

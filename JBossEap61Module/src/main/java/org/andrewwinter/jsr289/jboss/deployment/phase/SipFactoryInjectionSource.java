@@ -1,6 +1,7 @@
 package org.andrewwinter.jsr289.jboss.deployment.phase;
 
 import javax.servlet.sip.SipFactory;
+import org.andrewwinter.jsr289.api.ServletContextProvider;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
@@ -35,11 +36,17 @@ public class SipFactoryInjectionSource extends InjectionSource {
         
         final SipModuleInfo sipMetadata = du.getAttachment(CustomAttachments.SIP_MODULE_INFO);
 
+        ServletContextProvider scp = du.getAttachment(CustomAttachments.SERVLET_CONTEXT_PROVIDER);
+        if (scp == null) {
+            scp = new ServletContextProvider();
+            du.putAttachment(CustomAttachments.SERVLET_CONTEXT_PROVIDER, scp);
+        }
+        
         if (sf == null) {
             sf = new SipFactoryImpl(
                 sipMetadata.getAppName(),
                 sipMetadata.getMainServletName(),
-                sipMetadata.getServletContext());
+                scp);
         }
 
         injector.inject(new SipFactoryManagedReferenceFactory(du, sf));

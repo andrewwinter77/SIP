@@ -1,6 +1,7 @@
 package org.andrewwinter.jsr289.api;
 
 import javax.servlet.ServletException;
+import javax.servlet.sip.Address;
 import javax.servlet.sip.Parameterable;
 import javax.servlet.sip.ServletParseException;
 import javax.servlet.sip.SipApplicationSession;
@@ -63,6 +64,31 @@ public class SipFactoryImplTest extends TestCase {
                         servletRequest.getFrom().toString().replace("sip:", ""));
                 Assert.fail();
             } catch (ServletParseException e) {
+            }
+        }
+    }
+
+    public void testCreateRequest002() throws ServletParseException {
+        final SipFactory sf = new SipFactoryImpl(null, null, null);
+        final SipRequest request = (SipRequest) SipMessage.parse(MESSAGE);
+        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request);
+
+        SipApplicationSession appSession = sf.createApplicationSession();
+        if (appSession != null) {
+
+            SipServletRequest newServletRequest = sf.createRequest(
+                    appSession,
+                    "MESSAGE",
+                    servletRequest.getTo().toString(),
+                    servletRequest.getFrom().toString());
+            if (request != null) {
+                Address oriFrom = (Address) servletRequest.getFrom().clone();
+                Address newFrom = (Address) newServletRequest.getFrom().clone();
+                oriFrom.removeParameter("tag");
+                newFrom.removeParameter("tag");
+                Assert.assertTrue(newFrom.toString().equals(servletRequest.getTo().toString())
+                        && newServletRequest.getTo().toString().equals(oriFrom.toString()));
+
             }
         }
     }

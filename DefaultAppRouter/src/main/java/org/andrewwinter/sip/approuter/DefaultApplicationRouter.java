@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.servlet.sip.Address;
+import javax.servlet.sip.ServletParseException;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.ar.SipApplicationRouter;
 import javax.servlet.sip.ar.SipApplicationRouterInfo;
@@ -304,6 +306,17 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
      */
     private static String getSubscriberUri(String str, final SipServletRequest request) {
         if (str.startsWith("DAR:")) {
+            // Initially try to return just the URI from the address header
+            // field, not the entire header field itself. If that files (e.g.,
+            // because it's not a parsable header) then return the whole header
+            // field.
+            try {
+                final Address addr = request.getAddressHeader(str.substring(4));
+                if (addr != null) {
+                    return addr.getURI().toString();
+                }
+            } catch (ServletParseException e) {
+            }
             return request.getHeader(str.substring(4));
         } else {
             return str;

@@ -56,19 +56,19 @@ public class ClickToCallWebService extends Application {
 
         final SipServletRequest inviteToAlice;
         try {
-            final Address partyAAddress = sf.createAddress(to);
-            final Address partyBAddress = sf.createAddress(from);
+            final Address aliceAddress = sf.createAddress(to);
+            final Address bobAddress = sf.createAddress(from);
         
             inviteToAlice = sf.createRequest(
-                            appSession,
-                            "INVITE",
-                            partyBAddress,
-                            partyAAddress);
+                                    appSession,
+                                    "INVITE",
+                                    bobAddress,
+                                    aliceAddress);
             
             inviteToAlice.setContent(makeOfferSdp().toString().getBytes(), "application/sdp");
             
-            inviteToAlice.getSession().setAttribute(Util.ALICE_ADDRESS_KEY, partyAAddress);
-            inviteToAlice.getSession().setAttribute(Util.BOB_ADDRESS_KEY, partyBAddress);
+            inviteToAlice.getSession().setAttribute(Util.ALICE_ADDRESS_KEY, aliceAddress);
+            inviteToAlice.getSession().setAttribute(Util.BOB_ADDRESS_KEY, bobAddress);
             inviteToAlice.getSession().setAttribute(Util.IS_ALICE_KEY, "");
       
         } catch (ServletParseException e) {
@@ -76,7 +76,6 @@ public class ClickToCallWebService extends Application {
         } catch (UnsupportedEncodingException e) {
             return "There was something wrong with the content type.";
         }
-        
         
         try {
             inviteToAlice.send();

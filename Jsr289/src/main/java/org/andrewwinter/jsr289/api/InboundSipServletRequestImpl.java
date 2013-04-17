@@ -12,7 +12,6 @@ import javax.servlet.sip.ar.SipApplicationRoutingRegion;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.ResponseType;
-import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.parser.SipResponse;
 import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
 
@@ -22,11 +21,13 @@ import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
  */
 public class InboundSipServletRequestImpl extends SipServletRequestImpl implements SipServletRequest {
 
-    private final SipRequest request;
     private final InboundSipRequest inboundSipRequest;
     private ProxyImpl proxy;
     private B2bUaHelperImpl b2bUaHelper;
 
+    private String remoteAddr;
+    private int remotePort;
+    
     /**
      * Use for inbound requests where we are the UAS.
      *
@@ -34,8 +35,12 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl implemen
      */
     public InboundSipServletRequestImpl(final InboundSipRequest isr) {
         super(isr.getRequest());
-        this.request = isr.getRequest();
         this.inboundSipRequest = isr;
+        
+        // remoteAddr and remotePort will be updated as the message is proxied
+        // between applications.
+        remoteAddr = inboundSipRequest.getInitialRemoteAddr();
+        remotePort = inboundSipRequest.getInitialRemotePort();
     }
 
     public InboundSipRequest getInboundSipRequest() {
@@ -195,12 +200,12 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl implemen
 
     @Override
     public String getRemoteAddr() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return remoteAddr;
     }
 
     @Override
     public int getRemotePort() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return remotePort;
     }
 
     @Override

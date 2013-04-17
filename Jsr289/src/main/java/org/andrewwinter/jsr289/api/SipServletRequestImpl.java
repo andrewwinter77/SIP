@@ -46,7 +46,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         SUBSEQUENT_REQUEST_METHODS.add("UPDATE");
         SUBSEQUENT_REQUEST_METHODS.add("INFO");
     }
-    private final SipRequest request;
+    protected final SipRequest request;
     /**
      * Null if not yet set.
      */

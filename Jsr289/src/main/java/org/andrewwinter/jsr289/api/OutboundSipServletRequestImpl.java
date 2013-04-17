@@ -24,8 +24,6 @@ import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
  */
 public class OutboundSipServletRequestImpl extends SipServletRequestImpl implements SipServletRequest {
 
-    private final SipRequest request;
-
     /**
      * This is non-null when we're a UAC and have sent a request.
      */
@@ -42,13 +40,11 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
      */
     public OutboundSipServletRequestImpl(final InboundSipResponse isr) {
         super(isr.getRequest());
-        this.request = isr.getRequest();
         inboundSipResponse = isr;
     }
 
     private OutboundSipServletRequestImpl(final UserAgentClient userAgentClient, final SipRequest cancel) {
         super(cancel);
-        this.request = cancel;
         this.userAgentClient = userAgentClient;
         inboundSipResponse = null;
     }
@@ -63,7 +59,6 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
         if (request == null) {
             throw new NullPointerException("Request must not be null.");
         }
-        this.request = request;
         inboundSipResponse = null;
     }
 

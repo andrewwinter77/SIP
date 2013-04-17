@@ -334,7 +334,7 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
             request = SipMessageFactory.createInDialogRequest(dialog, method);
         } 
                 
-        final OutboundSipServletRequestImpl servletRequest = new OutboundSipServletRequestImpl(request);
+        final OutboundSipServletRequestImpl servletRequest = new OutboundSipServletRequestImpl(request, null);
         servletRequest.setSipSession(this);
         return servletRequest;
     }
@@ -620,7 +620,7 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
             
         } else {
 
-            final OutboundSipServletRequestImpl request = new OutboundSipServletRequestImpl(isr.getRequest());
+            final OutboundSipServletRequestImpl request = new OutboundSipServletRequestImpl(isr.getRequest(), null);
             final InboundSipServletResponseImpl response = new InboundSipServletResponseImpl(isr, request);
             response.setSipSession(this);
             

@@ -12,6 +12,7 @@ import javax.servlet.sip.SipServlet;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipURI;
 import javax.servlet.sip.URI;
+import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
 import org.andrewwinter.jsr289.store.ApplicationSessionStore;
 import org.andrewwinter.jsr289.threadlocal.MainServletNameThreadLocal;
@@ -155,7 +156,13 @@ public class SipFactoryImpl implements SipFactory {
             }
         }
         
-        final OutboundSipServletRequestImpl result = new OutboundSipServletRequestImpl(request);
+        final OutboundSipServletRequestImpl result = new OutboundSipServletRequestImpl(
+                request,
+        
+                // Table 15-1 in Sip Servlet 1.1 shows we must use NEW here
+                SipApplicationRoutingDirective.NEW);
+        
+        
         result.setSipSession(ss);
         return result;
     }

@@ -54,7 +54,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
      *
      * @param request
      */
-    public OutboundSipServletRequestImpl(final SipRequest request) {
+    public OutboundSipServletRequestImpl(final SipRequest request, final SipApplicationRoutingDirective directive) {
         super(request);
         if (request == null) {
             throw new NullPointerException("Request must not be null.");

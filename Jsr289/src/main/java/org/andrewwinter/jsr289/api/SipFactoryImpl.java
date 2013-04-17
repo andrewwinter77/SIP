@@ -111,54 +111,11 @@ public class SipFactoryImpl implements SipFactory {
     }
 
     @Override
-    public SipServletRequest createRequest(SipApplicationSession appSession, String method, Address from, Address to) {
+    public SipServletRequest createRequest(final SipApplicationSession appSession, final String method, final Address from, final Address to) {
         if (from == null || to == null) {
             throw new IllegalArgumentException("Invalid to or from.");
         }
-        
-        try {
-            return createRequest(appSession, method, from.toString(), to.toString());
-        } catch (ServletParseException e) {
-            // TODO: Log error. This should never happen.
-            throw new RuntimeException("Error while creating request.", e);
-        }
-    }
-    
-    @Override
-    public SipServletRequest createRequest(SipApplicationSession appSession, String method, URI from, URI to) {
-        if (from == null || to == null) {
-            throw new IllegalArgumentException("Invalid to or from.");
-        }
-        
-        try {
-            return createRequest(appSession, method, from.toString(), to.toString());
-        } catch (ServletParseException e) {
-            // TODO: Log error. This should never happen.
-            throw new RuntimeException("Error while creating request.", e);
-        }
-    }
 
-    /**
-     * Some methods we call require these are set. Depending on where we get
-     * our thread from, these variables may or may not be set already. If they
-     * are not set then set them.
-     */
-    private void setThreadLocalVariables() {
-        if (ServletContextThreadLocal.get() == null) {
-            ServletContextThreadLocal.set(servletContextProvider.getServletContext());
-        }
-        if (AppNameThreadLocal.get() == null) {
-            AppNameThreadLocal.set(appName);
-        }
-        if (MainServletNameThreadLocal.get() == null) {
-            MainServletNameThreadLocal.set(mainServletName);
-        }
-    }
-    
-    @Override
-    // TODO: The logic should be in the other createRequest() method. We should construct Address objects here for to and from and pass them into the other one. That will help keep the Address objects passed into the other method 'live', instead of doing a toString() on them.
-    public SipServletRequest createRequest(SipApplicationSession appSession, String method, String from, String to) throws ServletParseException {
-        
         setThreadLocalVariables();
         
         if (method == null || "ACK".equals(method) || "CANCEL".equals(method)) {
@@ -178,12 +135,13 @@ public class SipFactoryImpl implements SipFactory {
             
             request = SipMessageFactory.createOutOfDialogRequest(
                     method,
-                    to,
-                    from,
+                    to.toString(),
+                    from.toString(),
                     null,
                     contactHeader);
         } catch (final ParseException e) {
-            throw new ServletParseException("Attempting to construct a malformed message.");
+            // This should never happen.
+            throw new IllegalArgumentException("Attempting to construct a malformed message.");
         }
         
         final SipSessionImpl ss = SipSessionImpl.createForInitialOutboundRequests(
@@ -201,7 +159,50 @@ public class SipFactoryImpl implements SipFactory {
         result.setSipSession(ss);
         return result;
     }
+    
+    @Override
+    public SipServletRequest createRequest(final SipApplicationSession appSession, final String method, final URI from, final URI to) {
+        if (from == null || to == null) {
+            throw new IllegalArgumentException("Invalid to or from.");
+        }
+        
+        return createRequest(
+                appSession,
+                method,
+                createAddress(from),
+                createAddress(to));
+    }
 
+    @Override
+    public SipServletRequest createRequest(final SipApplicationSession appSession, final String method, final String from, final String to) throws ServletParseException {
+        if (from == null || to == null) {
+            throw new IllegalArgumentException("Invalid to or from.");
+        }
+
+        return createRequest(
+                appSession,
+                method,
+                createAddress(from),
+                createAddress(to));
+    }
+    
+    /**
+     * Some methods we call require these are set. Depending on where we get
+     * our thread from, these variables may or may not be set already. If they
+     * are not set then set them.
+     */
+    private void setThreadLocalVariables() {
+        if (ServletContextThreadLocal.get() == null) {
+            ServletContextThreadLocal.set(servletContextProvider.getServletContext());
+        }
+        if (AppNameThreadLocal.get() == null) {
+            AppNameThreadLocal.set(appName);
+        }
+        if (MainServletNameThreadLocal.get() == null) {
+            MainServletNameThreadLocal.set(mainServletName);
+        }
+    }
+    
     @Override
     public SipServletRequest createRequest(final SipServletRequest origRequest, final boolean sameCallId) {
         throw new UnsupportedOperationException("Not supported yet.");

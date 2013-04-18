@@ -11,7 +11,6 @@ import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.message.SipMessageFactory;
 import org.andrewwinter.sip.parser.SipRequest;
-import org.andrewwinter.sip.parser.SipResponse;
 
 /**
  *
@@ -19,28 +18,15 @@ import org.andrewwinter.sip.parser.SipResponse;
  */
 public class InboundSipServletResponseImpl extends SipServletResponseImpl implements SipServletResponse {
 
-    private final SipResponse response;
-    
-    private OutboundSipServletRequestImpl servletRequest;
-    
-    /**
-     * Null if we are the UAS.
-     */
     private final InboundSipResponse inboundSipResponse;
     
     /**
-     * UAC constructor.
      * @param isr Response received from network.
      */
     public InboundSipServletResponseImpl(final InboundSipResponse isr, final OutboundSipServletRequestImpl request) {
         super(isr.getResponse(), request);
-//        super(isr);
-        this.response = isr.getResponse();
-        this.servletRequest = request;
-//        this.servletRequest = new OutboundSipServletRequestImpl(isr); // TODO: Do we want to pass null or create a new SipServletRequestImpl constructor for this?
         final SipSession session = getSession(false);
-        servletRequest.setSipSession((SipSessionImpl) session);
-        
+        servletRequest.setSipSession(session);
         this.inboundSipResponse = isr;
     }
     
@@ -70,7 +56,7 @@ public class InboundSipServletResponseImpl extends SipServletResponseImpl implem
         
         final SipRequest ack = SipMessageFactory.createAck(inboundSipResponse);
         final OutboundSipServletRequestImpl sipServletAck = new OutboundSipServletRequestImpl(ack, null);
-        sipServletAck.setSipSession((SipSessionImpl) getSession());
+        sipServletAck.setSipSession(getSession());
         return sipServletAck;
     }
 

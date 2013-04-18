@@ -53,8 +53,8 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
         sent = true;
     }
 
-    public void setSipSession(final SipSessionImpl sipSession) {
-        this.sipSession = sipSession;
+    public void setSipSession(final SipSession sipSession) {
+        this.sipSession = (SipSessionImpl) sipSession;
     }
 
     @Override

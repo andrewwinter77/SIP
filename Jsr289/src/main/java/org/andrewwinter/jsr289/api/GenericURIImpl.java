@@ -11,11 +11,8 @@ import org.andrewwinter.sip.parser.Uri;
  */
 public class GenericURIImpl extends URIImpl {
 
-    private final GenericUri uri;
-    
     GenericURIImpl(final GenericUri uri) {
         super(uri);
-        this.uri = uri;
     }
     
     @Override

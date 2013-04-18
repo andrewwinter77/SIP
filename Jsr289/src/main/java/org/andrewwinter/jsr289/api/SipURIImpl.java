@@ -12,56 +12,57 @@ import org.andrewwinter.sip.parser.Uri;
  */
 public class SipURIImpl extends URIImpl implements SipURI {
 
-    private final SipUri uri;
-    
     SipURIImpl(final SipUri uri) {
         super(uri);
-        this.uri = uri;
+    }
+    
+    private SipUri getSipUri() {
+        return (SipUri) uri;
     }
     
     @Override
     public String getUser() {
-        return uri.getUser();
+        return getSipUri().getUser();
     }
 
     @Override
     public void setUser(final String string) {
-        uri.setUser(string);
+        getSipUri().setUser(string);
     }
 
     @Override
     public String getUserPassword() {
-        return uri.getPassword();
+        return getSipUri().getPassword();
     }
 
     @Override
     public void setUserPassword(final String password) {
-        uri.setPassword(password);
+        getSipUri().setPassword(password);
     }
 
     @Override
     public String getHost() {
-        return uri.getHost();
+        return getSipUri().getHost();
     }
 
     @Override
     public void setHost(final String host) {
-        uri.setHost(host);
+        getSipUri().setHost(host);
     }
 
     @Override
     public int getPort() {
-        return uri.getPort();
+        return getSipUri().getPort();
     }
 
     @Override
     public void setPort(final int port) {
-        uri.setPort(port);
+        getSipUri().setPort(port);
     }
 
     @Override
     public boolean isSecure() {
-        return "sips".equals(((SipUri) uri).getScheme());
+        return "sips".equals(getSipUri().getScheme());
     }
 
     @Override
@@ -70,7 +71,7 @@ public class SipURIImpl extends URIImpl implements SipURI {
         if (b) {
             scheme = "sips";
         }
-        uri.setScheme(scheme);
+        getSipUri().setScheme(scheme);
     }
 
     @Override
@@ -151,7 +152,7 @@ public class SipURIImpl extends URIImpl implements SipURI {
         if (name == null) {
             throw new NullPointerException("Name is null.");
         }
-        return uri.getHeader(name);
+        return getSipUri().getHeader(name);
     }
 
     @Override
@@ -159,7 +160,7 @@ public class SipURIImpl extends URIImpl implements SipURI {
         if (name == null) {
             throw new NullPointerException("Name is null.");
         }
-        uri.setHeader(name, value);
+        getSipUri().setHeader(name, value);
     }
 
     @Override
@@ -167,12 +168,12 @@ public class SipURIImpl extends URIImpl implements SipURI {
         if (name == null) {
             throw new NullPointerException("Name is null.");
         }
-        uri.removeHeader(name);
+        getSipUri().removeHeader(name);
     }
 
     @Override
     public Iterator<String> getHeaderNames() {
-        return uri.getHeaderNames().iterator();
+        return getSipUri().getHeaderNames().iterator();
     }
 
     @Override

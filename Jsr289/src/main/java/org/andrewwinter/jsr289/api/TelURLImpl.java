@@ -12,16 +12,17 @@ import org.andrewwinter.sip.parser.Uri;
  */
 public class TelURLImpl extends URIImpl implements TelURL {
 
-    private final TelUrl url;
-    
     TelURLImpl(final TelUrl url) {
         super(url);
-        this.url = url;
+    }
+    
+    private TelUrl getTelUrl() {
+        return (TelUrl) uri;
     }
     
     @Override
     public String getPhoneNumber() {
-        String number = url.getNumber();
+        String number = getTelUrl().getNumber();
         if (number.startsWith("+")) {
             return number.substring(1);
         } else {
@@ -31,13 +32,13 @@ public class TelURLImpl extends URIImpl implements TelURL {
 
     @Override
     public String getPhoneContext() {
-        return url.getParameter("phone-context");
+        return uri.getParameter("phone-context");
     }
 
     @Override
     public void setPhoneNumber(final String number) {
         try {
-            url.setGlobalNumber(number);
+            getTelUrl().setGlobalNumber(number);
         } catch (final ParseException e) {
             throw new IllegalStateException("Invalid global number.");
         }
@@ -46,7 +47,7 @@ public class TelURLImpl extends URIImpl implements TelURL {
     @Override
     public void setPhoneNumber(final String number, final String phoneContext) {
         try {
-            url.setLocalNumber(number, phoneContext);
+            getTelUrl().setLocalNumber(number, phoneContext);
         } catch (final ParseException e) {
             throw new IllegalStateException("Invalid local number.");
         }
@@ -59,13 +60,13 @@ public class TelURLImpl extends URIImpl implements TelURL {
 
     @Override
     public URI clone() {
-        return new TelURLImpl((TelUrl) Uri.parse(url.toString()));
+        return new TelURLImpl((TelUrl) Uri.parse(uri.toString()));
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 31 * hash + (this.url != null ? this.url.hashCode() : 0);
+        hash = 31 * hash + (this.uri != null ? this.uri.hashCode() : 0);
         return hash;
     }
 
@@ -78,7 +79,7 @@ public class TelURLImpl extends URIImpl implements TelURL {
             return false;
         }
         final TelURLImpl other = (TelURLImpl) obj;
-        if (this.url != other.url && (this.url == null || !this.url.equals(other.url))) {
+        if (this.uri != other.uri && (this.uri == null || !this.uri.equals(other.uri))) {
             return false;
         }
         return true;

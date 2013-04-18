@@ -13,7 +13,7 @@ import org.andrewwinter.sip.parser.ParseException;
  */
 public abstract class AbstractParameterable implements Parameterable {
 
-    private final org.andrewwinter.sip.parser.Parameterable parameterable;
+    protected final org.andrewwinter.sip.parser.Parameterable parameterable;
     
     private final HeaderName hn;
     

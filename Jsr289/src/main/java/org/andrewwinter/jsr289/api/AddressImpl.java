@@ -11,13 +11,10 @@ import org.andrewwinter.sip.parser.Uri;
  */
 public class AddressImpl extends AbstractParameterable implements Address {
 
-    private final org.andrewwinter.sip.parser.Address address;
-    
     private final boolean wildcard;
     
     AddressImpl(final org.andrewwinter.sip.parser.Address address, final HeaderName hn) {
         super(address, hn);
-        this.address = address;
         wildcard = false;
     }
 
@@ -25,12 +22,15 @@ public class AddressImpl extends AbstractParameterable implements Address {
         this(new org.andrewwinter.sip.parser.Address(uri), hn);
     }
     
+    private org.andrewwinter.sip.parser.Address getAddress() {
+        return (org.andrewwinter.sip.parser.Address) parameterable;
+    }
+    
     /**
      * Creates a wildcard address.
      */
     AddressImpl() {
         super(null, null);
-        address = null;
         wildcard = true;
     }
     
@@ -41,13 +41,13 @@ public class AddressImpl extends AbstractParameterable implements Address {
         } else {
             // Use null for the HeaderName because the application is creating
             // a new address.
-            return new AddressImpl(address.clone(), null);
+            return new AddressImpl(getAddress().clone(), null);
         }
     }
 
     @Override
     public String getDisplayName() {
-        return address.getDisplayName();
+        return getAddress().getDisplayName();
     }
 
     @Override
@@ -55,7 +55,7 @@ public class AddressImpl extends AbstractParameterable implements Address {
         if (HeaderName.FROM.equals(getHeaderName()) || HeaderName.TO.equals(getHeaderName())) {
             throw new IllegalStateException("Display name cannot be modified here.");
         }
-        address.setDisplayName(name);
+        getAddress().setDisplayName(name);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class AddressImpl extends AbstractParameterable implements Address {
         if (isWildcard()) {
             return null;
         } else {
-            return URIImpl.create(address.getUri());
+            return URIImpl.create(getAddress().getUri());
         }
     }
 
@@ -77,12 +77,12 @@ public class AddressImpl extends AbstractParameterable implements Address {
         } else if (HeaderName.FROM.equals(getHeaderName()) || HeaderName.TO.equals(getHeaderName())) {
             throw new IllegalStateException("URI cannot be modified here.");
         } else {
-            address.setUri(((URIImpl) uri).getRfc3261Uri());
+            getAddress().setUri(((URIImpl) uri).getRfc3261Uri());
         }
     }
 
     org.andrewwinter.sip.parser.Address getRfc3261Address() {
-        return address;
+        return getAddress();
     }
     
     @Override
@@ -92,7 +92,7 @@ public class AddressImpl extends AbstractParameterable implements Address {
 
     @Override
     public float getQ() {
-        final String qAsString = address.getParameter("q");
+        final String qAsString = parameterable.getParameter("q");
         if (qAsString == null) {
             return -1;
         } else {
@@ -107,10 +107,10 @@ public class AddressImpl extends AbstractParameterable implements Address {
     @Override
     public void setQ(float q) {
         if (q == -1) {
-            address.setParameter("q", null);
+            parameterable.setParameter("q", null);
         } else {
             if (q >= 0 && q <= 1) {
-                address.setParameter("q", String.valueOf(q));
+                parameterable.setParameter("q", String.valueOf(q));
             } else {
                 throw new IllegalArgumentException("Illegal Q value.");
             }
@@ -119,7 +119,7 @@ public class AddressImpl extends AbstractParameterable implements Address {
 
     @Override
     public int getExpires() {
-        final String expiresAsString = address.getParameter("expires");
+        final String expiresAsString = parameterable.getParameter("expires");
         if (expiresAsString == null) {
             return -1;
         } else {
@@ -137,7 +137,7 @@ public class AddressImpl extends AbstractParameterable implements Address {
         if (seconds >= 0) {
             secondsAsString = String.valueOf(seconds);
         }
-        address.setParameter("expires", secondsAsString);
+        parameterable.setParameter("expires", secondsAsString);
     }
 
     @Override
@@ -145,14 +145,14 @@ public class AddressImpl extends AbstractParameterable implements Address {
         if (isWildcard()) {
             return "*";
         } else {
-            return address.toString();
+            return parameterable.toString();
         }
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + (this.address != null ? this.address.hashCode() : 0);
+        hash = 47 * hash + (this.parameterable != null ? this.parameterable.hashCode() : 0);
         hash = 47 * hash + (this.wildcard ? 1 : 0);
         return hash;
     }
@@ -166,7 +166,7 @@ public class AddressImpl extends AbstractParameterable implements Address {
             return false;
         }
         final AddressImpl other = (AddressImpl) obj;
-        if (this.address != other.address && (this.address == null || !this.address.equals(other.address))) {
+        if (this.parameterable != other.parameterable && (this.parameterable == null || !this.parameterable.equals(other.parameterable))) {
             return false;
         }
         if (this.wildcard != other.wildcard) {

@@ -101,7 +101,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
         
         final SipRequest cancel = SipMessageFactory.createCancel(request);
         final OutboundSipServletRequestImpl servletRequest = new OutboundSipServletRequestImpl(userAgentClient, cancel);
-        servletRequest.setSipSession((SipSessionImpl) getSession());
+        servletRequest.setSipSession(getSession());
         return servletRequest;
     }
 

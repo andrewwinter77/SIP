@@ -13,7 +13,7 @@ import org.andrewwinter.sip.parser.Uri;
  */
 public abstract class URIImpl implements URI {
 
-    private final Uri uri;
+    protected final Uri uri;
     
     URIImpl(final Uri uri) {
         this.uri = uri;

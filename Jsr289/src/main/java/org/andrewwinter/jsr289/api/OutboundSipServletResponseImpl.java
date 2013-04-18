@@ -16,20 +16,13 @@ import org.andrewwinter.sip.parser.SipResponse;
  */
 public class OutboundSipServletResponseImpl extends SipServletResponseImpl implements SipServletResponse {
 
-    private final SipResponse response;
-    
-    private InboundSipServletRequestImpl servletRequest;
-    
     /**
-     * UAS constructor.
      * @param request Request created by us earlier.
      * @param response  SipStack response object, to be wrapped by this object.
      */
     public OutboundSipServletResponseImpl(final InboundSipServletRequestImpl request, final SipResponse response) {
         super(response, request);
-        this.response = response;
-        this.servletRequest = request;
-        setSipSession((SipSessionImpl) request.getSession());
+        setSipSession(request.getSession());
     }
 
     @Override
@@ -73,8 +66,9 @@ public class OutboundSipServletResponseImpl extends SipServletResponseImpl imple
         synchronized (super.sendLock) {
             flagMessageAsSent();
             
-            servletRequest.getInboundSipRequest().sendResponse(response);
-            final Dialog dialog = servletRequest.getInboundSipRequest().getServerTransaction().getDialog();
+            final InboundSipServletRequestImpl request = (InboundSipServletRequestImpl) servletRequest;
+            request.getInboundSipRequest().sendResponse(response);
+            final Dialog dialog = request.getInboundSipRequest().getServerTransaction().getDialog();
             if (dialog != null) {
                 SipSessionImpl session = (SipSessionImpl) getSession();
                 if (session == null) {

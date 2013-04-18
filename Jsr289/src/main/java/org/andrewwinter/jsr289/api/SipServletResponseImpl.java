@@ -20,9 +20,9 @@ import org.andrewwinter.sip.parser.SipResponse;
  */
 public abstract class SipServletResponseImpl extends SipServletMessageImpl implements SipServletResponse {
 
-    private final SipResponse response;
+    protected final SipResponse response;
     
-    private final SipServletRequestImpl servletRequest;
+    protected final SipServletRequestImpl servletRequest;
     
     protected SipServletResponseImpl(SipResponse response, SipServletRequestImpl servletRequest) {
         super(response);

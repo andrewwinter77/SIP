@@ -42,7 +42,7 @@ public class SipFactoryImplTest extends TestCase {
     public void testCreateParameterable001() throws ServletException {
         final SipFactory sf = new SipFactoryImpl(null, null, null);
         final SipRequest request = (SipRequest) SipMessage.parse(MESSAGE);
-        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request);
+        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request, null);
         final Parameterable hdr = servletRequest.getParameterableHeader("From");
         final Parameterable param = sf.createParameterable(hdr.toString());
         Assert.assertNotNull(param);
@@ -52,7 +52,7 @@ public class SipFactoryImplTest extends TestCase {
     public void testCreateRequest102() {
         final SipFactory sf = new SipFactoryImpl(null, null, null);
         final SipRequest request = (SipRequest) SipMessage.parse(MESSAGE);
-        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request);
+        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request, null);
 
         SipApplicationSession appSession = sf.createApplicationSession();
         if (appSession != null) {
@@ -71,7 +71,7 @@ public class SipFactoryImplTest extends TestCase {
     public void testCreateRequest002() throws ServletParseException {
         final SipFactory sf = new SipFactoryImpl(null, null, null);
         final SipRequest request = (SipRequest) SipMessage.parse(MESSAGE);
-        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request);
+        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request, null);
 
         SipApplicationSession appSession = sf.createApplicationSession();
         if (appSession != null) {

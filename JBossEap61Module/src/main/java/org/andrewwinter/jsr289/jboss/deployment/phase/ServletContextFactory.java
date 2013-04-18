@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.sip.SipFactory;
 import javax.servlet.sip.SipServlet;
 import javax.servlet.sip.SipURI;
+import org.andrewwinter.jsr289.SipServletRequestHandler;
 import org.andrewwinter.jsr289.api.ServletContextProvider;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.api.SipSessionsUtilImpl;
@@ -17,6 +18,7 @@ import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.apache.catalina.core.StandardContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
+import org.jboss.as.web.deployment.ServletContextAttribute;
 import org.jboss.as.web.ext.WebContextFactory;
 
 /**
@@ -35,25 +37,15 @@ public class ServletContextFactory implements WebContextFactory {
 
     @Override
     public void postProcessContext(DeploymentUnit du, StandardContext sc) {
-        final SipModuleInfo sipMetadata = du.getAttachment(CustomAttachments.SIP_MODULE_INFO);
-        final String appName = sipMetadata.getAppName();
-        
         final ServletContext context = sc.getServletContext();
         
         final ServletContextProvider scp = du.getAttachment(CustomAttachments.SERVLET_CONTEXT_PROVIDER);
         scp.setServletContext(context);
-        
-        final SipFactory sf = new SipFactoryImpl(
-                sipMetadata.getAppName(),
-                sipMetadata.getMainServletName(),
-                scp);
 
-        context.setAttribute(SipServlet.SIP_FACTORY, sf);
-        context.setAttribute(SipServlet.SIP_SESSIONS_UTIL, new SipSessionsUtilImpl(appName));
-        context.setAttribute(SipServlet.TIMER_SERVICE, new TimerServiceImpl());
-
-        final List<SipURI> outboundInterfaces = createOutboundInterfaceList(sf);
-        context.setAttribute(SipServlet.OUTBOUND_INTERFACES, outboundInterfaces);
+        final List<ServletContextAttribute> attributes = du.getAttachmentList(org.jboss.as.web.deployment.ServletContextAttribute.ATTACHMENT_KEY);
+        for (ServletContextAttribute attribute : attributes) {
+            context.setAttribute(attribute.getName(), attribute.getValue());
+        }
         
         // UasActiveServlet in the 289 TCK checks this is present.
         context.setAttribute(ServletContext.TEMPDIR, du.getAttachment(CustomAttachments.TEMP_DIRECTORY));

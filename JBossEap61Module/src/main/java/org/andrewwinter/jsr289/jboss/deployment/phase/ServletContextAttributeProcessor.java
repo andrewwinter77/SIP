@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.sip.SipFactory;
 import javax.servlet.sip.SipServlet;
 import javax.servlet.sip.SipURI;
+import org.andrewwinter.jsr289.SipServletRequestHandler;
 import org.andrewwinter.jsr289.api.ServletContextProvider;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.api.SipSessionsUtilImpl;
@@ -63,6 +64,9 @@ public class ServletContextAttributeProcessor extends AbstractDeploymentUnitProc
         
         du.addToAttachmentList(ServletContextAttribute.ATTACHMENT_KEY, new ServletContextAttribute(
                 SipServlet.OUTBOUND_INTERFACES, createOutboundInterfaceList()));
+        
+        du.addToAttachmentList(ServletContextAttribute.ATTACHMENT_KEY, new ServletContextAttribute(
+                SipServletRequestHandler.ATTRIBUTE_NAME, getSipServletService(dpc)));
         
         // UasActiveServlet in the 289 TCK checks this is present.
 //        context.setAttribute(ServletContext.TEMPDIR, du.getAttachment(CustomAttachments.TEMP_DIRECTORY));

@@ -63,6 +63,12 @@ public class Util {
         ServletContextThreadLocal.set(context);
         AppNameThreadLocal.set(appName);
         MainServletNameThreadLocal.set(mainServlet);
+        
+        if (request != null) {
+            request.setServletContext(context);
+        } else if (response != null) {
+            response.setServletContext(context);
+        }
 
         try {
             servlet.service(request, response);

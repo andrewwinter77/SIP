@@ -1,6 +1,7 @@
 package org.andrewwinter.jsr289.api;
 
 import java.io.IOException;
+import javax.servlet.ServletContext;
 import javax.servlet.sip.B2buaHelper;
 import javax.servlet.sip.Proxy;
 import javax.servlet.sip.SipServletRequest;

@@ -20,6 +20,7 @@ import javax.servlet.sip.ar.SipApplicationRouterInfo;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import javax.servlet.sip.ar.SipRouteModifier;
 import javax.servlet.sip.ar.SipTargetedRequestInfo;
+import org.andrewwinter.jsr289.SipServletRequestHandler;
 import org.andrewwinter.jsr289.api.InboundSipServletRequestImpl;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.store.SipListenerStore;
@@ -43,7 +44,7 @@ import org.jboss.msc.service.StopContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SipServletService implements SipRequestHandler, Service<SipServletService> {
+public class SipServletService implements SipRequestHandler, SipServletRequestHandler, Service<SipServletService> {
 
     public static final ServiceName SERVICE_NAME = ServiceName.JBOSS.append("sipservlet");
     
@@ -363,5 +364,10 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         if (appRouter != null) {
             appRouter.destroy();
         }
+    }
+
+    @Override
+    public void doRequest(final SipServletRequest request) {
+        System.out.println("SipServletService processing request");
     }
 }

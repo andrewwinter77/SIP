@@ -335,6 +335,7 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
         } 
                 
         final OutboundSipServletRequestImpl servletRequest = new OutboundSipServletRequestImpl(request, null);
+        servletRequest.setServletContext(servletContext);
         servletRequest.setSipSession(this);
         return servletRequest;
     }
@@ -555,6 +556,7 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
         } else {
 
             final InboundSipServletRequestImpl subsequentRequest = new InboundSipServletRequestImpl(isr);
+            subsequentRequest.setServletContext(servletContext);
             subsequentRequest.setSipSession(this);
             
             try {
@@ -621,8 +623,11 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
         } else {
 
             final OutboundSipServletRequestImpl request = new OutboundSipServletRequestImpl(isr.getRequest(), null);
+            request.setSipSession(this);
+            request.setServletContext(servletContext);
             final InboundSipServletResponseImpl response = new InboundSipServletResponseImpl(isr, request);
             response.setSipSession(this);
+            response.setServletContext(servletContext);
             
             try {
                 

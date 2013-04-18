@@ -1,6 +1,7 @@
 package org.andrewwinter.jsr289.api;
 
 import java.io.IOException;
+import javax.servlet.ServletContext;
 import javax.servlet.sip.Proxy;
 import javax.servlet.sip.ProxyBranch;
 import javax.servlet.sip.Rel100Exception;
@@ -56,6 +57,7 @@ public class InboundSipServletResponseImpl extends SipServletResponseImpl implem
         
         final SipRequest ack = SipMessageFactory.createAck(inboundSipResponse);
         final OutboundSipServletRequestImpl sipServletAck = new OutboundSipServletRequestImpl(ack, null);
+        sipServletAck.setServletContext(getServletContext());
         sipServletAck.setSipSession(getSession());
         return sipServletAck;
     }

@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
+import javax.servlet.ServletContext;
 import javax.servlet.sip.Address;
 import javax.servlet.sip.Parameterable;
 import javax.servlet.sip.ServletParseException;
@@ -40,9 +41,18 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
     private SipSessionImpl sipSession;
     protected final Object sendLock = new Object();
     private boolean sent;
+    private ServletContext servletContext;
 
     protected SipServletMessageImpl(final SipMessage message) {
         this.message = message;
+    }
+    
+    public void setServletContext(final ServletContext servletContext) {
+        this.servletContext = servletContext;
+    }
+    
+    public ServletContext getServletContext() {
+        return servletContext;
     }
     
     protected boolean isSent() {

@@ -336,11 +336,6 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
     }
 
     @Override
-    public ServletContext getServletContext() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public AsyncContext startAsync() throws IllegalStateException {
         throw new UnsupportedOperationException("Not supported yet.");
     }

@@ -162,7 +162,7 @@ public class SipFactoryImpl implements SipFactory {
                 // Table 15-1 in Sip Servlet 1.1 shows we must use NEW here
                 SipApplicationRoutingDirective.NEW);
         
-        
+        result.setServletContext(servletContextProvider.getServletContext());
         result.setSipSession(ss);
         return result;
     }

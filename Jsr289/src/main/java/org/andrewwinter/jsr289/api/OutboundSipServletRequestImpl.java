@@ -9,6 +9,7 @@ import javax.servlet.sip.TooManyHopsException;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import javax.servlet.sip.ar.SipApplicationRoutingRegion;
+import org.andrewwinter.jsr289.SipServletRequestHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.element.UserAgentClient;
 import org.andrewwinter.sip.message.InboundSipResponse;
@@ -101,6 +102,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
         
         final SipRequest cancel = SipMessageFactory.createCancel(request);
         final OutboundSipServletRequestImpl servletRequest = new OutboundSipServletRequestImpl(userAgentClient, cancel);
+        servletRequest.setServletContext(getServletContext());
         servletRequest.setSipSession(getSession());
         return servletRequest;
     }
@@ -169,6 +171,12 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
         if (userAgentClient == null) {
             synchronized (super.sendLock) {
                 flagMessageAsSent();
+                
+                final SipServletRequestHandler handler = (SipServletRequestHandler) getServletContext().getAttribute(SipServletRequestHandler.ATTRIBUTE_NAME);
+                
+                // TODO: Do this asynchronously?
+                handler.doRequest(this);
+                
                 userAgentClient = UserAgentClient.create((SipSessionImpl) getSession(), request, null);
             }
         } else if (request.isCANCEL()) {

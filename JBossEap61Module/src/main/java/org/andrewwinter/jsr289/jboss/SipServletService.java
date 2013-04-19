@@ -194,12 +194,12 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
     
     /**
      * Implements Section 15.4.1 of Sip Servlet 1.1.
-     * @param sipServletRequest 
+     * @param request 
      */
-    private void routeInitialRequest(final InboundSipServletRequestImpl sipServletRequest) {
+    private void routeInitialRequest(final InboundSipServletRequestImpl request) {
         if (appRouter == null) {
             // No app router deployed.
-            respondWith500(sipServletRequest, "No app router");
+            respondWith500(request, "No app router");
             return;
         }
 
@@ -214,7 +214,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             // If request is received from an application, directive is set
             // either implicitly or explicitly by the application.
 
-            directive = sipServletRequest.getRoutingDirective();
+            directive = request.getRoutingDirective();
 
             if (directive == SipApplicationRoutingDirective.CONTINUE || directive == SipApplicationRoutingDirective.REVERSE) {
                 // If request is received from an application, and directive
@@ -238,21 +238,21 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
         final SipApplicationRouterInfo result;
         try {
             result = appRouter.getNextApplication(
-                    sipServletRequest,
-                    null, // Routing region not set initially
-                    directive,
-                    getTargettedRequestInfo(sipServletRequest),
-                    stateInfo);
+                                    request,
+                                    null, // Routing region not set initially
+                                    directive,
+                                    getTargettedRequestInfo(request),
+                                    stateInfo);
         } catch (Exception e) {
             // If SipApplicationRouter.getNextApplication() throws an exception,
             // the container should send a 500 Server Internal Error final
             // response to the initial request.
-            respondWith500(sipServletRequest, "App router failed");
+            respondWith500(request, "App router failed");
             return;
         }
 
         if (result == null) {
-            respondWith500(sipServletRequest, "App router returned null");
+            respondWith500(request, "App router returned null");
             return;
         } 
         
@@ -290,14 +290,14 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             //     * region to result.getRegion(), and
             //     * URI to result.getSubscriberURI().
             
-            final SipSessionImpl session = (SipSessionImpl) sipServletRequest.getSession();
+            final SipSessionImpl session = (SipSessionImpl) request.getSession();
             session.setStateInfo(result.getStateInfo());
             session.setRegion(result.getRoutingRegion());
             
             try {
                 session.setSubscriberURI(new SipFactoryImpl(null, null, null).createURI(result.getSubscriberURI()));
             } catch (ServletParseException e) {
-                respondWith500(sipServletRequest, "App router generated illegal subscriber");
+                respondWith500(request, "App router generated illegal subscriber");
                 return;
             }
             
@@ -306,11 +306,11 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             
             final SipModuleInfo moduleInfo = APP_NAME_TO_MODULE_INFO.get(appName);
             if (moduleInfo == null) {
-                respondWith500(sipServletRequest, "No such application " + appName);
+                respondWith500(request, "No such application " + appName);
                 LOG.error("No such application " + appName);
             } else {
                 final SipServletDelegate servlet = moduleInfo.getMainServlet();
-                doRequest(sipServletRequest, moduleInfo, servlet);
+                doRequest(request, moduleInfo, servlet);
             }
         } else {
             

@@ -1,6 +1,6 @@
 package org.andrewwinter.jsr289;
 
-import javax.servlet.sip.SipServletRequest;
+import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 
 /**
  *
@@ -10,5 +10,5 @@ public interface SipServletRequestHandler {
     
     public static String ATTRIBUTE_NAME = SipServletRequestHandler.class.getCanonicalName();
     
-    void doRequest(SipServletRequest request);
+    void doRequest(SipServletRequestImpl request);
 }

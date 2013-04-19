@@ -23,6 +23,7 @@ import javax.servlet.sip.ar.SipTargetedRequestInfo;
 import org.andrewwinter.jsr289.SipServletRequestHandler;
 import org.andrewwinter.jsr289.api.InboundSipServletRequestImpl;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
+import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 import org.andrewwinter.jsr289.store.SipListenerStore;
 import org.andrewwinter.jsr289.store.SipServletStore;
 import org.andrewwinter.jsr289.api.SipSessionImpl;
@@ -367,7 +368,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
     }
 
     @Override
-    public void doRequest(final SipServletRequest request) {
+    public void doRequest(final SipServletRequestImpl request) {
         System.out.println("SipServletService processing request");
     }
 }

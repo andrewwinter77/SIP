@@ -15,6 +15,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.sip.ServletParseException;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipServletResponse;
+import javax.servlet.sip.SipURI;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRouter;
 import javax.servlet.sip.ar.SipApplicationRouterInfo;
@@ -23,6 +24,7 @@ import javax.servlet.sip.ar.SipRouteModifier;
 import javax.servlet.sip.ar.SipTargetedRequestInfo;
 import org.andrewwinter.jsr289.SipServletRequestHandler;
 import org.andrewwinter.jsr289.api.InboundSipServletRequestImpl;
+import org.andrewwinter.jsr289.api.OutboundSipServletRequestImpl;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 import org.andrewwinter.jsr289.store.SipListenerStore;
@@ -291,16 +293,16 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             //     * region to result.getRegion(), and
             //     * URI to result.getSubscriberURI().
             
-            final URI subscriberURI;
+            final URI subscriberUri;
             try {
-                subscriberURI = new SipFactoryImpl(null, null, null).createURI(result.getSubscriberURI());
+                subscriberUri = new SipFactoryImpl(null, null, null).createURI(result.getSubscriberURI());
             } catch (ServletParseException e) {
                 sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "App router generated illegal subscriber");
                 return;
             }
             
             final SipSessionImpl session = (SipSessionImpl) request.getSession();
-            session.setSubscriberURI(subscriberURI);
+            session.setSubscriberURI(subscriberUri);
             session.setStateInfo(result.getStateInfo());
             session.setRegion(result.getRoutingRegion());
             
@@ -317,9 +319,25 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             }
         } else {
             
-            // TODO: Handle case where no name is returned by the app router
-        }
+            final SipURI requestUri = (SipURI) request.getRequestURI();
+            if (sipInterfaces.contains(requestUri.getHost()) && request.getHeaders("Route").hasNext()) {
+                
+                // If the Request-URI does not point to another domain, and there is
+                // no Route header, the container should not send the request as it
+                // will cause a loop. Instead, the container must reject the request
+                // with 404 Not Found final response with no Retry-After header.
 
+                sendErrorResponse(request, SipServletResponse.SC_NOT_FOUND, "No such application " + appName);
+                
+            } else {
+                
+                // If the Request-URI points to a different domain, or if there are
+                // one or more Route headers, send the request externally according
+                // to standard SIP mechanism.
+                
+                // TOOD: Handle this case
+            }
+        }
     }
 
     /**

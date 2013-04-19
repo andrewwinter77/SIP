@@ -179,12 +179,12 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
      * @param request
      * @param reasonPhrase 
      */
-    private static void respondWith500(final SipServletRequest request, final String reasonPhrase) {
+    private static void sendErrorResponse(final SipServletRequest request, final int status, final String reasonPhrase) {
         try {
-            SipServletResponse response = request.createResponse(SipServletResponse.SC_SERVER_INTERNAL_ERROR, reasonPhrase);
+            SipServletResponse response = request.createResponse(status, reasonPhrase);
             response.send();
         } catch (final Exception e) {
-            LOG.debug("Exception generating/sending 500.", e);
+            LOG.debug("Exception generating/sending " + status + ".", e);
         }
     }
     
@@ -199,7 +199,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
     private void routeInitialRequest(final InboundSipServletRequestImpl request) {
         if (appRouter == null) {
             // No app router deployed.
-            respondWith500(request, "No app router");
+            sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "No app router");
             return;
         }
 
@@ -247,12 +247,12 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             // If SipApplicationRouter.getNextApplication() throws an exception,
             // the container should send a 500 Server Internal Error final
             // response to the initial request.
-            respondWith500(request, "App router failed");
+            sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "App router failed");
             return;
         }
 
         if (result == null) {
-            respondWith500(request, "App router returned null");
+            sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "App router returned null");
             return;
         } 
         
@@ -297,7 +297,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             try {
                 session.setSubscriberURI(new SipFactoryImpl(null, null, null).createURI(result.getSubscriberURI()));
             } catch (ServletParseException e) {
-                respondWith500(request, "App router generated illegal subscriber");
+                sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "App router generated illegal subscriber");
                 return;
             }
             
@@ -306,7 +306,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             
             final SipModuleInfo moduleInfo = APP_NAME_TO_MODULE_INFO.get(appName);
             if (moduleInfo == null) {
-                respondWith500(request, "No such application " + appName);
+                sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "No such application " + appName);
                 LOG.error("No such application " + appName);
             } else {
                 final SipServletDelegate servlet = moduleInfo.getMainServlet();

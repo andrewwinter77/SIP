@@ -22,9 +22,9 @@ import javax.servlet.sip.SipSessionBindingListener;
 import javax.servlet.sip.SipSessionListener;
 import javax.servlet.sip.TimerListener;
 import javax.servlet.sip.TooManyHopsException;
-import org.andrewwinter.jsr289.api.InboundSipServletRequestImpl;
-import org.andrewwinter.jsr289.api.InboundSipServletResponseImpl;
 import org.andrewwinter.jsr289.api.OutboundSipServletResponseImpl;
+import org.andrewwinter.jsr289.api.SipServletRequestImpl;
+import org.andrewwinter.jsr289.api.SipServletResponseImpl;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 
 /**
@@ -53,8 +53,8 @@ public class Util {
 
     public static void invokeServlet(
             final SipServletDelegate servlet,
-            final InboundSipServletRequestImpl request,
-            InboundSipServletResponseImpl response,
+            final SipServletRequestImpl request,
+            final SipServletResponseImpl response,
             final ServletContext context,
             final String appName,
             final String mainServlet) throws Exception {

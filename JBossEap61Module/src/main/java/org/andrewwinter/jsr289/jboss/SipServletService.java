@@ -123,7 +123,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
         return this;
     }
 
-    public void doRequest(final InboundSipServletRequestImpl request, final SipModuleInfo moduleInfo, final SipServletDelegate sipServlet) {
+    public void doRequest(final SipServletRequestImpl request, final SipModuleInfo moduleInfo, final SipServletDelegate sipServlet) {
 
         try {
             final ModuleClassLoader cl = moduleInfo.getClassLoader();
@@ -196,7 +196,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
      * Implements Section 15.4.1 of Sip Servlet 1.1.
      * @param request 
      */
-    private void routeInitialRequest(final InboundSipServletRequestImpl request) {
+    private void routeInitialRequest(final SipServletRequestImpl request) {
         if (appRouter == null) {
             // No app router deployed.
             sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "No app router");
@@ -209,20 +209,19 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             directive = SipApplicationRoutingDirective.NEW;
             stateInfo = null;
         } else {
-            // Request is received from an application
 
-            // If request is received from an application, directive is set
+            // Received from an application, directive is set
             // either implicitly or explicitly by the application.
 
             directive = request.getRoutingDirective();
 
             if (directive == SipApplicationRoutingDirective.CONTINUE || directive == SipApplicationRoutingDirective.REVERSE) {
+                
                 // If request is received from an application, and directive
                 // is CONTINUE or REVERSE, stateInfo is set to that of the
                 // original request that this request is associated with.
 
                 stateInfo = null; // TODO: Set this
-
 
             } else {
 

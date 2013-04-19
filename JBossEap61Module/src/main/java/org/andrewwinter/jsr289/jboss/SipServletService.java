@@ -15,6 +15,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.sip.ServletParseException;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipServletResponse;
+import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRouter;
 import javax.servlet.sip.ar.SipApplicationRouterInfo;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
@@ -226,6 +227,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             } else {
 
                 // Otherwise, stateInfo is not set initially.
+                
                 stateInfo = null;
             }
         }
@@ -289,16 +291,18 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             //     * region to result.getRegion(), and
             //     * URI to result.getSubscriberURI().
             
-            final SipSessionImpl session = (SipSessionImpl) request.getSession();
-            session.setStateInfo(result.getStateInfo());
-            session.setRegion(result.getRoutingRegion());
-            
+            final URI subscriberURI;
             try {
-                session.setSubscriberURI(new SipFactoryImpl(null, null, null).createURI(result.getSubscriberURI()));
+                subscriberURI = new SipFactoryImpl(null, null, null).createURI(result.getSubscriberURI());
             } catch (ServletParseException e) {
                 sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "App router generated illegal subscriber");
                 return;
             }
+            
+            final SipSessionImpl session = (SipSessionImpl) request.getSession();
+            session.setSubscriberURI(subscriberURI);
+            session.setStateInfo(result.getStateInfo());
+            session.setRegion(result.getRoutingRegion());
             
             // - follow the procedures of Chapter 16 to select a servlet from
             // the application.

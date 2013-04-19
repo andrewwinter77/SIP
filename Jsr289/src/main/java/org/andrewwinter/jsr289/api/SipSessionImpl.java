@@ -24,6 +24,7 @@ import javax.servlet.sip.SipSessionEvent;
 import javax.servlet.sip.SipSessionListener;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRoutingRegion;
+import org.andrewwinter.jsr289.SipServletRequestHandler;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.MainServletNameThreadLocal;
@@ -32,11 +33,9 @@ import org.andrewwinter.jsr289.store.SipListenerStore;
 import org.andrewwinter.jsr289.store.SipServletStore;
 import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.jsr289.util.Util;
-import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.SipResponseHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.dialog.DialogState;
-import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.message.SipMessageFactory;
 import org.andrewwinter.sip.parser.SipRequest;
@@ -45,7 +44,7 @@ import org.andrewwinter.sip.parser.SipRequest;
  *
  * @author andrewwinter77
  */
-public class SipSessionImpl implements SipSession, SipRequestHandler, SipResponseHandler {
+public class SipSessionImpl implements SipSession, SipServletRequestHandler, SipResponseHandler {
 
     private final String callId;
     
@@ -542,7 +541,7 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
      * @param isr 
      */
     @Override
-    public void doRequest(final InboundSipRequest isr) {
+    public void doRequest(final SipServletRequestImpl subsequentRequest) {
         final String servletName;
         if (handler == null) {
             servletName = mainServletName;
@@ -555,7 +554,6 @@ public class SipSessionImpl implements SipSession, SipRequestHandler, SipRespons
             
         } else {
 
-            final InboundSipServletRequestImpl subsequentRequest = new InboundSipServletRequestImpl(isr);
             subsequentRequest.setServletContext(servletContext);
             subsequentRequest.setSipSession(this);
             

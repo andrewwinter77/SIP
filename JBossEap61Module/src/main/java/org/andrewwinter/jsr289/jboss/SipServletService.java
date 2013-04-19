@@ -343,7 +343,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
                     
                     LOG.error("_____________________________________________ subsequent request but we don't have a session?");
                 } else {
-                    session.doRequest(isr);
+                    session.doRequest(sipServletRequest);
                 }
             }
         }

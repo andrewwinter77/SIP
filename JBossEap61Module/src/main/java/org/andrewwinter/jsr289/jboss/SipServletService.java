@@ -209,11 +209,15 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
         final Serializable stateInfo;
         final SipApplicationRoutingDirective directive;
         if (true) { // (isRequestFromExternalEntity(sipServletRequest)) {
+            
+            // If request is received from an external SIP entity, directive is
+            // set to NEW.
+            
             directive = SipApplicationRoutingDirective.NEW;
             stateInfo = null;
         } else {
 
-            // Received from an application, directive is set
+            // Request is received from an application, directive is set
             // either implicitly or explicitly by the application.
 
             directive = request.getRoutingDirective();

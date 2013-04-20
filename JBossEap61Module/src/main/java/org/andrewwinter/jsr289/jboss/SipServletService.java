@@ -184,7 +184,12 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
      */
     private static void sendErrorResponse(final SipServletRequest request, final int status, final String reasonPhrase) {
         try {
-            SipServletResponse response = request.createResponse(status, reasonPhrase);
+            SipServletResponse response;
+            if (reasonPhrase == null) {
+                response = request.createResponse(status);
+            } else {
+                response = request.createResponse(status, reasonPhrase);
+            }
             response.send();
         } catch (final Exception e) {
             LOG.debug("Exception generating/sending " + status + ".", e);
@@ -331,14 +336,14 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
         } else {
             
             final SipURI requestUri = (SipURI) request.getRequestURI();
-            if (sipInterfaces.contains(requestUri.getHost()) && request.getHeaders("Route").hasNext()) {
+            if (sipInterfaces.contains(requestUri.getHost()) && !request.getHeaders("Route").hasNext()) {
                 
                 // If the Request-URI does not point to another domain, and there is
                 // no Route header, the container should not send the request as it
                 // will cause a loop. Instead, the container must reject the request
                 // with 404 Not Found final response with no Retry-After header.
 
-                sendErrorResponse(request, SipServletResponse.SC_NOT_FOUND, "No such application " + appName);
+                sendErrorResponse(request, SipServletResponse.SC_NOT_FOUND, null);
                 
             } else {
                 

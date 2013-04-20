@@ -1,8 +1,5 @@
 package org.andrewwinter.sip.message;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  *
  * @author andrewwinter77
@@ -259,11 +256,6 @@ public enum ResponseType {
      */
     NOT_ACCEPTABLE_606(606, "Not Acceptable");
 
-    /**
-     * Map of status code to {@code ResponseType}.
-     */
-    private static Map<Integer, ResponseType> responses = new HashMap<Integer, ResponseType>();
-    
     private final int statusCode;
     private final String reasonPhrase;
     

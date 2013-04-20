@@ -21,14 +21,26 @@ public class SipRequest extends SipMessage {
         this.matchesExistingServerTransaction = matches;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public boolean matchesExistingServerTransaction() {
         return matchesExistingServerTransaction;
     }
     
+    /**
+     * 
+     * @param matches 
+     */
     public void setMatchesExistingDialog(final boolean matches) {
         this.matchesExistingDialog = matches;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public boolean matchesExistingDialog() {
         return matchesExistingDialog;
     }

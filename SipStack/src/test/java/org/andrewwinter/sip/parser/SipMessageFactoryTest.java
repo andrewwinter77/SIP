@@ -5,8 +5,6 @@ import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.SipMessageFactory;
 import org.andrewwinter.sip.properties.UserAgentProperties;
-import org.andrewwinter.sip.transport.CoreJavaServerTransport;
-import org.andrewwinter.sip.transport.ServerTransport;
 import org.junit.Test;
 
 /**

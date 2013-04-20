@@ -16,14 +16,17 @@ public class SocketChannelTcpSocketWrapper implements TcpSocketWrapper {
         this.tcpSocket = tcpSocket;
     }
 
+    @Override
     public void close() throws IOException {
         tcpSocket.close();
     }
 
+    @Override
     public boolean isConnected() {
         return tcpSocket.isConnected();
     }
 
+    @Override
     public void write(final ByteBuffer bb) throws IOException {
         tcpSocket.write(bb);
     }

@@ -35,6 +35,7 @@ class Udp {
 
             bootstrap.setPipelineFactory(
                     new ChannelPipelineFactory() {
+                        @Override
                         public ChannelPipeline getPipeline() throws Exception {
                             return Channels.pipeline(
                                     new StringEncoder(CharsetUtil.UTF_8),

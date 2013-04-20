@@ -37,7 +37,7 @@ class Trying extends ClientTransactionState {
         if (isr.getResponse().getStatusCode() < 200) {
             txn.changeState(new Proceeding(txn));
         } else {
-            txn.changeState(new Completed(txn));
+            txn.changeState(new Completed());
         }
         
         txn.sendResponseToTU(isr, txn.getDialog());

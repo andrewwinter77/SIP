@@ -26,7 +26,7 @@ class Proceeding extends ClientTransactionState {
             // and the client transaction MUST transition to the ???Completed???
             // state.
             
-            txn.changeState(new Completed(txn));
+            txn.changeState(new Completed());
             txn.sendResponseToTU(isr, txn.getDialog());
         }
     }

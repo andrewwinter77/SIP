@@ -12,7 +12,6 @@ import org.andrewwinter.sip.transaction.client.ClientTransaction;
 import org.andrewwinter.sip.transaction.client.invite.InviteClientTransaction;
 import org.andrewwinter.sip.transaction.client.noninvite.NonInviteClientTransaction;
 import org.andrewwinter.sip.transport.RequestSender;
-import org.andrewwinter.sip.util.RandomStringFactory;
 
 /**
  *

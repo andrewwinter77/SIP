@@ -11,11 +11,8 @@ import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
  */
 class Completed extends ClientTransactionState {
     
-    private final NonInviteClientTransaction txn;
-
-    public Completed(final NonInviteClientTransaction txn) {
+    public Completed() {
         super(ClientTransactionStateName.COMPLETED);
-        this.txn = txn;
     }
 
     @Override

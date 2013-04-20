@@ -31,7 +31,7 @@ public class Binding {
         this.callId = callId;
         this.cseq = cseq;
         this.uri = uri;
-        this.expiryTime = expiryTime;
+        this.expiryTime = (Date) expiryTime.clone();
     }
     
     /**

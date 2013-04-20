@@ -5,7 +5,6 @@ import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.message.SipMessageFactory;
 import org.andrewwinter.sip.parser.SipRequest;
-import org.andrewwinter.sip.parser.SipResponse;
 import org.andrewwinter.sip.transaction.client.ClientTransactionState;
 import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
 import org.andrewwinter.sip.transaction.client.noninvite.NonInviteClientTransaction;

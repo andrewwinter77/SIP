@@ -13,11 +13,8 @@ import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
  */
 class Confirmed extends ServerTransactionState {
     
-    private final InviteServerTransaction txn;
-
-    public Confirmed(final InviteServerTransaction txn) {
+    public Confirmed() {
         super(ServerTransactionStateName.CONFIRMED);
-        this.txn = txn;
     }
 
     @Override

@@ -120,7 +120,6 @@ public class CoreJavaServerTransport extends ServerTransport implements Runnable
                     System.out.println("Received connection");
                     SocketAddress remoteAddress = null;
 
-                    SocketChannel tcpSocket = null;
                     SocketChannelTcpSocketWrapper tcpSocketWrapper = null;
                     for (final SelectionKey key : keys) {
 
@@ -132,7 +131,7 @@ public class CoreJavaServerTransport extends ServerTransport implements Runnable
                         if (key.isAcceptable() && c == tcpserver) {
                             // A client has attempted to connect via TCP.
                             // Accept the connection now.
-                            tcpSocket = tcpserver.accept();
+                            final SocketChannel tcpSocket = tcpserver.accept();
                             remoteAddress = tcpSocket.socket().getRemoteSocketAddress();
                             int bytesRead = tcpSocket.read(receiveBuffer);
                             tcpSocketWrapper = new SocketChannelTcpSocketWrapper(tcpSocket);
@@ -194,6 +193,7 @@ public class CoreJavaServerTransport extends ServerTransport implements Runnable
         System.out.println("Finished");
     }
 
+    @Override
     public void run() {
         listenInternal();
     }

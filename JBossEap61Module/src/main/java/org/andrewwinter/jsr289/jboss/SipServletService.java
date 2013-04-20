@@ -208,7 +208,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
 
         final Serializable stateInfo;
         final SipApplicationRoutingDirective directive;
-        if (true) { // (isRequestFromExternalEntity(sipServletRequest)) {
+        if (isRequestFromExternalEntity(request)) {
             
             // If request is received from an external SIP entity, directive is
             // set to NEW.
@@ -254,6 +254,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             // If SipApplicationRouter.getNextApplication() throws an exception,
             // the container should send a 500 Server Internal Error final
             // response to the initial request.
+            LOG.error("App router threw exception", e);
             sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "App router failed");
             return;
         }
@@ -273,11 +274,13 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             final String[] routes = result.getRoutes();
             
             // TODO: DO THIS
+            throw new UnsupportedOperationException();
             
             
         } else if (result.getRouteModifier() == SipRouteModifier.ROUTE_BACK) {
 
             // TODO: DO THIS
+            throw new UnsupportedOperationException();
             
         } else {
            
@@ -343,7 +346,8 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
                 // one or more Route headers, send the request externally according
                 // to standard SIP mechanism.
                 
-                // TOOD: Handle this case
+                // TODO: DO THIS
+                throw new UnsupportedOperationException();
             }
         }
     }

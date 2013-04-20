@@ -263,7 +263,7 @@ public class UserAgentClient {
      * @param dialog
      * @return  
      */
-    public static UserAgentClient create(final SipResponseHandler listener, final SipRequest request, final Dialog dialog) {
+    public static UserAgentClient createUacAndSendRequest(final SipResponseHandler listener, final SipRequest request, final Dialog dialog) {
         final UserAgentClient uac = new UserAgentClient(listener, request, dialog);
         uac.sendRequest();
         return uac;

@@ -188,7 +188,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
                 // TODO: Do this asynchronously?
                 handler.doRequest(this);
                 
-                userAgentClient = UserAgentClient.create((SipSessionImpl) getSession(), request, null);
+                userAgentClient = UserAgentClient.createUacAndSendRequest((SipSessionImpl) getSession(), request, null);
             }
         } else if (request.isCANCEL()) {
             userAgentClient.cancel(request);

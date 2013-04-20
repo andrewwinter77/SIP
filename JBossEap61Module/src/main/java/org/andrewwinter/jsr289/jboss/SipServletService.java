@@ -228,7 +228,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
                 // is CONTINUE or REVERSE, stateInfo is set to that of the
                 // original request that this request is associated with.
 
-                stateInfo = null; // TODO: Set this
+                stateInfo = request.getStateInfo();
 
             } else {
 
@@ -310,6 +310,10 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             session.setStateInfo(result.getStateInfo());
             session.setRegion(result.getRoutingRegion());
             
+            request.setSubscriberURI(subscriberUri);
+            request.setStateInfo(result.getStateInfo());
+            request.setRegion(result.getRoutingRegion());
+
             // - follow the procedures of Chapter 16 to select a servlet from
             // the application.
             

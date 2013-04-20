@@ -1,6 +1,7 @@
 package org.andrewwinter.jsr289.api;
 
 import java.io.BufferedReader;
+import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Locale;
@@ -9,7 +10,6 @@ import java.util.Set;
 import javax.servlet.AsyncContext;
 import javax.servlet.DispatcherType;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletInputStream;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -54,6 +54,12 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
 
     private SipApplicationRoutingDirective directive;
     
+    private URI subscriberUri;
+    
+    private SipApplicationRoutingRegion region;
+    
+    private Serializable stateInfo;
+    
     /**
      * Use for requests where we are the UAC.
      *
@@ -67,6 +73,14 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         this.request = request;
     }
 
+    public void setStateInfo(final Serializable stateInfo) {
+        this.stateInfo = stateInfo;
+    }
+    
+    public Serializable getStateInfo() {
+        return this.stateInfo;
+    }
+    
     public SipRequest getSipRequest() {
         return request;
     }
@@ -234,17 +248,25 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         if (!isInitial()) {
             throw new IllegalStateException("Request is not initial.");
         }
-        throw new UnsupportedOperationException("Not supported yet.");
+        return region;
     }
 
+    public void setRegion(final SipApplicationRoutingRegion region) {
+        this.region = region;
+    }
+    
     @Override
     public URI getSubscriberURI() {
         if (!isInitial()) {
             throw new IllegalStateException("Request is not initial.");
         }
-        throw new UnsupportedOperationException("Not supported yet.");
+        return subscriberUri;
     }
 
+    public void setSubscriberURI(final URI subscriberUri) {
+        this.subscriberUri = subscriberUri;
+    }
+    
     @Override
     public void addAuthHeader(final SipServletResponse challengeResponse, final AuthInfo authInfo) {
         final AuthInfoImpl impl = (AuthInfoImpl) authInfo;

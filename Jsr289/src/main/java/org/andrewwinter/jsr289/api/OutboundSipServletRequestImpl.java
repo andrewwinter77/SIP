@@ -121,13 +121,23 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
             throw new IllegalStateException("Request has already been sent.");
         }
         
-        // If directive is CONTINUE or REVERSE, the parameter origRequest must
-        // be an initial request dispatched by the container to this
-        // application, i.e. origRequest.isInitial() must be true.
-        
-        if ((directive == SipApplicationRoutingDirective.CONTINUE || directive == SipApplicationRoutingDirective.REVERSE)
-                && !origRequest.isInitial()) {
-            throw new IllegalStateException("origRequest must be initial for CONTINUE or REVERSE but is not.");
+        if (directive == SipApplicationRoutingDirective.NEW) {
+            super.setRoutingDirective(directive);
+        } else {
+            if (!origRequest.isInitial()) {
+                
+                // If directive is CONTINUE or REVERSE, the parameter origRequest must
+                // be an initial request dispatched by the container to this
+                // application, i.e. origRequest.isInitial() must be true.
+                
+                throw new IllegalStateException("origRequest must be initial for CONTINUE or REVERSE but is not.");
+            }
+            
+            // If request is received from an application, and directive
+            // is CONTINUE or REVERSE, stateInfo is set to that of the
+            // original request that this request is associated with.
+            
+            setStateInfo(((SipServletRequestImpl) origRequest).getStateInfo());
         }
         
         // TODO: Add check for: This request must be a request created in a new SipSession or from an initial request

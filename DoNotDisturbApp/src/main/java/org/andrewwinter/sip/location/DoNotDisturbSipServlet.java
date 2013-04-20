@@ -7,7 +7,7 @@ import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipServletResponse;
 
 @javax.servlet.sip.annotation.SipServlet
-public class LocationSipServlet extends SipServlet {
+public class DoNotDisturbSipServlet extends SipServlet {
     
     @Override
     protected void doInvite(final SipServletRequest invite) throws ServletException, IOException {

@@ -61,6 +61,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
             throw new NullPointerException("Request must not be null.");
         }
         inboundSipResponse = null;
+        super.setRoutingDirective(directive);
     }
 
     @Override

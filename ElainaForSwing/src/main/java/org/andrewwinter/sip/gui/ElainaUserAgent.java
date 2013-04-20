@@ -1,13 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.andrewwinter.sip.gui;
 
 import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.SipResponseHandler;
 import org.andrewwinter.sip.dialog.Dialog;
-import org.andrewwinter.sip.element.registrar.Registrar;
 import org.andrewwinter.sip.element.UserAgentClient;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.InboundSipResponse;
@@ -537,8 +532,6 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
         if (dialog == null) {
         
             if (request.isREGISTER()) {
-
-                response = new Registrar().doRegister(isr);
 
             } else if (request.isINVITE()) {
 

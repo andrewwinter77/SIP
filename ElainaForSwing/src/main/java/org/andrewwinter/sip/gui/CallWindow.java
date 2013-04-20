@@ -8,7 +8,6 @@ import java.awt.Frame;
 import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.SipResponseHandler;
 import org.andrewwinter.sip.dialog.Dialog;
-import org.andrewwinter.sip.element.registrar.Registrar;
 import org.andrewwinter.sip.element.UserAgentClient;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.InboundSipResponse;
@@ -214,8 +213,6 @@ public class CallWindow extends javax.swing.JDialog implements SipRequestHandler
         
         if (request.isREGISTER()) {
 
-            response = new Registrar().doRegister(isr);
-            
         } else if (request.isINVITE()) {
 
             // This is a re-INVITE

@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.andrewwinter.sip.gui;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import javax.swing.JTextArea;
-import org.andrewwinter.sip.element.Binding;
-import org.andrewwinter.sip.element.LocationService;
-import org.andrewwinter.sip.element.registrar.Registrar;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.ResponseType;
 import org.andrewwinter.sip.parser.Address;
@@ -208,16 +200,8 @@ public class AlertWindow extends javax.swing.JDialog {
     private void proxyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proxyBtnActionPerformed
 
         final SipUri to = (SipUri) SipMessageHelper.getTo(isr.getRequest()).getUri();
-        final List<Uri> targets = new ArrayList<Uri>();
+        final List<Uri> targets = new ArrayList<>();
 
-        final String canonicalizedUri = Registrar.canonicalizeUri(to).toString();
-        final Set<Binding> bindings = LocationService.getInstance().getBindings(canonicalizedUri);
-        if (bindings != null) {
-            for (final Binding binding : bindings) {
-                targets.add(binding.getUri());
-            }
-        }
-        
         if (targets.isEmpty()) {
 
             // This status is also returned by a redirect or proxy server that

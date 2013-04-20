@@ -117,7 +117,7 @@ public class ProxyImpl implements Proxy {
             throw new IllegalArgumentException("Unsupported proxying scheme.");
         }
         
-        proxyBranches.add(new ProxyBranchImpl(this, uri));
+        proxyBranches.add(new ProxyBranchImpl(this, uri, recordRoute, recurse, addToPath, proxyTimeoutInSeconds));
         startProxy();
     }
 
@@ -137,7 +137,7 @@ public class ProxyImpl implements Proxy {
         // TODO: Remove duplicate URIs. See p10-3 of the spec.
         
         for (final URI uri : uris) {
-            proxyBranches.add(new ProxyBranchImpl(this, uri));
+            proxyBranches.add(new ProxyBranchImpl(this, uri, recordRoute, recurse, addToPath, proxyTimeoutInSeconds));
         }
         startProxy();
     }
@@ -247,7 +247,7 @@ public class ProxyImpl implements Proxy {
             if (!SUPPORTED_PROXYING_SCHEMES.contains(uri.getScheme())) {
                 throw new IllegalArgumentException("Unsupported proxying scheme.");
             }
-            proxyBranches.add(new ProxyBranchImpl(this, uri));
+            proxyBranches.add(new ProxyBranchImpl(this, uri, recordRoute, recurse, addToPath, proxyTimeoutInSeconds));
         }
         // TESTIDEA: Try modifying the list.
         return Collections.unmodifiableList(proxyBranches);

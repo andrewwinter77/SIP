@@ -29,16 +29,20 @@ public class ProxyBranchImpl implements ProxyBranch {
     
     private boolean addToPath;
     
-    ProxyBranchImpl(final Proxy proxy, final URI uri) {
+    ProxyBranchImpl(
+            final Proxy proxy,
+            final URI uri,
+            final boolean recordRoute,
+            final boolean recurse,
+            final boolean addToPath,
+            final int timeout) {
+        
         this.proxy = proxy;
         this.uri = (URIImpl) uri;
-        proxyBranchTimeoutInSeconds = proxy.getProxyTimeout();
-        
-        // Inherit values from Proxy.
-        // TODO: Pass these values in to this constructor, it feels nicer
-        this.recordRoute = proxy.getRecordRoute();
-        this.recurse = proxy.getRecurse();
-        this.addToPath = proxy.getAddToPath();
+        this.proxyBranchTimeoutInSeconds = timeout;
+        this.recordRoute = recordRoute;
+        this.recurse = recurse;
+        this.addToPath = addToPath;
     }
     
     URIImpl getUri() {

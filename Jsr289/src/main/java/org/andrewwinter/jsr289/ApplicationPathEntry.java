@@ -16,4 +16,8 @@ public class ApplicationPathEntry {
         this.appName = appName;
         this.request = request;
     }
+    
+    public SipServletRequestImpl getRequest() {
+        return request;
+    }
 }

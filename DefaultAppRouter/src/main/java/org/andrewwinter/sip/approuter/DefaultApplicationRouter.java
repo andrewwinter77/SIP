@@ -276,7 +276,12 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
                 return DEFAULT_ROUTER_INFO;
             } else {
             
-                if (stateInfo == null && directive == SipApplicationRoutingDirective.NEW && targetedRequestInfo == null) {
+                if (targetedRequestInfo != null) {
+                    // TODO: Targeted Request Info - what do we do here?
+                    throw new UnsupportedOperationException();
+                }
+                
+                if (stateInfo == null && directive == SipApplicationRoutingDirective.NEW) {
 
                     final SipApplicationRouterInfo orig = rules.get(0);
 
@@ -287,6 +292,23 @@ public class DefaultApplicationRouter implements SipApplicationRouter {
                             orig.getRoutes(),
                             orig.getRouteModifier(),
                             new Integer(0));
+                    
+                } else if (stateInfo != null && directive == SipApplicationRoutingDirective.CONTINUE) {
+                    
+                    final int index = (Integer) stateInfo + 1;
+                    if (index < rules.size()) {
+                        final SipApplicationRouterInfo orig = rules.get(index);
+
+                        return new SipApplicationRouterInfo(
+                                orig.getNextApplicationName(),
+                                orig.getRoutingRegion(),
+                                getSubscriberUri(orig.getSubscriberURI(), initialRequest),
+                                orig.getRoutes(),
+                                orig.getRouteModifier(),
+                                new Integer(index));
+                    } else {
+                        return DEFAULT_ROUTER_INFO;
+                    }
                     
                 } else {
                     throw new UnsupportedOperationException("Not supported yet.");

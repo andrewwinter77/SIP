@@ -164,7 +164,7 @@ public class CallWindow extends javax.swing.JDialog implements SipRequestHandler
             
             options.addHeader(HeaderName.ACCEPT, "application/sdp");
 
-            UserAgentClient.create(this, options, null);
+            UserAgentClient.createUacAndSendRequest(this, options, null);
             Util.logMessage(options, false, textArea);
         }
     }//GEN-LAST:event_optionsBtnActionPerformed
@@ -175,7 +175,7 @@ public class CallWindow extends javax.swing.JDialog implements SipRequestHandler
         } else {
             final SipRequest bye = SipMessageFactory.createInDialogRequest(dialog, "BYE");
             
-            UserAgentClient.create(this, bye, null);
+            UserAgentClient.createUacAndSendRequest(this, bye, null);
             Util.logMessage(bye, false, textArea);
             setVisible(false);
         }
@@ -282,7 +282,7 @@ public class CallWindow extends javax.swing.JDialog implements SipRequestHandler
             }
             
             
-            UserAgentClient.create(this, ack, isr.getDialog());
+            UserAgentClient.createUacAndSendRequest(this, ack, isr.getDialog());
 
             Util.logMessage(ack, false, textArea);
         }

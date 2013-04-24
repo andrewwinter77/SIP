@@ -487,7 +487,7 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
         
         Util.logMessage(request, false, messageTextArea);
         
-        UserAgentClient.create(this, request, null);
+        UserAgentClient.createUacAndSendRequest(this, request, null);
     }//GEN-LAST:event_sendOptionsBtnActionPerformed
 
     private void expiresTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expiresTextFieldActionPerformed
@@ -510,7 +510,7 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
         
         Util.logMessage(request, false, messageTextArea);
         
-        final UserAgentClient uac = UserAgentClient.create(guiDialog, request, null);
+        final UserAgentClient uac = UserAgentClient.createUacAndSendRequest(guiDialog, request, null);
         guiDialog.setUserAgentClient(uac);
         guiDialog.setVisible(true);
     }//GEN-LAST:event_dialBtnActionPerformed

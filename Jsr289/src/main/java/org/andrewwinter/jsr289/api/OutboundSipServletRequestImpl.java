@@ -9,11 +9,12 @@ import javax.servlet.sip.TooManyHopsException;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import javax.servlet.sip.ar.SipApplicationRoutingRegion;
-import org.andrewwinter.jsr289.SipServletRequestHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.element.UserAgentClient;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.message.SipMessageFactory;
+import org.andrewwinter.sip.parser.Address;
+import org.andrewwinter.sip.parser.HeaderName;
 import org.andrewwinter.sip.parser.SipMessageHelper;
 import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.transaction.client.ClientTransaction;
@@ -183,10 +184,9 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
             synchronized (super.sendLock) {
                 flagMessageAsSent();
                 
-                final SipServletRequestHandler handler = (SipServletRequestHandler) getServletContext().getAttribute(SipServletRequestHandler.ATTRIBUTE_NAME);
-                
-                // TODO: Do this asynchronously?
-                handler.doRequest(this);
+                // Send request back into the container so we can continue
+                // the application sequencing.
+                getSipRequest().pushRoute(Address.parse("sip:127.0.0.1"));
                 
                 userAgentClient = UserAgentClient.createUacAndSendRequest((SipSessionImpl) getSession(), request, null);
             }

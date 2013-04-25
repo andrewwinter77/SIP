@@ -47,7 +47,8 @@ public abstract class ServerTransaction {
     
     /**
      * 
-     * @param dialog Null if there is no dialog.
+     * @param dialog Null if there is no dialog, for example in the case of
+     *   initial INVITEs.
      * @param isr 
      */
     protected ServerTransaction(final Dialog dialog, final InboundSipRequest isr) {

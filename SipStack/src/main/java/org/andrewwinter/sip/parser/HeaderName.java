@@ -9,6 +9,11 @@ import java.util.Map;
  * @author andrewwinter77
  */
 public class HeaderName {
+
+    /**
+     * 
+     */
+    public static final HeaderName P_APPLICATION_PATH = createKnownHeader("P-Application-Path", null, HeaderType.UNKNOWN_EXTENSION_HEADER);
     
     /**
      *

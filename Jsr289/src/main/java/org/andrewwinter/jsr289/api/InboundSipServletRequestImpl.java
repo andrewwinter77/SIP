@@ -70,6 +70,7 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl implemen
                     
                 } else {
                     proxy = new ProxyImpl(inboundSipRequest, this);
+                    setRoutingDirective(SipApplicationRoutingDirective.CONTINUE);
                 }
             }
             return proxy;

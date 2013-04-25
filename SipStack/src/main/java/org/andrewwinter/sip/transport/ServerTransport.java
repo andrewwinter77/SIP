@@ -10,6 +10,7 @@ import org.andrewwinter.sip.dialog.DialogId;
 import org.andrewwinter.sip.dialog.DialogStore;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.InboundSipResponse;
+import org.andrewwinter.sip.parser.Address;
 import org.andrewwinter.sip.parser.ParseException;
 import org.andrewwinter.sip.parser.SipMessage;
 import org.andrewwinter.sip.parser.SipMessageHelper;
@@ -111,6 +112,13 @@ public abstract class ServerTransport {
         }
     }
 
+    private static void popTopmostRoute(final SipMessage message) {
+        final Address route = SipMessageHelper.getTopmostRoute(message);
+        if (route != null) {
+            message.popRoute();
+        }
+    }
+    
     private static void updateVia(final SipMessage message, final InetSocketAddress remoteAddress) {
 
         // When the server transport receives a request over any transport, it
@@ -174,6 +182,7 @@ public abstract class ServerTransport {
 
             if (message instanceof SipRequest) {
                 updateVia(message, remoteAddress);
+                popTopmostRoute(message);
                 handleIncomingRequest((SipRequest) message, remoteAddress, tcpSocketWrapper);
             } else {
                 handleIncomingResponse((SipResponse) message, remoteAddress);

@@ -252,6 +252,18 @@ public abstract class SipMessage implements Serializable {
      *
      * @return
      */
+    public void popRoute() {
+        final List<Address> routes = getAddressHeaders(HeaderName.ROUTE);
+        if (!routes.isEmpty()) {
+            routes.remove(0);
+            setHeaders(HeaderName.ROUTE, routes);
+        }
+    }
+
+    /**
+     *
+     * @return
+     */
     public Via popVia() {
         final List<Via> vias = getVias();
         final Via result = vias.remove(0);

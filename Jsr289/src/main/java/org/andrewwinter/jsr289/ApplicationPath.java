@@ -2,33 +2,33 @@ package org.andrewwinter.jsr289;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
-import org.andrewwinter.jsr289.api.SipSessionImpl;
-import org.andrewwinter.sip.SipResponseHandler;
-import org.andrewwinter.sip.message.InboundSipResponse;
+import java.util.UUID;
+import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 
 /**
  *
  * @author andrew
  */
-public class ApplicationPath implements SipResponseHandler {
+public class ApplicationPath {
     
-    private final List<ApplicationPathEntry> entries;
+    private final List<SipServletRequestImpl> requests;
+    
+    private final String id;
     
     public ApplicationPath() {
-        entries = new ArrayList<>();
-    }
-    
-    public void add(final ApplicationPathEntry entry) {
-        entries.add(entry);
+        requests = new ArrayList<>();
+        id = UUID.randomUUID().toString();
     }
 
-    @Override
-    public void doResponse(final InboundSipResponse response) {
-        final ListIterator<ApplicationPathEntry> iter = entries.listIterator(entries.size());
-        while (iter.hasPrevious()) {
-            final ApplicationPathEntry entry = iter.previous();
-            ((SipSessionImpl) entry.getRequest().getSession()).doResponse(response);
-        }
+    public String getId() {
+        return id;
+    }
+    
+    public void add(final SipServletRequestImpl request) {
+        requests.add(request);
+    }
+    
+    public SipServletRequestImpl getLastRequest() {
+        return requests.get(requests.size()-1);
     }
 }

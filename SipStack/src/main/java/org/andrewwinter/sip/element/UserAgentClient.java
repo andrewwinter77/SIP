@@ -8,6 +8,7 @@ import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.SipMessageFactory;
 import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.parser.SipUri;
+import org.andrewwinter.sip.parser.Uri;
 import org.andrewwinter.sip.transaction.client.ClientTransaction;
 import org.andrewwinter.sip.transaction.client.invite.InviteClientTransaction;
 import org.andrewwinter.sip.transaction.client.noninvite.NonInviteClientTransaction;
@@ -63,7 +64,7 @@ public class UserAgentClient {
         return clientTxn;
     }
     
-    private List<SipUri> determineDestinationUris(final SipRequest request) {
+    private static List<SipUri> determineDestinationUris(final SipRequest request) {
         final List<SipUri> uris = new ArrayList<SipUri>();
         
         
@@ -76,6 +77,15 @@ public class UserAgentClient {
         
         // TODO: Select destination using rules in section 8.1.2. Here I'm assuming we'll be using the request-uri.
         // TODO: Also don't assume it's a sip uri. It might be a tel uri!
+        
+        // TODO: This is temporary...
+        if (!request.getRoutes().isEmpty()) {
+            final Uri uri = request.getRoutes().get(0).getUri();
+            if (uri.isSipUri()) {
+                uris.add((SipUri) uri);
+            }
+        }
+        // END TODO
         
         uris.add((SipUri) request.getRequestUri());
         

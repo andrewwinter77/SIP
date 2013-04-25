@@ -22,9 +22,8 @@ import javax.servlet.sip.ar.SipApplicationRouterInfo;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import javax.servlet.sip.ar.SipRouteModifier;
 import javax.servlet.sip.ar.SipTargetedRequestInfo;
-import org.andrewwinter.jsr289.SipServletRequestHandler;
+import org.andrewwinter.jsr289.ApplicationPath;
 import org.andrewwinter.jsr289.api.InboundSipServletRequestImpl;
-import org.andrewwinter.jsr289.api.OutboundSipServletRequestImpl;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 import org.andrewwinter.jsr289.store.SipListenerStore;
@@ -34,9 +33,11 @@ import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
+import org.andrewwinter.jsr289.store.ApplicationPathStore;
 import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipRequest;
+import org.andrewwinter.sip.parser.HeaderName;
 import org.andrewwinter.sip.transport.NettyServerTransport;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.modules.ModuleClassLoader;
@@ -48,7 +49,7 @@ import org.jboss.msc.service.StopContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SipServletService implements SipRequestHandler, SipServletRequestHandler, Service<SipServletService> {
+public class SipServletService implements SipRequestHandler, Service<SipServletService> {
 
     public static final ServiceName SERVICE_NAME = ServiceName.JBOSS.append("sipservlet");
     
@@ -197,7 +198,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
     }
     
     private boolean isRequestFromExternalEntity(final SipServletRequest request) {
-        return !sipInterfaces.contains(request.getRemoteAddr());
+        return request.getHeader(HeaderName.P_APPLICATION_PATH.toString()) == null;
     }
     
     /**
@@ -213,6 +214,8 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
 
         final Serializable stateInfo;
         final SipApplicationRoutingDirective directive;
+        
+        final ApplicationPath path;
         if (isRequestFromExternalEntity(request)) {
             
             // If request is received from an external SIP entity, directive is
@@ -220,12 +223,34 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             
             directive = SipApplicationRoutingDirective.NEW;
             stateInfo = null;
+            
+            path = new ApplicationPath();
+            ApplicationPathStore.getInstance().put(path);
+            request.addHeader(HeaderName.P_APPLICATION_PATH.toString(), path.getId());
+            
         } else {
 
+            final String appPathId = (String) request.getHeader(HeaderName.P_APPLICATION_PATH.toString());
+            if (appPathId == null) {
+                // TODO: Reject with 500
+                throw new UnsupportedOperationException();
+            }
+            path = ApplicationPathStore.getInstance().get(appPathId);
+            if (path == null) {
+                // TODO: Reject with 500
+                throw new UnsupportedOperationException();
+            }
+            final SipServletRequestImpl previousRequestInPath = path.getLastRequest();
+            if (previousRequestInPath == null) {
+                // TODO: Reject with 500
+                throw new UnsupportedOperationException();
+            }
+            directive = previousRequestInPath.getRoutingDirective();
+            
             // Request is received from an application, directive is set
             // either implicitly or explicitly by the application.
 
-            directive = request.getRoutingDirective();
+//            directive = request.getRoutingDirective();
 
             if (directive == SipApplicationRoutingDirective.CONTINUE || directive == SipApplicationRoutingDirective.REVERSE) {
                 
@@ -233,7 +258,7 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
                 // is CONTINUE or REVERSE, stateInfo is set to that of the
                 // original request that this request is associated with.
 
-                stateInfo = request.getStateInfo();
+                stateInfo = previousRequestInPath.getStateInfo();
 
             } else {
 
@@ -322,6 +347,8 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             request.setStateInfo(result.getStateInfo());
             request.setRegion(result.getRoutingRegion());
 
+            path.add(request);
+            
             // - follow the procedures of Chapter 16 to select a servlet from
             // the application.
             
@@ -370,7 +397,8 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
             final Dialog dialog = isr.getServerTransaction().getDialog();
             if (dialog == null) {
                 // TODO: Why don't we have a dialog? Maybe we forgot to set one in this scenario.
-                LOG.error("_____________________________________________ subsequent request but we don't have a dialog?");
+                LOG.error("_____________________________________________ subsequent request but we don't have a dialog?"
+                        + " The server transaction is " + isr.getServerTransaction());
             } else {
                 final SipSessionImpl session = SipSessionStore.getInstance().getUsingDialogId(dialog.getId());
                 if (session == null) {
@@ -403,10 +431,5 @@ public class SipServletService implements SipRequestHandler, SipServletRequestHa
         if (appRouter != null) {
             appRouter.destroy();
         }
-    }
-
-    @Override
-    public void doRequest(final SipServletRequestImpl request) {
-        System.out.println("SipServletService processing request");
     }
 }

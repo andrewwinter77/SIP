@@ -166,6 +166,7 @@ public class SipFactoryImpl implements SipFactory {
                 SipApplicationRoutingDirective.NEW);
         
         final ApplicationPath path = new ApplicationPath();
+        ss.setApplicationPath(path);
         ApplicationPathStore.getInstance().put(path);
         result.addHeader(HeaderName.P_APPLICATION_PATH.toString(), path.getId());
         path.add(result);

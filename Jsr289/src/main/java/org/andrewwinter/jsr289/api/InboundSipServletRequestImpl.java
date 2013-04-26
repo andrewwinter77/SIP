@@ -181,7 +181,7 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl implemen
     }
     
     @Override
-    protected Dialog getDialog() {
+    public Dialog getDialog() {
         return inboundSipRequest.getServerTransaction().getDialog();
     }
 

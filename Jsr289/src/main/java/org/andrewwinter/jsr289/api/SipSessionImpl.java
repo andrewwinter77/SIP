@@ -24,8 +24,10 @@ import javax.servlet.sip.SipSessionEvent;
 import javax.servlet.sip.SipSessionListener;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRoutingRegion;
+import org.andrewwinter.jsr289.ApplicationPath;
 import org.andrewwinter.jsr289.SipServletRequestHandler;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
+import org.andrewwinter.jsr289.store.ApplicationPathStore;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.MainServletNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
@@ -93,6 +95,8 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
     private final String appName;
     
     private Dialog dialog;
+    
+    private ApplicationPath path;
     
     /**
      * 
@@ -179,12 +183,23 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
         
         this.dialog = dialog;
         this.mainServletName = mainServletName;
+        
+        // Handler defaults to main servlet but this can be updated by the app.
+        this.handler = mainServletName;
+    }
+    
+    public void setApplicationPath(final ApplicationPath path) {
+        this.path = path;
+    }
+    
+    public ApplicationPath getApplicationPath() {
+        return path;
     }
     
     public void setDialog(final Dialog dialog) {
         if (this.dialog == null) {
             this.dialog = dialog;
-            SipSessionStore.getInstance().putUsingDialogId(dialog.getId(), this);
+            ApplicationPathStore.getInstance().put(dialog.getId(), path);
         }
     }
     
@@ -230,9 +245,9 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
         handleInvalidSession();
         valid = false;
         SipSessionStore.getInstance().remove(id);
-        if (dialog != null) {
-            SipSessionStore.getInstance().removeUsingDialogId(dialog.getId());
-        }
+//        if (dialog != null) {
+//            SipSessionStore.getInstance().removeUsingDialogId(dialog.getId());
+//        }
         if (appSession != null) {
             appSession.removeSipSession(id);
         }
@@ -341,6 +356,9 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
 
     @Override
     public void setHandler(final String name) throws ServletException {
+        if (name == null) {
+            throw new NullPointerException("Null name not allowed.");
+        }
         handleInvalidSession();
         
         // TODO: Throw ServletException if the app doesn't contain any servlet with the given name
@@ -349,7 +367,9 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
     }
 
     /**
-     * Returns the handler or {@code null} if no handler has been set.
+     * Returns the name of the handler for this SipSession. If the handler has
+     * not been set explicitly by the application then the name of the main
+     * servlet is returned.
      * @return The name of the handler.
      */
     public String getHandler() {
@@ -542,14 +562,7 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
      */
     @Override
     public void doRequest(final SipServletRequestImpl subsequentRequest) {
-        final String servletName;
-        if (handler == null) {
-            servletName = mainServletName;
-        } else {
-            servletName = handler;
-        }
-        
-        final SipServletDelegate servlet = SipServletStore.getInstance().get(appName, servletName);
+        final SipServletDelegate servlet = SipServletStore.getInstance().get(appName, handler);
         if (servlet == null) {
             
         } else {

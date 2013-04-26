@@ -103,7 +103,7 @@ public class InboundSipServletResponseImpl extends SipServletResponseImpl implem
     }
     
     @Override
-    protected Dialog getDialog() {
+    public Dialog getDialog() {
         return inboundSipResponse.getDialog();
     }
 

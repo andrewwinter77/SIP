@@ -429,7 +429,7 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
         return getSession(true);
     }
 
-    protected abstract Dialog getDialog();
+    public abstract Dialog getDialog();
     
     @Override
     public SipSession getSession(final boolean create) {
@@ -439,13 +439,13 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
             if (dialog == null) {
                 sipSession = SipSessionImpl.createForInitialOutboundRequests(getCallId(), getApplicationSession());
             } else { 
-                sipSession = SipSessionStore.getInstance().getUsingDialogId(dialog.getId());
+//                sipSession = SipSessionStore.getInstance().getUsingDialogId(dialog.getId());
 
                 if (sipSession == null) {
                     sipSession = SipSessionImpl.createForInboundInitialRequests(
                             getCallId(),
                             dialog);
-                    sipSession.setDialog(dialog);
+//                    sipSession.setDialog(dialog);
                 }
             }
         }

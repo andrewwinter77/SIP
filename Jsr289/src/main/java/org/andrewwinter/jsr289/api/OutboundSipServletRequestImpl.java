@@ -204,7 +204,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
     }
 
     @Override
-    protected Dialog getDialog() {
+    public Dialog getDialog() {
         if (inboundSipResponse == null) {
             return null;
         } else {

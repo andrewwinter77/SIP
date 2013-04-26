@@ -29,15 +29,19 @@ import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 import org.andrewwinter.jsr289.store.SipListenerStore;
 import org.andrewwinter.jsr289.store.SipServletStore;
 import org.andrewwinter.jsr289.api.SipSessionImpl;
-import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.andrewwinter.jsr289.store.ApplicationPathStore;
+import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
+import org.andrewwinter.jsr289.threadlocal.MainServletNameThreadLocal;
+import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
 import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.parser.HeaderName;
+import org.andrewwinter.sip.transaction.server.ServerTransaction;
+import org.andrewwinter.sip.transaction.server.noninvite.NonInviteServerTransaction;
 import org.andrewwinter.sip.transport.NettyServerTransport;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.modules.ModuleClassLoader;
@@ -229,7 +233,6 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             request.addHeader(HeaderName.P_APPLICATION_PATH.toString(), path.getId());
             
         } else {
-
             final String appPathId = (String) request.getHeader(HeaderName.P_APPLICATION_PATH.toString());
             if (appPathId == null) {
                 // TODO: Reject with 500
@@ -338,28 +341,35 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
                 return;
             }
             
+            final SipModuleInfo moduleInfo = APP_NAME_TO_MODULE_INFO.get(appName);
+            if (moduleInfo == null) {
+                sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "No such application " + appName);
+                LOG.error("No such application " + appName);
+                return;
+            }
+            
+            AppNameThreadLocal.set(appName);
+            ServletContextThreadLocal.set(moduleInfo.getServletContext());
+            MainServletNameThreadLocal.set(moduleInfo.getMainServletName());
+            
             final SipSessionImpl session = (SipSessionImpl) request.getSession();
             session.setSubscriberURI(subscriberUri);
             session.setStateInfo(result.getStateInfo());
             session.setRegion(result.getRoutingRegion());
+            session.setApplicationPath(path);
             
             request.setSubscriberURI(subscriberUri);
             request.setStateInfo(result.getStateInfo());
             request.setRegion(result.getRoutingRegion());
 
             path.add(request);
+            System.out.println("Path for " + request.getMethod() + " " + path);
             
             // - follow the procedures of Chapter 16 to select a servlet from
             // the application.
             
-            final SipModuleInfo moduleInfo = APP_NAME_TO_MODULE_INFO.get(appName);
-            if (moduleInfo == null) {
-                sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "No such application " + appName);
-                LOG.error("No such application " + appName);
-            } else {
-                final SipServletDelegate servlet = moduleInfo.getMainServlet();
-                doRequest(request, moduleInfo, servlet);
-            }
+            final SipServletDelegate servlet = moduleInfo.getMainServlet();
+            doRequest(request, moduleInfo, servlet);
         } else {
             
             final SipURI requestUri = (SipURI) request.getRequestURI();
@@ -392,24 +402,29 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
     public void doRequest(final InboundSipRequest isr) {
         final InboundSipServletRequestImpl sipServletRequest = new InboundSipServletRequestImpl(isr);
         if (sipServletRequest.isInitial()) {
+            System.out.println("Got inbound initial request " + isr.getRequest().getMethod() + " " + isr.getServerTransaction());
             routeInitialRequest(sipServletRequest);
         } else {
-            final Dialog dialog = isr.getServerTransaction().getDialog();
+            final ServerTransaction txn = isr.getServerTransaction();
+            Dialog dialog = txn.getDialog();
+            if (dialog == null && txn instanceof NonInviteServerTransaction && ((NonInviteServerTransaction) txn).getAssociatedTxn() != null) {
+                dialog = ((NonInviteServerTransaction) txn).getAssociatedTxn().getDialog();
+            }
             if (dialog == null) {
-                // TODO: Why don't we have a dialog? Maybe we forgot to set one in this scenario.
-                LOG.error("_____________________________________________ subsequent request but we don't have a dialog?"
-                        + " The server transaction is " + isr.getServerTransaction());
+                System.out.println("Why don't we have a dialog???");
             } else {
-                final SipSessionImpl session = SipSessionStore.getInstance().getUsingDialogId(dialog.getId());
-                if (session == null) {
-                    // TODO: We probably haven't put the session in the session store. Find where the dialog is being created and investigate.
-                    
-                    // TODO: In such a case, if a subsequent request or response belonging to the corresponding dialog is received, the container is free to handle it in either of the following ways
-                    
-                    
-                    LOG.error("_____________________________________________ subsequent request but we don't have a session?");
+                final ApplicationPath path = ApplicationPathStore.getInstance().get(dialog.getId());
+                if (path == null) {
+                    System.out.println("Why don't we have a path???");
                 } else {
-                    session.doRequest(sipServletRequest);
+                    System.out.println(path);
+                    
+                    for (final SipServletRequestImpl origRequest : path.getRequests()) {
+                        final SipSessionImpl session = (SipSessionImpl) origRequest.getSession();
+                        final SipModuleInfo moduleInfo = APP_NAME_TO_MODULE_INFO.get(session.getApplicationName());
+                        sipServletRequest.setSipSession(session);
+                        doRequest(sipServletRequest, moduleInfo, moduleInfo.getServlet(session.getHandler()));
+                    }
                 }
             }
         }

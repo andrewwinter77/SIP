@@ -130,7 +130,7 @@ public class OutboundSipServletResponseImpl extends SipServletResponseImpl imple
     }
 
     @Override
-    protected Dialog getDialog() {
+    public Dialog getDialog() {
         return null;
     }
 }

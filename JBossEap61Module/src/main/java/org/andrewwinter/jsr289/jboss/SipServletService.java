@@ -333,18 +333,18 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             //     * region to result.getRegion(), and
             //     * URI to result.getSubscriberURI().
             
+            final SipModuleInfo moduleInfo = APP_NAME_TO_MODULE_INFO.get(appName);
+            if (moduleInfo == null) {
+                sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "No such application " + appName);
+                LOG.error("No such application " + appName);
+                return;
+            }
+            
             final URI subscriberUri;
             try {
                 subscriberUri = new SipFactoryImpl(null, null, null).createURI(result.getSubscriberURI());
             } catch (ServletParseException e) {
                 sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "App router generated illegal subscriber");
-                return;
-            }
-            
-            final SipModuleInfo moduleInfo = APP_NAME_TO_MODULE_INFO.get(appName);
-            if (moduleInfo == null) {
-                sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "No such application " + appName);
-                LOG.error("No such application " + appName);
                 return;
             }
             
@@ -361,6 +361,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             request.setSubscriberURI(subscriberUri);
             request.setStateInfo(result.getStateInfo());
             request.setRegion(result.getRoutingRegion());
+            request.setSipSession(session);
 
             path.add(request);
             System.out.println("Path for " + request.getMethod() + " " + path);

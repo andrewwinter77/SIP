@@ -119,5 +119,6 @@
 	<module>WebApp</module>
 	<module>DomainModel</module>
 	<module>DoNotDisturbApp</module>
+        <module>B2bUaApp</module>
   </modules>
 </project>

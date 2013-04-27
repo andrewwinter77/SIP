@@ -371,7 +371,12 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
 
     @Override
     public byte[] getRawContent() throws IOException {
-        return message.getBody().getBytes(); // TODO: This is temporary
+        // TODO: This whole method body is temporary. Replace with something sensible when we stop representing content objects as Strings.
+        if (message.getBody() == null || message.getBody().isEmpty()) {
+            return null;
+        } else {
+            return message.getBody().getBytes(); 
+        }
     }
 
     @Override

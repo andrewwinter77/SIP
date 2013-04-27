@@ -1,10 +1,13 @@
 package org.andrewwinter.jsr289.api;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.sip.B2buaHelper;
 import javax.servlet.sip.Proxy;
+import javax.servlet.sip.SipServlet;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipServletResponse;
+import javax.servlet.sip.SipURI;
 import javax.servlet.sip.TooManyHopsException;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
@@ -12,6 +15,7 @@ import javax.servlet.sip.ar.SipApplicationRoutingRegion;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.ResponseType;
+import org.andrewwinter.sip.parser.HeaderName;
 import org.andrewwinter.sip.parser.SipResponse;
 import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
 
@@ -104,6 +108,21 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl implemen
             final ServerTransactionStateName state = inboundSipRequest.getServerTransaction().getStateName();
             if (state == ServerTransactionStateName.TRYING || state == ServerTransactionStateName.PROCEEDING) {
                 final SipResponse response = inboundSipRequest.createResponse(statusCode, reasonPhrase);
+
+                if (statusCode >= 200 && statusCode < 300 && getSipRequest().isINVITE()) {
+                    
+                    // Servlets must not set the Contact header in these cases.
+                    // Containers know which network interfaces they listen on
+                    // and are responsible for choosing and adding the Contact
+                    // header in these cases.
+                    
+                    final List<SipURI> ifaces = (List<SipURI>) getServletContext().getAttribute(SipServlet.OUTBOUND_INTERFACES);
+                    final SipURIImpl contactAsSipURI = (SipURIImpl) ifaces.get(0);
+                    final org.andrewwinter.sip.parser.Address contactHeader =
+                            new org.andrewwinter.sip.parser.Address(contactAsSipURI.getRfc3261Uri());
+                    response.addHeader(HeaderName.CONTACT, contactHeader);
+                }
+            
                 return new OutboundSipServletResponseImpl(this, response);
             } else {
                 throw new IllegalStateException("Request already responded to with final status code.");

@@ -47,4 +47,9 @@ public class Destination {
     public String getTransport() {
         return transport;
     }
+    
+    @Override
+    public String toString() {
+        return address + ":" + port + "/" + transport;
+    }
 }

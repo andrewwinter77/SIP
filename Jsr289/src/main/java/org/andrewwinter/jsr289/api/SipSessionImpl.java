@@ -52,7 +52,7 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
     
     private final String id;
     
-    private Map<String, Object> attributes;
+    private final Map<String, Object> attributes;
     
     private SipApplicationSessionImpl appSession;
     
@@ -60,7 +60,7 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
     
     private boolean valid;
     
-    private long creationTime;
+    private final long creationTime;
     
     private boolean invalidateWhenReady;
     

@@ -11,8 +11,21 @@ import org.andrewwinter.sip.transaction.server.ServerTransaction;
  */
 public class NonInviteServerTransaction extends ServerTransaction {
     
-    private NonInviteServerTransaction(final Dialog dialog, final InboundSipRequest isr) {
+    private final ServerTransaction associatedTxn;
+    
+    /**
+     * 
+     * @param dialog
+     * @param isr
+     * @param associatedTxn Null if there is no associated transaction.
+     */
+    private NonInviteServerTransaction(final Dialog dialog, final InboundSipRequest isr, final ServerTransaction associatedTxn) {
         super(dialog, isr);
+        this.associatedTxn = associatedTxn;
+    }
+    
+    public ServerTransaction getAssociatedTxn() {
+        return associatedTxn;
     }
     
     /**
@@ -27,7 +40,7 @@ public class NonInviteServerTransaction extends ServerTransaction {
             final InboundSipRequest isr,
             final ServerTransaction associatedTxn,
             final SipRequestHandler sipListener) {
-        final NonInviteServerTransaction txn = new NonInviteServerTransaction(dialog, isr);
+        final NonInviteServerTransaction txn = new NonInviteServerTransaction(dialog, isr, associatedTxn);
         
         // The state machine is initialized in the 'Trying' state and is passed
         // a request other than INVITE or ACK when initialized.

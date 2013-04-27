@@ -49,9 +49,6 @@ public class ResponseSender {
             SipMessageHelper.setContentLength(0, response);
         }
 
-        System.out.println("\n---OUT--------------------------------");
-        System.out.println(response);
-        
         byte[] bytes = null;
         try {
             bytes = response.toString().getBytes("UTF-8");
@@ -62,6 +59,9 @@ public class ResponseSender {
         
         if (socket != null && socket.isConnected()) {
             
+            System.out.println("\n---OUT--------------------------------");
+            System.out.println(response);
+        
             try {
                 socket.write(ByteBuffer.wrap(bytes));
             } catch (IOException e) {

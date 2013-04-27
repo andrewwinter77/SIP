@@ -42,9 +42,6 @@ public class RequestSender {
             SipMessageHelper.setContentLength(0, request);
         }
 
-        System.out.println("\n---OUT--------------------------------");
-        System.out.println(request);
-        
         if ("UDP".equals(dest.getTransport())) {
                 
             Udp.send(request, dest.getAddress(), dest.getPort());

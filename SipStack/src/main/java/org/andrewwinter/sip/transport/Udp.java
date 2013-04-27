@@ -56,6 +56,9 @@ class Udp {
 
         final DatagramChannel channel = (DatagramChannel) bootstrap.bind(new InetSocketAddress(0));
 
+        System.out.println("\n---OUT--" + address + ":" + port + "/UDP------------------------------");
+        System.out.println(message.toString());
+            
         ChannelFuture future = channel.write(
                 message.toString(), new InetSocketAddress(address, port));
         future.addListener(new ChannelFutureListener() {

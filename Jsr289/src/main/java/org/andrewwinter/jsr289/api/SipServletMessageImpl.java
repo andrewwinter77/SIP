@@ -21,7 +21,6 @@ import javax.servlet.sip.SipApplicationSession;
 import javax.servlet.sip.SipServletMessage;
 import javax.servlet.sip.SipSession;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
-import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.parser.HeaderName;
 import org.andrewwinter.sip.parser.ParseException;

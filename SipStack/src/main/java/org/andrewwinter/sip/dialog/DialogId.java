@@ -84,7 +84,7 @@ public class DialogId {
      */
     @Override
     public String toString() {
-        return "DialogId[" + callId + ", " + localTag + ", " + remoteTag + "]";
+        return "[DialogId callId:" + callId + ", local:" + localTag + ", remote:" + remoteTag + "]";
     }
 
     /**

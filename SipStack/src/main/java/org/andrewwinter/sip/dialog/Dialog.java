@@ -56,7 +56,7 @@ public class Dialog {
     
     @Override
     public String toString() {
-        return "[DialogId id:" + id + ", state: " + state + "]";
+        return "[Dialog id:" + id + ", state: " + state + "]";
     }
     
     /**

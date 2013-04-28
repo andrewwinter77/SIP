@@ -20,6 +20,11 @@ public abstract class Parameterable implements Serializable, Cloneable {
         params = new HashMap<String, String>();
     }
     
+    @Override
+    public Object clone() {
+        throw new UnsupportedOperationException();
+    }
+    
     /**
      * Returns the field value (minus any parameters) as a string.
      * @return

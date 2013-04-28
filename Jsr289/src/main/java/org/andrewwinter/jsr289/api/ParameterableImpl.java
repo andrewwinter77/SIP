@@ -1,7 +1,7 @@
 package org.andrewwinter.jsr289.api;
 
-import org.andrewwinter.sip.parser.GenericParameterable;
 import org.andrewwinter.sip.parser.HeaderName;
+import org.andrewwinter.sip.parser.Parameterable;
 
 /**
  *
@@ -9,7 +9,7 @@ import org.andrewwinter.sip.parser.HeaderName;
  */
 public class ParameterableImpl extends AbstractParameterable {
 
-    ParameterableImpl(final GenericParameterable parameterable, final HeaderName hn) {
+    ParameterableImpl(final Parameterable parameterable, final HeaderName hn) {
         super(parameterable, hn);
     }
     
@@ -20,8 +20,9 @@ public class ParameterableImpl extends AbstractParameterable {
     
     @Override
     public Object clone() {
-        // Use null for the HeaderName because the application is creating a
-        // new Parameterable.
-        return new ParameterableImpl(((GenericParameterable) parameterable).clone(), null);
+        // Use null for the HeaderName because the application (rather than the container)
+        // is creating a new Parameterable.
+        
+        return new ParameterableImpl((Parameterable) ((Parameterable) parameterable).clone(), null);
     }
 }

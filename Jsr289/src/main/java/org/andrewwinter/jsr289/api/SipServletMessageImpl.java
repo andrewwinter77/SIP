@@ -232,7 +232,7 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
         if (p instanceof org.andrewwinter.sip.parser.Address) {
             return new AddressImpl((org.andrewwinter.sip.parser.Address) p, hn);
         } else {
-            return new ParameterableImpl((org.andrewwinter.sip.parser.GenericParameterable) p, hn);
+            return new ParameterableImpl(p, hn);
         }
     }
 

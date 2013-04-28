@@ -171,4 +171,9 @@ public class Via extends Parameterable {
     public void setValue(final String value) throws IllegalStateException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public Via clone() {
+        return Via.parse(toString());
+    }
 }

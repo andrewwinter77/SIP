@@ -59,6 +59,9 @@ public class Util {
             final String appName,
             final String mainServlet) throws Exception {
 
+        if (servlet == null || context == null || appName == null || mainServlet == null) {
+            throw new IllegalArgumentException("Null argument.");
+        }
         ServletNameThreadLocal.set(servlet.getServletName());
         ServletContextThreadLocal.set(context);
         AppNameThreadLocal.set(appName);

@@ -146,7 +146,7 @@ public abstract class ServerTransaction {
      *   INVITE transaction that this cancels. May be null.
      * @param sipListener  
      */
-    public void initialize(final ServerTransactionState initialState, final ServerTransaction associatedTxn, final SipRequestHandler sipListener) {
+    protected void initialize(final ServerTransactionState initialState, final ServerTransaction associatedTxn, final SipRequestHandler sipListener) {
         this.state = initialState;
 
         isr.setServerTransaction(this);

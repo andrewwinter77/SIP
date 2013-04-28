@@ -52,7 +52,7 @@ public class OutboundSipServletResponseImpl extends SipServletResponseImpl imple
 
     @Override
     public String toString() {
-        return response.toString();
+        return getSipResponse().toString();
     }
 
     @Override
@@ -67,7 +67,7 @@ public class OutboundSipServletResponseImpl extends SipServletResponseImpl imple
             flagMessageAsSent();
             
             final InboundSipServletRequestImpl request = (InboundSipServletRequestImpl) servletRequest;
-            request.getInboundSipRequest().sendResponse(response);
+            request.getInboundSipRequest().sendResponse(getSipResponse());
             final Dialog dialog = request.getInboundSipRequest().getServerTransaction().getDialog();
             if (dialog != null) {
                 SipSessionImpl session = (SipSessionImpl) getSession();
@@ -86,7 +86,7 @@ public class OutboundSipServletResponseImpl extends SipServletResponseImpl imple
         if (isSent()) {
             throw new IllegalStateException("Message has already been sent.");
         }
-        SipMessageHelper.setContentLength(len, response);
+        SipMessageHelper.setContentLength(len, message);
     }
 
     @Override

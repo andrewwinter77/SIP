@@ -35,7 +35,7 @@ import org.andrewwinter.sip.parser.Util;
 public abstract class SipServletMessageImpl implements SipServletMessage {
 
     private HeaderForm headerForm = HeaderForm.DEFAULT;
-    private final SipMessage message;
+    protected final SipMessage message;
     private final Map<String, Object> attributes = new HashMap<>();
     private SipSessionImpl sipSession;
     protected final Object sendLock = new Object();

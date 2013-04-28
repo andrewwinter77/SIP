@@ -47,7 +47,7 @@ public class InboundSipServletResponseImpl extends SipServletResponseImpl implem
             throw new IllegalStateException("Original request was not an INVITE.");
         }
         
-        if (response.getStatusCode() < 200) {
+        if (getSipResponse().getStatusCode() < 200) {
             throw new IllegalStateException("Cannot create ACK for provisional response.");
         }
         
@@ -73,7 +73,7 @@ public class InboundSipServletResponseImpl extends SipServletResponseImpl implem
 
     @Override
     public String toString() {
-        return response.toString();
+        return message.toString();
     }
 
     @Override

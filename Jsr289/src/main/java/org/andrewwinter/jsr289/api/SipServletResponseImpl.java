@@ -20,13 +20,10 @@ import org.andrewwinter.sip.parser.SipResponse;
  */
 public abstract class SipServletResponseImpl extends SipServletMessageImpl implements SipServletResponse {
 
-    protected final SipResponse response;
-    
     protected final SipServletRequestImpl servletRequest;
     
     protected SipServletResponseImpl(SipResponse response, SipServletRequestImpl servletRequest) {
         super(response);
-        this.response = response;
         this.servletRequest = servletRequest;
     }
     
@@ -35,14 +32,18 @@ public abstract class SipServletResponseImpl extends SipServletMessageImpl imple
         return servletRequest;
     }
 
+    public final SipResponse getSipResponse() {
+        return (SipResponse) message;
+    }
+    
     @Override
     public int getStatus() {
-        return response.getStatusCode();
+        return getSipResponse().getStatusCode();
     }
 
     @Override
     public void setStatus(final int statusCode) {
-        setStatus(statusCode, response.getReasonPhrase());
+        setStatus(statusCode, getSipResponse().getReasonPhrase());
     }
 
     @Override
@@ -52,12 +53,12 @@ public abstract class SipServletResponseImpl extends SipServletMessageImpl imple
             throw new IllegalArgumentException("Status code not allowed.");
         }
         
-        response.setStatus(statusCode, reasonPhrase);
+        getSipResponse().setStatus(statusCode, reasonPhrase);
     }
 
     @Override
     public String getReasonPhrase() {
-        return response.getReasonPhrase();
+        return getSipResponse().getReasonPhrase();
     }
 
     @Override
@@ -81,7 +82,7 @@ public abstract class SipServletResponseImpl extends SipServletMessageImpl imple
     @Override
     public Iterator<String> getChallengeRealms() {
         final List<String> result = new ArrayList<>();
-        List<AuthenticationChallenge> challenges = response.getWWWAuthenticate();
+        List<AuthenticationChallenge> challenges = getSipResponse().getWWWAuthenticate();
         if (challenges != null) {
             for (final AuthenticationChallenge challenge : challenges) {
                 final String realm = challenge.getParam("realm");
@@ -90,7 +91,7 @@ public abstract class SipServletResponseImpl extends SipServletMessageImpl imple
                 }
             }
         }
-        challenges = response.getProxyAuthenticate();
+        challenges = getSipResponse().getProxyAuthenticate();
         if (challenges != null) {
             for (final AuthenticationChallenge challenge : challenges) {
                 final String realm = challenge.getParam("realm");
@@ -147,6 +148,6 @@ public abstract class SipServletResponseImpl extends SipServletMessageImpl imple
     
     @Override
     public String toString() {
-        return response.toString();
+        return getSipResponse().toString();
     }
 }

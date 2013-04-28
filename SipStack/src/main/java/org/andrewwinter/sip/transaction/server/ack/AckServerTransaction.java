@@ -28,7 +28,7 @@ public class AckServerTransaction extends ServerTransaction {
         final AckServerTransaction txn = new AckServerTransaction(dialog, isr);
         
         if (!isr.getRequest().isACK()) {
-            System.out.println("Method not allowed in ACK transaction.");
+            throw new IllegalArgumentException(isr.getRequest().getMethod() + " not allowed in ACK transaction.");
         }
         
         txn.initialize(null, null, sipListener);

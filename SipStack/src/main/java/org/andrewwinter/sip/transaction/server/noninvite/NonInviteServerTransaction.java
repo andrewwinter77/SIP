@@ -46,7 +46,7 @@ public class NonInviteServerTransaction extends ServerTransaction {
         // a request other than INVITE or ACK when initialized.
         
         if (isr.getRequest().isINVITE() || isr.getRequest().isACK()) {
-            System.out.println("Method not allowed in non-INVITE server transaction.");
+            throw new IllegalArgumentException(isr.getRequest().getMethod() + " not allowed in non-INVITE server transaction.");
         }
         
         txn.initialize(new Trying(txn), associatedTxn, sipListener);

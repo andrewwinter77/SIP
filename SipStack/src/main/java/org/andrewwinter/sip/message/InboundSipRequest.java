@@ -102,7 +102,9 @@ public class InboundSipRequest extends InboundSipMessage {
     }
 
     /**
-     * 
+     * It is the responsibility of the caller to add a Contact header to the response
+     * if the Contact header is mandated by the spec. For example, if this is a
+     * dialog-creating response such as a 2xx to an INVITE.
      * @param type
      * @param reasonPhrase 
      * @return 

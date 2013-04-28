@@ -39,6 +39,7 @@ import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
 import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipRequest;
+import org.andrewwinter.sip.parser.Address;
 import org.andrewwinter.sip.parser.HeaderName;
 import org.andrewwinter.sip.transaction.server.ServerTransaction;
 import org.andrewwinter.sip.transaction.server.noninvite.NonInviteServerTransaction;
@@ -206,6 +207,19 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
     }
     
     /**
+     * Send request back into the container so we can continue the application
+     * sequencing.
+     */
+    private void pushRoute(final SipServletRequestImpl request, final Serializable stateInfo) {
+        // TODO: Replace this with SipServletRequest.pushRoute()
+        final Address route = Address.parse("sip:127.0.0.1");
+        if (stateInfo != null) {
+            route.setParameter("si", "" + (Integer) stateInfo);
+        }
+        request.getSipRequest().pushRoute(route);
+    }
+    
+    /**
      * Implements Section 15.4.1 of Sip Servlet 1.1.
      * @param request 
      */
@@ -363,6 +377,8 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             request.setRegion(result.getRoutingRegion());
             request.setSipSession(session);
 
+            pushRoute(request, result.getStateInfo());
+            
             path.add(request);
             System.out.println("Path for " + request.getMethod() + " " + path);
             

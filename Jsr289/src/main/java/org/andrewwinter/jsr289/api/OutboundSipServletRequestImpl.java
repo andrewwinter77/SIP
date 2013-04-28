@@ -172,6 +172,15 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
         return request.toString();
     }
 
+    /**
+     * Send request back into the container so we can continue the application
+     * sequencing.
+     */
+    private void pushRoute() {
+        final Address route = Address.parse("sip:127.0.0.1");
+        getSipRequest().pushRoute(route);
+    }
+    
     @Override
     public void send() throws IOException {
 
@@ -183,9 +192,9 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
             synchronized (super.sendLock) {
                 flagMessageAsSent();
                 
-                // Send request back into the container so we can continue
-                // the application sequencing.
-                getSipRequest().pushRoute(Address.parse("sip:127.0.0.1"));
+                if (isInitial() && getRoutingDirective() == SipApplicationRoutingDirective.NEW) {
+                    pushRoute();
+                }
                 
                 userAgentClient = UserAgentClient.createUacAndSendRequest((SipSessionImpl) getSession(), request, null);
             }

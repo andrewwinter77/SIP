@@ -54,6 +54,11 @@ public class Dialog {
      */
     private List<SipUri> routeSet;
     
+    @Override
+    public String toString() {
+        return "[DialogId id:" + id + ", state: " + state + "]";
+    }
+    
     /**
      * This should be used only for transitioning from EARLY to CONFIRMED. If
      * the dialog is already in the CONFIRMED state, this is a no-op. If the

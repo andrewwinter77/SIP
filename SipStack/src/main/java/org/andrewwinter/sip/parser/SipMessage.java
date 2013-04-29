@@ -205,7 +205,8 @@ public abstract class SipMessage implements Serializable {
      * more entries matching (name-addr | addr-spec) *(SEMI generic-param) as
      * defined in RFC 3261. This includes, for example, Contact and Route.
      * @param name
-     * @return 
+     * @return A list of Address headers or the empty list if no address
+     * headers matching the given name were found.
      */
     public List<Address> getAddressHeaders(final HeaderName name) {
         final List<Serializable> values = headers.get(name);

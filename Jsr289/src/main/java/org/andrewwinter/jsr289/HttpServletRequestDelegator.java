@@ -1,4 +1,4 @@
-package org.andrewwinter.jsr289.jboss.converged;
+package org.andrewwinter.jsr289;
 
 import java.io.BufferedReader;
 import java.io.IOException;

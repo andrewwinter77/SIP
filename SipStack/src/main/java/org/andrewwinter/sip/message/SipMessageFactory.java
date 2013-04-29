@@ -187,7 +187,7 @@ public class SipMessageFactory {
         populateInDialogHeaders(request, dialog);
         
         if (via == null) {
-            createVia(method, null);
+            via = createVia(method, null);
         }
         SipMessageHelper.pushVia(via, request);
         

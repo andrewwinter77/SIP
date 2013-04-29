@@ -201,8 +201,15 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         }
     }
     
+    /**
+     * Determines if the request is from outside of an application path. If it
+     * is then application sequencing will need to start from the beginning.
+     * @param request
+     * @return 
+     */
     private boolean isRequestFromExternalEntity(final SipServletRequest request) {
-        return request.getHeader(HeaderName.P_APPLICATION_PATH.toString()) == null;
+        final AddressImpl route = (AddressImpl) request.getPoppedRoute();
+        return route == null || route.getURI().getParameter("si") == null; 
     }
     
     /**

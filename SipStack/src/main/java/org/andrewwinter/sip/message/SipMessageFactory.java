@@ -1,6 +1,8 @@
 package org.andrewwinter.sip.message;
 
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.dialog.DialogId;
@@ -118,7 +120,8 @@ public class SipMessageFactory {
             final Dialog dialog,
             final String method) {
     
-        Uri requestUri;
+        final Uri requestUri;
+        List<Address> routeHeaders = null;
         if (dialog.getRouteSet().isEmpty()) {
             
             // If the route set is empty, the UAC MUST place the remote target
@@ -131,13 +134,52 @@ public class SipMessageFactory {
             
             final SipUri uri = dialog.getRouteSet().get(0);
             
-            // TODO: Handle case where route set is not empty
-            requestUri = null; // TODO: FIX THIS!
+            if (uri.getParameter("lr") != null) {
+            
+                // If the route set is not empty, and the first URI in the route set
+                // contains the lr parameter (see Section 19.1.1), the UAC MUST
+                // place the remote target URI into the Request-URI and MUST include
+                // a Route header field containing the route set values in order,
+                // including all parameters.
+
+                requestUri = dialog.getRemoteTarget();
+    
+                routeHeaders = new ArrayList<Address>();
+                for (final SipUri routeSetValue : dialog.getRouteSet()) {
+                    routeHeaders.add(new Address(routeSetValue));
+                }
+                
+            } else {
+                
+                // If the route set is not empty, and its first URI does not
+                // contain the lr parameter, the UAC MUST place the first URI
+                // from the route set into the Request-URI, stripping any
+                // parameters that are not allowed in a Request-URI. The UAC
+                // MUST add a Route header field containing the remainder of the
+                // route set values in order, including all parameters. The UAC
+                // MUST then place the remote target URI into the Route header
+                // field as the last value.
+ 
+                requestUri = uri;
+                // TODO: Strip any params not allowed in a Request-URI
+                
+                routeHeaders = new ArrayList<Address>();
+                final Iterator<SipUri> iter = dialog.getRouteSet().iterator();
+                iter.next();
+                while (iter.hasNext()) {
+                    routeHeaders.add(new Address(iter.next()));
+                }
+                routeHeaders.add(new Address(dialog.getRemoteTarget()));
+            }
         }
         
         final SipRequest request = new SipRequest(method, requestUri);
         request.setMatchesExistingDialog(true);
 
+        if (routeHeaders != null && !routeHeaders.isEmpty()) {
+            request.setHeaders(HeaderName.ROUTE, routeHeaders);
+        }
+        
         populateInDialogHeaders(request, dialog);
         SipMessageHelper.pushVia(createVia(method, null), request);
         

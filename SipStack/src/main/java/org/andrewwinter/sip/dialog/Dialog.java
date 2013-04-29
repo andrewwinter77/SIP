@@ -1,7 +1,10 @@
 package org.andrewwinter.sip.dialog;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.ListIterator;
+import org.andrewwinter.sip.parser.Address;
 import org.andrewwinter.sip.parser.SipMessageHelper;
 import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.parser.SipResponse;
@@ -157,7 +160,8 @@ public class Dialog {
      * @param remoteSeqNumber
      * @param localUri
      * @param remoteUri
-     * @param remoteTarget 
+     * @param remoteTarget
+     * @param routeSet
      */
     private Dialog(
             final DialogState state,
@@ -165,7 +169,8 @@ public class Dialog {
             final boolean secure,
             final Uri localUri,
             final Uri remoteUri,
-            final Uri remoteTarget) {
+            final Uri remoteTarget,
+            final List<SipUri> routeSet) {
         this.state = state;
         this.id = id;
         this.secure = secure;
@@ -174,9 +179,48 @@ public class Dialog {
         this.localUri = localUri;
         this.remoteUri = remoteUri;
         this.remoteTarget = remoteTarget;
-        
-        // TODO: Set dialog route set somewhere
-        routeSet = new ArrayList<SipUri>();
+        this.routeSet = Collections.unmodifiableList(routeSet);
+    }
+    
+    /**
+     * The route set MUST be set to the list of URIs in the Record-Route header
+     * field from the request, taken in order and preserving all URI parameters.
+     * If no Record-Route header field is present in the request, the route set
+     * MUST be set to the empty set.
+     * 
+     * @param request
+     * @return 
+     */
+    private static List<SipUri> getRouteSetFromRequest(final SipRequest request) {
+        final List<SipUri> routes = new ArrayList<SipUri>();
+        for (final Address address : SipMessageHelper.getRecordRoutes(request)) {
+            if (address.getUri().isSipUri()) {
+                routes.add((SipUri) address.getUri());
+            }
+        }
+        return routes;
+    }
+    
+    /**
+     * The route set MUST be set to the list of URIs in the Record-Route header
+     * field from the response, taken in reverse order and preserving all URI
+     * parameters. If no Record-Route header field is present in the response,
+     * the route set MUST be set to the empty set.
+     * 
+     * @param response
+     * @return 
+     */
+    private static List<SipUri> getRouteSetFromResponse(final SipResponse response) {
+        final List<SipUri> routes = new ArrayList<SipUri>();
+        final List<Address> recordRoutes = SipMessageHelper.getRecordRoutes(response);
+        final ListIterator<Address> iter = recordRoutes.listIterator(recordRoutes.size());
+        while (iter.hasPrevious()) {
+            final Uri uri = iter.previous().getUri();
+            if (uri.isSipUri()) {
+                routes.add((SipUri) uri);
+            }
+        }
+        return routes;
     }
     
     /**
@@ -205,7 +249,9 @@ public class Dialog {
                 
                 // The remote target MUST be set to the URI from the Contact
                 // header field of the request.
-                SipMessageHelper.getContact(request).get(0).getUri());
+                SipMessageHelper.getContact(request).get(0).getUri(),
+                
+                getRouteSetFromRequest(request));
 
         dialog.setRemoteSeqNumber(request.getCSeq().getSequence());
         DialogStore.getInstance().put(dialog);
@@ -242,7 +288,9 @@ public class Dialog {
                 
                 // The remote target MUST be set to the URI from the Contact
                 // header field of the response.
-                SipMessageHelper.getContact(response).get(0).getUri());
+                SipMessageHelper.getContact(response).get(0).getUri(),
+                
+                getRouteSetFromResponse(response));
         
         // The local sequence number MUST be set to the value of the sequence
         // number in the CSeq header field of the request.

@@ -12,6 +12,8 @@ import javax.servlet.sip.ProxyBranch;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipURI;
 import javax.servlet.sip.URI;
+import javax.servlet.sip.ar.SipApplicationRoutingDirective;
+import org.andrewwinter.jsr289.util.Util;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.parser.Uri;
 import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
@@ -34,7 +36,7 @@ public class ProxyImpl implements Proxy {
     
     private final InboundSipRequest inboundSipRequest;
     
-    private transient SipServletRequest origRequest;
+    private transient InboundSipServletRequestImpl origRequest;
     
     private boolean noCancel;
 
@@ -68,7 +70,7 @@ public class ProxyImpl implements Proxy {
     
     private boolean addToPath;
     
-    public ProxyImpl(final InboundSipRequest isr, final SipServletRequest origRequest) {
+    public ProxyImpl(final InboundSipRequest isr, final InboundSipServletRequestImpl origRequest) {
         this.inboundSipRequest = isr;
         
         // The default proxy behavior, as per RFC 3261 section 16.7 point 10, is
@@ -109,6 +111,8 @@ public class ProxyImpl implements Proxy {
             throw new NullPointerException("URI must not be null.");
         }
         
+        Util.pushRoute(inboundSipRequest.getRequest(), origRequest.getStateInfo(), SipApplicationRoutingDirective.CONTINUE);
+        
         final ServerTransactionStateName state = inboundSipRequest.getServerTransaction().getStateName();
         
         // TODO: Check state
@@ -124,6 +128,8 @@ public class ProxyImpl implements Proxy {
     @Override
     public void proxyTo(final List<? extends URI> uris) {
         // TODO: Check state
+
+        Util.pushRoute(inboundSipRequest.getRequest(), origRequest.getStateInfo(), SipApplicationRoutingDirective.CONTINUE);
 
         for (final URI uri : uris) {
             if (uri == null) {

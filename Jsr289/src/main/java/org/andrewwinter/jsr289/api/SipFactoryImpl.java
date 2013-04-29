@@ -13,8 +13,6 @@ import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipURI;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
-import org.andrewwinter.jsr289.ApplicationPath;
-import org.andrewwinter.jsr289.store.ApplicationPathStore;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
 import org.andrewwinter.jsr289.store.ApplicationSessionStore;
 import org.andrewwinter.jsr289.threadlocal.MainServletNameThreadLocal;
@@ -164,12 +162,6 @@ public class SipFactoryImpl implements SipFactory {
         
                 // Table 15-1 in Sip Servlet 1.1 shows we must use NEW here
                 SipApplicationRoutingDirective.NEW);
-        
-        final ApplicationPath path = new ApplicationPath();
-        ss.setApplicationPath(path);
-        ApplicationPathStore.getInstance().put(path);
-        result.addHeader(HeaderName.P_APPLICATION_PATH.toString(), path.getId());
-        path.add(result);
         
         result.setServletContext(servletContextProvider.getServletContext());
         result.setSipSession(ss);

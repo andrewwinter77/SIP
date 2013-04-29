@@ -22,7 +22,6 @@ import javax.servlet.sip.ar.SipApplicationRouterInfo;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import javax.servlet.sip.ar.SipRouteModifier;
 import javax.servlet.sip.ar.SipTargetedRequestInfo;
-import org.andrewwinter.jsr289.ApplicationPath;
 import org.andrewwinter.jsr289.api.AddressImpl;
 import org.andrewwinter.jsr289.api.InboundSipServletRequestImpl;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
@@ -33,7 +32,6 @@ import org.andrewwinter.jsr289.api.SipSessionImpl;
 import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
-import org.andrewwinter.jsr289.store.ApplicationPathStore;
 import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.MainServletNameThreadLocal;
@@ -41,7 +39,6 @@ import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
 import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.parser.Address;
-import org.andrewwinter.sip.parser.HeaderName;
 import org.andrewwinter.sip.transport.NettyServerTransport;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.modules.ModuleClassLoader;
@@ -209,21 +206,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
      */
     private boolean isRequestFromExternalEntity(final SipServletRequest request) {
         final AddressImpl route = (AddressImpl) request.getPoppedRoute();
-        return route == null || route.getURI().getParameter("si") == null; 
-    }
-    
-    /**
-     * Send request back into the container so we can continue the application
-     * sequencing.
-     */
-    private void pushRoute(final SipServletRequestImpl request, final Serializable stateInfo) {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("<sip:127.0.0.1;lr");
-        if (stateInfo != null) {
-            sb.append(";si=").append(String.valueOf((Integer) stateInfo));
-        }
-        sb.append(">");
-        request.getSipRequest().pushHeader(HeaderName.ROUTE, sb.toString());
+        return route == null || route.getURI().getParameter("si") == null || route.getURI().getParameter("directive") == null; 
     }
     
     /**
@@ -240,7 +223,6 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         final Serializable stateInfo;
         final SipApplicationRoutingDirective directive;
         
-        final ApplicationPath path;
         if (isRequestFromExternalEntity(request)) {
             
             // If request is received from an external SIP entity, directive is
@@ -249,32 +231,12 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             directive = SipApplicationRoutingDirective.NEW;
             stateInfo = null;
             
-            path = new ApplicationPath();
-            ApplicationPathStore.getInstance().put(path);
-            request.addHeader(HeaderName.P_APPLICATION_PATH.toString(), path.getId());
-            
         } else {
-            final String appPathId = (String) request.getHeader(HeaderName.P_APPLICATION_PATH.toString());
-            if (appPathId == null) {
-                // TODO: Reject with 500
-                throw new UnsupportedOperationException();
-            }
-            path = ApplicationPathStore.getInstance().get(appPathId);
-            if (path == null) {
-                // TODO: Reject with 500
-                throw new UnsupportedOperationException();
-            }
-            final SipServletRequestImpl previousRequestInPath = path.getLastRequest();
-            if (previousRequestInPath == null) {
-                // TODO: Reject with 500
-                throw new UnsupportedOperationException();
-            }
-            directive = previousRequestInPath.getRoutingDirective();
             
             // Request is received from an application, directive is set
             // either implicitly or explicitly by the application.
 
-//            directive = request.getRoutingDirective();
+            directive = SipApplicationRoutingDirective.valueOf(request.getPoppedRoute().getURI().getParameter("directive"));
 
             if (directive == SipApplicationRoutingDirective.CONTINUE || directive == SipApplicationRoutingDirective.REVERSE) {
                 
@@ -282,8 +244,8 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
                 // is CONTINUE or REVERSE, stateInfo is set to that of the
                 // original request that this request is associated with.
 
-                stateInfo = previousRequestInPath.getStateInfo();
-
+                stateInfo = Integer.valueOf(request.getPoppedRoute().getURI().getParameter("si"));
+                
             } else {
 
                 // Otherwise, stateInfo is not set initially.
@@ -377,18 +339,12 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             session.setSubscriberURI(subscriberUri);
             session.setStateInfo(result.getStateInfo());
             session.setRegion(result.getRoutingRegion());
-            session.setApplicationPath(path);
             
             request.setSubscriberURI(subscriberUri);
             request.setStateInfo(result.getStateInfo());
             request.setRegion(result.getRoutingRegion());
             request.setSipSession(session);
 
-            pushRoute(request, result.getStateInfo());
-            
-            path.add(request);
-            System.out.println("Path for " + request.getMethod() + " " + path);
-            
             // - follow the procedures of Chapter 16 to select a servlet from
             // the application.
             
@@ -464,7 +420,11 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
             
             // TODO: Set ClassLoader.
             
-            handleSubsequentRequest(sipServletRequest);
+            try {
+                handleSubsequentRequest(sipServletRequest);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

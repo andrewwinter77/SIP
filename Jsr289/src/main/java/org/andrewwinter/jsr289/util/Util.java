@@ -1,5 +1,6 @@
 package org.andrewwinter.jsr289.util;
 
+import java.io.Serializable;
 import org.andrewwinter.jsr289.threadlocal.ServletNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
@@ -22,10 +23,13 @@ import javax.servlet.sip.SipSessionBindingListener;
 import javax.servlet.sip.SipSessionListener;
 import javax.servlet.sip.TimerListener;
 import javax.servlet.sip.TooManyHopsException;
+import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import org.andrewwinter.jsr289.api.OutboundSipServletResponseImpl;
 import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 import org.andrewwinter.jsr289.api.SipServletResponseImpl;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
+import org.andrewwinter.sip.parser.HeaderName;
+import org.andrewwinter.sip.parser.SipRequest;
 
 /**
  *
@@ -51,6 +55,24 @@ public class Util {
         LISTENER_CLASSES = Collections.unmodifiableSet(mutable);
     }
 
+    /**
+     * Send request back into the container so we can continue the application
+     * sequencing.
+     */
+    public static void pushRoute(final SipRequest request, final Serializable stateInfo, final SipApplicationRoutingDirective directive) {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("<sip:127.0.0.1;lr");
+        if (stateInfo != null) {
+            sb.append(";si=").append(String.valueOf((Integer) stateInfo));
+        }
+        if (directive != null) {
+            sb.append(";directive=").append(directive);
+        }
+        sb.append(">");
+        request.pushHeader(HeaderName.ROUTE, sb.toString());
+    }
+    
+    
     public static void invokeServlet(
             final SipServletDelegate servlet,
             final SipServletRequestImpl request,

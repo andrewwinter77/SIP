@@ -24,10 +24,8 @@ import javax.servlet.sip.SipSessionEvent;
 import javax.servlet.sip.SipSessionListener;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRoutingRegion;
-import org.andrewwinter.jsr289.ApplicationPath;
 import org.andrewwinter.jsr289.SipServletRequestHandler;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
-import org.andrewwinter.jsr289.store.ApplicationPathStore;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.MainServletNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
@@ -95,8 +93,6 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
     private final String appName;
     
     private Dialog dialog;
-    
-    private ApplicationPath path;
     
     /**
      * 
@@ -188,18 +184,9 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
         this.handler = mainServletName;
     }
     
-    public void setApplicationPath(final ApplicationPath path) {
-        this.path = path;
-    }
-    
-    public ApplicationPath getApplicationPath() {
-        return path;
-    }
-    
     public void setDialog(final Dialog dialog) {
         if (this.dialog == null) {
             this.dialog = dialog;
-            ApplicationPathStore.getInstance().put(dialog.getId(), path);
         }
     }
     

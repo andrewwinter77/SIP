@@ -11,11 +11,6 @@ import java.util.Map;
 public class HeaderName {
 
     /**
-     * 
-     */
-    public static final HeaderName P_APPLICATION_PATH = createKnownHeader("P-Application-Path", null, HeaderType.UNKNOWN_EXTENSION_HEADER);
-    
-    /**
      *
      */
     public static final HeaderName ACCEPT = createKnownHeader("Accept", null, HeaderType.COMMA_SEPARATED_STRING_WITH_PARAMS);

@@ -414,7 +414,6 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         handleRouteHeader(sipServletRequest);
         
         if (sipServletRequest.isInitial()) {
-            System.out.println("Got inbound initial request " + isr.getRequest().getMethod() + " " + isr.getServerTransaction());
             routeInitialRequest(sipServletRequest);
         } else {
             

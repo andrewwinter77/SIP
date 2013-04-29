@@ -252,12 +252,14 @@ public abstract class SipMessage implements Serializable {
      *
      * @return
      */
-    public void popRoute() {
+    public Address popRoute() {
         final List<Address> routes = getAddressHeaders(HeaderName.ROUTE);
+        Address route = null;
         if (!routes.isEmpty()) {
-            routes.remove(0);
+            route = routes.remove(0);
             setHeaders(HeaderName.ROUTE, routes);
         }
+        return route;
     }
 
     /**

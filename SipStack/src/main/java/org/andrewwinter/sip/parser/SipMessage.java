@@ -311,7 +311,11 @@ public abstract class SipMessage implements Serializable {
         Address route = null;
         if (!routes.isEmpty()) {
             route = routes.remove(0);
-            setHeaders(HeaderName.ROUTE, routes);
+            if (routes.isEmpty()) {
+                removeHeader(HeaderName.ROUTE);
+            } else {
+                setHeaders(HeaderName.ROUTE, routes);
+            }
         }
         return route;
     }

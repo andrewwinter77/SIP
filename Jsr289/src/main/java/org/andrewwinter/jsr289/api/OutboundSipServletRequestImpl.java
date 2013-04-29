@@ -9,6 +9,7 @@ import javax.servlet.sip.TooManyHopsException;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import javax.servlet.sip.ar.SipApplicationRoutingRegion;
+import org.andrewwinter.sip.SipResponseHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.element.UserAgentClient;
 import org.andrewwinter.sip.message.InboundSipResponse;
@@ -23,7 +24,7 @@ import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
  *
  * @author andrew
  */
-public class OutboundSipServletRequestImpl extends SipServletRequestImpl {
+public class OutboundSipServletRequestImpl extends SipServletRequestImpl implements SipResponseHandler {
 
     /**
      * This is non-null when we're a UAC and have sent a request.
@@ -31,19 +32,12 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl {
     private UserAgentClient userAgentClient;
     
     private final InboundSipResponse inboundSipResponse;
-    
-    /**
-     * Use for requests where we are the UAC AND we've just received a response AND
-     * we're reinstantiating the SipServletRequest from the response. This is to support
-     * SipServletResponse.getRequest().
-     *
-     * @param request
-     */
-    public OutboundSipServletRequestImpl(final InboundSipResponse isr) {
-        super(isr.getRequest());
-        inboundSipResponse = isr;
-    }
 
+    /**
+     * 
+     * @param userAgentClient
+     * @param cancel 
+     */
     private OutboundSipServletRequestImpl(final UserAgentClient userAgentClient, final SipRequest cancel) {
         super(cancel);
         this.userAgentClient = userAgentClient;
@@ -180,6 +174,16 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl {
         getSipRequest().pushHeader(HeaderName.ROUTE, "<sip:127.0.0.1;lr>");
     }
     
+    /**
+     * Handles responses directly from the SIP stack. Delegate to the SipSession
+     * passing in this object, the original request corresponding to the
+     * response.
+     */
+    @Override
+    public void doResponse(final InboundSipResponse isr) {
+        ((SipSessionImpl) getSession()).doResponse(isr, this);
+    }
+
     @Override
     public void send() throws IOException {
 
@@ -195,7 +199,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl {
                     pushRoute();
                 }
                 
-                userAgentClient = UserAgentClient.createUacAndSendRequest((SipSessionImpl) getSession(), request, null);
+                userAgentClient = UserAgentClient.createUacAndSendRequest(this, request, null);
             }
         } else if (request.isCANCEL()) {
             userAgentClient.cancel(request);

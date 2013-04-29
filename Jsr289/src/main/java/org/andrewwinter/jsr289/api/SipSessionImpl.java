@@ -33,7 +33,6 @@ import org.andrewwinter.jsr289.store.SipListenerStore;
 import org.andrewwinter.jsr289.store.SipServletStore;
 import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.jsr289.util.Util;
-import org.andrewwinter.sip.SipResponseHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.dialog.DialogState;
 import org.andrewwinter.sip.message.InboundSipResponse;
@@ -44,7 +43,7 @@ import org.andrewwinter.sip.parser.SipRequest;
  *
  * @author andrewwinter77
  */
-public class SipSessionImpl implements SipSession, SipServletRequestHandler, SipResponseHandler {
+public class SipSessionImpl implements SipSession, SipServletRequestHandler {
 
     private final String callId;
     
@@ -593,9 +592,9 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
      * Although SipStack invokes this method for all responses including 100s,
      * the Sip Servlet v1.1 spec says we shouldn't invoke the app for 100s.
      * @param isr 
+     * @param request The corresponding request.
      */
-    @Override
-    public void doResponse(final InboundSipResponse isr) {
+    public void doResponse(final InboundSipResponse isr, final OutboundSipServletRequestImpl request) {
 
         if (isr.getResponse().getStatusCode() == 100) {
             // The UAC application is invoked for all incoming responses except
@@ -620,9 +619,6 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
             
         } else {
 
-            final OutboundSipServletRequestImpl request = new OutboundSipServletRequestImpl(isr.getRequest(), null);
-            request.setSipSession(this);
-            request.setServletContext(servletContext);
             final InboundSipServletResponseImpl response = new InboundSipServletResponseImpl(isr, request);
             response.setSipSession(this);
             response.setServletContext(servletContext);

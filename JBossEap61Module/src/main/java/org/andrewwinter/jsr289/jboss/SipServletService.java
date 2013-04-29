@@ -39,12 +39,9 @@ import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.MainServletNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
 import org.andrewwinter.sip.SipRequestHandler;
-import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.parser.Address;
 import org.andrewwinter.sip.parser.HeaderName;
-import org.andrewwinter.sip.transaction.server.ServerTransaction;
-import org.andrewwinter.sip.transaction.server.noninvite.NonInviteServerTransaction;
 import org.andrewwinter.sip.transport.NettyServerTransport;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.modules.ModuleClassLoader;
@@ -213,12 +210,13 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
      * sequencing.
      */
     private void pushRoute(final SipServletRequestImpl request, final Serializable stateInfo) {
-        // TODO: Replace this with SipServletRequest.pushRoute()
-        final Address route = Address.parse("sip:127.0.0.1");
+        final StringBuilder sb = new StringBuilder();
+        sb.append("<sip:127.0.0.1;lr");
         if (stateInfo != null) {
-            route.setParameter("si", "" + (Integer) stateInfo);
+            sb.append(";si=").append(String.valueOf((Integer) stateInfo));
         }
-        request.getSipRequest().pushRoute(route);
+        sb.append(">");
+        request.getSipRequest().pushHeader(HeaderName.ROUTE, sb.toString());
     }
     
     /**

@@ -4,7 +4,6 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import org.andrewwinter.jsr289.api.ServletContextProvider;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
-import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.apache.catalina.core.StandardContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
@@ -20,8 +19,7 @@ public class ServletContextFactory implements WebContextFactory {
     @Override
     public StandardContext createContext(DeploymentUnit du) throws DeploymentUnitProcessingException {
         final StandardContext context = new StandardContext();
-        final SipModuleInfo sipMetadata = du.getAttachment(CustomAttachments.SIP_MODULE_INFO);
-        sipMetadata.setStandardContext(context);
+        du.putAttachment(CustomAttachments.STANDARD_CONTEXT, context);
         return context;
     }
 

@@ -6,6 +6,7 @@ import org.andrewwinter.jsr289.api.ServletContextProvider;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.jboss.SipServletService;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
+import org.apache.catalina.core.StandardContext;
 import org.jboss.as.server.deployment.AttachmentKey;
 import org.jboss.as.server.deployment.DeploymentUnit;
 
@@ -50,6 +51,11 @@ public class CustomAttachments {
      */
     public static final AttachmentKey<ServletContextProvider> SERVLET_CONTEXT_PROVIDER = AttachmentKey.create(ServletContextProvider.class);
     
+    /**
+     *
+     */
+    public static final AttachmentKey<StandardContext> STANDARD_CONTEXT = AttachmentKey.create(StandardContext.class);
+
     /**
      *
      * @param ak

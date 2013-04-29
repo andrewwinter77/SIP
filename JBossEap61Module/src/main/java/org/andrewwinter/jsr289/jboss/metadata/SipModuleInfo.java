@@ -1,7 +1,5 @@
 package org.andrewwinter.jsr289.jboss.metadata;
 
-import org.andrewwinter.jsr289.model.SipListenerInfo;
-import org.andrewwinter.jsr289.model.SipApplicationInfo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -12,13 +10,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
-import org.andrewwinter.jsr289.jboss.Constants;
-import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.jsr289.jboss.ServletContextDelegate;
 import org.andrewwinter.jsr289.jboss.SipServletService;
+import org.andrewwinter.jsr289.model.SipApplicationInfo;
+import org.andrewwinter.jsr289.model.SipListenerInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
-import org.apache.catalina.core.StandardContext;
-import org.jboss.logging.Logger;
+import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 
 /**
  *
@@ -26,20 +23,34 @@ import org.jboss.logging.Logger;
  */
 public class SipModuleInfo {
 
-    private static final Logger LOG = Logger.getLogger(Constants.MODULE_NAME);
-
+    /**
+     * 
+     */
     private final Map<String, SipServletDelegate> sipServlets;
     
+    /**
+     * 
+     */
     private final List<SipApplicationInfo> sipApplicationMetadataList;
     
+    /**
+     * 
+     */
     private final Map<String, String> contextParams;
     
+    /**
+     * 
+     */
     private ClassLoader classLoader;
     
-    private StandardContext context;
-    
+    /**
+     * 
+     */
     private ServletContext servletContext;
     
+    /**
+     * 
+     */
     private String mainServletName;
     
     /**
@@ -64,14 +75,6 @@ public class SipModuleInfo {
      */
     public Collection<SipServletDelegate> getSipServlets() {
         return Collections.unmodifiableCollection((Collection<SipServletDelegate>) sipServlets.values());
-    }
-    
-    /**
-     * 
-     * @param context 
-     */
-    public void setStandardContext(final StandardContext context) {
-        this.context = context;
     }
     
     /**
@@ -122,7 +125,7 @@ public class SipModuleInfo {
     public void addContextParam(final String name, final String value) {
         final String origValue = contextParams.get(name);
         if (origValue != null && !origValue.equals(value)) {
-            LOG.info("Context param '" + name + "' is being redefined.");
+            System.out.println("Context param '" + name + "' is being redefined.");
         }
         contextParams.put(name, value);
     }
@@ -225,21 +228,22 @@ public class SipModuleInfo {
      * is used.
      * @param service 
      * @param managedClassInstantiator 
+     * @param context
      * @throws IllegalStateException
      * @throws ClassNotFoundException 
      * @throws InstantiationException
      * @throws IllegalAccessException  
      */
-    public void init(final SipServletService service, final ManagedClassInstantiator managedClassInstantiator) throws IllegalStateException, ClassNotFoundException,
-            InstantiationException, IllegalAccessException {
+    public void init(
+            final SipServletService service,
+            final ManagedClassInstantiator managedClassInstantiator,
+            final ServletContext context) 
+                throws IllegalStateException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         
         final ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
         Thread.currentThread().setContextClassLoader(classLoader);
         
-        servletContext = new ServletContextDelegate(
-                                    context.getServletContext(),
-                                    service,
-                                    this);
+        servletContext = new ServletContextDelegate(context, service, this);
         
         if ((mainServletName = getMainServletName()) == null) {
             throw new IllegalStateException("Unable to determine main servlet name");

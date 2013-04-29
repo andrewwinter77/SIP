@@ -7,6 +7,7 @@ import javax.enterprise.inject.spi.InjectionTarget;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
+import org.apache.catalina.core.StandardContext;
 import org.jboss.as.naming.context.NamespaceContextSelector;
 import org.jboss.as.server.deployment.Attachments;
 import org.jboss.as.server.deployment.DeploymentUnit;
@@ -59,6 +60,8 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
         
         final SipModuleInfo moduleInfo = du.getAttachment(CustomAttachments.SIP_MODULE_INFO);
 
+        final StandardContext standardContext = du.getAttachment(CustomAttachments.STANDARD_CONTEXT);
+        
         moduleInfo.setClassLoader(getClassLoader());
         
         Thread.currentThread().setContextClassLoader(getClassLoader());
@@ -67,7 +70,7 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
         // if there is no app name, no servlets, etc. It also instantiates the servlets ready
         // for use.
         try {
-            moduleInfo.init(getSipServletService(), this);
+            moduleInfo.init(getSipServletService(), this, standardContext.getServletContext());
             getSipServletService().deployApplication(moduleInfo);
         } catch (Exception e) {
             throw new StartException(e);

@@ -14,6 +14,7 @@ import org.andrewwinter.sip.element.UserAgentClient;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.message.SipMessageFactory;
 import org.andrewwinter.sip.parser.Address;
+import org.andrewwinter.sip.parser.HeaderName;
 import org.andrewwinter.sip.parser.SipMessageHelper;
 import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.transaction.client.ClientTransaction;
@@ -177,8 +178,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
      * sequencing.
      */
     private void pushRoute() {
-        final Address route = Address.parse("sip:127.0.0.1");
-        getSipRequest().pushRoute(route);
+        getSipRequest().pushHeader(HeaderName.ROUTE, "<sip:127.0.0.1;lr>");
     }
     
     @Override

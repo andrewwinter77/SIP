@@ -13,7 +13,7 @@ public class AddressImpl extends AbstractParameterable implements Address {
 
     private final boolean wildcard;
     
-    AddressImpl(final org.andrewwinter.sip.parser.Address address, final HeaderName hn) {
+    public AddressImpl(final org.andrewwinter.sip.parser.Address address, final HeaderName hn) {
         super(address, hn);
         wildcard = false;
     }

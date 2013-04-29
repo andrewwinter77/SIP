@@ -23,6 +23,7 @@ import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import javax.servlet.sip.ar.SipRouteModifier;
 import javax.servlet.sip.ar.SipTargetedRequestInfo;
 import org.andrewwinter.jsr289.ApplicationPath;
+import org.andrewwinter.jsr289.api.AddressImpl;
 import org.andrewwinter.jsr289.api.InboundSipServletRequestImpl;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.api.SipServletRequestImpl;
@@ -33,6 +34,7 @@ import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.andrewwinter.jsr289.store.ApplicationPathStore;
+import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.MainServletNameThreadLocal;
 import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
@@ -411,6 +413,35 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         }
     }
 
+    private void handleSubsequentRequest(final SipServletRequestImpl request) {
+        final AddressImpl route = (AddressImpl) request.getPoppedRoute();
+        if (route == null) {
+            throw new UnsupportedOperationException();
+        } else {
+            final String ssid = route.getURI().getParameter("ssid");
+            if (ssid == null) {
+                throw new UnsupportedOperationException();
+            } else {
+                final SipSessionImpl ss = SipSessionStore.getInstance().get(ssid);
+                ss.doRequest(request);
+            }
+        }
+    }
+
+    /**
+     * Pops the topmost Route header and sets the popped route on the request.
+     * @param request 
+     */
+    private void handleRouteHeader(final InboundSipServletRequestImpl request) {
+        final Address route = request.getSipRequest().popRoute();
+        if (route != null) {
+            
+            // TODO: Determine if the Route is for this container
+            
+            request.setPoppedRoute(new AddressImpl(route, null));
+        }
+    }
+    
     /**
      *
      * @param isr
@@ -418,32 +449,17 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
     @Override
     public void doRequest(final InboundSipRequest isr) {
         final InboundSipServletRequestImpl sipServletRequest = new InboundSipServletRequestImpl(isr);
+        
+        handleRouteHeader(sipServletRequest);
+        
         if (sipServletRequest.isInitial()) {
             System.out.println("Got inbound initial request " + isr.getRequest().getMethod() + " " + isr.getServerTransaction());
             routeInitialRequest(sipServletRequest);
         } else {
-            final ServerTransaction txn = isr.getServerTransaction();
-            Dialog dialog = txn.getDialog();
-            if (dialog == null && txn instanceof NonInviteServerTransaction && ((NonInviteServerTransaction) txn).getAssociatedTxn() != null) {
-                dialog = ((NonInviteServerTransaction) txn).getAssociatedTxn().getDialog();
-            }
-            if (dialog == null) {
-                System.out.println("Why don't we have a dialog???");
-            } else {
-                final ApplicationPath path = ApplicationPathStore.getInstance().get(dialog.getId());
-                if (path == null) {
-                    System.out.println("Why don't we have a path???");
-                } else {
-                    System.out.println(path);
-                    
-                    for (final SipServletRequestImpl origRequest : path.getRequests()) {
-                        final SipSessionImpl session = (SipSessionImpl) origRequest.getSession();
-                        final SipModuleInfo moduleInfo = APP_NAME_TO_MODULE_INFO.get(session.getApplicationName());
-                        sipServletRequest.setSipSession(session);
-                        doRequest(sipServletRequest, moduleInfo, moduleInfo.getServlet(session.getHandler()));
-                    }
-                }
-            }
+            
+            // TODO: Set ClassLoader.
+            
+            handleSubsequentRequest(sipServletRequest);
         }
     }
 

@@ -2,6 +2,7 @@ package org.andrewwinter.jsr289.api;
 
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.sip.Address;
 import javax.servlet.sip.B2buaHelper;
 import javax.servlet.sip.Proxy;
 import javax.servlet.sip.SipServlet;
@@ -34,6 +35,8 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl implemen
     private String remoteAddr;
     private int remotePort;
     
+    private Address poppedRoute;
+    
     /**
      * Use for inbound requests where we are the UAS.
      *
@@ -49,6 +52,15 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl implemen
         remotePort = inboundSipRequest.getInitialRemotePort();
     }
 
+    @Override
+    public Address getPoppedRoute() {
+        return poppedRoute;
+    }
+
+    public void setPoppedRoute(final Address poppedRoute) {
+        this.poppedRoute = poppedRoute;
+    }
+    
     public InboundSipRequest getInboundSipRequest() {
         return inboundSipRequest;
     }

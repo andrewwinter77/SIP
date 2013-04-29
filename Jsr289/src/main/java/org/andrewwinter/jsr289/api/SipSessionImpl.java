@@ -46,7 +46,7 @@ import org.andrewwinter.sip.parser.SipRequest;
  *
  * @author andrewwinter77
  */
-public class SipSessionImpl implements SipSession, /*SipServletRequestHandler,*/ SipResponseHandler {
+public class SipSessionImpl implements SipSession, SipServletRequestHandler, SipResponseHandler {
 
     private final String callId;
     
@@ -560,47 +560,47 @@ public class SipSessionImpl implements SipSession, /*SipServletRequestHandler,*/
      * For subsequent requests only!
      * @param isr 
      */
-//    @Override
-//    public void doRequest(final SipServletRequestImpl subsequentRequest) {
-//        final SipServletDelegate servlet = SipServletStore.getInstance().get(appName, handler);
-//        if (servlet == null) {
-//            
-//        } else {
-//
-//            subsequentRequest.setServletContext(servletContext);
-//            subsequentRequest.setSipSession(this);
-//            
-//            try {
-//                org.andrewwinter.jsr289.util.Util.invokeServlet(
-//                        servlet,
-//                        subsequentRequest,
-//                        null,
-//                        servletContext,
-//                        appName,
-//                        mainServletName);
-//            } catch (final Exception e) {
-//                e.printStackTrace();
-//
-//                // If a servlet throws an exception when invoked to process a
-//                // request other than ACK and CANCEL, the servlet container MUST
-//                // generate a 500 response to that request.
-//
-//                if (!"CANCEL".equals(subsequentRequest.getMethod()) && !"ACK".equals(subsequentRequest.getMethod())) {
-//
-//                    try {
-//                        // Note this could (and does sometimes) throw an exception when the servlet
-//                        // threw an exception due to a final response already being sent. If a final
-//                        // response has already been sent then clearly we won't be able to send a
-//                        // 500.
-//                        final SipServletResponse response = subsequentRequest.createResponse(SipServletResponse.SC_SERVER_INTERNAL_ERROR);
-//
-//                        response.send();
-//                    } catch (final Exception ignore) {
-//                    }
-//                }
-//            }
-//        }
-//    }
+    @Override
+    public void doRequest(final SipServletRequestImpl subsequentRequest) {
+        final SipServletDelegate servlet = SipServletStore.getInstance().get(appName, handler);
+        if (servlet == null) {
+            throw new UnsupportedOperationException();
+        } else {
+
+            subsequentRequest.setServletContext(servletContext);
+            subsequentRequest.setSipSession(this);
+            
+            try {
+                org.andrewwinter.jsr289.util.Util.invokeServlet(
+                        servlet,
+                        subsequentRequest,
+                        null,
+                        servletContext,
+                        appName,
+                        mainServletName);
+            } catch (final Exception e) {
+                e.printStackTrace();
+
+                // If a servlet throws an exception when invoked to process a
+                // request other than ACK and CANCEL, the servlet container MUST
+                // generate a 500 response to that request.
+
+                if (!"CANCEL".equals(subsequentRequest.getMethod()) && !"ACK".equals(subsequentRequest.getMethod())) {
+
+                    try {
+                        // Note this could (and does sometimes) throw an exception when the servlet
+                        // threw an exception due to a final response already being sent. If a final
+                        // response has already been sent then clearly we won't be able to send a
+                        // 500.
+                        final SipServletResponse response = subsequentRequest.createResponse(SipServletResponse.SC_SERVER_INTERNAL_ERROR);
+
+                        response.send();
+                    } catch (final Exception ignore) {
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * Although SipStack invokes this method for all responses including 100s,

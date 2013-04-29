@@ -14,7 +14,7 @@ import javax.servlet.sip.annotation.SipListener;
 import javax.servlet.sip.annotation.SipServlet;
 import org.andrewwinter.jsr289.jboss.Constants;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
-import org.andrewwinter.jsr289.jboss.metadata.SipApplicationInfo;
+import org.andrewwinter.jsr289.model.SipApplicationInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
@@ -194,17 +194,22 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
                 final String packageName = info.getClass().getPackage().getName().toString();
 
                 final SipApplicationInfo appInfo = new SipApplicationInfo();
-                appInfo.setAppName(annotationValueAsString(annotation, "name"));
-                appInfo.setPackageName(packageName);
-                appInfo.setDescription(annotationValueAsString(annotation, "description"));
-                appInfo.setDisplayName(annotationValueAsString(annotation, "displayName"));
-                appInfo.setDistributable(annotationValueAsString(annotation, "distributable"));
-                appInfo.setLargeIcon(annotationValueAsString(annotation, "largeIcon"));
-                appInfo.setMainServlet(annotationValueAsString(annotation, "mainServlet"));
-                appInfo.setProxyTimeout(annotationValueAsString(annotation, "proxyTimeout"));
-                appInfo.setSessionTimeout(annotationValueAsString(annotation, "sessionTimeout"));
-                appInfo.setSmallIcon(annotationValueAsString(annotation, "smallIcon"));
-
+                
+                try {
+                    appInfo.setAppName(annotationValueAsString(annotation, "name"));
+                    appInfo.setPackageName(packageName);
+                    appInfo.setDescription(annotationValueAsString(annotation, "description"));
+                    appInfo.setDisplayName(annotationValueAsString(annotation, "displayName"));
+                    appInfo.setDistributable(annotationValueAsString(annotation, "distributable"));
+                    appInfo.setLargeIcon(annotationValueAsString(annotation, "largeIcon"));
+                    appInfo.setMainServlet(annotationValueAsString(annotation, "mainServlet"));
+                    appInfo.setProxyTimeout(annotationValueAsString(annotation, "proxyTimeout"));
+                    appInfo.setSessionTimeout(annotationValueAsString(annotation, "sessionTimeout"));
+                    appInfo.setSmallIcon(annotationValueAsString(annotation, "smallIcon"));
+                } catch (IllegalArgumentException e) {
+                    throw new DeploymentUnitProcessingException("Error populating app info object.", e);
+                }
+                
                 moduleInfo.add(appInfo);
             } else {
                 throw new DeploymentUnitProcessingException("@SipApplication appeared on something other than a class.");

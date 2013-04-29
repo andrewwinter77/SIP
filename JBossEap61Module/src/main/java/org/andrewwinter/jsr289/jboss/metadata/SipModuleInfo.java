@@ -1,5 +1,6 @@
 package org.andrewwinter.jsr289.jboss.metadata;
 
+import org.andrewwinter.jsr289.model.SipApplicationInfo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

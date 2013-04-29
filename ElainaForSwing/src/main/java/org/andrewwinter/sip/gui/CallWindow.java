@@ -155,7 +155,7 @@ public class CallWindow extends javax.swing.JDialog implements SipRequestHandler
         if (dialog == null) {
             System.out.println("Dialog is null");
         } else {
-            final SipRequest options = SipMessageFactory.createInDialogRequest(dialog, "OPTIONS");
+            final SipRequest options = SipMessageFactory.createInDialogRequest(dialog, "OPTIONS", null, null);
             
             // An Accept header field SHOULD be included to indicate the type of
             // message body the UAC wishes to receive in the response.
@@ -173,7 +173,7 @@ public class CallWindow extends javax.swing.JDialog implements SipRequestHandler
         if (dialog == null) {
             System.out.println("Dialog is null");
         } else {
-            final SipRequest bye = SipMessageFactory.createInDialogRequest(dialog, "BYE");
+            final SipRequest bye = SipMessageFactory.createInDialogRequest(dialog, "BYE", null, null);
             
             UserAgentClient.createUacAndSendRequest(this, bye, null);
             Util.logMessage(bye, false, textArea);

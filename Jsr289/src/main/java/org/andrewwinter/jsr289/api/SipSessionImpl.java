@@ -332,7 +332,7 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler, Sip
             throw new UnsupportedOperationException("Not supported yet.");
                     
         } else {
-            request = SipMessageFactory.createInDialogRequest(dialog, method);
+            request = SipMessageFactory.createInDialogRequest(dialog, method, null, null);
         } 
                 
         final OutboundSipServletRequestImpl servletRequest = new OutboundSipServletRequestImpl(request, null);

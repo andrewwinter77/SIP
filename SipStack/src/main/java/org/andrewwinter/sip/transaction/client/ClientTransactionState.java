@@ -12,10 +12,18 @@ public abstract class ClientTransactionState {
     
     private final ClientTransactionStateName state;
     
+    /**
+     *
+     * @param state
+     */
     public ClientTransactionState(final ClientTransactionStateName state) {
         this.state = state;
     }
     
+    /**
+     *
+     * @return
+     */
     public ClientTransactionStateName getStateName() {
         return state;
     }
@@ -28,6 +36,7 @@ public abstract class ClientTransactionState {
     
     /**
      *
+     * @param cancel 
      */
     public void cancel(final SipRequest cancel) {
     }

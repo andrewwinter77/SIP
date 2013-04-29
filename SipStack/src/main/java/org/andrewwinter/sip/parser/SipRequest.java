@@ -120,6 +120,10 @@ public class SipRequest extends SipMessage {
         pushHeader(HeaderName.ROUTE, route.toString());
     }
     
+    /**
+     *
+     * @param uri
+     */
     public void pushRoute(final Uri uri) {
         pushRoute(new Address(uri));
     }
@@ -180,6 +184,10 @@ public class SipRequest extends SipMessage {
         return getCommaSeparatedTokens(HeaderName.PROXY_REQUIRE);
     }
 
+    /**
+     *
+     * @param requestUri
+     */
     public void setRequestUri(final Uri requestUri) {
         this.requestUri = requestUri;
     }

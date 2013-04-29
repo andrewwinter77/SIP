@@ -22,18 +22,37 @@ public class AuthenticationChallenge implements Serializable {
         this.params = params;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getScheme() {
         return scheme;
     }
     
+    /**
+     *
+     * @param name
+     * @return
+     */
     public String getParam(final String name) {
         return params.get(name);
     }
     
+    /**
+     *
+     * @return
+     */
     public Set<String> getParamNames() {
         return Collections.unmodifiableSet(params.keySet());
     }
     
+    /**
+     *
+     * @param str
+     * @return
+     * @throws ParseException
+     */
     public static AuthenticationChallenge parse(final String str) throws ParseException {
         
         final String[] parts = str.trim().split("\\s+", 2);

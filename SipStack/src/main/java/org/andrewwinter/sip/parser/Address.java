@@ -45,6 +45,10 @@ public class Address extends Parameterable {
         return uri;
     }
     
+    /**
+     *
+     * @param uri
+     */
     public void setUri(final Uri uri) {
         if (uri == null) {
             throw new IllegalArgumentException("URI cannot be null.");

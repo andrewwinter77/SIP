@@ -39,13 +39,17 @@ public abstract class ClientTransaction {
         ClientTransactionStore.getInstance().put(this);
     }
     
+    /**
+     *
+     * @return
+     */
     public ClientTransactionStateName getStateName() {
         return state.getStateName();
     }
 
     /**
      * 
-     * @param response 
+     * @param isr 
      */
     public void handleResponseFromTransportLayer(final InboundSipResponse isr) {
         state.handleResponseFromTransportLayer(isr);
@@ -79,7 +83,7 @@ public abstract class ClientTransaction {
     
     /**
      * 
-     * @param response
+     * @param isr 
      * @param dialog  
      */
     public void sendResponseToTU(final InboundSipResponse isr, final Dialog dialog) {
@@ -116,6 +120,7 @@ public abstract class ClientTransaction {
     
     /**
      * 
+     * @param cancel 
      */
     public void cancel(final SipRequest cancel) {
         state.cancel(cancel);

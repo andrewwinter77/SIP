@@ -182,11 +182,22 @@ public abstract class ServerTransport {
         }
     }
 
+    /**
+     *
+     * @param sipListener
+     */
     public ServerTransport(final SipRequestHandler sipListener) {
         this.sipListener = sipListener;
     }
     
+    /**
+     *
+     * @throws IOException
+     */
     public abstract void stopListening() throws IOException;
     
+    /**
+     *
+     */
     public abstract void listen();
 }

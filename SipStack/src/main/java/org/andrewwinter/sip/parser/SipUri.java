@@ -93,6 +93,10 @@ public class SipUri extends Uri {
         headers.put(name, value);
     }
     
+    /**
+     *
+     * @param name
+     */
     public void removeHeader(final String name) {
         headers.remove(name);
     }

@@ -60,6 +60,10 @@ public class UserAgentClient {
         destinationUriIndex = 0;
     }
     
+    /**
+     *
+     * @return
+     */
     public ClientTransaction getClientTransaction() {
         return clientTxn;
     }

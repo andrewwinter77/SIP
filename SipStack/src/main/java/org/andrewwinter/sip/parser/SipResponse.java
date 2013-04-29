@@ -57,14 +57,27 @@ public class SipResponse extends SipMessage {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public List<AuthenticationChallenge> getWWWAuthenticate() {
         return getAuthenticationChallengeHeaders(HeaderName.WWW_AUTHENTICATE);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<AuthenticationChallenge> getProxyAuthenticate() {
         return getAuthenticationChallengeHeaders(HeaderName.PROXY_AUTHENTICATE);
     }
     
+    /**
+     *
+     * @param statusCode
+     * @param reasonPhrase
+     */
     public void setStatus(final int statusCode, final String reasonPhrase) {
         this.statusCode = statusCode;
         this.reasonPhrase = reasonPhrase;

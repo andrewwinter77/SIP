@@ -38,6 +38,12 @@ public class GenericUri extends Uri {
         this.scheme = scheme.toLowerCase(Locale.US);
     }
 
+    /**
+     *
+     * @param str
+     * @return
+     * @throws ParseException
+     */
     public static GenericUri parse(String str) throws ParseException {
         final GenericUri uri = new GenericUri();
         

@@ -6,9 +6,24 @@ package org.andrewwinter.sip.transaction.server;
  */
 public enum ServerTransactionStateName {
 
+    /**
+     *
+     */
     PROCEEDING,
+    /**
+     *
+     */
     TERMINATED,
+    /**
+     *
+     */
     COMPLETED,
+    /**
+     *
+     */
     CONFIRMED,
+    /**
+     *
+     */
     TRYING
 }

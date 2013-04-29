@@ -17,6 +17,9 @@ public abstract class SipMessage implements Serializable {
     
     private boolean useLongFormHeaders;
     
+    /**
+     *
+     */
     protected final Map<HeaderName, List<Serializable>> headers;
     
     private String body;
@@ -29,6 +32,10 @@ public abstract class SipMessage implements Serializable {
         useLongFormHeaders = true;
     }
     
+    /**
+     *
+     * @param useLongFormHeaders
+     */
     public void setUseLongFormHeaders(final boolean useLongFormHeaders) {
         this.useLongFormHeaders = useLongFormHeaders;
     }
@@ -38,8 +45,9 @@ public abstract class SipMessage implements Serializable {
      * been set, the new values overwrites the previous ones. If there are
      * multiple headers with the same name, they all are replaced by this header
      * name, value pair.
+     * @param <T> 
      * @param name
-     * @param values
+     * @param objs 
      */
     public <T extends Serializable> void setHeaders(final HeaderName name, final List<T> objs) {
         if (objs == null) {
@@ -49,6 +57,11 @@ public abstract class SipMessage implements Serializable {
     }
     
 
+    /**
+     *
+     * @param name
+     * @param value
+     */
     public void setHeader(final HeaderName name, final Serializable value) {
         if (value == null) {
             throw new IllegalArgumentException("Attempting to set null value for header.");
@@ -111,10 +124,20 @@ public abstract class SipMessage implements Serializable {
      */
     public abstract String getMethod();
     
+    /**
+     *
+     * @param name
+     * @param value
+     */
     public void setHeader(final HeaderName name, final int value) {
         setHeader(name, String.valueOf(value));
     }
 
+    /**
+     *
+     * @param name
+     * @param value
+     */
     public void setHeader(final HeaderName name, final float value) {
         setHeader(name, String.valueOf(value));
     }
@@ -187,6 +210,12 @@ public abstract class SipMessage implements Serializable {
         }
     }
     
+    /**
+     *
+     * @param name
+     * @return
+     * @throws ParseException
+     */
     public List<Parameterable> getParameterables(final HeaderName name) throws ParseException {
         final List<Serializable> values = headers.get(name);
         if (values == null) {
@@ -249,14 +278,26 @@ public abstract class SipMessage implements Serializable {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Parameterable> getAccept() {
         return getParameterables(HeaderName.ACCEPT);
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Parameterable> getAcceptEncoding() {
         return getParameterables(HeaderName.ACCEPT_ENCODING);
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Parameterable> getAcceptLanguage() {
         return getParameterables(HeaderName.ACCEPT_LANGUAGE);
     }
@@ -336,7 +377,7 @@ public abstract class SipMessage implements Serializable {
 
     /**
      * 
-     * @param name 
+     * @param hn 
      */
     public void removeHeader(final HeaderName hn) {
         headers.remove(hn);
@@ -448,6 +489,12 @@ public abstract class SipMessage implements Serializable {
         return (String) getFirstOccurrenceOfHeader(HeaderName.USER_AGENT);
     }
 
+    /**
+     *
+     * @param hn
+     * @return
+     * @throws ParseException
+     */
     public Address getAddress(final HeaderName hn) throws ParseException {
         final Serializable value = getFirstOccurrenceOfHeader(hn);
         if (value == null) {
@@ -481,6 +528,12 @@ public abstract class SipMessage implements Serializable {
     
     abstract String getStartLine();
     
+    /**
+     *
+     * @param hn
+     * @return
+     * @throws ParseException
+     */
     public Parameterable getParameterable(final HeaderName hn) throws ParseException {
         final Serializable header = getFirstOccurrenceOfHeader(hn);
         if (header == null) {
@@ -539,7 +592,7 @@ public abstract class SipMessage implements Serializable {
 
     /**
      *
-     * @param name
+     * @param hn 
      * @return
      */
     public List<Serializable> getHeaders(final HeaderName hn) {
@@ -562,7 +615,8 @@ public abstract class SipMessage implements Serializable {
     /**
      * 
      * @param str
-     * @return 
+     * @return
+     * @throws ParseException  
      */
     public static SipMessage parse(String str) throws ParseException {
         // Separate the SIP header section from the body.

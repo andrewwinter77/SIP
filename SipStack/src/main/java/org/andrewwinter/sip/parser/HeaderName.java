@@ -281,6 +281,10 @@ public class HeaderName {
         return hn;
     }
     
+    /**
+     *
+     * @return
+     */
     public HeaderType getType() {
         return type;
     }

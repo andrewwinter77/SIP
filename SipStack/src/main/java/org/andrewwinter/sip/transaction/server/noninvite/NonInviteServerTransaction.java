@@ -24,6 +24,10 @@ public class NonInviteServerTransaction extends ServerTransaction {
         this.associatedTxn = associatedTxn;
     }
     
+    /**
+     *
+     * @return
+     */
     public ServerTransaction getAssociatedTxn() {
         return associatedTxn;
     }

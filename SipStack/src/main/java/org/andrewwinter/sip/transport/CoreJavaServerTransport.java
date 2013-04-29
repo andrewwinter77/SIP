@@ -37,10 +37,19 @@ public class CoreJavaServerTransport extends ServerTransport implements Runnable
     
     private boolean listenForTraffic;
 
+    /**
+     *
+     * @param sipListener
+     */
     public CoreJavaServerTransport(final SipRequestHandler sipListener) {
         this(sipListener, 5060);
     }
 
+    /**
+     *
+     * @param sipListener
+     * @param tcpPort
+     */
     public CoreJavaServerTransport(final SipRequestHandler sipListener, final int tcpPort) {
         super(sipListener);
         this.localPort = new InetSocketAddress(tcpPort);
@@ -49,6 +58,7 @@ public class CoreJavaServerTransport extends ServerTransport implements Runnable
     
     /**
      *
+     * @throws IOException 
      */
     @Override
     public void stopListening() throws IOException {
@@ -63,6 +73,9 @@ public class CoreJavaServerTransport extends ServerTransport implements Runnable
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void listen() {
         final ExecutorService exec = Executors.newSingleThreadExecutor();

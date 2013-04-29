@@ -9,9 +9,22 @@ import java.nio.ByteBuffer;
  */
 public interface TcpSocketWrapper {
     
+    /**
+     *
+     * @throws IOException
+     */
     void close() throws IOException;
     
+    /**
+     *
+     * @return
+     */
     boolean isConnected();
     
+    /**
+     *
+     * @param bb
+     * @throws IOException
+     */
     void write(ByteBuffer bb) throws IOException;
 }

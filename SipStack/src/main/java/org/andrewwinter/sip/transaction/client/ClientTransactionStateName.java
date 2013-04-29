@@ -6,9 +6,24 @@ package org.andrewwinter.sip.transaction.client;
  */
 public enum ClientTransactionStateName {
 
+    /**
+     *
+     */
     CALLING,
+    /**
+     *
+     */
     COMPLETED,
+    /**
+     *
+     */
     PROCEEDING,
+    /**
+     *
+     */
     TERMINATED,
+    /**
+     *
+     */
     TRYING
 }

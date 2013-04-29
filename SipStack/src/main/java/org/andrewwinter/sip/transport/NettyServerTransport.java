@@ -24,17 +24,29 @@ public class NettyServerTransport extends ServerTransport {
 
     private final SocketAddress localPort;
     
+    /**
+     *
+     * @param sipListener
+     * @param tcpPort
+     */
     public NettyServerTransport(final SipRequestHandler sipListener, final int tcpPort) {
         super(sipListener);
         this.localPort = new InetSocketAddress(tcpPort);
         
     }
     
+    /**
+     *
+     * @throws IOException
+     */
     @Override
     public void stopListening() throws IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     */
     @Override
     public void listen() {
         listenForTcp();

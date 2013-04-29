@@ -24,6 +24,11 @@ public class TelUrl extends Uri {
         return "tel";
     }
     
+    /**
+     *
+     * @param number
+     * @throws ParseException
+     */
     public void setGlobalNumber(final String number) throws ParseException {
         
         // TODO: Parse to make sure the number is valid
@@ -32,6 +37,12 @@ public class TelUrl extends Uri {
         setParameter("phone-context", null);
     }
     
+    /**
+     *
+     * @param number
+     * @param phoneContext
+     * @throws ParseException
+     */
     public void setLocalNumber(final String number, final String phoneContext) throws ParseException {
         
         // TODO: Parse to make sure the number is valid

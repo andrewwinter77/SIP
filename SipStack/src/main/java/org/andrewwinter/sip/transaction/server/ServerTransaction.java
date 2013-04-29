@@ -25,6 +25,10 @@ public abstract class ServerTransaction {
     
     private StatefulProxy proxy;
 
+    /**
+     *
+     * @return
+     */
     public ServerTransactionStateName getStateName() {
         return state.getStateName();
     }

@@ -19,18 +19,26 @@ public class InboundSipResponse extends InboundSipMessage {
     /**
      * 
      * @param response
+     * @param initialRemoteAddr 
      * @param txn
-     * @param dialog  
      */
     public InboundSipResponse(final SipResponse response, final InetSocketAddress initialRemoteAddr, final ClientTransaction txn) {
         super(initialRemoteAddr, response);
         this.clientTransaction = txn;
     }
 
+    /**
+     *
+     * @return
+     */
     public SipResponse getResponse() {
         return (SipResponse) getMessage();
     }
     
+    /**
+     *
+     * @param dialog
+     */
     public void setDialog(final Dialog dialog) {
         this.dialog = dialog;
     }

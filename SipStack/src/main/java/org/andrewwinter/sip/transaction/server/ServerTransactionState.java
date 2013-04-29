@@ -11,6 +11,10 @@ public abstract class ServerTransactionState {
     
     private final ServerTransactionStateName state;
     
+    /**
+     *
+     * @param state
+     */
     public ServerTransactionState(final ServerTransactionStateName state) {
         this.state = state;
     }
@@ -39,6 +43,10 @@ public abstract class ServerTransactionState {
         // the responses generated for the original request.
     }
     
+    /**
+     *
+     * @return
+     */
     public final ServerTransactionStateName getStateName() {
         return state;
     }

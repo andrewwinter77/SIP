@@ -131,7 +131,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
     public void doRequest(final SipServletRequestImpl request, final SipModuleInfo moduleInfo, final SipServletDelegate sipServlet) {
 
         try {
-            final ModuleClassLoader cl = moduleInfo.getClassLoader();
+            final ClassLoader cl = moduleInfo.getClassLoader();
             Thread.currentThread().setContextClassLoader(cl);
 
             final ServletContext context = moduleInfo.getServletContext();

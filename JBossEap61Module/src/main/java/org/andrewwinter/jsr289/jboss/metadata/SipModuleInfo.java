@@ -18,9 +18,7 @@ import org.andrewwinter.jsr289.jboss.ServletContextDelegate;
 import org.andrewwinter.jsr289.jboss.SipServletService;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.apache.catalina.core.StandardContext;
-import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
 import org.jboss.logging.Logger;
-import org.jboss.modules.ModuleClassLoader;
 
 /**
  *
@@ -36,7 +34,7 @@ public class SipModuleInfo {
     
     private final Map<String, String> contextParams;
     
-    private ModuleClassLoader classLoader;
+    private ClassLoader classLoader;
     
     private StandardContext context;
     
@@ -50,6 +48,9 @@ public class SipModuleInfo {
      */
     private final Map<Class<? extends EventListener>, Set<SipListenerInfo>> sipListeners;
     
+    /**
+     *
+     */
     public SipModuleInfo() {
         sipServlets = new HashMap<>();
         sipApplicationMetadataList = new ArrayList<>();
@@ -57,44 +58,50 @@ public class SipModuleInfo {
         sipListeners = new HashMap<>();
     }
     
-//    public void addSipListener(final Class iface, final Class impl) {
-//        Set<Class> impls = sipListeners.get(iface);
-//        if (impls == null) {
-//            impls = new HashSet<>();
-//            sipListeners.put(iface, impls);
-//        }
-//        impls.add(impl);
-//    }
-    
+    /**
+     *
+     * @return
+     */
     public Collection<SipServletDelegate> getSipServlets() {
         return Collections.unmodifiableCollection((Collection<SipServletDelegate>) sipServlets.values());
     }
     
     /**
      * 
-     * @param iface
-     * @return {@code null} if no classes implement the given interface.
+     * @param context 
      */
-//    public Set<Class> getSipListeners(final Class iface) {
-//        return sipListeners.get(iface);
-//    }
-    
     public void setStandardContext(final StandardContext context) {
         this.context = context;
     }
     
-    public void setClassLoader(final ModuleClassLoader classLoader) {
+    /**
+     *
+     * @param classLoader
+     */
+    public void setClassLoader(final ClassLoader classLoader) {
         this.classLoader = classLoader;
     }
     
-    public ModuleClassLoader getClassLoader() {
+    /**
+     *
+     * @return
+     */
+    public ClassLoader getClassLoader() {
         return classLoader;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getAppName() {
         return sipApplicationMetadataList.get(0).getAppName();
     }
     
+    /**
+     * 
+     * @return 
+     */
     public String getMainServletName() {
         for (final SipApplicationInfo sam : sipApplicationMetadataList) {
             if (sam.getMainServlet() != null) {
@@ -107,6 +114,11 @@ public class SipModuleInfo {
         return null;
     }
     
+    /**
+     * 
+     * @param name
+     * @param value 
+     */
     public void addContextParam(final String name, final String value) {
         final String origValue = contextParams.get(name);
         if (origValue != null && !origValue.equals(value)) {
@@ -115,6 +127,10 @@ public class SipModuleInfo {
         contextParams.put(name, value);
     }
     
+    /**
+     * 
+     * @param sli 
+     */
     public void add(final SipListenerInfo sli) {
         Set<SipListenerInfo> listeners = sipListeners.get(sli.getSipListenerInterface());
         if (listeners == null) {
@@ -124,31 +140,62 @@ public class SipModuleInfo {
         listeners.add(sli);
     }
     
+    /**
+     * 
+     * @param ssi 
+     */
     public void add(final SipServletDelegate ssi) {
         sipServlets.put(ssi.getName(), ssi);
     }
     
+    /**
+     * 
+     * @param metadata 
+     */
     public void add(final SipApplicationInfo metadata) {
         sipApplicationMetadataList.add(metadata);
     }
 
+    /**
+     * 
+     * @param name
+     * @return 
+     */
     public SipServletDelegate getServlet(final String name) {
         return sipServlets.get(name);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public SipServletDelegate getMainServlet() {
         return getServlet(mainServletName);
     }
     
+    /**
+     * 
+     * @param <T>
+     * @param iface
+     * @return 
+     */
     public <T extends EventListener> Set<SipListenerInfo> getSipListeners(final Class<T> iface) {
         return sipListeners.get(iface);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public ServletContext getServletContext() {
         return servletContext;
     }
     
-    private void configureSipServletDelegators(final ManagedClassInstantiator managedClassInstantiator) throws Exception {
+    /**
+     * 
+     * @param managedClassInstantiator 
+     */
+    private void initServletDelegators(final ManagedClassInstantiator managedClassInstantiator) {
         for (final SipServletDelegate servlet : sipServlets.values()) {
             servlet.setClassLoader(classLoader);
             servlet.setManagedClassInstantiator(managedClassInstantiator);
@@ -156,7 +203,15 @@ public class SipModuleInfo {
         }
     }
     
-    private <T extends EventListener> void instantiateSipListeners(final Class<T> iface) throws Exception {
+    /**
+     * 
+     * @param <T>
+     * @param iface
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException 
+     */
+    private <T extends EventListener> void initListeners(final Class<T> iface) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         final Set<SipListenerInfo> listeners = sipListeners.get(iface);
         if (listeners != null) {
             for (final SipListenerInfo listener : listeners) {
@@ -168,32 +223,40 @@ public class SipModuleInfo {
     /**
      * Prepares this SipModule for use. This must be called before the module
      * is used.
+     * @param service 
+     * @param managedClassInstantiator 
+     * @throws IllegalStateException
+     * @throws ClassNotFoundException 
+     * @throws InstantiationException
+     * @throws IllegalAccessException  
      */
-    public void prepare(final SipServletService service, final ManagedClassInstantiator managedClassInstantiator) throws DeploymentUnitProcessingException {
+    public void init(final SipServletService service, final ManagedClassInstantiator managedClassInstantiator) throws IllegalStateException, ClassNotFoundException,
+            InstantiationException, IllegalAccessException {
         
         final ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
+        Thread.currentThread().setContextClassLoader(classLoader);
         
-        try {
-            Thread.currentThread().setContextClassLoader(classLoader);
-            servletContext = new ServletContextDelegate(
-                    context.getServletContext(),
-                    service,
-                    this);
-
-            if ((mainServletName = getMainServletName()) == null) {
-                throw new DeploymentUnitProcessingException("Unable to determine main servlet name");
-            }
-            
-            configureSipServletDelegators(managedClassInstantiator);
-            
-            for (final Class clazz : org.andrewwinter.jsr289.util.Util.LISTENER_CLASSES) {
-                instantiateSipListeners(clazz);
-            }
-            
-        } catch (Exception e) {
-            Thread.currentThread().setContextClassLoader(oldClassLoader);
-            throw new DeploymentUnitProcessingException(e);
+        servletContext = new ServletContextDelegate(
+                                    context.getServletContext(),
+                                    service,
+                                    this);
+        
+        if ((mainServletName = getMainServletName()) == null) {
+            throw new IllegalStateException("Unable to determine main servlet name");
         }
-        Thread.currentThread().setContextClassLoader(oldClassLoader);
+
+        try {
+            
+            initServletDelegators(managedClassInstantiator);
+            
+            for (final Class listenerIface : org.andrewwinter.jsr289.util.Util.LISTENER_CLASSES) {
+                initListeners(listenerIface);
+            }
+            
+        } catch (ClassNotFoundException | IllegalStateException | InstantiationException | IllegalAccessException e) {
+            throw e;
+        } finally {
+            Thread.currentThread().setContextClassLoader(oldClassLoader);
+        }
     }
 }

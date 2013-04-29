@@ -26,7 +26,7 @@ import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
  *
  * @author andrew
  */
-public class InboundSipServletRequestImpl extends SipServletRequestImpl implements SipServletRequest {
+public class InboundSipServletRequestImpl extends SipServletRequestImpl {
 
     private final InboundSipRequest inboundSipRequest;
     private ProxyImpl proxy;

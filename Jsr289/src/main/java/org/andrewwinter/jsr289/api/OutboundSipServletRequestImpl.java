@@ -13,7 +13,6 @@ import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.element.UserAgentClient;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.message.SipMessageFactory;
-import org.andrewwinter.sip.parser.Address;
 import org.andrewwinter.sip.parser.HeaderName;
 import org.andrewwinter.sip.parser.SipMessageHelper;
 import org.andrewwinter.sip.parser.SipRequest;
@@ -24,7 +23,7 @@ import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
  *
  * @author andrew
  */
-public class OutboundSipServletRequestImpl extends SipServletRequestImpl implements SipServletRequest {
+public class OutboundSipServletRequestImpl extends SipServletRequestImpl {
 
     /**
      * This is non-null when we're a UAC and have sent a request.

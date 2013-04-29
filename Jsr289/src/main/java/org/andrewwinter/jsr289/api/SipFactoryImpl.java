@@ -21,7 +21,6 @@ import org.andrewwinter.jsr289.threadlocal.ServletNameThreadLocal;
 import org.andrewwinter.sip.message.SipMessageFactory;
 import org.andrewwinter.sip.parser.GenericParameterable;
 import org.andrewwinter.sip.parser.GenericUri;
-import org.andrewwinter.sip.parser.HeaderName;
 import org.andrewwinter.sip.parser.ParseException;
 import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.parser.SipUri;

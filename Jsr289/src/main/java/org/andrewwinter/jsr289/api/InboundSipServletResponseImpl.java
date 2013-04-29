@@ -5,7 +5,6 @@ import javax.servlet.sip.Proxy;
 import javax.servlet.sip.ProxyBranch;
 import javax.servlet.sip.Rel100Exception;
 import javax.servlet.sip.SipServletRequest;
-import javax.servlet.sip.SipServletResponse;
 import javax.servlet.sip.SipSession;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipResponse;
@@ -16,7 +15,7 @@ import org.andrewwinter.sip.parser.SipRequest;
  *
  * @author andrew
  */
-public class InboundSipServletResponseImpl extends SipServletResponseImpl implements SipServletResponse {
+public class InboundSipServletResponseImpl extends SipServletResponseImpl {
 
     private final InboundSipResponse inboundSipResponse;
     

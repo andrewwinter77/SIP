@@ -2,7 +2,6 @@ package org.andrewwinter.jsr289.store;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.sip.SipServlet;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 
 /**

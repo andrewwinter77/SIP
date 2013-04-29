@@ -5,7 +5,6 @@ import javax.servlet.sip.Proxy;
 import javax.servlet.sip.ProxyBranch;
 import javax.servlet.sip.Rel100Exception;
 import javax.servlet.sip.SipServletRequest;
-import javax.servlet.sip.SipServletResponse;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.parser.SipMessageHelper;
 import org.andrewwinter.sip.parser.SipResponse;
@@ -14,7 +13,7 @@ import org.andrewwinter.sip.parser.SipResponse;
  *
  * @author andrew   
  */
-public class OutboundSipServletResponseImpl extends SipServletResponseImpl implements SipServletResponse {
+public class OutboundSipServletResponseImpl extends SipServletResponseImpl {
 
     /**
      * @param request Request created by us earlier.

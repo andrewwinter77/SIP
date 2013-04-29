@@ -1,6 +1,5 @@
 package org.andrewwinter.jsr289.api;
 
-import org.andrewwinter.jsr289.api.SipApplicationSessionImpl;
 import java.net.MalformedURLException;
 import java.net.URL;
 import junit.framework.Test;

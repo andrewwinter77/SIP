@@ -42,11 +42,17 @@ public abstract class SipMessage implements Serializable {
      * @param values
      */
     public <T extends Serializable> void setHeaders(final HeaderName name, final List<T> objs) {
+        if (objs == null) {
+            throw new IllegalArgumentException("Attempting to set null value for header.");
+        }
         headers.put(name, new ArrayList<Serializable>(objs));
     }
     
 
     public void setHeader(final HeaderName name, final Serializable value) {
+        if (value == null) {
+            throw new IllegalArgumentException("Attempting to set null value for header.");
+        }
         headers.put(name, Arrays.asList(value));
     }
 
@@ -57,6 +63,9 @@ public abstract class SipMessage implements Serializable {
      * @param value 
      */
     public void pushHeader(final HeaderName name, final Serializable value) {
+        if (value == null) {
+            throw new IllegalArgumentException("Attempting to set null value for header.");
+        }
         List<Serializable> values = headers.get(name);
         if (values == null) {
             values = new ArrayList<Serializable>();
@@ -72,6 +81,9 @@ public abstract class SipMessage implements Serializable {
      * @param value 
      */
     public void addHeader(final HeaderName name, final Serializable value) {
+        if (value == null) {
+            throw new IllegalArgumentException("Attempting to set null value for header.");
+        }
         List<Serializable> values = headers.get(name);
         if (values == null) {
             values = new ArrayList<Serializable>();

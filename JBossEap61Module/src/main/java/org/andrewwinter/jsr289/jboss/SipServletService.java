@@ -394,7 +394,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
      * @param request 
      */
     private void handleRouteHeader(final InboundSipServletRequestImpl request) {
-        final Address route = request.getSipRequest().popRoute();
+        final Address route = request.getSipRequest().popRoute(); // TODO: Pop only if this request is for us
         if (route != null) {
             
             // TODO: Determine if the Route is for this container

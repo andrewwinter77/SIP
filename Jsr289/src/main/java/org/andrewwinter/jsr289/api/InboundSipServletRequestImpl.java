@@ -16,7 +16,9 @@ import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.ResponseType;
 import org.andrewwinter.sip.parser.HeaderName;
+import org.andrewwinter.sip.parser.SipMessage;
 import org.andrewwinter.sip.parser.SipResponse;
+import org.andrewwinter.sip.parser.Uri;
 import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
 
 /**
@@ -94,6 +96,23 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl implemen
         return this.createResponse(statusCode, reasonPhrase);
     }
 
+    private static void copyRecordRouteHeaders(final SipMessage src, final SipMessage dst) {
+        final List<String> headers = src.getHeadersAsStrings(HeaderName.RECORD_ROUTE);
+        if (headers != null && !headers.isEmpty()) {
+            dst.setHeaders(HeaderName.RECORD_ROUTE, headers);
+        }
+    }
+    
+    private void pushRecordRoute(final SipResponse response, final Uri uri) {
+        response.pushHeader(HeaderName.RECORD_ROUTE, "<" + uri + ";lr;ssid=" + getSession().getId() + ">");
+    }
+    
+    private Uri getOurOwnIp() {
+        final List<SipURI> ifaces = (List<SipURI>) getServletContext().getAttribute(SipServlet.OUTBOUND_INTERFACES);
+        final SipURIImpl uri = (SipURIImpl) ifaces.get(0);
+        return uri.getRfc3261Uri();
+    }
+    
     @Override
     public SipServletResponse createResponse(final int statusCode, String reasonPhrase) {
         if (statusCode < 100 || statusCode > 699) {
@@ -111,16 +130,31 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl implemen
 
                 if (statusCode >= 200 && statusCode < 300 && getSipRequest().isINVITE()) {
                     
+                    // When a UAS responds to a request with a response that
+                    // establishes a dialog (such as a 2xx to INVITE), the UAS
+                    // MUST copy all Record-Route header field values from the
+                    // request into the response (including the URIs, URI
+                    // parameters, and any Record-Route header field parameters,
+                    // whether they are known or unknown to the UAS) and MUST
+                    // maintain the order of those values.                    
+                    
+                    copyRecordRouteHeaders(message, response);
+
+                    final Uri uri = getOurOwnIp();
+                    pushRecordRoute(response, uri);
+                    
                     // Servlets must not set the Contact header in these cases.
                     // Containers know which network interfaces they listen on
                     // and are responsible for choosing and adding the Contact
                     // header in these cases.
                     
-                    final List<SipURI> ifaces = (List<SipURI>) getServletContext().getAttribute(SipServlet.OUTBOUND_INTERFACES);
-                    final SipURIImpl contactAsSipURI = (SipURIImpl) ifaces.get(0);
+                    // The UAS MUST add a Contact header field to the response.
+                    
                     final org.andrewwinter.sip.parser.Address contactHeader =
-                            new org.andrewwinter.sip.parser.Address(contactAsSipURI.getRfc3261Uri());
+                            new org.andrewwinter.sip.parser.Address(uri);
                     response.addHeader(HeaderName.CONTACT, contactHeader);
+                    
+                    addHeader("Foo", "This is where the Record-Route header will be");
                 }
             
                 return new OutboundSipServletResponseImpl(this, response);

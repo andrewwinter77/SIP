@@ -1,5 +1,6 @@
 package org.andrewwinter.jsr289.jboss.metadata;
 
+import org.andrewwinter.jsr289.model.SipListenerInfo;
 import org.andrewwinter.jsr289.model.SipApplicationInfo;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -159,7 +160,7 @@ public class SipModuleInfo {
         final Set<SipListenerInfo> listeners = sipListeners.get(iface);
         if (listeners != null) {
             for (final SipListenerInfo listener : listeners) {
-                listener.prepare(classLoader);
+                listener.init(classLoader);
             }
         }
     }

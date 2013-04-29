@@ -15,7 +15,7 @@ import javax.servlet.sip.annotation.SipServlet;
 import org.andrewwinter.jsr289.jboss.Constants;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.model.SipApplicationInfo;
-import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
+import org.andrewwinter.jsr289.model.SipListenerInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.jboss.as.ee.component.Attachments;

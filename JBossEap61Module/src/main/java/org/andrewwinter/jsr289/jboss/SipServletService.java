@@ -29,7 +29,7 @@ import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 import org.andrewwinter.jsr289.store.SipListenerStore;
 import org.andrewwinter.jsr289.store.SipServletStore;
 import org.andrewwinter.jsr289.api.SipSessionImpl;
-import org.andrewwinter.jsr289.jboss.metadata.SipListenerInfo;
+import org.andrewwinter.jsr289.model.SipListenerInfo;
 import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.andrewwinter.jsr289.store.SipSessionStore;

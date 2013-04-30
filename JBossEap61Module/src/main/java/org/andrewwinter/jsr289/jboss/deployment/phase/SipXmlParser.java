@@ -37,14 +37,14 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
     public void deploy(final DeploymentPhaseContext context) throws DeploymentUnitProcessingException {
 
         final DeploymentUnit du = context.getDeploymentUnit();
-        if (!isSipApplication(du)) {
+        if (!isSipDeploymentUnit(du)) {
             return;
         }
 
-        final SipDeploymentUnit moduleInfo = new SipDeploymentUnit();
+        final SipDeploymentUnit sdu = new SipDeploymentUnit();
         
         final SipApplicationInfo sipAppInfo = new SipApplicationInfo();
-        moduleInfo.add(sipAppInfo);
+        sdu.add(sipAppInfo);
 
         final ResourceRoot root = du.getAttachment(Attachments.DEPLOYMENT_ROOT);
         final VirtualFile sipXml = root.getRoot().getChild("WEB-INF/sip.xml");
@@ -61,7 +61,7 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
 
             List<JAXBElement<?>> elements = sipAppType.getAppNameOrDescriptionAndDisplayName();
             for (final JAXBElement el : elements) {
-                processElement(el, moduleInfo, sipAppInfo);
+                processElement(el, sdu, sipAppInfo);
             }
 
         } catch (JAXBException | IOException e) {
@@ -69,12 +69,12 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
             throw new DeploymentUnitProcessingException("Error parsing sip.xml.");
         }
 
-        du.putAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT, moduleInfo);
+        du.putAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT, sdu);
     }
     
     private void processElement(
             final JAXBElement element,
-            final SipDeploymentUnit sipDeploymentInfo,
+            final SipDeploymentUnit sdu,
             final SipApplicationInfo sipAppInfo) throws DeploymentUnitProcessingException {
         
         if (element.getDeclaredType().equals(NonEmptyStringType.class)) {
@@ -96,7 +96,7 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
             
             if ("context-param".equalsIgnoreCase(localPart)) {
                 
-                sipDeploymentInfo.addContextParam(
+                sdu.addContextParam(
                         type.getParamName().getValue(),
                         type.getParamValue().getValue());
                 
@@ -106,7 +106,7 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
             
         } else if (element.getDeclaredType().equals(ServletType.class)) {
             final ServletType type = (ServletType) element.getValue();
-            sipDeploymentInfo.add(processServletType(type));
+            sdu.add(processServletType(type));
             
         } else {
             throw new DeploymentUnitProcessingException("Unknown type " + element.getDeclaredType().getName());

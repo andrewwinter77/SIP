@@ -34,7 +34,7 @@ public class SipFactoryInjectionSource extends InjectionSource {
             final DeploymentPhaseContext dpc,
             final Injector<ManagedReferenceFactory> injector) throws DeploymentUnitProcessingException {
         
-        final SipDeploymentUnit sipMetadata = du.getAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT);
+        final SipDeploymentUnit sdu = du.getAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT);
 
         ServletContextProvider scp = du.getAttachment(CustomAttachments.SERVLET_CONTEXT_PROVIDER);
         if (scp == null) {
@@ -44,8 +44,8 @@ public class SipFactoryInjectionSource extends InjectionSource {
         
         if (sf == null) {
             sf = new SipFactoryImpl(
-                sipMetadata.getAppName(),
-                sipMetadata.getMainServletName(),
+                sdu.getAppName(),
+                sdu.getMainServletName(),
                 scp);
         }
 

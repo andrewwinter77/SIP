@@ -71,7 +71,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
 
         final DeploymentUnit du = dpc.getDeploymentUnit();
 
-        if (!isSipApplication(du)) {
+        if (!isSipDeploymentUnit(du)) {
             return;
         }
 
@@ -83,22 +83,22 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
 
         final EEModuleDescription eeModuleDescription = du.getAttachment(Attachments.EE_MODULE_DESCRIPTION);
 
-        final SipDeploymentUnit sipMetadata = du.getAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT);
+        final SipDeploymentUnit sdu = du.getAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT);
 
         final Map<ResourceRoot, Index> map = AnnotationIndexUtils.getAnnotationIndexes(du);
 
         for (final Map.Entry<ResourceRoot, Index> entry : map.entrySet()) {
             processResourceAnnotation(entry.getValue(), registry, eeModuleDescription);
-            processSipServletAnnotation(entry.getValue(), sipMetadata);
-            processSipApplicationAnnotation(entry.getValue(), sipMetadata);
-            processSipApplicationKeyAnnotation(entry.getValue(), sipMetadata);
-            processSipListenerAnnotation(entry.getValue(), sipMetadata);
+            processSipServletAnnotation(entry.getValue(), sdu);
+            processSipApplicationAnnotation(entry.getValue(), sdu);
+            processSipApplicationKeyAnnotation(entry.getValue(), sdu);
+            processSipListenerAnnotation(entry.getValue(), sdu);
         }
 
         for (final String prefix : new String[] { "java:comp/env/sip/", "java:app/sip/" }) {
-            bind(registry, eeModuleDescription, SIP_FACTORY_TYPE_NAME, prefix + sipMetadata.getAppName() + "/SipFactory");
-            bind(registry, eeModuleDescription, SIP_SESSIONS_UTIL_TYPE_NAME, prefix + sipMetadata.getAppName() + "/SipSessionsUtil");
-            bind(registry, eeModuleDescription, TIMER_SERVICE_TYPE_NAME, prefix + sipMetadata.getAppName() + "/TimerService");
+            bind(registry, eeModuleDescription, SIP_FACTORY_TYPE_NAME, prefix + sdu.getAppName() + "/SipFactory");
+            bind(registry, eeModuleDescription, SIP_SESSIONS_UTIL_TYPE_NAME, prefix + sdu.getAppName() + "/SipSessionsUtil");
+            bind(registry, eeModuleDescription, TIMER_SERVICE_TYPE_NAME, prefix + sdu.getAppName() + "/TimerService");
         }
     }
 
@@ -160,7 +160,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipServletAnnotation(final Index index, final SipDeploymentUnit moduleInfo) throws DeploymentUnitProcessingException {
+    private void processSipServletAnnotation(final Index index, final SipDeploymentUnit sdu) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_SERVLET_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 
@@ -174,7 +174,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
                         annotationValueAsString(annotation, "applicationName"),
                         annotationValueAsString(annotation, "description"));
 
-                moduleInfo.add(servlet);
+                sdu.add(servlet);
             } else {
                 throw new DeploymentUnitProcessingException("@SipServlet appeared on something other than a class.");
             }
@@ -185,7 +185,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipApplicationAnnotation(final Index index, final SipDeploymentUnit moduleInfo) throws DeploymentUnitProcessingException {
+    private void processSipApplicationAnnotation(final Index index, final SipDeploymentUnit sdu) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_APPLICATION_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 
@@ -210,7 +210,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
                     throw new DeploymentUnitProcessingException("Error populating app info object.", e);
                 }
                 
-                moduleInfo.add(appInfo);
+                sdu.add(appInfo);
             } else {
                 throw new DeploymentUnitProcessingException("@SipApplication appeared on something other than a class.");
             }
@@ -221,7 +221,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipApplicationKeyAnnotation(final Index index, final SipDeploymentUnit moduleInfo) throws DeploymentUnitProcessingException {
+    private void processSipApplicationKeyAnnotation(final Index index, final SipDeploymentUnit sdu) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_APPLICATION_KEY_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 
@@ -256,7 +256,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipListenerAnnotation(final Index index, final SipDeploymentUnit moduleInfo) throws DeploymentUnitProcessingException {
+    private void processSipListenerAnnotation(final Index index, final SipDeploymentUnit sdu) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_LISTENER_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 
@@ -280,7 +280,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
                                 ifaceAsClass,
                                 info.name().toString());
 
-                        moduleInfo.add(listenerInfo);
+                        sdu.add(listenerInfo);
                     }
                 }
 

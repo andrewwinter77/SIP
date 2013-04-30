@@ -1,6 +1,6 @@
 package org.andrewwinter.jsr289.jboss.deployment.phase;
 
-import org.andrewwinter.jsr289.jboss.SipServletService;
+import org.andrewwinter.jsr289.jboss.SipDeploymentUnitService;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
@@ -19,7 +19,7 @@ public abstract class AbstractDeploymentUnitProcessor implements DeploymentUnitP
      * @param du
      * @return 
      */
-    protected boolean isSipApplication(final DeploymentUnit du) {
+    protected boolean isSipDeploymentUnit(final DeploymentUnit du) {
         return du.hasAttachment(CustomAttachments.SIP_SERVLET_APPLICATION_MARKER);
     }
 
@@ -38,12 +38,12 @@ public abstract class AbstractDeploymentUnitProcessor implements DeploymentUnitP
      * @return
      * @throws DeploymentUnitProcessingException 
      */
-    protected SipServletService getSipServletService(final DeploymentPhaseContext context) throws DeploymentUnitProcessingException {
-        final ServiceController<?> controller = context.getServiceRegistry().getRequiredService(SipServletService.SERVICE_NAME);
+    protected SipDeploymentUnitService getSipServletService(final DeploymentPhaseContext context) throws DeploymentUnitProcessingException {
+        final ServiceController<?> controller = context.getServiceRegistry().getRequiredService(SipDeploymentUnitService.SERVICE_NAME);
         if (controller == null) {
             throw new DeploymentUnitProcessingException("Failed to get service controller.");
         } 
-        return (SipServletService) controller.getValue();
+        return (SipDeploymentUnitService) controller.getValue();
     }
 
     /**

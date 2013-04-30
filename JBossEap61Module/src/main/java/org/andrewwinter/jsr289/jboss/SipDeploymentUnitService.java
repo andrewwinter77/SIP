@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author andrew
  */
-public class SipServletService implements Service<SipServletService> {
+public class SipDeploymentUnitService implements Service<SipDeploymentUnitService> {
 
     /**
      * 
@@ -29,7 +29,7 @@ public class SipServletService implements Service<SipServletService> {
     /**
      * Logger.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(SipServletService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SipDeploymentUnitService.class);
 
     /**
      * 
@@ -44,7 +44,7 @@ public class SipServletService implements Service<SipServletService> {
     /**
      * 
      */
-    public SipServletService() {
+    public SipDeploymentUnitService() {
         container = new SipServletContainer();
         serverTransport = new NettyServerTransport(container, 5060);
     }
@@ -68,7 +68,7 @@ public class SipServletService implements Service<SipServletService> {
      * 
      */
     @Override
-    public SipServletService getValue() throws IllegalStateException, IllegalArgumentException {
+    public SipDeploymentUnitService getValue() throws IllegalStateException, IllegalArgumentException {
         return this;
     }
 

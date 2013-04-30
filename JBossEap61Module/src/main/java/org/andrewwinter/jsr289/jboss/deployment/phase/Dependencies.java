@@ -25,7 +25,7 @@ public class Dependencies extends AbstractDeploymentUnitProcessor {
         
         final DeploymentUnit du = dpc.getDeploymentUnit();
 
-        if (!isSipApplication(du) && !isApplicationRouter(du)) {
+        if (!isSipDeploymentUnit(du) && !isApplicationRouter(du)) {
             return;
         }
         

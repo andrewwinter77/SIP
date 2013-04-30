@@ -26,7 +26,7 @@ import org.jboss.msc.service.StopContext;
  * 
  * @author andrew
  */
-public class SipDeploymentService implements Service<SipDeploymentService>, ManagedClassInstantiator {
+public class SipServletContainerService implements Service<SipServletContainerService>, ManagedClassInstantiator {
 
     /**
      * 
@@ -48,7 +48,7 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
      * @param du
      * @param namespaceContextSelector 
      */
-    public SipDeploymentService(final DeploymentUnit du, final NamespaceContextSelector namespaceContextSelector) {
+    public SipServletContainerService(final DeploymentUnit du, final NamespaceContextSelector namespaceContextSelector) {
         this.du = du;
         this.namespaceContextSelector = namespaceContextSelector;
     }
@@ -80,10 +80,10 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
      * 
      * @return 
      */
-    private SipServletService getSipServletService() {
+    private SipDeploymentUnitService getSipServletService() {
         final ServiceRegistry registry = du.getServiceRegistry();
-        final ServiceController<SipServletService> controller = (ServiceController<SipServletService>) registry.getService(
-                SipServletService.SERVICE_NAME);
+        final ServiceController<SipDeploymentUnitService> controller = (ServiceController<SipDeploymentUnitService>) registry.getService(
+                SipDeploymentUnitService.SERVICE_NAME);
         return controller.getValue();
     }
 
@@ -128,7 +128,7 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
      * @throws IllegalArgumentException 
      */
     @Override
-    public SipDeploymentService getValue() throws IllegalStateException, IllegalArgumentException {
+    public SipServletContainerService getValue() throws IllegalStateException, IllegalArgumentException {
         return this;
     }
 

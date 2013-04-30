@@ -97,7 +97,7 @@ public class PostModule extends AbstractDeploymentUnitProcessor {
     @Override
     public void deploy(final DeploymentPhaseContext dpc) throws DeploymentUnitProcessingException {
         final DeploymentUnit du = dpc.getDeploymentUnit();
-        if (isSipApplication(du)) {
+        if (isSipDeploymentUnit(du)) {
             attachContextFactory(du);
             addConvergedHttpSessionValve(dpc);
             attachTemporaryDirectory(du);

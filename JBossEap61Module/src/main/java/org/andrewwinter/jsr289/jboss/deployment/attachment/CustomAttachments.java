@@ -4,7 +4,7 @@ import java.io.File;
 import javax.servlet.sip.SipFactory;
 import org.andrewwinter.jsr289.api.ServletContextProvider;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
-import org.andrewwinter.jsr289.jboss.SipServletService;
+import org.andrewwinter.jsr289.jboss.SipDeploymentUnitService;
 import org.andrewwinter.jsr289.model.SipDeploymentUnit;
 import org.apache.catalina.core.StandardContext;
 import org.jboss.as.server.deployment.AttachmentKey;
@@ -30,11 +30,6 @@ public class CustomAttachments {
      *
      */
     public static final AttachmentKey<SipDeploymentUnit> SIP_DEPLOYMENT_UNIT = AttachmentKey.create(SipDeploymentUnit.class);
-    
-    /**
-     *
-     */
-    public static final AttachmentKey<SipServletService> SIP_SERVLET_SERVICE = AttachmentKey.create(SipServletService.class);
     
     /**
      *

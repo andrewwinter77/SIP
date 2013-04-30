@@ -33,12 +33,12 @@ public class ServletContextAttributeProcessor extends AbstractDeploymentUnitProc
 
         final DeploymentUnit du = dpc.getDeploymentUnit();
         
-        if (!isSipApplication(du)) {
+        if (!isSipDeploymentUnit(du)) {
             return;
         }
         
-        final SipDeploymentUnit sipMetadata = du.getAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT);
-        final String appName = sipMetadata.getAppName();
+        final SipDeploymentUnit sdu = du.getAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT);
+        final String appName = sdu.getAppName();
         
         ServletContextProvider scp = du.getAttachment(CustomAttachments.SERVLET_CONTEXT_PROVIDER);
         if (scp == null) {
@@ -47,8 +47,8 @@ public class ServletContextAttributeProcessor extends AbstractDeploymentUnitProc
         }
         
         final SipFactory sf = new SipFactoryImpl(
-                sipMetadata.getAppName(),
-                sipMetadata.getMainServletName(),
+                sdu.getAppName(),
+                sdu.getMainServletName(),
                 scp);
 
         du.addToAttachmentList(ServletContextAttribute.ATTACHMENT_KEY, new ServletContextAttribute(

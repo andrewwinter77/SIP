@@ -31,6 +31,10 @@ public class HttpServletRequestDelegator implements HttpServletRequest {
 
     private final HttpServletRequest request;
     
+    /**
+     *
+     * @param request
+     */
     public HttpServletRequestDelegator(final HttpServletRequest request) {
         this.request = request;
     }
@@ -141,22 +145,52 @@ public class HttpServletRequestDelegator implements HttpServletRequest {
         return request.isRequestedSessionIdFromUrl();
     }
 
+    /**
+     *
+     * @param arg0
+     * @return
+     * @throws IOException
+     * @throws ServletException
+     */
     public boolean authenticate(HttpServletResponse arg0) throws IOException, ServletException {
         return request.authenticate(arg0);
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @throws ServletException
+     */
     public void login(String arg0, String arg1) throws ServletException {
         request.login(arg0, arg1);
     }
 
+    /**
+     *
+     * @throws ServletException
+     */
     public void logout() throws ServletException {
         request.logout();
     }
 
+    /**
+     *
+     * @return
+     * @throws IOException
+     * @throws ServletException
+     */
     public Collection<Part> getParts() throws IOException, ServletException {
         return request.getParts();
     }
 
+    /**
+     *
+     * @param arg0
+     * @return
+     * @throws IOException
+     * @throws ServletException
+     */
     public Part getPart(String arg0) throws IOException, ServletException {
         return request.getPart(arg0);
     }
@@ -277,30 +311,62 @@ public class HttpServletRequestDelegator implements HttpServletRequest {
         return request.getLocalPort();
     }
 
+    /**
+     *
+     * @return
+     */
     public ServletContext getServletContext() {
         return request.getServletContext();
     }
 
+    /**
+     *
+     * @return
+     * @throws IllegalStateException
+     */
     public AsyncContext startAsync() throws IllegalStateException {
         return request.startAsync();
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @return
+     * @throws IllegalStateException
+     */
     public AsyncContext startAsync(ServletRequest arg0, ServletResponse arg1) throws IllegalStateException {
         return request.startAsync(arg0, arg1);
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isAsyncStarted() {
         return request.isAsyncStarted();
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isAsyncSupported() {
         return request.isAsyncSupported();
     }
 
+    /**
+     *
+     * @return
+     */
     public AsyncContext getAsyncContext() {
         return request.getAsyncContext();
     }
 
+    /**
+     *
+     * @return
+     */
     public DispatcherType getDispatcherType() {
         return request.getDispatcherType();
     }

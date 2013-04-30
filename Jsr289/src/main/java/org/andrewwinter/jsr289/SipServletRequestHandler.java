@@ -8,7 +8,14 @@ import org.andrewwinter.jsr289.api.SipServletRequestImpl;
  */
 public interface SipServletRequestHandler {
     
+    /**
+     *
+     */
     public static String ATTRIBUTE_NAME = SipServletRequestHandler.class.getCanonicalName();
     
+    /**
+     *
+     * @param request
+     */
     void doRequest(SipServletRequestImpl request);
 }

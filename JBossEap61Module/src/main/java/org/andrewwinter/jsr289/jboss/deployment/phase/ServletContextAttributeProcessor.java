@@ -14,7 +14,7 @@ import org.andrewwinter.jsr289.api.SipSessionsUtilImpl;
 import org.andrewwinter.jsr289.api.TimerServiceImpl;
 import org.andrewwinter.jsr289.api.URIImpl;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
-import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipModuleInfo;
 import org.andrewwinter.sip.parser.Uri;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
 import org.jboss.as.server.deployment.DeploymentUnit;

@@ -1,4 +1,4 @@
-package org.andrewwinter.jsr289.jboss.metadata;
+package org.andrewwinter.jsr289.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,11 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
-import org.andrewwinter.jsr289.jboss.ServletContextDelegate;
-import org.andrewwinter.jsr289.jboss.SipServletService;
-import org.andrewwinter.jsr289.model.SipApplicationInfo;
-import org.andrewwinter.jsr289.model.SipListenerInfo;
-import org.andrewwinter.jsr289.model.SipServletDelegate;
+import org.andrewwinter.jsr289.InboundSipServletRequestHandler;
+import org.andrewwinter.jsr289.ServletContextDelegate;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 
 /**
@@ -226,7 +223,7 @@ public class SipModuleInfo {
     /**
      * Prepares this SipModule for use. This must be called before the module
      * is used.
-     * @param service 
+     * @param handler 
      * @param managedClassInstantiator 
      * @param context
      * @throws IllegalStateException
@@ -235,7 +232,7 @@ public class SipModuleInfo {
      * @throws IllegalAccessException  
      */
     public void init(
-            final SipServletService service,
+            final InboundSipServletRequestHandler handler,
             final ManagedClassInstantiator managedClassInstantiator,
             final ServletContext context) 
                 throws IllegalStateException, ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -243,7 +240,7 @@ public class SipModuleInfo {
         final ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
         Thread.currentThread().setContextClassLoader(classLoader);
         
-        servletContext = new ServletContextDelegate(context, service, this);
+        servletContext = new ServletContextDelegate(context, handler, this);
         
         if ((mainServletName = getMainServletName()) == null) {
             throw new IllegalStateException("Unable to determine main servlet name");

@@ -12,7 +12,7 @@ import javax.xml.bind.Unmarshaller;
 import org.andrewwinter.jsr289.jboss.Constants;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.model.SipApplicationInfo;
-import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipModuleInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.jboss.as.server.deployment.Attachments;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;

@@ -1,5 +1,6 @@
 package org.andrewwinter.jsr289.jboss;
 
+import org.andrewwinter.jsr289.InboundSipServletRequestHandler;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
@@ -30,7 +31,7 @@ import org.andrewwinter.jsr289.store.SipListenerStore;
 import org.andrewwinter.jsr289.store.SipServletStore;
 import org.andrewwinter.jsr289.api.SipSessionImpl;
 import org.andrewwinter.jsr289.model.SipListenerInfo;
-import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipModuleInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.jsr289.threadlocal.AppNameThreadLocal;
@@ -41,7 +42,6 @@ import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.parser.Address;
 import org.andrewwinter.sip.transport.NettyServerTransport;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
-import org.jboss.modules.ModuleClassLoader;
 import org.jboss.msc.service.Service;
 import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.StartContext;
@@ -50,7 +50,7 @@ import org.jboss.msc.service.StopContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SipServletService implements SipRequestHandler, Service<SipServletService> {
+public class SipServletService implements InboundSipServletRequestHandler, SipRequestHandler, Service<SipServletService> {
 
     public static final ServiceName SERVICE_NAME = ServiceName.JBOSS.append("sipservlet");
     
@@ -128,6 +128,7 @@ public class SipServletService implements SipRequestHandler, Service<SipServletS
         return this;
     }
 
+    @Override
     public void doRequest(final SipServletRequestImpl request, final SipModuleInfo moduleInfo, final SipServletDelegate sipServlet) {
 
         try {

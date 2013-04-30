@@ -1,4 +1,4 @@
-package org.andrewwinter.jsr289.jboss;
+package org.andrewwinter.jsr289;
 
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -18,7 +18,7 @@ import javax.servlet.ServletRegistration.Dynamic;
 import javax.servlet.SessionCookieConfig;
 import javax.servlet.SessionTrackingMode;
 import javax.servlet.descriptor.JspConfigDescriptor;
-import org.andrewwinter.jsr289.jboss.metadata.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipModuleInfo;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 
 /**
@@ -29,11 +29,17 @@ public class ServletContextDelegate implements ServletContext {
     
     private final ServletContext context;
 
-    private final SipServletService service;
+    private final InboundSipServletRequestHandler service;
     
     private final SipModuleInfo moduleInfo;
     
-    public ServletContextDelegate(final ServletContext context, final SipServletService service, final SipModuleInfo moduleInfo) {
+    /**
+     *
+     * @param context
+     * @param service
+     * @param moduleInfo
+     */
+    public ServletContextDelegate(final ServletContext context, final InboundSipServletRequestHandler service, final SipModuleInfo moduleInfo) {
         this.context = context;
         this.service = service;
         this.moduleInfo = moduleInfo;
@@ -74,11 +80,19 @@ public class ServletContextDelegate implements ServletContext {
         return context.getMinorVersion();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getEffectiveMajorVersion() {
         return context.getEffectiveMajorVersion();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getEffectiveMinorVersion() {
         return context.getEffectiveMinorVersion();
@@ -162,6 +176,12 @@ public class ServletContextDelegate implements ServletContext {
         return context.getInitParameterNames();
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @return
+     */
     @Override
     public boolean setInitParameter(String arg0, String arg1) {
         return context.setInitParameter(arg0, arg1);
@@ -192,116 +212,232 @@ public class ServletContextDelegate implements ServletContext {
         return context.getServletContextName();
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @return
+     */
     @Override
     public Dynamic addServlet(String arg0, String arg1) {
         return context.addServlet(arg0, arg1);
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @return
+     */
     @Override
     public Dynamic addServlet(String arg0, Servlet arg1) {
         return context.addServlet(arg0, arg1);
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @return
+     */
     @Override
     public Dynamic addServlet(String arg0, Class<? extends Servlet> arg1) {
         return context.addServlet(arg0, arg1);
     }
+    /**
+     *
+     * @param <T>
+     * @param arg0
+     * @return
+     * @throws ServletException
+     */
     @Override
 
     public <T extends Servlet> T createServlet(Class<T> arg0) throws ServletException {
         return context.createServlet(arg0);
     }
 
+    /**
+     *
+     * @param arg0
+     * @return
+     */
     @Override
     public ServletRegistration getServletRegistration(String arg0) {
         return context.getServletRegistration(arg0);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Map<String, ? extends ServletRegistration> getServletRegistrations() {
         return context.getServletRegistrations();
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @return
+     */
     @Override
     public FilterRegistration.Dynamic addFilter(String arg0, String arg1) {
         return context.addFilter(arg0, arg1);
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @return
+     */
     @Override
     public FilterRegistration.Dynamic addFilter(String arg0, Filter arg1) {
         return context.addFilter(arg0, arg1);
     }
 
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     * @return
+     */
     @Override
     public FilterRegistration.Dynamic addFilter(String arg0, Class<? extends Filter> arg1) {
         return context.addFilter(arg0, arg1);
     }
 
+    /**
+     *
+     * @param <T>
+     * @param arg0
+     * @return
+     * @throws ServletException
+     */
     @Override
     public <T extends Filter> T createFilter(Class<T> arg0) throws ServletException {
         return context.createFilter(arg0);
     }
 
+    /**
+     *
+     * @param arg0
+     * @return
+     */
     @Override
     public FilterRegistration getFilterRegistration(String arg0) {
         return context.getFilterRegistration(arg0);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Map<String, ? extends FilterRegistration> getFilterRegistrations() {
         return context.getFilterRegistrations();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public SessionCookieConfig getSessionCookieConfig() {
         return context.getSessionCookieConfig();
     }
 
+    /**
+     *
+     * @param arg0
+     */
     @Override
     public void setSessionTrackingModes(Set<SessionTrackingMode> arg0) {
         context.setSessionTrackingModes(arg0);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Set<SessionTrackingMode> getDefaultSessionTrackingModes() {
         return context.getDefaultSessionTrackingModes();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Set<SessionTrackingMode> getEffectiveSessionTrackingModes() {
         return context.getEffectiveSessionTrackingModes();
     }
 
+    /**
+     *
+     * @param arg0
+     */
     @Override
     public void addListener(String arg0) {
         context.addListener(arg0);
     }
 
+    /**
+     *
+     * @param <T>
+     * @param arg0
+     */
     @Override
     public <T extends EventListener> void addListener(T arg0) {
         context.addListener(arg0);
     }
 
+    /**
+     *
+     * @param arg0
+     */
     @Override
     public void addListener(Class<? extends EventListener> arg0) {
         context.addListener(arg0);
     }
 
+    /**
+     *
+     * @param <T>
+     * @param arg0
+     * @return
+     * @throws ServletException
+     */
     @Override
     public <T extends EventListener> T createListener(Class<T> arg0) throws ServletException {
         return context.createListener(arg0);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public JspConfigDescriptor getJspConfigDescriptor() {
         return context.getJspConfigDescriptor();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public ClassLoader getClassLoader() {
         return context.getClassLoader();
     }
 
+    /**
+     *
+     * @param arg0
+     */
     @Override
     public void declareRoles(String... arg0) {
         context.declareRoles(arg0);

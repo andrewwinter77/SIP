@@ -32,6 +32,7 @@
         <extension module="org.jboss.as.web"/>
         <extension module="org.jboss.as.webservices"/>
         <extension module="org.jboss.as.weld"/>
+        <extension module="org.andrewwinter.jsr289.jboss"/>
     </extensions>
     
     <system-properties>
@@ -92,6 +93,35 @@
         <subsystem xmlns="urn:jboss:domain:configadmin:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:1.0">
             <datasources>
+                <xa-datasource jndi-name="java:/datasources/sipappDS" pool-name="sipappDS" enabled="${postgresql.enabled}">
+                    <xa-datasource-property name="ServerName">
+                        ${env.OPENSHIFT_POSTGRESQL_DB_HOST}
+                    </xa-datasource-property>
+                    <xa-datasource-property name="Password">
+                        ${env.OPENSHIFT_POSTGRESQL_DB_PASSWORD}
+                    </xa-datasource-property>
+                    <xa-datasource-property name="User">
+                        ${env.OPENSHIFT_POSTGRESQL_DB_USERNAME}
+                    </xa-datasource-property>
+                    <xa-datasource-property name="PortNumber">
+                        ${env.OPENSHIFT_POSTGRESQL_DB_PORT}
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        ${env.OPENSHIFT_APP_NAME}
+                    </xa-datasource-property>
+                    <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+                    <driver>postgresql</driver>
+                    <xa-pool>
+                        <min-pool-size>5</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <prefill>true</prefill>
+                        <pad-xid>true</pad-xid>
+                    </xa-pool>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
+                    </validation>
+                </xa-datasource>
                 <datasource jndi-name="java:jboss/datasources/ExampleDS" enabled="true" use-java-context="true" pool-name="H2DS">
                     <connection-url>jdbc:h2:${jboss.server.data.dir}/test;DB_CLOSE_DELAY=-1</connection-url>
                     <driver>h2</driver>
@@ -108,12 +138,12 @@
                       <password>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</password>
                     </security>
                     <validation>
-                    	<check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
-                    	<background-validation>true</background-validation>
-                	</validation>
-                	<pool>
-						<flush-strategy>IdleConnections</flush-strategy>
-					</pool>
+                        <check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
+                        <background-validation>true</background-validation>
+                    </validation>
+                    <pool>
+                        <flush-strategy>IdleConnections</flush-strategy>
+                    </pool>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/PostgreSQLDS" enabled="${postgresql.enabled}" use-java-context="true" pool-name="PostgreSQLDS" use-ccm="true">
                     <connection-url>jdbc:postgresql://${env.OPENSHIFT_POSTGRESQL_DB_HOST}:${env.OPENSHIFT_POSTGRESQL_DB_PORT}/${env.OPENSHIFT_APP_NAME}</connection-url>
@@ -125,10 +155,10 @@
                     <validation>
                     	<check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
                     	<background-validation>true</background-validation>
-                	</validation>
-                	<pool>
-						<flush-strategy>IdleConnections</flush-strategy>
-					</pool>
+                    </validation>
+                    <pool>
+                        <flush-strategy>IdleConnections</flush-strategy>
+                    </pool>
                 </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
@@ -509,6 +539,7 @@
             </endpoint-config>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:weld:1.0"/>
+        <subsystem xmlns="urn:org.andrewwinter.jsr289.jboss:1.0"/>
     </profile>
 
     <interfaces>

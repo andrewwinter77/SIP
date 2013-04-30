@@ -29,17 +29,24 @@ import org.jboss.metadata.web.jboss.ValveMetaData;
  */
 public class PostModule extends AbstractDeploymentUnitProcessor {
 
+    /**
+     * 
+     */
     private static final Logger LOG = Logger.getLogger(Constants.MODULE_NAME);
 
-    private void addConvergedHttpSessionValve(final DeploymentPhaseContext dpc) {
-        WarMetaData wmd = dpc.getDeploymentUnit().getAttachment(WarMetaData.ATTACHMENT_KEY);
+    /**
+     * 
+     * @param dpc
+     * @throws DeploymentUnitProcessingException 
+     */
+    private void addConvergedHttpSessionValve(final DeploymentPhaseContext dpc) throws DeploymentUnitProcessingException {
+        final WarMetaData wmd = dpc.getDeploymentUnit().getAttachment(WarMetaData.ATTACHMENT_KEY);
         if (wmd == null) {
-            LOG.error("=============== null WAR metadata");
+            throw new DeploymentUnitProcessingException("Missing WAR metadata.");
         } else {
-
-            JBossWebMetaData jwmd = wmd.getMergedJBossWebMetaData();
+            final JBossWebMetaData jwmd = wmd.getMergedJBossWebMetaData();
             if (jwmd == null) {
-                LOG.error("=============== null JBossWebMetaData ");
+                throw new DeploymentUnitProcessingException("Mising JBossWeb metadata.");
             } else {
                 List<ValveMetaData> valves = jwmd.getValves();
 
@@ -56,13 +63,21 @@ public class PostModule extends AbstractDeploymentUnitProcessor {
         }
     }
 
+    /**
+     * The Web subsystem will create a ServletContext for us. This needs to be
+     * done here in readiness for the deploy in the Install phase.
+     * 
+     * @param du 
+     */
     private void attachContextFactory(final DeploymentUnit du) {
-        // The Web subsystem will create a ServletContext for us. This needs
-        // to be done here in readiness for the deploy in the Install phase.
-        final ServletContextFactory contextFactory = new ServletContextFactory();
-        du.putAttachment(WebContextFactory.ATTACHMENT, contextFactory);
+        du.putAttachment(WebContextFactory.ATTACHMENT, new ServletContextFactory());
     }
 
+    /**
+     * 
+     * @param du
+     * @throws DeploymentUnitProcessingException 
+     */
     private void attachTemporaryDirectory(final DeploymentUnit du) throws DeploymentUnitProcessingException {
         try {
             final Path path = Files.createTempDirectory("sipservlet");
@@ -70,19 +85,21 @@ public class PostModule extends AbstractDeploymentUnitProcessor {
             tempDir.deleteOnExit();
             du.putAttachment(CustomAttachments.TEMP_DIRECTORY, tempDir);
         } catch (final UnsupportedOperationException | IOException e) {
-            throw new DeploymentUnitProcessingException("Unable to create TEMPDIR for use with ServletContext.");
+            throw new DeploymentUnitProcessingException("Unable to create TEMPDIR for use with ServletContext.", e);
         }
     }
 
+    /**
+     * 
+     * @param dpc
+     * @throws DeploymentUnitProcessingException 
+     */
     @Override
     public void deploy(final DeploymentPhaseContext dpc) throws DeploymentUnitProcessingException {
         final DeploymentUnit du = dpc.getDeploymentUnit();
         if (isSipApplication(du)) {
-
             attachContextFactory(du);
-
             addConvergedHttpSessionValve(dpc);
-
             attachTemporaryDirectory(du);
         }
     }

@@ -27,7 +27,7 @@ import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.api.SipServletRequestImpl;
 import org.andrewwinter.jsr289.api.SipSessionImpl;
 import org.andrewwinter.jsr289.model.SipListenerInfo;
-import org.andrewwinter.jsr289.model.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipDeploymentUnit;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.andrewwinter.jsr289.store.SipListenerStore;
 import org.andrewwinter.jsr289.store.SipServletStore;
@@ -67,7 +67,7 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
     /**
      * Map from application name to SIP metadata.
      */
-    private final Map<String, SipModuleInfo> modules;
+    private final Map<String, SipDeploymentUnit> modules;
     
     /**
      * Constructor.
@@ -87,27 +87,27 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
         // TODO: Destroy all servlets?
     }
     
-    public void deployApplication(final SipModuleInfo metadata, final ManagedClassInstantiator instantiator, final ServletContext context)
+    public void deployApplication(final SipDeploymentUnit sdu, final ManagedClassInstantiator instantiator, final ServletContext context)
         throws IllegalStateException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         if (appRouter == null) {
             // TODO: Handle case where 
         } else {
             
-            metadata.init(this, instantiator, context);
+            sdu.init(this, instantiator, context);
             
             final List<String> appNames = new ArrayList<>();
-            final String appName = metadata.getAppName();
+            final String appName = sdu.getAppName();
             appNames.add(appName);
             appRouter.applicationDeployed(appNames);
-            modules.put(appName, metadata);
+            modules.put(appName, sdu);
             
-            final Collection<SipServletDelegate> servlets = metadata.getSipServlets();
+            final Collection<SipServletDelegate> servlets = sdu.getSipServlets();
             for (final SipServletDelegate servlet : servlets) {
                 SipServletStore.getInstance().put(appName, servlet.getServletName(), servlet);
             }
             
             for (final Class clazz : Util.LISTENER_CLASSES) {
-                final Set<SipListenerInfo> listeners = metadata.getSipListeners(clazz);
+                final Set<SipListenerInfo> listeners = sdu.getSipListeners(clazz);
                 if (listeners != null) {
                     for (final SipListenerInfo listener : listeners) {
                         SipListenerStore.getInstance().put(appName, clazz, listener.getInstance());
@@ -147,7 +147,7 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
     
     
     @Override
-    public void doRequest(final SipServletRequestImpl request, final SipModuleInfo moduleInfo, final SipServletDelegate sipServlet) {
+    public void doRequest(final SipServletRequestImpl request, final SipDeploymentUnit moduleInfo, final SipServletDelegate sipServlet) {
 
         try {
             final ClassLoader cl = moduleInfo.getClassLoader();
@@ -335,7 +335,7 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
             //     * region to result.getRegion(), and
             //     * URI to result.getSubscriberURI().
             
-            final SipModuleInfo moduleInfo = modules.get(appName);
+            final SipDeploymentUnit moduleInfo = modules.get(appName);
             if (moduleInfo == null) {
                 sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "No such application " + appName);
                 LOG.error("No such application " + appName);

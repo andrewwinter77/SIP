@@ -4,7 +4,7 @@ import javax.servlet.sip.SipFactory;
 import org.andrewwinter.jsr289.api.ServletContextProvider;
 import org.andrewwinter.jsr289.api.SipFactoryImpl;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
-import org.andrewwinter.jsr289.model.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipDeploymentUnit;
 import org.jboss.as.ee.component.InjectionSource;
 import org.jboss.as.naming.ManagedReferenceFactory;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
@@ -34,7 +34,7 @@ public class SipFactoryInjectionSource extends InjectionSource {
             final DeploymentPhaseContext dpc,
             final Injector<ManagedReferenceFactory> injector) throws DeploymentUnitProcessingException {
         
-        final SipModuleInfo sipMetadata = du.getAttachment(CustomAttachments.SIP_MODULE_INFO);
+        final SipDeploymentUnit sipMetadata = du.getAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT);
 
         ServletContextProvider scp = du.getAttachment(CustomAttachments.SERVLET_CONTEXT_PROVIDER);
         if (scp == null) {

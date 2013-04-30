@@ -16,7 +16,7 @@ import org.andrewwinter.jsr289.jboss.Constants;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.model.SipApplicationInfo;
 import org.andrewwinter.jsr289.model.SipListenerInfo;
-import org.andrewwinter.jsr289.model.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipDeploymentUnit;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.jboss.as.ee.component.Attachments;
 import org.jboss.as.ee.component.BindingConfiguration;
@@ -83,7 +83,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
 
         final EEModuleDescription eeModuleDescription = du.getAttachment(Attachments.EE_MODULE_DESCRIPTION);
 
-        final SipModuleInfo sipMetadata = du.getAttachment(CustomAttachments.SIP_MODULE_INFO);
+        final SipDeploymentUnit sipMetadata = du.getAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT);
 
         final Map<ResourceRoot, Index> map = AnnotationIndexUtils.getAnnotationIndexes(du);
 
@@ -160,7 +160,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipServletAnnotation(final Index index, final SipModuleInfo moduleInfo) throws DeploymentUnitProcessingException {
+    private void processSipServletAnnotation(final Index index, final SipDeploymentUnit moduleInfo) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_SERVLET_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 
@@ -185,7 +185,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipApplicationAnnotation(final Index index, final SipModuleInfo moduleInfo) throws DeploymentUnitProcessingException {
+    private void processSipApplicationAnnotation(final Index index, final SipDeploymentUnit moduleInfo) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_APPLICATION_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 
@@ -221,7 +221,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipApplicationKeyAnnotation(final Index index, final SipModuleInfo moduleInfo) throws DeploymentUnitProcessingException {
+    private void processSipApplicationKeyAnnotation(final Index index, final SipDeploymentUnit moduleInfo) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_APPLICATION_KEY_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 
@@ -256,7 +256,7 @@ public class AnnotationProcessor extends AbstractDeploymentUnitProcessor {
      *
      * @param index
      */
-    private void processSipListenerAnnotation(final Index index, final SipModuleInfo moduleInfo) throws DeploymentUnitProcessingException {
+    private void processSipListenerAnnotation(final Index index, final SipDeploymentUnit moduleInfo) throws DeploymentUnitProcessingException {
         final List<AnnotationInstance> annotations = index.getAnnotations(SIP_LISTENER_ANNOTATION_NAME);
         for (final AnnotationInstance annotation : annotations) {
 

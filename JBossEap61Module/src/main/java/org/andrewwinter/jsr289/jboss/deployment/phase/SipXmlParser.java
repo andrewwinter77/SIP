@@ -12,7 +12,7 @@ import javax.xml.bind.Unmarshaller;
 import org.andrewwinter.jsr289.jboss.Constants;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.andrewwinter.jsr289.model.SipApplicationInfo;
-import org.andrewwinter.jsr289.model.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipDeploymentUnit;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 import org.jboss.as.server.deployment.Attachments;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
@@ -41,7 +41,7 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
             return;
         }
 
-        final SipModuleInfo moduleInfo = new SipModuleInfo();
+        final SipDeploymentUnit moduleInfo = new SipDeploymentUnit();
         
         final SipApplicationInfo sipAppInfo = new SipApplicationInfo();
         moduleInfo.add(sipAppInfo);
@@ -69,12 +69,12 @@ public class SipXmlParser extends AbstractDeploymentUnitProcessor {
             throw new DeploymentUnitProcessingException("Error parsing sip.xml.");
         }
 
-        du.putAttachment(CustomAttachments.SIP_MODULE_INFO, moduleInfo);
+        du.putAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT, moduleInfo);
     }
     
     private void processElement(
             final JAXBElement element,
-            final SipModuleInfo sipDeploymentInfo,
+            final SipDeploymentUnit sipDeploymentInfo,
             final SipApplicationInfo sipAppInfo) throws DeploymentUnitProcessingException {
         
         if (element.getDeclaredType().equals(NonEmptyStringType.class)) {

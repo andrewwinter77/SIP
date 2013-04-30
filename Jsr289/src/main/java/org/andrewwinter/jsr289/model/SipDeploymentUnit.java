@@ -19,7 +19,7 @@ import org.andrewwinter.jsr289.util.Util;
  *
  * @author andrew
  */
-public class SipModuleInfo {
+public class SipDeploymentUnit {
 
     /**
      * 
@@ -60,7 +60,7 @@ public class SipModuleInfo {
     /**
      *
      */
-    public SipModuleInfo() {
+    public SipDeploymentUnit() {
         sipServlets = new HashMap<>();
         sipApplicationMetadataList = new ArrayList<>();
         contextParams = new HashMap<>();

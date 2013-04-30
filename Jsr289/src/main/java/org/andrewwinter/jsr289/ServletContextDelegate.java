@@ -18,7 +18,7 @@ import javax.servlet.ServletRegistration.Dynamic;
 import javax.servlet.SessionCookieConfig;
 import javax.servlet.SessionTrackingMode;
 import javax.servlet.descriptor.JspConfigDescriptor;
-import org.andrewwinter.jsr289.model.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipDeploymentUnit;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 
 /**
@@ -31,7 +31,7 @@ public class ServletContextDelegate implements ServletContext {
 
     private final InboundSipServletRequestHandler service;
     
-    private final SipModuleInfo moduleInfo;
+    private final SipDeploymentUnit moduleInfo;
     
     /**
      *
@@ -39,7 +39,7 @@ public class ServletContextDelegate implements ServletContext {
      * @param service
      * @param moduleInfo
      */
-    public ServletContextDelegate(final ServletContext context, final InboundSipServletRequestHandler service, final SipModuleInfo moduleInfo) {
+    public ServletContextDelegate(final ServletContext context, final InboundSipServletRequestHandler service, final SipDeploymentUnit moduleInfo) {
         this.context = context;
         this.service = service;
         this.moduleInfo = moduleInfo;

@@ -14,7 +14,7 @@ import org.andrewwinter.jsr289.api.SipSessionsUtilImpl;
 import org.andrewwinter.jsr289.api.TimerServiceImpl;
 import org.andrewwinter.jsr289.api.URIImpl;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
-import org.andrewwinter.jsr289.model.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipDeploymentUnit;
 import org.andrewwinter.sip.parser.Uri;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
@@ -37,7 +37,7 @@ public class ServletContextAttributeProcessor extends AbstractDeploymentUnitProc
             return;
         }
         
-        final SipModuleInfo sipMetadata = du.getAttachment(CustomAttachments.SIP_MODULE_INFO);
+        final SipDeploymentUnit sipMetadata = du.getAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT);
         final String appName = sipMetadata.getAppName();
         
         ServletContextProvider scp = du.getAttachment(CustomAttachments.SERVLET_CONTEXT_PROVIDER);

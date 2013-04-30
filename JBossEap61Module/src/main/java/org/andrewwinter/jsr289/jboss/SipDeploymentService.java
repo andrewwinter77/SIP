@@ -6,7 +6,7 @@ import javax.enterprise.inject.spi.BeanManager;
 import javax.enterprise.inject.spi.InjectionTarget;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
-import org.andrewwinter.jsr289.model.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipDeploymentUnit;
 import org.apache.catalina.core.StandardContext;
 import org.jboss.as.naming.context.NamespaceContextSelector;
 import org.jboss.as.server.deployment.Attachments;
@@ -22,17 +22,41 @@ import org.jboss.msc.service.StartContext;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.service.StopContext;
 
+/**
+ * 
+ * @author andrew
+ */
 public class SipDeploymentService implements Service<SipDeploymentService>, ManagedClassInstantiator {
 
+    /**
+     * 
+     */
     public static final ServiceName NAME = ServiceName.JBOSS.append("sipdeployment");
+
+    /**
+     * 
+     */
     private final DeploymentUnit du;
+
+    /**
+     * 
+     */
     private final NamespaceContextSelector namespaceContextSelector;
 
+    /**
+     * 
+     * @param du
+     * @param namespaceContextSelector 
+     */
     public SipDeploymentService(final DeploymentUnit du, final NamespaceContextSelector namespaceContextSelector) {
         this.du = du;
         this.namespaceContextSelector = namespaceContextSelector;
     }
 
+    /**
+     * 
+     * @return 
+     */
     private ModuleClassLoader getClassLoader() {
         // Andrew discovered the Module attachment by reading the source code
         // of the JBoss AS 7 class 'InstallReflectionIndexProcessor'.
@@ -41,6 +65,10 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
         return module.getClassLoader();
     }
     
+    /**
+     * 
+     * @return 
+     */
     private BeanManager getBeanManager() {
         final ServiceRegistry registry = du.getServiceRegistry();
         final ServiceController<BeanManagerService> controller = (ServiceController<BeanManagerService>) registry.getService(
@@ -48,6 +76,10 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
         return (BeanManager) controller.getValue();
     }
 
+    /**
+     * 
+     * @return 
+     */
     private SipServletService getSipServletService() {
         final ServiceRegistry registry = du.getServiceRegistry();
         final ServiceController<SipServletService> controller = (ServiceController<SipServletService>) registry.getService(
@@ -55,14 +87,19 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
         return controller.getValue();
     }
 
+    /**
+     * 
+     * @param context
+     * @throws StartException 
+     */
     @Override
     public void start(final StartContext context) throws StartException {
         
-        final SipModuleInfo moduleInfo = du.getAttachment(CustomAttachments.SIP_MODULE_INFO);
+        final SipDeploymentUnit sdu = du.getAttachment(CustomAttachments.SIP_DEPLOYMENT_UNIT);
 
         final StandardContext standardContext = du.getAttachment(CustomAttachments.STANDARD_CONTEXT);
         
-        moduleInfo.setClassLoader(getClassLoader());
+        sdu.setClassLoader(getClassLoader());
         
         Thread.currentThread().setContextClassLoader(getClassLoader());
 
@@ -70,30 +107,47 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
         // if there is no app name, no servlets, etc. It also instantiates the servlets ready
         // for use.
         try {
-            getSipServletService().deployApplication(moduleInfo, this, standardContext.getServletContext());
+            getSipServletService().deployApplication(sdu, this, standardContext.getServletContext());
         } catch (Exception e) {
             throw new StartException(e);
         }
     }
 
+    /**
+     * 
+     * @param context 
+     */
     @Override
     public void stop(final StopContext context) {
     }
 
+    /**
+     * 
+     * @return
+     * @throws IllegalStateException
+     * @throws IllegalArgumentException 
+     */
     @Override
     public SipDeploymentService getValue() throws IllegalStateException, IllegalArgumentException {
         return this;
     }
 
+    /**
+     * 
+     */
     @Override
     public void bindContexts() {
         NamespaceContextSelector.pushCurrentSelector(namespaceContextSelector);
     }
 
+    /**
+     * 
+     */
     @Override
     public void unbindContexts() {
         NamespaceContextSelector.popCurrentSelector();
     }
+    
     /**
      * Use BeanManager to instantiate the objects.
      * 

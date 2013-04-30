@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import org.andrewwinter.jsr289.api.InboundSipServletRequestImpl;
-import org.andrewwinter.jsr289.model.SipModuleInfo;
+import org.andrewwinter.jsr289.model.SipDeploymentUnit;
 import org.andrewwinter.jsr289.model.SipServletDelegate;
 
 /**
@@ -17,7 +17,7 @@ public class RequestDispatcherImpl implements RequestDispatcher {
 
     private final InboundSipServletRequestHandler handler;
     
-    private final SipModuleInfo moduleInfo;
+    private final SipDeploymentUnit moduleInfo;
     
     private final SipServletDelegate servlet;
     
@@ -27,7 +27,7 @@ public class RequestDispatcherImpl implements RequestDispatcher {
      * @param moduleInfo
      * @param servlet
      */
-    public RequestDispatcherImpl(final InboundSipServletRequestHandler handler, final SipModuleInfo moduleInfo, final SipServletDelegate servlet) {
+    public RequestDispatcherImpl(final InboundSipServletRequestHandler handler, final SipDeploymentUnit moduleInfo, final SipServletDelegate servlet) {
         this.handler = handler;
         this.moduleInfo = moduleInfo;
         this.servlet = servlet;

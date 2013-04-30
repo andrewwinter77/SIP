@@ -13,6 +13,7 @@ import javax.servlet.ServletContext;
 import org.andrewwinter.jsr289.InboundSipServletRequestHandler;
 import org.andrewwinter.jsr289.ServletContextDelegate;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
+import org.andrewwinter.jsr289.util.Util;
 
 /**
  *
@@ -193,12 +194,12 @@ public class SipModuleInfo {
     
     /**
      * 
-     * @param managedClassInstantiator 
+     * @param instantiator 
      */
-    private void initServletDelegators(final ManagedClassInstantiator managedClassInstantiator) {
+    private void initServlets(final ManagedClassInstantiator instantiator) {
         for (final SipServletDelegate servlet : sipServlets.values()) {
             servlet.setClassLoader(classLoader);
-            servlet.setManagedClassInstantiator(managedClassInstantiator);
+            servlet.setInstantiator(instantiator);
             servlet.setServletContext(servletContext);
         }
     }
@@ -224,7 +225,7 @@ public class SipModuleInfo {
      * Prepares this SipModule for use. This must be called before the module
      * is used.
      * @param handler 
-     * @param managedClassInstantiator 
+     * @param instantiator 
      * @param context
      * @throws IllegalStateException
      * @throws ClassNotFoundException 
@@ -233,7 +234,7 @@ public class SipModuleInfo {
      */
     public void init(
             final InboundSipServletRequestHandler handler,
-            final ManagedClassInstantiator managedClassInstantiator,
+            final ManagedClassInstantiator instantiator,
             final ServletContext context) 
                 throws IllegalStateException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         
@@ -248,10 +249,10 @@ public class SipModuleInfo {
 
         try {
             
-            initServletDelegators(managedClassInstantiator);
+            initServlets(instantiator);
             
-            for (final Class listenerIface : org.andrewwinter.jsr289.util.Util.LISTENER_CLASSES) {
-                initListeners(listenerIface);
+            for (final Class iface : Util.LISTENER_CLASSES) {
+                initListeners(iface);
             }
             
         } catch (ClassNotFoundException | IllegalStateException | InstantiationException | IllegalAccessException e) {

@@ -131,7 +131,7 @@ public class SipServletDelegate {
         this.servletContext = context;
     }
     
-    public void setManagedClassInstantiator(final ManagedClassInstantiator instantiator) {
+    public void setInstantiator(final ManagedClassInstantiator instantiator) {
         this.instantiator = instantiator;
     }
     

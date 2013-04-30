@@ -70,8 +70,7 @@ public class SipDeploymentService implements Service<SipDeploymentService>, Mana
         // if there is no app name, no servlets, etc. It also instantiates the servlets ready
         // for use.
         try {
-            moduleInfo.init(getSipServletService(), this, standardContext.getServletContext());
-            getSipServletService().deployApplication(moduleInfo);
+            getSipServletService().deployApplication(moduleInfo, this, standardContext.getServletContext());
         } catch (Exception e) {
             throw new StartException(e);
         }

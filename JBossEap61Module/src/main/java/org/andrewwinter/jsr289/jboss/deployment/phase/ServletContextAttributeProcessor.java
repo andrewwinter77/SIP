@@ -66,7 +66,7 @@ public class ServletContextAttributeProcessor extends AbstractDeploymentUnitProc
                 SipServlet.OUTBOUND_INTERFACES, createOutboundInterfaceList()));
         
         du.addToAttachmentList(ServletContextAttribute.ATTACHMENT_KEY, new ServletContextAttribute(
-                SipServletRequestHandler.ATTRIBUTE_NAME, getSipServletService(dpc)));
+                SipServletRequestHandler.ATTRIBUTE_NAME, getSipServletContainerService(dpc)));
         
         // UasActiveServlet in the 289 TCK checks this is present.
 //        context.setAttribute(ServletContext.TEMPDIR, du.getAttachment(CustomAttachments.TEMP_DIRECTORY));

@@ -55,10 +55,10 @@ class SubsystemAddHandler extends AbstractBoottimeAddStepHandler {
             final ServiceVerificationHandler verificationHandler,
             final List<ServiceController<?>> newControllers) throws OperationFailedException {
 
-        final SipDeploymentUnitService service = new SipDeploymentUnitService();
+        final SipServletContainerService service = new SipServletContainerService();
         
-        ServiceController<SipDeploymentUnitService> controller = context.getServiceTarget()
-                .addService(SipDeploymentUnitService.SERVICE_NAME, service)
+        ServiceController<SipServletContainerService> controller = context.getServiceTarget()
+                .addService(SipServletContainerService.NAME, service)
                 .addListener(verificationHandler)
                 .setInitialMode(Mode.ACTIVE)
                 .install();

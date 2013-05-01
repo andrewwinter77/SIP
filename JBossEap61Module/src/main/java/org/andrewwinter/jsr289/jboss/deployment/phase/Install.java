@@ -4,8 +4,8 @@ import java.util.Iterator;
 import java.util.ServiceLoader;
 import javax.servlet.sip.ar.SipApplicationRouter;
 import javax.servlet.sip.ar.spi.SipApplicationRouterProvider;
-import org.andrewwinter.jsr289.jboss.SipServletContainerService;
 import org.andrewwinter.jsr289.jboss.SipDeploymentUnitService;
+import org.andrewwinter.jsr289.jboss.SipServletContainerService;
 import org.jboss.as.ee.component.EEModuleDescription;
 import org.jboss.as.naming.context.NamespaceContextSelector;
 import org.jboss.as.server.deployment.Attachments;
@@ -44,7 +44,7 @@ public class Install extends AbstractDeploymentUnitProcessor {
             final SipApplicationRouterProvider provider = iter.next();
             final SipApplicationRouter appRouter = provider.getSipApplicationRouter();
 
-            final SipDeploymentUnitService service = getSipServletService(dpc);
+            final SipServletContainerService service = getSipServletContainerService(dpc);
             service.deployApplicationRouter(appRouter);
         } else {
             throw new DeploymentUnitProcessingException("No SipApplicationRouter implementation found.");
@@ -59,8 +59,8 @@ public class Install extends AbstractDeploymentUnitProcessor {
         final NamespaceContextSelector namespaceContextSelector = description.getNamespaceContextSelector();
         
         final ServiceTarget serviceTarget = dpc.getServiceTarget();
-        final ServiceName serviceName = du.getServiceName().append(SipServletContainerService.NAME);
-        final SipServletContainerService service = new SipServletContainerService(du, namespaceContextSelector);
+        final ServiceName serviceName = du.getServiceName().append(SipDeploymentUnitService.NAME);
+        final SipDeploymentUnitService service = new SipDeploymentUnitService(du, namespaceContextSelector);
 
         final ServiceName beanManagerServiceName = du.getServiceName().append(BeanManagerService.NAME);
 
@@ -68,7 +68,7 @@ public class Install extends AbstractDeploymentUnitProcessor {
                 .addService(serviceName, service)
                 .addDependency(beanManagerServiceName)
                 .addDependency(serviceName)
-                .addDependency(SipDeploymentUnitService.SERVICE_NAME)
+                .addDependency(SipServletContainerService.NAME)
                 .setInitialMode(ServiceController.Mode.ACTIVE)
                 .install();
     }

@@ -1,6 +1,6 @@
 package org.andrewwinter.jsr289.jboss.deployment.phase;
 
-import org.andrewwinter.jsr289.jboss.SipDeploymentUnitService;
+import org.andrewwinter.jsr289.jboss.SipServletContainerService;
 import org.andrewwinter.jsr289.jboss.deployment.attachment.CustomAttachments;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
@@ -38,12 +38,12 @@ public abstract class AbstractDeploymentUnitProcessor implements DeploymentUnitP
      * @return
      * @throws DeploymentUnitProcessingException 
      */
-    protected SipDeploymentUnitService getSipServletService(final DeploymentPhaseContext context) throws DeploymentUnitProcessingException {
-        final ServiceController<?> controller = context.getServiceRegistry().getRequiredService(SipDeploymentUnitService.SERVICE_NAME);
+    protected SipServletContainerService getSipServletContainerService(final DeploymentPhaseContext context) throws DeploymentUnitProcessingException {
+        final ServiceController<?> controller = context.getServiceRegistry().getRequiredService(SipServletContainerService.NAME);
         if (controller == null) {
             throw new DeploymentUnitProcessingException("Failed to get service controller.");
         } 
-        return (SipDeploymentUnitService) controller.getValue();
+        return (SipServletContainerService) controller.getValue();
     }
 
     /**

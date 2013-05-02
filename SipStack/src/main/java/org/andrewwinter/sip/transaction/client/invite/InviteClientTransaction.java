@@ -121,20 +121,26 @@ public class InviteClientTransaction extends ClientTransaction {
                     dialog = Dialog.createForUAC(getRequest(), response, DialogState.EARLY);
                 }
             } else if (statusCode >= 200 && statusCode < 300) {
-                if (dialog == null) {
+                
+                
+                // Now do this unconditionally to allow for the fact that the
+                // dialog may have changed. We may have created a dialog earlier
+                // from a 180 and now we're creating a different dialog from a
+                // 200 from a different device.
+                //if (dialog == null) {
                 
                     // Otherwise, a new dialog in the "confirmed" state MUST be
                     // constructed using the procedures of Section 12.1.2.
                 
                     dialog = Dialog.createForUAC(getRequest(), response, DialogState.CONFIRMED);
                 
-                } else {
-                    // If the dialog identifier in the 2xx response matches the
-                    // dialog identifier of an existing dialog, the dialog MUST be
-                    // transitioned to the "confirmed" state
-                
-                    dialog.setState(DialogState.CONFIRMED);
-                }
+                //} else {
+                //     // If the dialog identifier in the 2xx response matches the
+                //     // dialog identifier of an existing dialog, the dialog MUST be
+                //     // transitioned to the "confirmed" state
+                // 
+                //     dialog.setState(DialogState.CONFIRMED);
+                //}
             }
         }
         

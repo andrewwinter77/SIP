@@ -71,8 +71,8 @@ class Proceeding extends ServerTransactionState {
                     txn.createDialog(response, DialogState.CONFIRMED);
                 }
             } else {
-                if (statusCode >= 200) {
-                    dialog.setState(DialogState.CONFIRMED);
+                if (statusCode >= 200 && dialog.getState() == DialogState.EARLY) {
+                    txn.createDialog(response, DialogState.CONFIRMED);
                 }
             }
         }

@@ -31,8 +31,6 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
      */
     private UserAgentClient userAgentClient;
     
-    private final InboundSipResponse inboundSipResponse;
-
     /**
      * 
      * @param userAgentClient
@@ -41,7 +39,6 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
     private OutboundSipServletRequestImpl(final UserAgentClient userAgentClient, final SipRequest cancel) {
         super(cancel);
         this.userAgentClient = userAgentClient;
-        inboundSipResponse = null;
     }
     
     /**
@@ -54,7 +51,6 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
         if (request == null) {
             throw new NullPointerException("Request must not be null.");
         }
-        inboundSipResponse = null;
         super.setRoutingDirective(directive);
     }
 
@@ -216,11 +212,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
 
     @Override
     public Dialog getDialog() {
-        if (inboundSipResponse == null) {
-            return null;
-        } else {
-            return inboundSipResponse.getDialog();
-        }
+        return null;
     }
 
     @Override

@@ -165,8 +165,6 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl {
                     final org.andrewwinter.sip.parser.Address contactHeader =
                             new org.andrewwinter.sip.parser.Address(uri);
                     response.addHeader(HeaderName.CONTACT, contactHeader);
-                    
-                    addHeader("Foo", "This is where the Record-Route header will be");
                 }
             
                 return new OutboundSipServletResponseImpl(this, response);

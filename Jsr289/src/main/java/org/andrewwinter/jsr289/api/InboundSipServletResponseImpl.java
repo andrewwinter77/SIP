@@ -5,7 +5,6 @@ import javax.servlet.sip.Proxy;
 import javax.servlet.sip.ProxyBranch;
 import javax.servlet.sip.Rel100Exception;
 import javax.servlet.sip.SipServletRequest;
-import javax.servlet.sip.SipSession;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.message.SipMessageFactory;
@@ -24,8 +23,10 @@ public class InboundSipServletResponseImpl extends SipServletResponseImpl {
      */
     public InboundSipServletResponseImpl(final InboundSipResponse isr, final OutboundSipServletRequestImpl request) {
         super(isr.getResponse(), request);
-        final SipSession session = getSession(false);
-        servletRequest.setSipSession(session);
+        
+        // The response will share the same session as the request.
+        setSipSession(request.getSession(false));
+        
         this.inboundSipResponse = isr;
     }
     

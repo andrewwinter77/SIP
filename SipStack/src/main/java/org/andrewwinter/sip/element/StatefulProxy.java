@@ -321,7 +321,7 @@ public class StatefulProxy implements SipRequestHandler, SipResponseHandler {
     public void cancel() {
         for (final UserAgentClient uac : clients) {
             if (!uac.isTransactionTerminated()) {
-                uac.cancel(null); // Use null to get the SipStack to createUacAndSendRequest its own CANCEL.
+                uac.cancel(null); // Use null to get the SipStack to create its own CANCEL.
             }
         }
     }

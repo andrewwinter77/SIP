@@ -395,14 +395,30 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
         }
     }
 
-    private void handleSubsequentRequest(final SipServletRequestImpl request) {
+    private void handleSubsequentRequest(final InboundSipServletRequestImpl request) {
         final AddressImpl route = (AddressImpl) request.getPoppedRoute();
         if (route == null) {
-            throw new UnsupportedOperationException();
+            
+            final SipSessionImpl ss = SipSessionStore.getInstance().getFromDialogId(request.getDialog().getId());
+            if (ss == null) {
+                throw new UnsupportedOperationException();
+            } else {
+                ss.doRequest(request);
+            }
         } else {
             final String ssid = route.getURI().getParameter("ssid");
             if (ssid == null) {
-                throw new UnsupportedOperationException();
+                
+                // AW: There is a Route header so this request must have been
+                // for us. Most likely it's an ACK sent by us with app routing
+                // info in the header. Since ACKs are subsequent requests and
+                // we don't consult the app router for this, just proxy it on
+                // to wherever it wants to go.
+                
+                final List<Uri> targets = new ArrayList<>();
+                targets.add(request.getSipRequest().getRequestUri());
+                request.getInboundSipRequest().proxy(targets, true);
+                
             } else {
                 final SipSessionImpl ss = SipSessionStore.getInstance().get(ssid);
                 ss.doRequest(request);

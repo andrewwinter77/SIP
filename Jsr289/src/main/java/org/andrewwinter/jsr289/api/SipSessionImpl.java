@@ -334,7 +334,7 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler {
             request = SipMessageFactory.createInDialogRequest(dialog, method, null, null);
         } 
                 
-        final OutboundSipServletRequestImpl servletRequest = new OutboundSipServletRequestImpl(request, null);
+        final OutboundSipServletRequestImpl servletRequest = new OutboundSipServletRequestImpl(request, dialog);
         servletRequest.setServletContext(servletContext);
         servletRequest.setSipSession(this);
         return servletRequest;
@@ -602,9 +602,20 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler {
             return;
         }
         
-        if (dialog == null && isr.getDialog() != null) {
+        if (isr.getDialog() != null && (dialog == null
+                
+                // AW: Or if the dialog ID has changed. This happens if we have
+                // a forking proxy downstream and get, say, a 180 from one 
+                // end point followed by a 200 from a different endpoint. This
+                // code makes the assumption that responses only improve, i.e.,
+                // we would never get a 200 followed by a 180.
+
+                || !dialog.getId().equals(isr.getDialog().getId()))) {
+
             // Response has just created a dialog, so update this session.
             setDialog(isr.getDialog());
+            
+            SipSessionStore.getInstance().associateWithDialogId(isr.getDialog().getId(), this);
         }
         
         final String servletName;

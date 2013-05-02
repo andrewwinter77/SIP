@@ -55,7 +55,7 @@ public class InboundSipServletResponseImpl extends SipServletResponseImpl {
         // TODO: IllegalStateException if transaction state doesn't allow ACK to be sent now.
         
         final SipRequest ack = SipMessageFactory.createAck(inboundSipResponse);
-        final OutboundSipServletRequestImpl sipServletAck = new OutboundSipServletRequestImpl(ack, null);
+        final OutboundSipServletRequestImpl sipServletAck = new OutboundSipServletRequestImpl(ack, inboundSipResponse.getDialog());
         sipServletAck.setServletContext(getServletContext());
         sipServletAck.setSipSession(getSession());
         return sipServletAck;

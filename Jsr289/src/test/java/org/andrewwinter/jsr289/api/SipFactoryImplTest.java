@@ -7,10 +7,12 @@ import javax.servlet.sip.ServletParseException;
 import javax.servlet.sip.SipApplicationSession;
 import javax.servlet.sip.SipFactory;
 import javax.servlet.sip.SipServletRequest;
+import javax.servlet.sip.ar.SipApplicationRoutingDirective;
 import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.parser.SipMessage;
 import org.andrewwinter.sip.parser.SipRequest;
 
@@ -42,7 +44,7 @@ public class SipFactoryImplTest extends TestCase {
     public void testCreateParameterable001() throws ServletException {
         final SipFactory sf = new SipFactoryImpl(null, null, null);
         final SipRequest request = (SipRequest) SipMessage.parse(MESSAGE);
-        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request, null);
+        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request, SipApplicationRoutingDirective.NEW);
         final Parameterable hdr = servletRequest.getParameterableHeader("From");
         final Parameterable param = sf.createParameterable(hdr.toString());
         Assert.assertNotNull(param);
@@ -52,7 +54,7 @@ public class SipFactoryImplTest extends TestCase {
     public void testCreateRequest102() {
         final SipFactory sf = new SipFactoryImpl(null, null, null);
         final SipRequest request = (SipRequest) SipMessage.parse(MESSAGE);
-        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request, null);
+        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request, SipApplicationRoutingDirective.NEW);
 
         SipApplicationSession appSession = sf.createApplicationSession();
         if (appSession != null) {
@@ -71,7 +73,7 @@ public class SipFactoryImplTest extends TestCase {
     public void testCreateRequest002() throws ServletParseException {
         final SipFactory sf = new SipFactoryImpl(null, null, null);
         final SipRequest request = (SipRequest) SipMessage.parse(MESSAGE);
-        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request, null);
+        final SipServletRequest servletRequest = new OutboundSipServletRequestImpl(request, SipApplicationRoutingDirective.NEW);
 
         SipApplicationSession appSession = sf.createApplicationSession();
         if (appSession != null) {

@@ -3,6 +3,7 @@ package org.andrewwinter.jsr289.store;
 import org.andrewwinter.jsr289.api.SipSessionImpl;
 import java.util.HashMap;
 import java.util.Map;
+import org.andrewwinter.sip.dialog.DialogId;
 
 /**
  *
@@ -17,12 +18,23 @@ public class SipSessionStore {
      */
     private final Map<String, SipSessionImpl> map;
 
+    private final Map<DialogId, SipSessionImpl> dialogIdToSessionMap;
+    
     private SipSessionStore() {
         map = new HashMap<>();
+        dialogIdToSessionMap = new HashMap<>();
     }
     
     public static SipSessionStore getInstance() {
         return INSTANCE;
+    }
+    
+    public void associateWithDialogId(final DialogId id, final SipSessionImpl session) {
+        dialogIdToSessionMap.put(id, session);
+    }
+    
+    public SipSessionImpl getFromDialogId(final DialogId id) {
+        return dialogIdToSessionMap.get(id);
     }
     
     public void put(final SipSessionImpl sipSession) {
@@ -34,6 +46,9 @@ public class SipSessionStore {
     }
     
     public void remove(final String id) {
-        map.remove(id);
+        final SipSessionImpl session = map.remove(id);
+        if (session.getDialog() != null) {
+            dialogIdToSessionMap.remove(session.getDialog().getId());
+        }
     }
 }

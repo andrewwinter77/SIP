@@ -31,6 +31,8 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
      */
     private UserAgentClient userAgentClient;
     
+    private final Dialog dialog;
+    
     /**
      * 
      * @param userAgentClient
@@ -39,6 +41,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
     private OutboundSipServletRequestImpl(final UserAgentClient userAgentClient, final SipRequest cancel) {
         super(cancel);
         this.userAgentClient = userAgentClient;
+        this.dialog = null;
     }
     
     /**
@@ -49,8 +52,16 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
     public OutboundSipServletRequestImpl(final SipRequest request, final SipApplicationRoutingDirective directive) {
         super(request);
         super.setRoutingDirective(directive);
+        this.dialog = null;
     }
 
+    
+    public OutboundSipServletRequestImpl(final SipRequest request, final Dialog dialog) {
+        super(request);
+        this.dialog = dialog;
+    }
+
+    
     @Override
     public Proxy getProxy() throws TooManyHopsException {
         throw new IllegalStateException("Cannot proxy requests where we are the UAC.");
@@ -192,7 +203,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
                     pushRoute();
                 }
                 
-                userAgentClient = UserAgentClient.createUacAndSendRequest(this, request, null);
+                userAgentClient = UserAgentClient.createUacAndSendRequest(this, request, dialog);
             }
         } else if (request.isCANCEL()) {
             userAgentClient.cancel(request);
@@ -209,7 +220,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
 
     @Override
     public Dialog getDialog() {
-        return null;
+        return dialog;
     }
 
     @Override

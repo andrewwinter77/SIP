@@ -120,5 +120,6 @@
 	<module>DomainModel</module>
 	<module>DoNotDisturbApp</module>
         <module>B2bUaApp</module>
+        <module>SimpleProxyApp</module>
   </modules>
 </project>

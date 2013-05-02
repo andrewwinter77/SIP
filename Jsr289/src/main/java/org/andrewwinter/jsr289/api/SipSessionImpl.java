@@ -183,10 +183,16 @@ public class SipSessionImpl implements SipSession, SipServletRequestHandler {
         this.handler = mainServletName;
     }
     
+    /**
+     * Sets or updates the dialog for this session. Be aware the dialog may
+     * change during the life of a session. For example, the EARLY dialog may
+     * be different from the CONFIRMED dialog if the EARLY is created by a 180
+     * from one device and the 200 comes from a different device, due to
+     * forking.
+     * @param dialog 
+     */
     public void setDialog(final Dialog dialog) {
-        if (this.dialog == null) {
-            this.dialog = dialog;
-        }
+        this.dialog = dialog;
     }
     
     public Dialog getDialog() {

@@ -40,6 +40,7 @@ import org.andrewwinter.jsr289.util.Util;
 import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.parser.Address;
+import org.andrewwinter.sip.parser.Uri;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -232,7 +233,7 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
      * Implements Section 15.4.1 of Sip Servlet 1.1.
      * @param request 
      */
-    private void routeInitialRequest(final SipServletRequestImpl request) {
+    private void routeInitialRequest(final InboundSipServletRequestImpl request) {
         if (appRouter == null) {
             // No app router deployed.
             sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, "No app router");
@@ -387,8 +388,9 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
                 // one or more Route headers, send the request externally according
                 // to standard SIP mechanism.
                 
-                // TODO: DO THIS
-                throw new UnsupportedOperationException();
+                final List<Uri> targets = new ArrayList<>();
+                targets.add(request.getSipRequest().getRequestUri());
+                request.getInboundSipRequest().proxy(targets, true);
             }
         }
     }
@@ -415,6 +417,10 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
     private void handleRouteHeader(final InboundSipServletRequestImpl request) {
         final Address route = request.getSipRequest().popRoute(); // TODO: Pop only if this request is for us
         if (route != null) {
+            
+            // If an initial request is identified as being intended for the SIP
+            // Servlet container it MUST remove the Route header before passing
+            // it to any application or the Application Router.
             
             // TODO: Determine if the Route is for this container
             

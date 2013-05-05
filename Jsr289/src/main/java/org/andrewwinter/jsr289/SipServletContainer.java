@@ -73,6 +73,7 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
     
     /**
      * Constructor.
+     * @param additionalDomains 
      */
     public SipServletContainer(final Set<String> additionalDomains) {
         modules = new HashMap<>();
@@ -80,9 +81,15 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
         domains.addAll(additionalDomains);
     }
     
+    /**
+     *
+     */
     public void start() {
     }
     
+    /**
+     *
+     */
     public void stop() {
         if (appRouter != null) {
             appRouter.destroy();
@@ -90,6 +97,16 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
         // TODO: Destroy all servlets?
     }
     
+    /**
+     *
+     * @param sdu
+     * @param instantiator
+     * @param context
+     * @throws IllegalStateException
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
     public void deployApplication(final SipDeploymentUnit sdu, final ManagedClassInstantiator instantiator, final ServletContext context)
         throws IllegalStateException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         if (appRouter == null) {
@@ -120,6 +137,10 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
         }
     }
 
+    /**
+     *
+     * @param appRouter
+     */
     public void deployApplicationRouter(final SipApplicationRouter appRouter) {
         if (this.appRouter != null) {
             this.appRouter.destroy();
@@ -482,6 +503,4 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
             }
         }
     }
-
-    
 }

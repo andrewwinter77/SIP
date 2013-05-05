@@ -225,7 +225,7 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
     /**
      * 
      * @param request
-     * @param reasonPhrase 
+     * @param reasonPhrase Use null for the default reason phrase.
      */
     private static void sendErrorResponse(final SipServletRequest request, final int status, final String reasonPhrase) {
         try {
@@ -486,21 +486,22 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
      */
     @Override
     public void doRequest(final InboundSipRequest isr) {
-        final InboundSipServletRequestImpl sipServletRequest = new InboundSipServletRequestImpl(isr);
         
-        handleRouteHeader(sipServletRequest);
-        
-        if (sipServletRequest.isInitial()) {
-            routeInitialRequest(sipServletRequest);
-        } else {
-            
-            // TODO: Set ClassLoader.
-            
-            try {
-                handleSubsequentRequest(sipServletRequest);
-            } catch (Exception e) {
-                e.printStackTrace();
+        final InboundSipServletRequestImpl request = new InboundSipServletRequestImpl(isr);
+        try {
+            handleRouteHeader(request);
+
+            if (request.isInitial()) {
+                routeInitialRequest(request);
+            } else {
+
+                // TODO: Set ClassLoader.
+
+                handleSubsequentRequest(request);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            sendErrorResponse(request, SipServletResponse.SC_SERVER_INTERNAL_ERROR, null);
         }
     }
 }

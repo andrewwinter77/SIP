@@ -24,7 +24,10 @@ public final class Util {
     public static String getIpAddress() {
         if (ipAddress == null) {
             try {
-                ipAddress = InetAddress.getLocalHost().getHostAddress();
+                ipAddress = System.getProperty("org.andrewwinter.sip.sentby");
+                if (ipAddress == null) {
+                    ipAddress = InetAddress.getLocalHost().getHostAddress();
+                }
             } catch (UnknownHostException e) {
                 // TODO: Handle UnknownHostException
             }

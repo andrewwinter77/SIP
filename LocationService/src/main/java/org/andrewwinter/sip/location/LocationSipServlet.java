@@ -59,6 +59,7 @@ public class LocationSipServlet extends SipServlet {
         }
         
         final Proxy proxy = invite.getProxy();
+        proxy.setRecordRoute(true);
         proxy.proxyTo(destUris);
     }
 }

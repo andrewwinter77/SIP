@@ -9,7 +9,7 @@ import javax.servlet.sip.ar.SipApplicationRouter;
 import org.andrewwinter.jsr289.SipServletContainer;
 import org.andrewwinter.jsr289.model.SipDeploymentUnit;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
-import org.andrewwinter.sip.transport.NettyServerTransport;
+import org.andrewwinter.sip.transport.ServerTransport;
 import org.jboss.msc.service.Service;
 import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.StartContext;
@@ -37,7 +37,7 @@ public class SipServletContainerService implements Service<SipServletContainerSe
     /**
      * 
      */
-    private NettyServerTransport serverTransport;
+    private ServerTransport serverTransport;
 
     /**
      * 
@@ -49,7 +49,8 @@ public class SipServletContainerService implements Service<SipServletContainerSe
      */
     public SipServletContainerService() {
         container = new SipServletContainer(getOurDomains());
-        serverTransport = new NettyServerTransport(container, 5060);
+        serverTransport = ServerTransport.getInstance();
+        serverTransport.init(container, 5060);
     }
 
     /**

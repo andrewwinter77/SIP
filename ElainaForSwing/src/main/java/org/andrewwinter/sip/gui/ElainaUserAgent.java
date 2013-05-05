@@ -14,7 +14,6 @@ import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.parser.SipResponse;
 import org.andrewwinter.sip.properties.ServerProperties;
 import org.andrewwinter.sip.properties.UserAgentProperties;
-import org.andrewwinter.sip.transport.CoreJavaServerTransport;
 import org.andrewwinter.sip.transport.ServerTransport;
 
 /**
@@ -30,9 +29,8 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
     public ElainaUserAgent() {
         initComponents();
         userAgentProperties = new UserAgentProperties(null, "andrew");
-        final ServerTransport serverTransport = new CoreJavaServerTransport(
-                this,
-                ServerProperties.getInstance().getUnsecurePort());
+        final ServerTransport serverTransport = ServerTransport.getInstance();
+        serverTransport.init(this, ServerProperties.getInstance().getUnsecurePort());
         serverTransport.listen();
     }
 

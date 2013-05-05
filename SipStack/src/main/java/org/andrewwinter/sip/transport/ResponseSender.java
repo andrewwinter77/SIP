@@ -15,12 +15,15 @@ public class ResponseSender {
 
     private final TcpSocketWrapper socket;
     
+    private final ServerTransport serverTransport;
+    
     /**
      *
      * @param socket {@code null} if the request was received over UDP.
      */
-    public ResponseSender(final TcpSocketWrapper socket) {
+    public ResponseSender(final TcpSocketWrapper socket, final ServerTransport serverTransport) {
         this.socket = socket;
+        this.serverTransport = serverTransport;
     }
     
     /**
@@ -137,7 +140,7 @@ public class ResponseSender {
                     // The response MUST be sent from the same address and port that
                     // the corresponding request was received on.
 
-                    Udp.send(response, dest, port);
+                    serverTransport.sendOverUdp(response, dest, port);
                     
                     
                 } else {
@@ -159,7 +162,7 @@ public class ResponseSender {
                     
                     // TODO: TTL
                     
-                    Udp.send(response, maddr, port);
+                    serverTransport.sendOverUdp(response, maddr, port);
                 }
                 
             } else {

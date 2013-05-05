@@ -3,14 +3,15 @@ package org.andrewwinter.sip.transport;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.SocketAddress;
 import java.net.UnknownHostException;
+import java.util.concurrent.Executors;
 import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.dialog.DialogId;
 import org.andrewwinter.sip.dialog.DialogStore;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.InboundSipResponse;
-import org.andrewwinter.sip.parser.Address;
 import org.andrewwinter.sip.parser.ParseException;
 import org.andrewwinter.sip.parser.SipMessage;
 import org.andrewwinter.sip.parser.SipMessageHelper;
@@ -25,15 +26,38 @@ import org.andrewwinter.sip.transaction.server.ServerTransactionStore;
 import org.andrewwinter.sip.transaction.server.ack.AckServerTransaction;
 import org.andrewwinter.sip.transaction.server.invite.InviteServerTransaction;
 import org.andrewwinter.sip.transaction.server.noninvite.NonInviteServerTransaction;
+import org.jboss.netty.bootstrap.ConnectionlessBootstrap;
+import org.jboss.netty.bootstrap.ServerBootstrap;
+import org.jboss.netty.channel.Channel;
+import org.jboss.netty.channel.ChannelFactory;
+import org.jboss.netty.channel.ChannelFuture;
+import org.jboss.netty.channel.ChannelFutureListener;
+import org.jboss.netty.channel.ChannelPipeline;
+import org.jboss.netty.channel.ChannelPipelineFactory;
+import org.jboss.netty.channel.Channels;
+import org.jboss.netty.channel.FixedReceiveBufferSizePredictorFactory;
+import org.jboss.netty.channel.SimpleChannelUpstreamHandler;
+import org.jboss.netty.channel.socket.DatagramChannelFactory;
+import org.jboss.netty.channel.socket.nio.NioDatagramChannelFactory;
+import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
+import org.jboss.netty.handler.codec.string.StringDecoder;
+import org.jboss.netty.handler.codec.string.StringEncoder;
+import org.jboss.netty.util.CharsetUtil;
 
 /**
  *
  * @author andrewwinter77
  */
-public abstract class ServerTransport {
+public class ServerTransport {
 
-    private final SipRequestHandler sipListener;
+    private SipRequestHandler sipListener;
     
+    private SocketAddress localPort;
+    
+    private ConnectionlessBootstrap udpBootstrap;
+        
+    private Channel udpChannel;
+
     /**
      *
      * @param request
@@ -61,7 +85,7 @@ public abstract class ServerTransport {
             
             request.setMatchesExistingServerTransaction(false);
 
-            final InboundSipRequest isr = new InboundSipRequest(request, remoteAddress, new ResponseSender(tcpSocket));
+            final InboundSipRequest isr = new InboundSipRequest(request, remoteAddress, new ResponseSender(tcpSocket, this));
 
             // TODO: Create a new thread for this.
 
@@ -78,7 +102,7 @@ public abstract class ServerTransport {
 
             if (request.isCANCEL()) {
 
-                final InboundSipRequest isr = new InboundSipRequest(request, remoteAddress, new ResponseSender(tcpSocket));
+                final InboundSipRequest isr = new InboundSipRequest(request, remoteAddress, new ResponseSender(tcpSocket, this));
 
                 NonInviteServerTransaction.create(dialog, isr, txn, sipListener);
 
@@ -182,22 +206,121 @@ public abstract class ServerTransport {
         }
     }
 
+    private static ServerTransport INSTANCE = new ServerTransport();
+    
+    public static ServerTransport getInstance() {
+        return INSTANCE;
+    }
+    
+    private ServerTransport() {
+    }
+    
     /**
      *
      * @param sipListener
      */
-    public ServerTransport(final SipRequestHandler sipListener) {
+    public void init(final SipRequestHandler sipListener, final int tcpPort) {
         this.sipListener = sipListener;
+        this.localPort = new InetSocketAddress(tcpPort);
     }
     
     /**
      *
      * @throws IOException
      */
-    public abstract void stopListening() throws IOException;
+    public void stopListening() throws IOException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
     /**
      *
      */
-    public abstract void listen();
+    public void listen() {
+        listenForTcp();
+        listenForUdp();
+    }
+
+    private class SipServerPipelineFactory implements ChannelPipelineFactory {
+        @Override
+        public ChannelPipeline getPipeline() throws Exception {
+            return Channels.pipeline(
+                    new NettySimpleChannelHandler(ServerTransport.this),
+                    new StringEncoder(CharsetUtil.UTF_8),
+                    new StringDecoder(CharsetUtil.UTF_8),
+                    new SimpleChannelUpstreamHandler());
+        }
+    }
+
+    private void listenForTcp() {
+        ChannelFactory factory =
+                new NioServerSocketChannelFactory(
+                Executors.newCachedThreadPool(),
+                Executors.newCachedThreadPool());
+
+        ServerBootstrap bootstrap = new ServerBootstrap(factory);
+
+        bootstrap.setPipelineFactory(new SipServerPipelineFactory());
+
+        bootstrap.setOption("child.tcpNoDelay", true);
+        bootstrap.setOption("child.keepAlive", true);
+
+        bootstrap.bind(localPort);
+
+        System.out.println("TCP Server Started!");
+    }
+    
+    private void listenForUdp() {
+        DatagramChannelFactory f =
+            new NioDatagramChannelFactory(Executors.newCachedThreadPool());
+ 
+        udpBootstrap = new ConnectionlessBootstrap(f);
+ 
+        // Configure the pipeline factory.
+        udpBootstrap.setPipelineFactory(new SipServerPipelineFactory());
+ 
+        // Enable broadcast
+        udpBootstrap.setOption("broadcast", "false");
+ 
+        // Allow packets as large as up to 65535 bytes.
+        // You could increase or decrease this value to avoid truncated packets
+        // or to improve memory footprint respectively.
+        //
+        // Please also note that a large UDP packet might be truncated or
+        // dropped by your router no matter how you configured this option.
+        // In UDP, a packet is truncated or dropped if it is larger than a
+        // certain size, depending on router configuration.  IPv4 routers
+        // truncate and IPv6 routers drop a large packet.  That's why it is
+        // safe to send small packets in UDP.
+        udpBootstrap.setOption(
+                "receiveBufferSizePredictorFactory",
+                new FixedReceiveBufferSizePredictorFactory(65535));
+
+        udpBootstrap.setOption("localAddress", localPort);
+        udpBootstrap.setOption("tcpNoDelay", true);
+        
+        // Bind to the port and start the service.
+        udpChannel = udpBootstrap.bind(localPort);
+    }
+    
+    /**
+     * 
+     * @param message
+     * @param address
+     * @param port 
+     */
+    public void sendOverUdp(final SipMessage message, final String address, final int port) {
+
+        System.out.println("\n---OUT--" + address + ":" + port + "/UDP------------------------------");
+        System.out.println(message.toString());
+  
+        ChannelFuture future = udpChannel.write(
+                message.toString(), new InetSocketAddress(address, port));
+        future.addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture cf) throws Exception {
+//                              cf.getChannel().close();
+//                              factory.releaseExternalResources();
+            }
+        });
+    }
 }

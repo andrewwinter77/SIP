@@ -43,8 +43,7 @@ public class RequestSender {
         }
 
         if ("UDP".equals(dest.getTransport())) {
-                
-            Udp.send(request, dest.getAddress(), dest.getPort());
+            ServerTransport.getInstance().sendOverUdp(request, dest.getAddress(), dest.getPort());
         } else {
                 // TODO: Handle non-UDP transports
         }

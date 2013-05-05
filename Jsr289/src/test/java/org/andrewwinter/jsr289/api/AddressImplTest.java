@@ -3,6 +3,7 @@ package org.andrewwinter.jsr289.api;
 import javax.servlet.sip.Address;
 import javax.servlet.sip.ServletParseException;
 import javax.servlet.sip.SipFactory;
+import javax.servlet.sip.SipURI;
 import javax.servlet.sip.URI;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -71,6 +72,11 @@ public class AddressImplTest extends TestCase {
         }
     }
 
+    public void testIPv6Address() {
+        final Address address = createAddress("<sip:jason@[fe80::5e26:aff:fe33:b156]:5060>;q=0.250");
+        final SipURI uri = (SipURI) address.getURI();
+    }
+    
     public void testCreateAddress() {
         createAddress();
     }

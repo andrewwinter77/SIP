@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
@@ -58,7 +59,7 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
     /**
      * 
      */
-    private final Set<String> sipInterfaces;
+    private final Set<String> domains;
 
     /**
      * 
@@ -73,9 +74,10 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
     /**
      * Constructor.
      */
-    public SipServletContainer() {
+    public SipServletContainer(final Set<String> additionalDomains) {
         modules = new HashMap<>();
-        sipInterfaces = createLocalInterfaceList();
+        domains = createIpAddressList();
+        domains.addAll(additionalDomains);
     }
     
     public void start() {
@@ -130,20 +132,20 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
      * 
      * @return 
      */
-    private static Set<String> createLocalInterfaceList() {
-        final Set<String> sipInterfaces = new HashSet<>();
+    private static Set<String> createIpAddressList() {
+        final Set<String> result = new HashSet<>();
         try {
-            InetAddress localhost = InetAddress.getLocalHost();
-            InetAddress[] allMyIps = InetAddress.getAllByName(localhost.getCanonicalHostName());
-            if (allMyIps != null) {
-                for (final InetAddress addr : allMyIps) {
-                    sipInterfaces.add(addr.getHostAddress());
+            final InetAddress localhost = InetAddress.getLocalHost();
+            final InetAddress[] addresses = InetAddress.getAllByName(localhost.getCanonicalHostName());
+            if (addresses != null) {
+                for (final InetAddress address : addresses) {
+                    result.add(address.getHostAddress());
                 }
             }
         } catch (UnknownHostException e) {
             System.out.println("Exception enumerating IPs.");
         }
-        return sipInterfaces;
+        return result;
     }
     
     
@@ -373,7 +375,7 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
         } else {
             
             final SipURI requestUri = (SipURI) request.getRequestURI();
-            if (sipInterfaces.contains(requestUri.getHost()) && !request.getHeaders("Route").hasNext()) {
+            if (pointsToThisDomain(requestUri.getHost()) && !request.getHeaders("Route").hasNext()) {
                 
                 // If the Request-URI does not point to another domain, and there is
                 // no Route header, the container should not send the request as it
@@ -395,6 +397,19 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
         }
     }
 
+    /**
+     * 
+     * @param host
+     * @return 
+     */
+    private boolean pointsToThisDomain(final String host) {
+        return domains.contains(host.toLowerCase(Locale.US));
+    }
+    
+    /**
+     * 
+     * @param request 
+     */
     private void handleSubsequentRequest(final InboundSipServletRequestImpl request) {
         final AddressImpl route = (AddressImpl) request.getPoppedRoute();
         if (route == null) {

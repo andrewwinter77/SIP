@@ -1,6 +1,9 @@
 package org.andrewwinter.jsr289.jboss;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
 import javax.servlet.ServletContext;
 import javax.servlet.sip.ar.SipApplicationRouter;
 import org.andrewwinter.jsr289.SipServletContainer;
@@ -45,10 +48,28 @@ public class SipServletContainerService implements Service<SipServletContainerSe
      * 
      */
     public SipServletContainerService() {
-        container = new SipServletContainer();
+        container = new SipServletContainer(getOurDomains());
         serverTransport = new NettyServerTransport(container, 5060);
     }
 
+    /**
+     * Returns the list of domains that resolve to this container. The list
+     * is made available to us as a system property. The property's value must
+     * be a comma-separated list of domains.
+     * @return 
+     */
+    private static Set<String> getOurDomains() {
+        final Set<String> result = new HashSet<>();
+        final String property = System.getProperty("org.andrewwinter.sip.domains");
+        if (property != null) {
+            final String[] domains = property.split(",");
+            for (final String domain : domains) {
+                result.add(domain.toLowerCase(Locale.US));
+            }
+        }
+        return result;
+    }
+    
     /**
      * 
      */

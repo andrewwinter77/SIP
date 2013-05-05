@@ -222,6 +222,29 @@ public class RegistrarServlet extends SipServlet {
         return ok;
     }
 
+    private static boolean isIPV4Address(final String address) {
+        
+        // Note this has to be done this way to support XMLVM's current
+        // capabilities.
+        
+        final String[] parts = address.split("\\.");
+        if (parts.length != 4) {
+            return false;
+        }
+        for (final String part : parts) {
+            try {
+                final int value = Integer.valueOf(part);
+                if (value > 255) {
+                    return false;
+                }
+            } catch (NumberFormatException e) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
     /**
      *
      * @param isr
@@ -294,6 +317,14 @@ public class RegistrarServlet extends SipServlet {
                 // If the binding does not exist, it is tentatively
                 // added.
 
+                
+                // TEMPORARY TO AVOID IPv6 PROBLEMS
+                final String host = ((SipURI) contact.getURI()).getHost().toString();
+                if (!isIPV4Address(host)) {
+                    continue;
+                }
+                // END TEMPORARY
+                
                 binding = new Binding(
                         request.getCallId(),
                         cseqValue,

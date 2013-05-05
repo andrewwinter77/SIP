@@ -170,7 +170,7 @@ public class UserAgentClient {
         
             // TODO: NAPTR query
             
-            throw new UnsupportedOperationException("Non-numeric addresses not yet supported.");
+            throw new UnsupportedOperationException("Non-numeric addresses not yet supported (" + uri + ")");
         }
         
         return transport;

@@ -121,5 +121,6 @@
 	<module>DoNotDisturbApp</module>
         <module>B2bUaApp</module>
         <module>SimpleProxyApp</module>
+        <module>OptionsHandlerApp</module>
   </modules>
 </project>

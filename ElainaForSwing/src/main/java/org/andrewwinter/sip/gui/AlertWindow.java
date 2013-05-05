@@ -211,7 +211,7 @@ public class AlertWindow extends javax.swing.JDialog {
             final SipResponse response = isr.createResponse(ResponseType.TEMPORARILY_UNAVAILABLE.getStatusCode(), "Not Registered");
             isr.sendResponse(response);
         } else {
-            isr.proxy(targets, parallelBtn.isSelected());
+            isr.proxy(targets, parallelBtn.isSelected(), false);
         }
         
         setVisible(false);

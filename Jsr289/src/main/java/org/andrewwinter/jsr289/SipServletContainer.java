@@ -392,7 +392,7 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
                 
                 final List<Uri> targets = new ArrayList<>();
                 targets.add(request.getSipRequest().getRequestUri());
-                request.getInboundSipRequest().proxy(targets, true);
+                request.getInboundSipRequest().proxy(targets, true, false);
             }
         }
     }
@@ -432,7 +432,7 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
                 
                 final List<Uri> targets = new ArrayList<>();
                 targets.add(request.getSipRequest().getRequestUri());
-                request.getInboundSipRequest().proxy(targets, true);
+                request.getInboundSipRequest().proxy(targets, true, false);
                 
             } else {
                 final SipSessionImpl ss = SipSessionStore.getInstance().get(ssid);

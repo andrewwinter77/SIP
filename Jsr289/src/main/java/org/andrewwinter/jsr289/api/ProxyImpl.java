@@ -287,7 +287,7 @@ public class ProxyImpl implements Proxy {
             targets.add(((ProxyBranchImpl) branch).getRfc3261Uri());
         }
         
-        inboundSipRequest.proxy(targets, parallel);
+        inboundSipRequest.proxy(targets, parallel, recordRoute);
     }
 
     @Override

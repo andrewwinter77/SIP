@@ -9,6 +9,7 @@ import org.andrewwinter.sip.SipResponseHandler;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.message.ResponseType;
+import org.andrewwinter.sip.parser.Address;
 import org.andrewwinter.sip.parser.SipMessage;
 import org.andrewwinter.sip.parser.SipMessageHelper;
 import org.andrewwinter.sip.parser.SipRequest;
@@ -25,7 +26,7 @@ import org.andrewwinter.sip.util.Util;
 public class StatefulProxy implements SipRequestHandler, SipResponseHandler {
     
     /**
-     * The set of targets will either be predetermined by the contents of the
+     * The set of uris will either be predetermined by the contents of the
      * request or will be obtained from an abstract location service. Each
      * target in the set is represented as a URI.
      */
@@ -44,18 +45,19 @@ public class StatefulProxy implements SipRequestHandler, SipResponseHandler {
      */
     private final InboundSipRequest requestToProxy;
     
-    
+    private final boolean recordRoute;
     
     /**
      *
-     * @param targets
+     * @param uris
      * @param parallelFork
      * @param requestToProxy
      */
     public StatefulProxy(
             final List<Uri> targets,
             final boolean parallelFork,
-            final InboundSipRequest requestToProxy) {
+            final InboundSipRequest requestToProxy,
+            final boolean recordRoute) {
         
         final Uri requestUri = requestToProxy.getRequest().getRequestUri();
         final String maddr = requestUri.getParameter("maddr");
@@ -75,6 +77,7 @@ public class StatefulProxy implements SipRequestHandler, SipResponseHandler {
         clients = new HashSet<UserAgentClient>();
         finalResponsesReceived = new HashSet<SipResponse>();
         finalResponseForwarded = false;
+        this.recordRoute = recordRoute;
     }
     
     private void parallelFork() {
@@ -120,6 +123,17 @@ public class StatefulProxy implements SipRequestHandler, SipResponseHandler {
             }
 
             // 4. Record-Route
+            
+            // If this proxy wishes to remain on the path of future requests in
+            // a dialog created by this request (assuming the request creates a
+            // dialog), it MUST insert a Record-Route header field value into
+            // the copy before any existing Record-Route header field values,
+            // even if a Route header field is already present.
+            
+            if (recordRoute) {
+                final Address address = Address.parse("<sip:" + Util.getIpAddress() + ";lr>");
+                SipMessageHelper.pushRecordRoute(address, proxiedRequest);
+            }
             
             // TODO: Do this
             
@@ -171,7 +185,9 @@ public class StatefulProxy implements SipRequestHandler, SipResponseHandler {
 
     @Override
     public void doRequest(final InboundSipRequest isr) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        final List<Uri> uris = new ArrayList<Uri>();
+        uris.add(isr.getRequest().getRequestUri());
+        isr.proxy(uris, true, false);
     }
 
     @Override

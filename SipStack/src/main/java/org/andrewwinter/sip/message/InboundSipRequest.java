@@ -91,8 +91,8 @@ public class InboundSipRequest extends InboundSipMessage {
      * @param targets
      * @param parallelFork  
      */
-    public void proxy(final List<Uri> targets, final boolean parallelFork) {
-        final StatefulProxy sp = new StatefulProxy(targets, parallelFork, this);
+    public void proxy(final List<Uri> targets, final boolean parallelFork, final boolean recordRoute) {
+        final StatefulProxy sp = new StatefulProxy(targets, parallelFork, this, recordRoute);
         serverTransaction.setProxy(sp);
         sp.proxy();
     }

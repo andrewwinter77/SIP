@@ -34,6 +34,13 @@ public class Util {
             uri.removeParameter(iter.next());
         }
 
+        // AW: Some endpoints explicitly set the port in the URI. E.g.,
+        // "sip:bob@sip.sipseer.com:5060". In such cases, strip the port number
+        // off.
+        if (uri.getPort() == 5060) {
+            uri.setPort(-1);
+        }
+        
         // TODO: Unescape any escaped characters.
 
         return uri;

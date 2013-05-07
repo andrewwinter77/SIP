@@ -128,8 +128,25 @@ public class UserAgentClient {
         return isIPV4Address(address) || isIPV6Address(address);
     }
     
+    private static String getTransportFromScheme(final Uri uri) {
+        final String scheme = uri.getScheme();
+        if ("sip".equals(scheme)) {
+            return "UDP";
+        } else if ("sips".equals(scheme)) {
+            return "TCP";
+        } else {
+            System.out.println("Unknown transport");
+            // TODO: Handle this error
+            return null;
+        }
+    }
     
-    private String determineTransport(final SipUri uri) {
+    /**
+     * @param uri
+     * @return 
+     * @see Section 4.1 of http://www.ietf.org/rfc/rfc3263.txt
+     */
+    private String selectTransportProtocol(final SipUri uri) {
         
         String transport;
         
@@ -148,15 +165,7 @@ public class UserAgentClient {
                 // TARGET is not numeric, but an explicit port is provided, the
                 // client SHOULD use UDP for a SIP URI, and TCP for a SIPS URI.
                 
-                final String scheme = uri.getScheme();
-                if ("sip".equals(scheme)) {
-                    transport = "UDP";
-                } else if ("sips".equals(scheme)) {
-                    transport = "TCP";
-                } else {
-                    System.out.println("Unknown transport");
-                    // TODO: Handle this error
-                }
+                transport = getTransportFromScheme(uri);
             }
         } else {
             transport = transport.toUpperCase(Locale.US);
@@ -170,16 +179,27 @@ public class UserAgentClient {
         
             // TODO: NAPTR query
             
-            throw new UnsupportedOperationException("Non-numeric addresses not yet supported (" + uri + ")");
+            if (false) { // if SRV record is found
+
+                throw new UnsupportedOperationException("Non-numeric addresses not yet supported (" + uri + ")");
+                
+            } else {
+                
+                // If no SRV records are found, the client SHOULD use TCP for a
+                // SIPS URI, and UDP for a SIP URI.
+
+                transport = getTransportFromScheme(uri);
+            }
+            
         }
         
         return transport;
     }
 
     
-    private Destination applyDnsProcedures(final SipUri uri) {
+    private Destination determinePortAndIpAddress(final SipUri uri) {
         
-        final String transport = determineTransport(uri);
+        final String transport = selectTransportProtocol(uri);
         int port = uri.getPort();
         String host = uri.getHost();
         
@@ -203,9 +223,23 @@ public class UserAgentClient {
 
             
         } else {
-            // TODO: Support non-numeric addresses
+            
+            if (uri.getPort() == -1) {
+                
+                // No port is present
+                
+                
+                // TODO: This is temporary. We're supposed to look the port up
+                if ("UDP".equals(transport) || "TCP".equals(transport)) {
+                    port = 5060;
+                }
+                // END OF TEMPORARY
+                
+            } else {
+                
+                // TODO: Look the port up according to RFC 3263.
+            }
         }
-        
         
         return new Destination(host, port, transport);
     }
@@ -229,7 +263,7 @@ public class UserAgentClient {
         // TODO: Iterate over destinationUris but remember to stop iterating if cancel() has been called.
         
         final SipUri uri = destinationUris.get(destinationUriIndex++);
-        final Destination dest = applyDnsProcedures(uri);
+        final Destination dest = determinePortAndIpAddress(uri);
 
         if (setRandomViaBranchParam) {
             request.getTopmostVia().setBranch(SipMessageFactory.createBranchTag());

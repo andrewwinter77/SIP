@@ -32,8 +32,8 @@
         </div>
 
         <div id="logged-in-div" class="hidden">
-            <span id="user-name-span"></span> |
-            <span id="admin-button-span" class="hidden"><a href="#" onclick="return false;" id="admin-button">Admin</a> |</span>
+            <span id="user-name-span"></span><br>
+            <span id="admin-button-span" class="hidden"><a href="#" onclick="return false;" id="admin-button">Admin</a></span><br>
             <a href="#" onclick="return false;" id="logout-button">Sign out</a>
 
             <ul>
@@ -55,8 +55,10 @@
                 <li>Ring groups</li>
             </ul>
             
-            <div id="extensions-div" class="hidden">
-                
+            <div id="phone-extensions-div" class="hidden">
+                <ul>
+                    <li><a href="#" onclick="call('sip:8670@sip.sipseer.com'); return false;">Andrew Winter</a></li>
+                </ul>
             </div>
             
             <div id="create-user-div" class="hidden">

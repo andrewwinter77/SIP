@@ -1,4 +1,43 @@
+function request(path, httpMethod, jsonPayload, contentType, successFn, errorFn) {
+
+    $.ajax({
+        url: path,
+        type: httpMethod,
+        data: jsonPayload,
+        dataType: 'json',
+        success: successFn,
+        error: errorFn
+//        beforeSend: function setHeader(xhr) {
+//            xhr.setRequestHeader('Accept', mediaType);
+//
+//            if (typeof contentType !== "undefined") {
+//                xhr.setRequestHeader('Content-Type', contentType);
+//            }
+//            xhr.setRequestHeader('Authorization', 'Basic ' + hashedAuthenticationToken);
+//        }
+    });
+}
+
+function post(path, jsonPayload, contentType, successFn, errorFn) {
+    request(path, 'POST', jsonPayload, contentType, successFn, errorFn);
+}
+
+function get(path, contentType, successFn, errorFn) {
+    request(path, 'GET', {}, contentType, successFn, errorFn);
+}
+
+function call(sipAddress) {
+    post('service/c2c/' + sipAddress, {}, null,
+                function(data, textStatus, jqXHR) {
+                    alert('calling');
+                },
+                function(jqXHR, textStatus, errorThrown) {
+                    alert('error calling');
+                });
+}
+
 $(function() {
+
 
     function resetNotLoggedInDiv() {
         $('#login-div').hide();
@@ -26,10 +65,11 @@ $(function() {
     $('#phone-extensions-button').click(function() {
         get('service/extensions', null, 
                 function(data, textStatus, jqXHR) {
-                    alert('got extensions');
+                    $('#phone-extensions-div').show();
                 },
                 function(jqXHR, textStatus, errorThrown) {
-                    alert('error getting extensions');
+                    $('#phone-extensions-div').show();
+//                    alert('error getting extensions');
                 });
     });
 
@@ -95,30 +135,3 @@ function postForm(path, formId, successFn, errorFn) {
     });
 }
 
-function post(path, jsonPayload, contentType, successFn, errorFn) {
-    request(path, 'POST', jsonPayload, contentType, successFn, errorFn);
-}
-
-function get(path, contentType, successFn, errorFn) {
-    request(path, 'GET', {}, contentType, successFn, errorFn);
-}
-
-function request(path, httpMethod, jsonPayload, contentType, successFn, errorFn) {
-
-    $.ajax({
-        url: path,
-        type: httpMethod,
-        data: jsonPayload,
-        dataType: 'json',
-        success: successFn,
-        error: errorFn
-//        beforeSend: function setHeader(xhr) {
-//            xhr.setRequestHeader('Accept', mediaType);
-//
-//            if (typeof contentType !== "undefined") {
-//                xhr.setRequestHeader('Content-Type', contentType);
-//            }
-//            xhr.setRequestHeader('Authorization', 'Basic ' + hashedAuthenticationToken);
-//        }
-    });
-}

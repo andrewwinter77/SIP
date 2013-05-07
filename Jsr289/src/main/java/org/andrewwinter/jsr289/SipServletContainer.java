@@ -39,6 +39,7 @@ import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.jsr289.util.Util;
 import org.andrewwinter.sip.SipRequestHandler;
+import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.parser.Address;
 import org.andrewwinter.sip.parser.Uri;
@@ -435,11 +436,22 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
         final AddressImpl route = (AddressImpl) request.getPoppedRoute();
         if (route == null) {
             
-            final SipSessionImpl ss = SipSessionStore.getInstance().getFromDialogId(request.getDialog().getId());
-            if (ss == null) {
-                throw new UnsupportedOperationException();
+            final Dialog dialog = request.getDialog();
+            if (dialog == null) {
+                
+                if ("CANCEL".equals(request.getMethod())) {
+                    // TODO: Pass this to the app as an FYI
+                    
+                } else {
+                    throw new UnsupportedOperationException();
+                }
             } else {
-                ss.doRequest(request);
+                final SipSessionImpl ss = SipSessionStore.getInstance().getFromDialogId(dialog.getId());
+                if (ss == null) {
+                    throw new UnsupportedOperationException();
+                } else {
+                    ss.doRequest(request);
+                }
             }
         } else {
             final String ssid = route.getURI().getParameter("ssid");

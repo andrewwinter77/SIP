@@ -28,6 +28,9 @@ public class Pbx implements Serializable {
     @Column(name = "domain_name", nullable = false, unique = false)
     private String domainName;
 
+    @Column(name = "max_extensions", nullable = false, unique = false)
+    private int maxExtensions;
+    
     /**
      * The entity class must have a no-arg constructor. It may have other
      * constructors as well. The no-arg constructor must be public or protected.
@@ -35,8 +38,9 @@ public class Pbx implements Serializable {
     public Pbx() {
     }
 
-    public Pbx(final String domainName) {
+    public Pbx(final String domainName, final int maxExtensions) {
         this.domainName = domainName;
+        this.maxExtensions = maxExtensions;
     }
 
     /**
@@ -49,5 +53,13 @@ public class Pbx implements Serializable {
 
     public void setDomainName(final String domainName) {
         this.domainName = domainName;
+    }
+
+    public int getMaxExtensions() {
+        return maxExtensions;
+    }
+
+    public void setMaxExtensions(final int maxExtensions) {
+        this.maxExtensions = maxExtensions;
     }
 }

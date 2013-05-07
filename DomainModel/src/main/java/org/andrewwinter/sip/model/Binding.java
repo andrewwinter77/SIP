@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,8 +38,9 @@ public class Binding implements Serializable {
     @Column(name="cseq", nullable=false, unique=false)
     private int cseqValue;
     
-    @Column(name="pbx_user", nullable=false, unique=false)
-    private User pbxUser;
+    @ManyToOne
+    @Column(name="subscriber", nullable=false, unique=false)
+    private Subscriber subscriber;
 
     @Column(name="contact_address", nullable=false, unique=false)
     private String contactAddress;
@@ -61,14 +62,14 @@ public class Binding implements Serializable {
      * @param cseq
      * @param contactAddress Contact URI.
      * @param expiryTime  
-     * @param pbxUser
+     * @param subscriber
      */
-    public Binding(final String callId, final int cseq, final String contactAddress, final Date expiryTime, final User pbxUser) {
+    public Binding(final String callId, final int cseq, final String contactAddress, final Date expiryTime, final Subscriber subscriber) {
         this.callId = callId;
         this.cseqValue = cseq;
         this.contactAddress = contactAddress;
         this.expiryTime = expiryTime;
-        this.pbxUser = pbxUser;
+        this.subscriber = subscriber;
     }
     
     /**
@@ -119,11 +120,11 @@ public class Binding implements Serializable {
         this.expiryTime = expiryTime;
     }
 
-    public User getPbxUser() {
-        return pbxUser;
+    public Subscriber getSubscriber() {
+        return subscriber;
     }
 
-    public void setUser(final User pbxUser) {
-        this.pbxUser = pbxUser;
+    public void setUser(final Subscriber pbxUser) {
+        this.subscriber = pbxUser;
     }
 }

@@ -21,23 +21,23 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author andrewwinter77
  */
-@Table(name="users")
+@Table(name="subscribers")
 @NamedQueries(value = {
-    @NamedQuery(name="User.findUserByEmail", query="SELECT u FROM User u WHERE u.email=:email"),
-//    @NamedQuery(name="User.deleteBindings", query="DELETE FROM User u WHERE b.publicAddress=:publicAddress"),
-//    @NamedQuery(name="User.deleteBinding", query="DELETE FROM User u WHERE b.publicAddress=:publicAddress AND b.contactAddress=:contactAddress"),
-//    @NamedQuery(name="User.deleteExpiredBindings", query="DELETE FROM User u WHERE b.expiryTime<:expiryTime"),
-//    @NamedQuery(name="User.deleteExpiredBindingsForPublicAddress", query="DELETE FROM User u WHERE b.publicAddress=:publicAddress AND b.expiryTime<:expiryTime")
+    @NamedQuery(name=Queries.FIND_SUBSCRIBER_BY_EMAIL, query="SELECT s FROM Subscriber s WHERE s.email=:email"),
+//    @NamedQuery(name="Subscriber.deleteBindings", query="DELETE FROM Subscriber u WHERE b.publicAddress=:publicAddress"),
+//    @NamedQuery(name="Subscriber.deleteBinding", query="DELETE FROM Subscriber u WHERE b.publicAddress=:publicAddress AND b.contactAddress=:contactAddress"),
+//    @NamedQuery(name="Subscriber.deleteExpiredBindings", query="DELETE FROM Subscriber u WHERE b.expiryTime<:expiryTime"),
+//    @NamedQuery(name="Subscriber.deleteExpiredBindingsForPublicAddress", query="DELETE FROM Subscriber u WHERE b.publicAddress=:publicAddress AND b.expiryTime<:expiryTime")
 })
 @Entity
-@XmlRootElement(name="user")
+@XmlRootElement(name="subscriber")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-public class User implements Serializable {
+public class Subscriber implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-  
+
     @ManyToOne
     @JoinColumn(name="pbx", nullable=false, unique=false)
     private Pbx pbx;
@@ -64,10 +64,10 @@ public class User implements Serializable {
      * The entity class must have a no-arg constructor. It may have other
      * constructors as well. The no-arg constructor must be public or protected.
      */
-    public User() {
+    public Subscriber() {
     }
     
-    public User(final Pbx pbx, final String forename, final String surname, final String email, final String password, final boolean adminUser) {
+    public Subscriber(final Pbx pbx, final String forename, final String surname, final String email, final String password, final boolean adminUser) {
         this.pbx = pbx;
         this.forename = forename;
         this.surname = surname;

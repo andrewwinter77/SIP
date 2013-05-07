@@ -6,13 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
-import org.andrewwinter.sip.model.User;
+import org.andrewwinter.sip.model.Subscriber;
 
 /**
  * 
@@ -52,9 +53,9 @@ public class WebService extends Application {
             @FormParam("password") final String password,
             @Context HttpServletRequest request) {
         
-        final User user;
+        final Subscriber user;
         if (request.isRequestedSessionIdValid()) {
-            user = (User) request.getSession().getAttribute("user");
+            user = (Subscriber) request.getSession().getAttribute("user");
         } else {
             user = dataMgr.getUserByEmail(email);
             if (user == null || !user.getPassword().equals(password)) {
@@ -75,5 +76,17 @@ public class WebService extends Application {
             session.invalidate();
         }
         return Response.ok().build();
+    }
+    
+    @GET
+    @Path("/extensions")
+    public Response getExtensions(@Context HttpServletRequest request) {
+        final Subscriber user;
+        if (request.isRequestedSessionIdValid()) {
+            user = (Subscriber) request.getSession().getAttribute("user");
+            return Response.ok(dataMgr.findExtensionsInUse(user.getPbx())).build();
+        } else {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
     }
 }

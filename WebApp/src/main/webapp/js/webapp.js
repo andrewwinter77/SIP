@@ -23,6 +23,16 @@ $(function() {
         $('#admin-div').show();
     });
 
+    $('#phone-extensions-button').click(function() {
+        get('service/extensions', null, 
+                function(data, textStatus, jqXHR) {
+                    alert('got extensions');
+                },
+                function(jqXHR, textStatus, errorThrown) {
+                    alert('error getting extensions');
+                });
+    });
+
     $('#logout-button').button().click(function() {
         post('service/logout', {}, null,
                 function(data, textStatus, jqXHR) {
@@ -89,6 +99,9 @@ function post(path, jsonPayload, contentType, successFn, errorFn) {
     request(path, 'POST', jsonPayload, contentType, successFn, errorFn);
 }
 
+function get(path, contentType, successFn, errorFn) {
+    request(path, 'GET', {}, contentType, successFn, errorFn);
+}
 
 function request(path, httpMethod, jsonPayload, contentType, successFn, errorFn) {
 

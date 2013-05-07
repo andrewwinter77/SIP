@@ -12,51 +12,12 @@
     </head>
     <body>
 
-        <div id="not-logged-in-div">
-            <a href="#" onclick="return false;" id="login-button">Sign in</a> |
-            <a href="#" onclick="return false;" id="register-button">Register</a>
-            <div id="signup-div" class="hidden">
-                <h1>Sign up</h1>
-                <p>Create a new PBX</p>
-                <form id="signup-form">
-                    Domain: <input type="text" name="domain" value="example.com"/><br/>
-                    Forename: <input type="text" name="forename" value="Alice"/><br/>
-                    Surname: <input type="text" name="surname" value="Jones"/><br/>
-                    Email: <input type="email" name="email" value="alice@example.com"/><br/>
-                    Password: <input type="password" name="password"/><br/>
-                    <input type="submit"/>
-                </form>
-            </div>
-
-            <div id="login-div" class="hidden">
-                <h1>Sign in</h1>
-                <div id="login-div-error" class="hidden">
-                    <p>The email address or password was incorrect. Please try again.</p>
-                </div>
-                <form id="login-form">
-                    Email: <input type="email" id="login-form-email" name="email" value="alice@example.com"/><br/>
-                    Password: <input type="password" id="login-form-password" name="password"/><br/>
-                    <input type="submit"/>
-                </form>
-            </div>
-        </div>
-
-        <div id="logged-in-div" class="hidden">
-            <span id="user-name-span"></span> |
-            <span id="admin-button-span" class="hidden"><a href="#" onclick="return false;" id="admin-button">Admin</a> |</span>
-            <a href="#" onclick="return false;" id="logout-button">Sign out</a>
-            
-            <div id="admin-div" class="hidden">
-                <h1>Create user</h1>
-                <form id="create-user-form">
-                    Forename: <input type="text" name="forename" placeholder="Cuthbert"/><br/>
-                    Surname: <input type="text" name="surname" placeholder="Higgins"/><br/>
-                    Email: <input type="email" name="email" placeholder="cuthbert@higgins.com"/><br/>
-                    Password: <input type="password" name="password"/><br/>
-                    Administrator: <input type="checkbox" name="admin"/><br/>
-                    <input type="submit"/>
-                </form>
-            </div>
-        </div>
+        <h1>Sipseer</h1>
+        <p>This is the front page of the public site, www.sipseer.com. Something
+            eyecatching will go here that will encourage users to sign up
+            in their droves.</p>
+        <a href="trial.html">Free trial</a>
+        <a href="console.html">Log in</a>
+        
     </body>
 </html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web App</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+        <script src="js/webapp.js"></script>
+
+        <link href="css/webapp.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+
+        <a href="index.html">Main page</a>
+        
+        <div id="not-logged-in-div">
+
+            <a href="trial.html">Free trial</a>
+
+            <div id="login-div">
+                <h1>Sign in</h1>
+                <div id="login-div-error" class="hidden">
+                    <p>The email address or password was incorrect. Please try again.</p>
+                </div>
+                <form id="login-form">
+                    Email: <input type="email" id="login-form-email" name="email"/><br/>
+                    Password: <input type="password" id="login-form-password" name="password"/><br/>
+                    <input type="submit"/>
+                </form>
+            </div>
+        </div>
+
+        <div id="logged-in-div" class="hidden">
+            <span id="user-name-span"></span> |
+            <span id="admin-button-span" class="hidden"><a href="#" onclick="return false;" id="admin-button">Admin</a> |</span>
+            <a href="#" onclick="return false;" id="logout-button">Sign out</a>
+
+            <ul>
+                <li>My details</li>
+                <li><a href="#" onclick="return false;" id="phone-extensions-button">Phone extensions</a></li>
+            </ul>
+            
+            <ul>
+                <li>Call blocking</li>
+                <li>Do not disturb</li>
+                <li>Missed call notifications</li>
+                <li>Call forwarding</li>
+                <li>Alarm clock</li>
+            </ul>
+
+            <ul>
+                <li>Create user</li>
+                <li>Call barring</li>
+                <li>Ring groups</li>
+            </ul>
+            
+            <div id="extensions-div" class="hidden">
+                
+            </div>
+            
+            <div id="create-user-div" class="hidden">
+                <h1>Create user</h1>
+                <form id="create-user-form">
+                    Forename: <input type="text" name="forename"/><br/>
+                    Surname: <input type="text" name="surname"/><br/>
+                    Email: <input type="email" name="email"/><br/>
+                    Password: <input type="password" name="password"/><br/>
+                    Administrator: <input type="checkbox" name="admin"/><br/>
+                    <input type="submit"/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

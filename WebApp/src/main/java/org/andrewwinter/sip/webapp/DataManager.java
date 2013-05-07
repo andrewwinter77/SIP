@@ -9,8 +9,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
+import org.andrewwinter.sip.model.Extension;
 import org.andrewwinter.sip.model.Pbx;
-import org.andrewwinter.sip.model.User;
+import org.andrewwinter.sip.model.Queries;
+import org.andrewwinter.sip.model.Subscriber;
 
 /**
  *
@@ -29,21 +31,27 @@ public class DataManager {
             final String surname,
             final String password) {
         
-        final Pbx pbx = new Pbx(domain);
+        final Pbx pbx = new Pbx(domain, 5);
         em.persist(pbx);
         
-        final User user = new User(pbx, forename, surname, email, password, true);
+        final Subscriber user = new Subscriber(pbx, forename, surname, email, password, true);
         em.persist(user);
     }
     
-    public User getUserByEmail(final String email) {
-        final TypedQuery<User> query = em.createNamedQuery("User.findUserByEmail", User.class);
+    public Subscriber getUserByEmail(final String email) {
+        final TypedQuery<Subscriber> query = em.createNamedQuery(Queries.FIND_SUBSCRIBER_BY_EMAIL, Subscriber.class);
         query.setParameter("email", email.toLowerCase(Locale.US));
-        final List<User> users = query.getResultList();
+        final List<Subscriber> users = query.getResultList();
         if (users != null && !users.isEmpty()) {
             return users.get(0);
         } else {
             return null;
         }
+    }
+    
+    public List<Extension> findExtensionsInUse(final Pbx pbx) {
+        final TypedQuery<Extension> query = em.createNamedQuery(Queries.FIND_EXTENSIONS_IN_USE, Extension.class);
+        query.setParameter("domainName", pbx.getDomainName().toLowerCase(Locale.US));
+        return query.getResultList();
     }
 }

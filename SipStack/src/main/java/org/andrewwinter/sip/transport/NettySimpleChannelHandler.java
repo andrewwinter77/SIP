@@ -22,13 +22,22 @@ class NettySimpleChannelHandler extends SimpleChannelHandler {
     }
     
     @Override
-    public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) {
-        ChannelBuffer buf = (ChannelBuffer) e.getMessage();
-        final String sipMessageAsString = buf.toString(Charset.forName("UTF-8"));
-        serverTransport.handleIncomingMessage(
-                sipMessageAsString,
-                (InetSocketAddress) e.getRemoteAddress(),
-                null);
+    public void messageReceived(ChannelHandlerContext ctx, MessageEvent event) {
+        try {
+            ChannelBuffer buf = (ChannelBuffer) event.getMessage();
+            final String sipMessageAsString = buf.toString(Charset.forName("UTF-8"));
+            if (((InetSocketAddress) event.getRemoteAddress()).getPort() > 0) {
+                serverTransport.handleIncomingMessage(
+                        sipMessageAsString,
+                        (InetSocketAddress) event.getRemoteAddress(),
+                        null);
+            } else {
+                // TODO: What's going on here?
+                System.out.println("Dropping packets received on port 0.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

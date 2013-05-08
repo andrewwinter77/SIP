@@ -68,9 +68,14 @@ public class RequestDelegator extends Request {
 
     @Override
     public HttpSession getSession(boolean create) {
-        return new ConvergedHttpSessionImpl(
-                request.getSession(create),
-                null);  // TODO: Set the application session here
+        HttpSession httpSession = request.getSession(create);
+        if (httpSession != null) {
+            // Wrap the session only if it is non-null
+            httpSession = new ConvergedHttpSessionImpl(
+                                httpSession,
+                                null);  // TODO: Set the application session here
+        }
+        return httpSession;
     }
 
     @Override

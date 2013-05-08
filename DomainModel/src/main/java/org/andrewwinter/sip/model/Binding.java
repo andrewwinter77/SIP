@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.Table;
@@ -39,7 +40,7 @@ public class Binding implements Serializable {
     private int cseqValue;
     
     @ManyToOne
-    @Column(name="subscriber", nullable=false, unique=false)
+    @JoinColumn(name="subscriber", nullable=false, unique=false)
     private Subscriber subscriber;
 
     @Column(name="contact_address", nullable=false, unique=false)

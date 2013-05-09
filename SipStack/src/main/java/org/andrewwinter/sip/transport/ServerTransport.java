@@ -17,6 +17,7 @@ import org.andrewwinter.sip.parser.SipMessage;
 import org.andrewwinter.sip.parser.SipMessageHelper;
 import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.parser.SipResponse;
+import org.andrewwinter.sip.parser.Util;
 import org.andrewwinter.sip.parser.Via;
 import org.andrewwinter.sip.properties.ServerProperties;
 import org.andrewwinter.sip.transaction.client.ClientTransaction;
@@ -168,6 +169,19 @@ public class ServerTransport {
         }
     }
 
+    /**
+     * See http://tools.ietf.org/html/rfc5626
+     * @param remoteAddress
+     * @param tcpSocketWrapper 
+     */
+    void handlePing(final InetSocketAddress remoteAddress, final TcpSocketWrapper tcpSocketWrapper) {
+        if (tcpSocketWrapper == null) {
+            sendOverUdp(Util.CRLF, remoteAddress);
+        } else {
+            throw new UnsupportedOperationException("TCP not supported here");
+        }
+    }
+    
     void handleIncomingMessage(
             final String messageAsString,
             final InetSocketAddress remoteAddress,
@@ -302,19 +316,20 @@ public class ServerTransport {
         udpChannel = udpBootstrap.bind(localPort);
     }
     
+    
     /**
      * 
      * @param message
      * @param address
      * @param port 
      */
-    public void sendOverUdp(final SipMessage message, final String address, final int port) {
+    public void sendOverUdp(final String message, final InetSocketAddress address) {
 
-        System.out.println("\n---OUT--" + address + ":" + port + "/UDP------------------------------");
+        System.out.println("\n---OUT--" + address.getHostString() + ":" + address.getPort() + "/UDP------------------------------");
         System.out.println(message.toString());
   
         ChannelFuture future = udpChannel.write(
-                message.toString(), new InetSocketAddress(address, port));
+                message.toString(), address);
         future.addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture cf) throws Exception {
@@ -322,5 +337,15 @@ public class ServerTransport {
 //                              factory.releaseExternalResources();
             }
         });
+    }
+    
+    /**
+     * 
+     * @param message
+     * @param address
+     * @param port 
+     */
+    public void sendOverUdp(final SipMessage message, final String address, final int port) {
+        sendOverUdp(message.toString(), new InetSocketAddress(address, port));
     }
 }

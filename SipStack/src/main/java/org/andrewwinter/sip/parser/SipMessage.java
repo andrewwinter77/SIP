@@ -623,9 +623,14 @@ public abstract class SipMessage implements Serializable {
      * @throws ParseException  
      */
     public static SipMessage parse(String str) throws ParseException {
+        
+        if (str.equals(Util.CRLF + Util.CRLF)) {
+            throw new ParseException("Not a SIP message (got CRLFCRLF).");
+        }
+        
         // Separate the SIP header section from the body.
         final String parts[] = str.split(Util.CRLF + Util.CRLF);
-        
+
         // Separate out each header field.
         final String headerSection = Util.unfoldHeaders(parts[0]);
         final String headerFields[] = headerSection.split(Util.CRLF);

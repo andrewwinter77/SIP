@@ -71,7 +71,7 @@ public class ServerTransactionStore {
         txnMap.remove(key);
     }
     
-    private String generateIndexIntoMap(String method, final Via topmostVia) {
+    private static String generateIndexIntoMap(String method, final Via topmostVia) {
 
         // The branch parameter in the topmost Via header field of the request
         // is examined. If it is present and begins with the magic cookie

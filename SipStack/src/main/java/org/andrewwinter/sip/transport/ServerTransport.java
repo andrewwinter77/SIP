@@ -187,24 +187,26 @@ public class ServerTransport {
             final InetSocketAddress remoteAddress,
             final TcpSocketWrapper tcpSocketWrapper) {
 
-        SipMessage message;
-        try {
-            message = SipMessage.parse(messageAsString);
-        } catch (ParseException e) {
-            // TODO: Log parse exception
-            // Message was invalid. Don't take further action.
-            return; 
-        }
-
         if (ServerProperties.getInstance().isStatelessProxy()) {
             // TODO: Handle stateless proxy case
         } else {
 
-
             System.out.println("\n---IN-from " + remoteAddress + "--------------------------------");
-            System.out.println(message);
+            System.out.println(messageAsString);
             System.out.println("--------------------------------------");
 
+            SipMessage message;
+            try {
+                message = SipMessage.parse(messageAsString);
+            } catch (ParseException e) {
+
+                // Message was invalid. Don't take further action.
+
+                System.out.println("Failed to parse: " + messageAsString);
+                e.printStackTrace();
+                return; 
+            }
+            
             // TODO: Where do we check the validity of the message?
 
             // TODO: Handle case where message doesn't contain a via 

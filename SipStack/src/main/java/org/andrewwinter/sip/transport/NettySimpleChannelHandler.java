@@ -22,25 +22,27 @@ class NettySimpleChannelHandler extends SimpleChannelHandler {
         this.serverTransport = serverTransport;
     }
     
-    /**
-     * See http://tools.ietf.org/html/rfc5626
-     * @param request
-     * @return 
-     */
-    private static boolean isPingRequest(final String request) {
-        return request.equals(Util.CRLF + Util.CRLF);
-    }
-    
     @Override
     public void messageReceived(ChannelHandlerContext ctx, MessageEvent event) {
         try {
+            
+            System.out.println("Approx free memory: " + Runtime.getRuntime().freeMemory());
+            
             ChannelBuffer buf = (ChannelBuffer) event.getMessage();
             final String sipMessageAsString = buf.toString(Charset.forName("UTF-8"));
             
             if (((InetSocketAddress) event.getRemoteAddress()).getPort() > 0) {
                 
-                if (isPingRequest(sipMessageAsString)) {
+                if (sipMessageAsString.equals(Util.CRLF + Util.CRLF)) {
+                    
+                    // Ping. Send back a pong.
+                    // See http://tools.ietf.org/html/rfc5626
                     serverTransport.handlePing((InetSocketAddress) event.getRemoteAddress(), null);
+                    
+                } else if (sipMessageAsString.equals(Util.CRLF)) {
+                    
+                    // CRLF. What is this?
+                    
                 } else {
                     serverTransport.handleIncomingMessage(
                             sipMessageAsString,

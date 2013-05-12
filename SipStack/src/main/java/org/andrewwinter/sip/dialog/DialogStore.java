@@ -34,6 +34,7 @@ public class DialogStore {
      */
     public void put(final Dialog dialog) {
         dialogMap.put(dialog.getId(), dialog);
+        System.out.println("Dialog count: " + dialogMap.keySet().size());
     }
 
     /**

@@ -36,6 +36,7 @@ public class ServerTransactionStore {
         final SipRequest request = txn.getInboundSipRequest().getRequest();
         final String key = generateIndexIntoMap(request.getMethod(), request.getTopmostVia());
         txnMap.put(key, txn);
+        System.out.println("Server Txn count: " + txnMap.keySet().size());
     }
     
     /**

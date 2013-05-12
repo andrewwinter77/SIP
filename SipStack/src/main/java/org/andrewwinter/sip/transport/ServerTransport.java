@@ -1,10 +1,8 @@
 package org.andrewwinter.sip.transport;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
-import java.net.UnknownHostException;
 import java.util.concurrent.Executors;
 import org.andrewwinter.sip.SipRequestHandler;
 import org.andrewwinter.sip.dialog.Dialog;
@@ -147,25 +145,21 @@ public class ServerTransport {
         // that Via header field value. This parameter MUST contain the source
         // address from which the packet was received.
 
-        try {
-            final InetAddress viaAddress = InetAddress.getByName(message.getTopmostVia().getHost());
-            final InetAddress addr = remoteAddress.getAddress();
+        final String sentBy = message.getTopmostVia().getHost();
+        final String srcIp = remoteAddress.getAddress().getHostAddress();
 
-            String rport = message.getTopmostVia().getParameter("rport");
-            if (!addr.equals(viaAddress) || (rport != null && rport.isEmpty())) {
+        final String rport = message.getTopmostVia().getParameter("rport");
+        if (!srcIp.equals(sentBy) || (rport != null && rport.isEmpty())) {
 
-                final Via via = message.popVia();
+            final Via via = message.popVia();
 
-                via.setParameter("received", addr.getHostAddress());
+            via.setParameter("received", srcIp);
 
-                if (rport != null && rport.isEmpty()) {
-                    via.setParameter("rport", String.valueOf(((InetSocketAddress) remoteAddress).getPort()));
-                }
-
-                SipMessageHelper.pushVia(via, message);
+            if (rport != null && rport.isEmpty()) {
+                via.setParameter("rport", String.valueOf(((InetSocketAddress) remoteAddress).getPort()));
             }
-        } catch (UnknownHostException e) {
-            // TODO: Handle exception
+
+            SipMessageHelper.pushVia(via, message);
         }
     }
 

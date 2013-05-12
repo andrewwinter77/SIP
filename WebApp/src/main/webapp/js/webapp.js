@@ -38,7 +38,6 @@ function call(sipAddress) {
 
 $(function() {
 
-
     function resetNotLoggedInDiv() {
         $('#login-div').hide();
         $('#signup-div').hide();
@@ -46,6 +45,10 @@ $(function() {
         $('#login-form-email').text('');
         $('#login-form-password').text('');
     }
+
+    $('#create-user-button').button().click(function() {
+        $('#create-user-div').show();
+    });
 
     $('#login-button').button().click(function() {
         $('#signup-div').hide();
@@ -56,10 +59,6 @@ $(function() {
     $('#register-button').button().click(function() {
         $('#signup-div').show();
         $('#login-div').hide();
-    });
-
-    $('#admin-button').button().click(function() {
-        $('#admin-div').show();
     });
 
     $('#phone-extensions-button').click(function() {
@@ -87,6 +86,17 @@ $(function() {
                 });
     });
 
+    $('#create-user-form').submit(function(e) {
+        e.preventDefault();
+        postForm('service/user/create', '#create-user-form',
+                function(data, textStatus, jqXHR) {
+                    alert('worked!');
+                },
+                function(jqXHR, textStatus, errorThrown) {
+                    alert('failed');
+                });
+    });
+
     $('#signup-form').submit(function(e) {
         e.preventDefault();
         postForm('service/createpbx', '#signup-form',
@@ -104,13 +114,6 @@ $(function() {
                 function(data, textStatus, jqXHR) {
                     $('#not-logged-in-div').hide();
                     $('#user-name-span').text(data.forename + ' ' + data.surname);
-                    
-                    if (data.adminUser === true) {
-                        $('#admin-button-span').show();
-                    } else {
-                        $('#admin-button-span').hide();
-                    }
-                    $('#admin-div').hide();
                     $('#logged-in-div').show();
                 },
                 function(jqXHR, textStatus, errorThrown) {

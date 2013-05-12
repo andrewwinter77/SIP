@@ -56,6 +56,44 @@ public class WebService extends Application {
         
         return "Finished create PBX";
     }
+
+    @POST
+    @Path("/user/create")
+    public Response createUser(
+            @FormParam("forename") final String forename,
+            @FormParam("surname") final String surname,
+            @FormParam("email") final String email,
+            @FormParam("password") final String password,
+            @FormParam("admin") final boolean admin,
+            @Context HttpServletRequest request) {
+        
+        final Subscriber user;
+        if (request.isRequestedSessionIdValid()) {
+            user = (Subscriber) request.getSession().getAttribute("user");
+            if (user.isAdminUser()) {
+
+                Subscriber newUser = dataMgr.getUserByEmail(email);
+                if (newUser == null) {
+
+                    dataMgr.createSubscriber(
+                                    user.getPbx(),
+                                    forename,
+                                    surname,
+                                    email,
+                                    password,
+                                    admin);
+                    
+                    return Response.status(Response.Status.CREATED).build();
+                } else {
+                    return Response.status(Response.Status.CONFLICT).build();
+                }
+            } else {
+                return Response.status(Response.Status.FORBIDDEN).build();
+            }
+        } else {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+    }
     
     @POST
     @Path("/login")

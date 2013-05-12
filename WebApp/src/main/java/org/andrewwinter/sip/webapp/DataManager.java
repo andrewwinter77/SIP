@@ -34,10 +34,30 @@ public class DataManager {
         final Pbx pbx = new Pbx(domain, 5);
         em.persist(pbx);
         
-        final Subscriber user = new Subscriber(pbx, forename, surname, email, password, true);
-        em.persist(user);
+        createSubscriber(pbx, forename, surname, email, password, true);
     }
     
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public void createSubscriber(
+            final Pbx pbx,
+            final String forename,
+            final String surname,
+            final String email,
+            final String password,
+            final boolean admin) {
+        
+        final Subscriber subscriber = new Subscriber(
+                                        pbx,
+                                        forename,
+                                        surname,
+                                        email,
+                                        password,
+                                        admin);
+        em.persist(subscriber);
+    }
+    
+            
+            
     public Subscriber getUserByEmail(final String email) {
         final TypedQuery<Subscriber> query = em.createNamedQuery(Queries.FIND_SUBSCRIBER_BY_EMAIL, Subscriber.class);
         query.setParameter("email", email.toLowerCase(Locale.US));

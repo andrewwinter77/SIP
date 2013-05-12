@@ -39,6 +39,7 @@ public class SipSessionStore {
     
     public void put(final SipSessionImpl sipSession) {
         map.put(sipSession.getId(), sipSession);
+        System.out.println("SipSession count: " + map.keySet().size());
     }
     
     public SipSessionImpl get(final String id) {

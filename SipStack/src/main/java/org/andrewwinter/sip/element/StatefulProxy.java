@@ -158,9 +158,6 @@ public class StatefulProxy implements SipRequestHandler, SipResponseHandler {
             final Via via = new Via(Util.getIpAddress());
             // Don't set a branch. Allow UserAgentClient to create one for us.
             via.setPort(ServerProperties.getInstance().getUnsecurePort());
-            // TODO: This is temporary. Remove it when we support listening for responses on the correct port.
-            via.setParameter("maddr", Util.getIpAddress());
-            // End of temporary stuff
             SipMessageHelper.pushVia(via, proxiedRequest);
 
             clients.add(UserAgentClient.createUacAndSendRequest(this, proxiedRequest, null));

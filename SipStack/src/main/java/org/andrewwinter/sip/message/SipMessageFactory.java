@@ -98,10 +98,6 @@ public class SipMessageFactory {
         }
         via.setPort(ServerProperties.getInstance().getUnsecurePort());
         
-        // TODO: This is temporary. Remove it when we support listening for responses on the correct port.
-        via.setParameter("maddr", Util.getIpAddress());
-        // End of temporary stuff
-        
         if (ServerProperties.getInstance().useRport()) {
             via.setParameter("rport", "");
         }

@@ -399,12 +399,21 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
             final SipURI requestUri = (SipURI) request.getRequestURI();
             if (pointsToThisDomain(requestUri.getHost()) && !request.getHeaders("Route").hasNext()) {
                 
-                // If the Request-URI does not point to another domain, and there is
-                // no Route header, the container should not send the request as it
-                // will cause a loop. Instead, the container must reject the request
-                // with 404 Not Found final response with no Retry-After header.
+                if (stateInfo == null) {
+                
+                    // AW: Return 501 if no app matched the criteria
+                    
+                    sendErrorResponse(request, SipServletResponse.SC_NOT_IMPLEMENTED, null);
+                    
+                } else {
+                
+                    // If the Request-URI does not point to another domain, and there is
+                    // no Route header, the container should not send the request as it
+                    // will cause a loop. Instead, the container must reject the request
+                    // with 404 Not Found final response with no Retry-After header.
 
-                sendErrorResponse(request, SipServletResponse.SC_NOT_FOUND, null);
+                    sendErrorResponse(request, SipServletResponse.SC_NOT_FOUND, null);
+                }
                 
             } else {
                 

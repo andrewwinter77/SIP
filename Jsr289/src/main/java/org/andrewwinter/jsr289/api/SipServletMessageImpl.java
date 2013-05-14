@@ -390,8 +390,19 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
             throw new IllegalStateException("Message has already been sent.");
         }
         
-        message.setBody(new String((byte[]) content));// TODO: Temporary
+        // TODO: TEMPORARY
+        final String body = new String((byte[]) content);
+        message.setBody(body);
+        // END TEMPORARY
+        
         SipMessageHelper.setContentType(contentType, message);
+        
+        // Applications are discouraged from setting the Content-Length directly
+        // using this method; they should instead use the setContent methods
+        // which guarantees that the Content-Length is computed and set
+        // correctly.
+        
+        SipMessageHelper.setContentLength(body.length(), message); // body.length() is temporary
     }
 
     @Override

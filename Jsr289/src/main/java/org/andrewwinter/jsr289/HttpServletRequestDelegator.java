@@ -53,9 +53,13 @@ public class HttpServletRequestDelegator implements HttpServletRequest {
 
     @Override
     public HttpSession getSession() {
-        return new ConvergedHttpSessionImpl(
-                request.getSession(),
-                null);  // TODO: Set the application session here
+        HttpSession session = request.getSession();
+        if (session != null) {
+            session = new ConvergedHttpSessionImpl(
+                                session,
+                                null); // TODO: Set the application session here
+        }
+        return session;
     }
 
     public String getAuthType() {

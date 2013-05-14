@@ -40,16 +40,24 @@ public class RequestFacadeDelegator extends RequestFacade {
 
     @Override
     public HttpSession getSession(boolean create) {
-        return new ConvergedHttpSessionImpl(
-                facade.getSession(create),
-                null);  // TODO: Set the application session here
+        HttpSession httpSession = facade.getSession(create);
+        if (httpSession != null) {
+            httpSession = new ConvergedHttpSessionImpl(
+                                httpSession,
+                                null);  // TODO: Set the application session here
+        }
+        return httpSession;
     }
 
     @Override
     public HttpSession getSession() {
-        return new ConvergedHttpSessionImpl(
-                facade.getSession(),
-                null);  // TODO: Set the application session here
+        HttpSession httpSession = facade.getSession();
+        if (httpSession != null) {
+            httpSession = new ConvergedHttpSessionImpl(
+                                httpSession,
+                                null);  // TODO: Set the application session here
+        }
+        return httpSession;
     }
 
     public void clear() {

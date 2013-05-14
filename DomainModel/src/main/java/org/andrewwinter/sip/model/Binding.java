@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,16 +19,18 @@ import javax.persistence.TemporalType;
  *
  * @author andrewwinter77
  */
-@Table(name="bindingstemp")
+@Table(name="bindings")
 @NamedQueries(value = {
-//    @NamedQuery(name="Binding.findBindings", query="SELECT b FROM Binding b WHERE b.publicAddress=:publicAddress"),
+    @NamedQuery(name="Binding.findBindings", query="SELECT b FROM Binding b WHERE b.subscriber=:subscriber"),
 //    @NamedQuery(name="Binding.deleteBindings", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress"),
-//    @NamedQuery(name="Binding.deleteBinding", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress AND b.contactAddress=:contactAddress"),
+    @NamedQuery(name=Binding.DELETE_BINDING, query="DELETE FROM Binding b WHERE b.subscriber=:subscriber AND b.contactAddress=:contactAddress"),
 //    @NamedQuery(name="Binding.deleteExpiredBindings", query="DELETE FROM Binding b WHERE b.expiryTime<:expiryTime"),
-//    @NamedQuery(name="Binding.deleteExpiredBindingsForPublicAddress", query="DELETE FROM Binding b WHERE b.publicAddress=:publicAddress AND b.expiryTime<:expiryTime")
+    @NamedQuery(name=Queries.DELETE_EXPIRED_BINDINGS_FOR_SUBSCRIBER, query="DELETE FROM Binding b WHERE b.subscriber=:subscriber AND b.expiryTime<:expiryTime")
 })
 @Entity
 public class Binding implements Serializable {
+    
+    public static final String DELETE_BINDING = "Binding.deleteBinding";
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

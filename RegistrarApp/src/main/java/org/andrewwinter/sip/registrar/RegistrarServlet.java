@@ -1,7 +1,6 @@
 package org.andrewwinter.sip.registrar;
 
 import org.andrewwinter.sip.location.Util;
-import org.andrewwinter.sip.location.Binding;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,6 +24,8 @@ import javax.servlet.sip.SipServletResponse;
 import javax.servlet.sip.URI;
 import javax.servlet.sip.SipURI;
 import org.andrewwinter.sip.location.BindingsManager;
+import org.andrewwinter.sip.model.Binding;
+import org.andrewwinter.sip.model.Subscriber;
 
 @javax.servlet.sip.annotation.SipServlet
 public class RegistrarServlet extends SipServlet {
@@ -43,8 +44,8 @@ public class RegistrarServlet extends SipServlet {
         }
     }
 
-    private static void deleteExpiredBindings(final String publicAddress) {
-        getBindingsManager().removeExpiredBindingsForPublicAddress(publicAddress);
+    private static void deleteExpiredBindings(final Subscriber subscriber) {
+        getBindingsManager().removeExpiredBindingsForSubscriber(subscriber);
     }
     
     @Override
@@ -57,110 +58,116 @@ public class RegistrarServlet extends SipServlet {
         // This address-of-record MUST be a SIP URI or SIPS URI.
         if (toUri instanceof SipURI) {
 
-            final String canonicalizedUri = Util.canonicalizeUri((SipURI) toUri.clone()).toString();
-
-            deleteExpiredBindings(canonicalizedUri);
+            final SipURI canonicalizedUri = Util.canonicalizeUri((SipURI) toUri.clone());
+            final Subscriber subscriber = getBindingsManager().getSubscriber(canonicalizedUri);
             
-            final List<Binding> bindingsToAdd = new ArrayList<>();
-            final Set<String> contactAddressesToRemove = new HashSet<>();
+            if (subscriber == null) {
+                response = request.createResponse(SipServletResponse.SC_NOT_FOUND);
+            } else {
             
-            // If neither mechanism for expressing a suggested expiration time is
-            // present in a REGISTER, the client is indicating its desire for the
-            // server to choose.
-            int expiresFieldValue = request.getExpires();
-            if (expiresFieldValue == -1) {
-                expiresFieldValue = LOCALLY_CONFIGURED_DEFAULT_EXPIRES;
-            }
+                deleteExpiredBindings(subscriber);
 
-            final ListIterator<String> contactsAsStrings = request.getHeaders("Contact");
+                final List<Binding> bindingsToAdd = new ArrayList<>();
+                final Set<String> contactAddressesToRemove = new HashSet<>();
 
-            // The registrar checks whether the request contains the Contact header
-            // field. If not, it skips to the last step.
-
-            if (contactsAsStrings.hasNext()) {
-
-                // If the Contact header field is present, the registrar checks if
-                // there is one Contact field value that contains the special value
-                // "*" and an Expires field.
-
-                int contactHeaderCount = 0;
-                boolean starFound = false;
-                while (contactsAsStrings.hasNext()) {
-                    final String contactAsString = contactsAsStrings.next();
-                    if ("*".equals(contactAsString)) {
-                        starFound = true;
-                    }
-                    ++contactHeaderCount;
+                // If neither mechanism for expressing a suggested expiration time is
+                // present in a REGISTER, the client is indicating its desire for the
+                // server to choose.
+                int expiresFieldValue = request.getExpires();
+                if (expiresFieldValue == -1) {
+                    expiresFieldValue = LOCALLY_CONFIGURED_DEFAULT_EXPIRES;
                 }
 
-                if (starFound) {
-                    if (contactHeaderCount > 1 || expiresFieldValue > 0) {
+                final ListIterator<String> contactsAsStrings = request.getHeaders("Contact");
 
-                        // If the request has additional Contact fields or an expiration
-                        // time other than zero, the request is invalid, and the server MUST
-                        // return a 400 (Invalid Request) and skip the remaining steps.
+                // The registrar checks whether the request contains the Contact header
+                // field. If not, it skips to the last step.
 
-                        response = request.createResponse(SipServletResponse.SC_BAD_REQUEST);
-                    } else {
+                if (contactsAsStrings.hasNext()) {
+
+                    // If the Contact header field is present, the registrar checks if
+                    // there is one Contact field value that contains the special value
+                    // "*" and an Expires field.
+
+                    int contactHeaderCount = 0;
+                    boolean starFound = false;
+                    while (contactsAsStrings.hasNext()) {
+                        final String contactAsString = contactsAsStrings.next();
+                        if ("*".equals(contactAsString)) {
+                            starFound = true;
+                        }
+                        ++contactHeaderCount;
+                    }
+
+                    if (starFound) {
+                        if (contactHeaderCount > 1 || expiresFieldValue > 0) {
+
+                            // If the request has additional Contact fields or an expiration
+                            // time other than zero, the request is invalid, and the server MUST
+                            // return a 400 (Invalid Request) and skip the remaining steps.
+
+                            response = request.createResponse(SipServletResponse.SC_BAD_REQUEST);
+                        } else {
 
 
-                        final List<Binding> bindings = getBindingsManager().getBindings(canonicalizedUri);
-                        for (final Binding binding : bindings) {
+                            final List<Binding> bindings = getBindingsManager().getBindings(subscriber);
+                            for (final Binding binding : bindings) {
 
 
-                            if (binding.getCallId().equals(request.getCallId())) {
+                                if (binding.getCallId().equals(request.getCallId())) {
 
 
-                                if (Util.getCSeqValue(request) > binding.getCseqValue()) {
+                                    if (Util.getCSeqValue(request) > binding.getCseqValue()) {
 
-                                    // If it does agree, it MUST remove the binding only
-                                    // if the CSeq in the request is higher than the
-                                    // value stored for that binding.
+                                        // If it does agree, it MUST remove the binding only
+                                        // if the CSeq in the request is higher than the
+                                        // value stored for that binding.
 
-                                    contactAddressesToRemove.add(binding.getContactAddress());
+                                        contactAddressesToRemove.add(binding.getContactAddress());
+
+                                    } else {
+
+                                        // Otherwise, the update MUST be aborted and the
+                                        // request fails.
+
+                                        response = request.createResponse(SipServletResponse.SC_SERVER_INTERNAL_ERROR);
+                                        break;
+                                    }
 
                                 } else {
 
-                                    // Otherwise, the update MUST be aborted and the
-                                    // request fails.
+                                    // If not, the registrar checks whether the Call-ID agrees
+                                    // with the value stored for each binding. If not, it MUST
+                                    // remove the binding.
 
-                                    response = request.createResponse(SipServletResponse.SC_SERVER_INTERNAL_ERROR);
-                                    break;
+                                    contactAddressesToRemove.add(binding.getContactAddress());
                                 }
-
-                            } else {
-
-                                // If not, the registrar checks whether the Call-ID agrees
-                                // with the value stored for each binding. If not, it MUST
-                                // remove the binding.
-
-                                contactAddressesToRemove.add(binding.getContactAddress());
                             }
                         }
+                    } else {
+
+                        response = processContactHeaders(
+                                request,
+                                expiresFieldValue,
+                                subscriber,
+                                bindingsToAdd,
+                                contactAddressesToRemove);
                     }
-                } else {
-
-                    response = processContactHeaders(
-                            request,
-                            expiresFieldValue,
-                            canonicalizedUri,
-                            bindingsToAdd,
-                            contactAddressesToRemove);
                 }
-            }
 
-            if (response == null) {
-                // The binding updates MUST be committed (that is, made visible to the
-                // proxy or redirect server) if and only if all binding updates and
-                // additions succeed. If any one of them fails (for example, because the
-                // back-end database commit failed), the request MUST fail with a 500
-                // (Server Error) response and all tentative binding updates MUST be
-                // removed.
+                if (response == null) {
+                    // The binding updates MUST be committed (that is, made visible to the
+                    // proxy or redirect server) if and only if all binding updates and
+                    // additions succeed. If any one of them fails (for example, because the
+                    // back-end database commit failed), the request MUST fail with a 500
+                    // (Server Error) response and all tentative binding updates MUST be
+                    // removed.
 
-                getBindingsManager().addAndRemoveBindings(
-                        canonicalizedUri, bindingsToAdd, contactAddressesToRemove, sf);
-                
-                response = createOK(request, canonicalizedUri.toString());
+                    getBindingsManager().addAndRemoveBindings(
+                            subscriber, bindingsToAdd, contactAddressesToRemove, sf);
+
+                    response = createOK(request, subscriber);
+                }
             }
 
         } else {
@@ -183,7 +190,7 @@ public class RegistrarServlet extends SipServlet {
      * @param isr
      * @return
      */
-    private SipServletResponse createOK(final SipServletRequest request, final String canonicalizedUri) {
+    private SipServletResponse createOK(final SipServletRequest request, final Subscriber subscriber) {
         final SipServletResponse ok = request.createResponse(SipServletResponse.SC_OK);
 
         // The response SHOULD include a Date header field.
@@ -199,7 +206,7 @@ public class RegistrarServlet extends SipServlet {
 
         final long now = new Date().getTime();
 
-        final List<Binding> bindings = getBindingsManager().getBindings(canonicalizedUri);
+        final List<Binding> bindings = getBindingsManager().getBindings(subscriber);
         if (bindings != null && !bindings.isEmpty()) {
 
             for (final Binding binding : bindings) {
@@ -255,7 +262,7 @@ public class RegistrarServlet extends SipServlet {
     private SipServletResponse processContactHeaders(
             final SipServletRequest request,
             final Integer expiresFieldValue,
-            final String canonicalizedUri,
+            final Subscriber subscriber,
             final List<Binding> bindingsToAdd,
             final Set<String> contactAddressesToRemove) {
 
@@ -309,7 +316,7 @@ public class RegistrarServlet extends SipServlet {
             }
 
             Binding binding = getBindingsManager().getBinding(
-                    canonicalizedUri,
+                    subscriber,
                     contact.getURI(),
                     sf);
             if (binding == null) {
@@ -330,7 +337,7 @@ public class RegistrarServlet extends SipServlet {
                         cseqValue,
                         contact.getURI().toString(),
                         createExpiryTime(expires),
-                        canonicalizedUri);
+                        subscriber);
 
                 bindingsToAdd.add(binding);
             } else {
@@ -356,7 +363,7 @@ public class RegistrarServlet extends SipServlet {
                                     cseqValue,
                                     contact.getURI().toString(),
                                     createExpiryTime(expires),
-                                    canonicalizedUri);
+                                    subscriber);
 
                             bindingsToAdd.add(binding);
                         }
@@ -384,7 +391,7 @@ public class RegistrarServlet extends SipServlet {
                                 cseqValue,
                                 contact.getURI().toString(),
                                 createExpiryTime(expires),
-                                canonicalizedUri);
+                                subscriber);
 
                         bindingsToAdd.add(binding);
                     }

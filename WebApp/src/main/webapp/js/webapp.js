@@ -28,12 +28,12 @@ function get(path, contentType, successFn, errorFn) {
 
 function call(sipAddress) {
     post('service/c2c/' + sipAddress, {}, null,
-                function(data, textStatus, jqXHR) {
-                    alert('calling');
-                },
-                function(jqXHR, textStatus, errorThrown) {
-                    alert('error calling');
-                });
+            function(data, textStatus, jqXHR) {
+                alert('calling');
+            },
+            function(jqXHR, textStatus, errorThrown) {
+                alert('error calling');
+            });
 }
 
 $(function() {
@@ -62,14 +62,21 @@ $(function() {
     });
 
     $('#phone-extensions-button').click(function() {
-        get('service/extensions', null, 
+        get('service/user', null,
                 function(data, textStatus, jqXHR) {
+                    var items = [];
+                    $.each(data, function(i, val) {
+                        items.push('<li><a href="#" onclick="call(\'sip:' + val.userPart + '@sip.sipseer.com\'); return false;">' + val.forename + ' ' + val.surname + '</li>');
+                    });
+                    $('#phone-extensions-list').empty();
+                    $('#phone-extensions-list').append(items.join(''));
                     $('#phone-extensions-div').show();
                 },
                 function(jqXHR, textStatus, errorThrown) {
+                    $('#phone-extensions-list').empty();
                     $('#phone-extensions-div').show();
-//                    alert('error getting extensions');
                 });
+
     });
 
     $('#logout-button').button().click(function() {

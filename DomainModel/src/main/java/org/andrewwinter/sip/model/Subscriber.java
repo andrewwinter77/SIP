@@ -24,6 +24,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name="subscribers")
 @NamedQueries(value = {
     @NamedQuery(name=Queries.FIND_SUBSCRIBER_BY_EMAIL, query="SELECT s FROM Subscriber s WHERE s.email=:email"),
+    @NamedQuery(name=Queries.FIND_SUBSCRIBER_BY_USER_PART, query="SELECT s FROM Subscriber s WHERE s.userPart=:userPart"),
+    @NamedQuery(name=Queries.GET_MAX_EXTENSION_FOR_PBX, query="SELECT MAX(s.extension) FROM Subscriber s WHERE s.pbx=:pbx"),
+    @NamedQuery(name=Queries.GET_SUBSCRIBERS_IN_PBX, query="SELECT s FROM Subscriber s WHERE s.pbx=:pbx")
 //    @NamedQuery(name="Subscriber.deleteBindings", query="DELETE FROM Subscriber u WHERE b.publicAddress=:publicAddress"),
 //    @NamedQuery(name="Subscriber.deleteBinding", query="DELETE FROM Subscriber u WHERE b.publicAddress=:publicAddress AND b.contactAddress=:contactAddress"),
 //    @NamedQuery(name="Subscriber.deleteExpiredBindings", query="DELETE FROM Subscriber u WHERE b.expiryTime<:expiryTime"),
@@ -50,9 +53,12 @@ public class Subscriber implements Serializable {
     
     @Column(name="email", nullable=false, unique=true)
     private String email;
-    
-//    @Column(name="userpart", nullable=false, unique=false)
-//    private String userPart;
+
+    @Column(name="extension", nullable=false, unique=false)
+    private Integer extension;
+
+    @Column(name="user_part", nullable=false, unique=false)
+    private String userPart;
 
     @Column(name="password", nullable=false, unique=false)
     private String password;
@@ -67,14 +73,15 @@ public class Subscriber implements Serializable {
     public Subscriber() {
     }
     
-    public Subscriber(final Pbx pbx, final String forename, final String surname, final String email, final String password, final boolean adminUser) {
+    public Subscriber(final Pbx pbx, final String forename, final String surname, final String email, final String password, final String userPart, final int extension, final boolean adminUser) {
         this.pbx = pbx;
         this.forename = forename;
         this.surname = surname;
         this.email = email.toLowerCase(Locale.US);
         this.password = password;
         this.adminUser = adminUser;
-//        this.userPart = userPart;
+        this.userPart = userPart;
+        this.extension = extension;
     }
     
     @XmlElement(name="email")
@@ -112,13 +119,13 @@ public class Subscriber implements Serializable {
         this.forename = forename;
     }
 
-//    public String getUserPart() {
-//        return userPart;
-//    }
-//
-//    public void setUserPart(final String publicAddress) {
-//        this.userPart = publicAddress;
-//    }
+    public String getUserPart() {
+        return userPart;
+    }
+
+    public void setUserPart(final String userPart) {
+        this.userPart = userPart;
+    }
     
     @XmlElement(name="pbx")
     public Pbx getPbx() {
@@ -145,5 +152,13 @@ public class Subscriber implements Serializable {
 
     public void setAdminUser(boolean adminUser) {
         this.adminUser = adminUser;
+    }
+
+    public int getExtension() {
+        return extension;
+    }
+
+    public void setExtension(final int extension) {
+        this.extension = extension;
     }
 }

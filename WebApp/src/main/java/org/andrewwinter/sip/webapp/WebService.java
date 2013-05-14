@@ -2,6 +2,7 @@ package org.andrewwinter.sip.webapp;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.servlet.ServletContext;
@@ -57,6 +58,21 @@ public class WebService extends Application {
         return "Finished create PBX";
     }
 
+    @GET
+    @Path("/user")
+    public Response getUsersInPbx(@Context HttpServletRequest request) {
+        final Subscriber user;
+        if (request.isRequestedSessionIdValid()) {
+            user = (Subscriber) request.getSession().getAttribute("user");
+        } else {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+
+        final List<Subscriber> users = dataMgr.getSubscribersInPbx(user.getPbx());
+        
+        return Response.ok(users).build();
+    }
+    
     @POST
     @Path("/user/create")
     public Response createUser(
@@ -128,18 +144,6 @@ public class WebService extends Application {
         return Response.ok().build();
     }
     
-    @GET
-    @Path("/extensions")
-    public Response getExtensions(@Context HttpServletRequest request) {
-        final Subscriber user;
-        if (request.isRequestedSessionIdValid()) {
-            user = (Subscriber) request.getSession().getAttribute("user");
-            return Response.ok(dataMgr.findExtensionsInUse(user.getPbx())).build();
-        } else {
-            return Response.status(Response.Status.FORBIDDEN).build();
-        }
-    }
-    
     /**
      * Replace this method with something of your own.
      * @param param
@@ -158,19 +162,24 @@ public class WebService extends Application {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
 
-        final String from = "sip:andrew@sip.sipseer.com";
+        final String from = "sip:" + user.getUserPart() + "@sip.sipseer.com";
         
         final SipApplicationSession appSession = sf.createApplicationSession();
 
         final SipServletRequest inviteToSubscriber;
         try {
-            final Address subscriberAddress = sf.createAddress(to);
-            final Address calleeAddress = sf.createAddress(from);
-        
+            final Address subscriberAddress = sf.createAddress(from);
+            subscriberAddress.setDisplayName(user.getForename() + " " + user.getSurname());
+            
+            final Address calleeAddress = sf.createAddress(to);
+            
+            final Address autoDiallerAddress = (Address) calleeAddress.clone();
+            autoDiallerAddress.setDisplayName("Sipseer Auto Dialer");
+
             inviteToSubscriber = sf.createRequest(
                                         appSession,
                                         "INVITE",
-                                        calleeAddress,
+                                        autoDiallerAddress,
                                         subscriberAddress);
             
             inviteToSubscriber.setContent(Util.makeOfferSdp().toString().getBytes(), "application/sdp");

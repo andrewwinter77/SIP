@@ -13,6 +13,8 @@ import javax.servlet.sip.SipServlet;
 import javax.servlet.sip.SipServletRequest;
 import javax.servlet.sip.SipURI;
 import javax.servlet.sip.URI;
+import org.andrewwinter.sip.model.Binding;
+import org.andrewwinter.sip.model.Subscriber;
 
 @javax.servlet.sip.annotation.SipServlet
 public class LocationSipServlet extends SipServlet {
@@ -29,8 +31,8 @@ public class LocationSipServlet extends SipServlet {
         }
     }
     
-    private static void deleteExpiredBindings(final String publicAddress) {
-        getBindingsManager().removeExpiredBindingsForPublicAddress(publicAddress);
+    private static void deleteExpiredBindings(final Subscriber subscriber) {
+        getBindingsManager().removeExpiredBindingsForSubscriber(subscriber);
     }
 
     @Override
@@ -41,11 +43,12 @@ public class LocationSipServlet extends SipServlet {
         final URI requestUri = invite.getRequestURI();
         
         if (requestUri instanceof SipURI) {
-            final String canonicalizedUri = Util.canonicalizeUri((SipURI) requestUri.clone()).toString();
+            final SipURI canonicalizedUri = Util.canonicalizeUri((SipURI) requestUri.clone());
+            final Subscriber subscriber = getBindingsManager().getSubscriber(canonicalizedUri);
             
-            deleteExpiredBindings(canonicalizedUri);
+            deleteExpiredBindings(subscriber);
             
-            final List<Binding> bindings = getBindingsManager().getBindings(canonicalizedUri);
+            final List<Binding> bindings = getBindingsManager().getBindings(subscriber);
             if (bindings != null) {
                 for (final Binding binding : bindings) {
                     final URI destUri = sf.createURI(binding.getContactAddress());

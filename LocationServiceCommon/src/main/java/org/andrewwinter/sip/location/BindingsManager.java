@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
@@ -15,6 +16,9 @@ import javax.servlet.sip.ServletParseException;
 import javax.servlet.sip.SipFactory;
 import javax.servlet.sip.SipURI;
 import javax.servlet.sip.URI;
+import org.andrewwinter.sip.model.Binding;
+import org.andrewwinter.sip.model.Queries;
+import org.andrewwinter.sip.model.Subscriber;
 
 /**
  *
@@ -26,15 +30,32 @@ public class BindingsManager {
     @PersistenceContext(type = PersistenceContextType.TRANSACTION, unitName = "sipappPersistenceUnit")
     private EntityManager em;
 
+    /**
+     * @param uri Canonicalized AOR of subscriber.
+     * @return 
+     */
+    public Subscriber getSubscriber(final SipURI uri) {
+        final TypedQuery<Subscriber> query = em.createNamedQuery(Queries.FIND_SUBSCRIBER_BY_USER_PART, Subscriber.class);
+        
+        query.setParameter("userPart", uri.getUser());
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public List<Binding> getBindings(final String publicAddress) {
+    public List<Binding> getBindings(final Subscriber subscriber) {
         final TypedQuery<Binding> query = em.createNamedQuery("Binding.findBindings", Binding.class);
-        query.setParameter("publicAddress", publicAddress);
+        query.setParameter("subscriber", subscriber);
         return query.getResultList();
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public void put(final String publicAddress, final List<Binding> bindings) {
+    public void put(final List<Binding> bindings) {
         for (final Binding b : bindings) {
             em.persist(b);
         }
@@ -48,24 +69,24 @@ public class BindingsManager {
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public void removeBinding(final String publicAddress, final String contactAddress) {
-        final Query query = em.createNamedQuery("Binding.deleteBinding");
-        query.setParameter("publicAddress", publicAddress);
+    public void removeBinding(final Subscriber subscriber, final String contactAddress) {
+        final Query query = em.createNamedQuery(Binding.DELETE_BINDING);
+        query.setParameter("subscriber", subscriber);
         query.setParameter("contactAddress", contactAddress);
         query.executeUpdate();
     }
     
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public void removeExpiredBindingsForPublicAddress(final String publicAddress) {
-        final Query query = em.createNamedQuery("Binding.deleteExpiredBindingsForPublicAddress");
-        query.setParameter("publicAddress", publicAddress);
+    public void removeExpiredBindingsForSubscriber(final Subscriber subscriber) {
+        final Query query = em.createNamedQuery(Queries.DELETE_EXPIRED_BINDINGS_FOR_SUBSCRIBER);
+        query.setParameter("subscriber", subscriber);
         query.setParameter("expiryTime", new Date());
         query.executeUpdate();
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void addAndRemoveBindings(
-            final String publicAddress,
+            final Subscriber subscriber,
             final List<Binding> bindingsToAdd,
             final Set<String> contactAddressesToRemove,
             final SipFactory sf) {
@@ -77,7 +98,7 @@ public class BindingsManager {
         // (Server Error) response and all tentative binding updates MUST be
         // removed.
 
-        final List<Binding> allBindings = getBindings(publicAddress);
+        final List<Binding> allBindings = getBindings(subscriber);
 
         for (final Binding existingBinding : allBindings) {
 
@@ -88,7 +109,7 @@ public class BindingsManager {
 
                     final URI uriToRemove = sf.createURI(contactAddressToRemove);
                     if (Util.equalsUsingComparisonRules((SipURI) uriToRemove, (SipURI) uriFromExistingBinding)) {
-                        removeBinding(publicAddress, existingBinding.getContactAddress());
+                        removeBinding(subscriber, existingBinding.getContactAddress());
                     }
                 }
 
@@ -97,7 +118,7 @@ public class BindingsManager {
             }
         }
 
-        put(publicAddress, bindingsToAdd);
+        put(bindingsToAdd);
     }
 
     /**
@@ -106,14 +127,14 @@ public class BindingsManager {
      * @param contact
      * @return
      */
-    public Binding getBinding(final String canonicalizedPublicUri, final URI contact, final SipFactory sf) {
+    public Binding getBinding(final Subscriber subscriber, final URI contact, final SipFactory sf) {
 
         Binding result = null;
 
         // the registrar then searches the list of current bindings using the
         // URI comparison rules.
 
-        final List<Binding> bindings = getBindings(canonicalizedPublicUri);
+        final List<Binding> bindings = getBindings(subscriber);
         if (bindings != null) {
             for (final Binding binding : bindings) {
 

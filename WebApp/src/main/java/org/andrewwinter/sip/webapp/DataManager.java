@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
-import org.andrewwinter.sip.model.Extension;
 import org.andrewwinter.sip.model.Pbx;
 import org.andrewwinter.sip.model.Queries;
 import org.andrewwinter.sip.model.Subscriber;
@@ -30,8 +29,17 @@ public class DataManager {
             final String forename,
             final String surname,
             final String password) {
+
+        final TypedQuery<Integer> query = em.createNamedQuery(Queries.GET_MAX_PBX_USER_PREFIX, Integer.class);
+        final Integer max = query.getSingleResult();
+        final int userPartPrefix;
+        if (max == null || max == 0) {
+            userPartPrefix = 1000;
+        } else {
+            userPartPrefix = max + 1;
+        }
         
-        final Pbx pbx = new Pbx(domain, 5);
+        final Pbx pbx = new Pbx(domain, 5, userPartPrefix);
         em.persist(pbx);
         
         createSubscriber(pbx, forename, surname, email, password, true);
@@ -46,18 +54,29 @@ public class DataManager {
             final String password,
             final boolean admin) {
         
+        final TypedQuery<Integer> query = em.createNamedQuery(Queries.GET_MAX_EXTENSION_FOR_PBX, Integer.class);
+        query.setParameter("pbx", pbx);
+        final Integer max = query.getSingleResult();
+        final int extension;
+        if (max == null || max == 0) {
+            extension = 1000;
+        } else {
+            extension = max + 1;
+        }
+        
         final Subscriber subscriber = new Subscriber(
                                         pbx,
                                         forename,
                                         surname,
                                         email,
                                         password,
+                                        String.valueOf(pbx.getUserPartPrefix()) + String.valueOf(extension),
+                                        extension,
                                         admin);
         em.persist(subscriber);
     }
-    
-            
-            
+
+
     public Subscriber getUserByEmail(final String email) {
         final TypedQuery<Subscriber> query = em.createNamedQuery(Queries.FIND_SUBSCRIBER_BY_EMAIL, Subscriber.class);
         query.setParameter("email", email.toLowerCase(Locale.US));
@@ -69,9 +88,9 @@ public class DataManager {
         }
     }
     
-    public List<Extension> findExtensionsInUse(final Pbx pbx) {
-        final TypedQuery<Extension> query = em.createNamedQuery(Queries.FIND_EXTENSIONS_IN_USE, Extension.class);
-        query.setParameter("domainName", pbx.getDomainName().toLowerCase(Locale.US));
+    public List<Subscriber> getSubscribersInPbx(final Pbx pbx) {
+        final TypedQuery<Subscriber> query = em.createNamedQuery(Queries.GET_SUBSCRIBERS_IN_PBX, Subscriber.class);
+        query.setParameter("pbx", pbx);
         return query.getResultList();
     }
 }

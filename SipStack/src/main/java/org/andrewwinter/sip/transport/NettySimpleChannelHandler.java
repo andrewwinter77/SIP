@@ -9,6 +9,7 @@ import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ExceptionEvent;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
+import org.jboss.netty.channel.UpstreamMessageEvent;
 
 /**
  *
@@ -52,10 +53,13 @@ class NettySimpleChannelHandler extends SimpleChannelHandler {
                 
             } else {
                 // TODO: What's going on here?
+                // Is the buffer empty? If so, why did this method even get called? Investigate.
                 
                 final StringBuilder sb = new StringBuilder();
-                sb.append("Dropped message is " + sipMessageAsString + "\n");
-                sb.append("Received from address " + event.getRemoteAddress());
+                sb.append("buf.array().length = " + buf.array().length + "\n");
+                sb.append("Dropped message is [" + sipMessageAsString + "]" + sipMessageAsString.length() + " bytes\n");
+                sb.append("Received from address " + event.getRemoteAddress() + "\n");
+                sb.append("event instanceof UpstreamMessageEvent: " + (event instanceof UpstreamMessageEvent) + "\n");
                 if (event.getRemoteAddress() != null) {
                     sb.append(((InetSocketAddress) event.getRemoteAddress()).getHostName());
                 }

@@ -5,6 +5,7 @@ import javax.servlet.sip.Proxy;
 import javax.servlet.sip.ProxyBranch;
 import javax.servlet.sip.Rel100Exception;
 import javax.servlet.sip.SipServletRequest;
+import org.andrewwinter.jsr289.store.SipSessionStore;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.parser.SipMessageHelper;
 import org.andrewwinter.sip.parser.SipResponse;
@@ -75,6 +76,7 @@ public class OutboundSipServletResponseImpl extends SipServletResponseImpl {
                     System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ null session when sending response to " + servletRequest.getSipRequest().getMethod());
                 } else {
                     session.setDialog(dialog);
+                    SipSessionStore.getInstance().associateWithDialogId(dialog.getId(), session);
                 }
             }
         }

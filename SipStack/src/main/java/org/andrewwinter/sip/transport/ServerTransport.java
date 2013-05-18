@@ -51,7 +51,7 @@ public class ServerTransport {
 
     private SipRequestHandler sipListener;
     
-    private SocketAddress localPort;
+    private SocketAddress unsecureSocketAddress;
     
     private ConnectionlessBootstrap udpBootstrap;
         
@@ -229,9 +229,9 @@ public class ServerTransport {
      *
      * @param sipListener
      */
-    public void init(final SipRequestHandler sipListener, final int tcpPort) {
+    public void init(final SipRequestHandler sipListener, final int unsecurePort) {
         this.sipListener = sipListener;
-        this.localPort = new InetSocketAddress(tcpPort);
+        this.unsecureSocketAddress = new InetSocketAddress(unsecurePort);
     }
     
     /**
@@ -274,7 +274,7 @@ public class ServerTransport {
         bootstrap.setOption("child.tcpNoDelay", true);
         bootstrap.setOption("child.keepAlive", true);
 
-        bootstrap.bind(localPort);
+        bootstrap.bind(unsecureSocketAddress);
 
         System.out.println("TCP Server Started!");
     }
@@ -305,11 +305,11 @@ public class ServerTransport {
                 "receiveBufferSizePredictorFactory",
                 new FixedReceiveBufferSizePredictorFactory(65535));
 
-        udpBootstrap.setOption("localAddress", localPort);
+        udpBootstrap.setOption("localAddress", unsecureSocketAddress);
         udpBootstrap.setOption("tcpNoDelay", true);
         
         // Bind to the port and start the service.
-        udpChannel = udpBootstrap.bind(localPort);
+        udpChannel = udpBootstrap.bind(unsecureSocketAddress);
     }
     
     

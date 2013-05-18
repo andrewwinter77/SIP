@@ -1,6 +1,5 @@
 package org.andrewwinter.jsr289.jboss;
 
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
@@ -9,7 +8,6 @@ import javax.servlet.sip.ar.SipApplicationRouter;
 import org.andrewwinter.jsr289.SipServletContainer;
 import org.andrewwinter.jsr289.model.SipDeploymentUnit;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
-import org.andrewwinter.sip.transport.ServerTransport;
 import org.jboss.msc.service.Service;
 import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.StartContext;
@@ -37,11 +35,6 @@ public class SipServletContainerService implements Service<SipServletContainerSe
     /**
      * 
      */
-    private ServerTransport serverTransport;
-
-    /**
-     * 
-     */
     private SipServletContainer container;
 
     /**
@@ -49,8 +42,6 @@ public class SipServletContainerService implements Service<SipServletContainerSe
      */
     public SipServletContainerService() {
         container = new SipServletContainer(getOurDomains());
-        serverTransport = ServerTransport.getInstance();
-        serverTransport.init(container, 5060);
     }
 
     /**
@@ -99,7 +90,6 @@ public class SipServletContainerService implements Service<SipServletContainerSe
      */
     @Override
     public void start(final StartContext context) throws StartException {
-        serverTransport.listen();
         container.start();
     }
 
@@ -108,12 +98,6 @@ public class SipServletContainerService implements Service<SipServletContainerSe
      */
     @Override
     public void stop(final StopContext context) {
-        try {
-            serverTransport.stopListening();
-        } catch (IOException e) {
-            LOG.error("Error while stopping listening for SIP traffic.", e);
-        }
-        
         container.stop();
     }
 }

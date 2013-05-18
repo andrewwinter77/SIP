@@ -1,5 +1,6 @@
 package org.andrewwinter.jsr289;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -39,6 +40,7 @@ import org.andrewwinter.jsr289.threadlocal.ServletContextThreadLocal;
 import org.andrewwinter.jsr289.util.ManagedClassInstantiator;
 import org.andrewwinter.jsr289.util.Util;
 import org.andrewwinter.sip.SipRequestHandler;
+import org.andrewwinter.sip.SipStack;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipRequest;
 import org.andrewwinter.sip.parser.Address;
@@ -72,6 +74,8 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
      */
     private final Map<String, SipDeploymentUnit> modules;
     
+    private final SipStack sipStack;
+    
     /**
      * Constructor.
      * @param additionalDomains 
@@ -80,18 +84,27 @@ public class SipServletContainer implements InboundSipServletRequestHandler, Sip
         modules = new HashMap<>();
         domains = createIpAddressList();
         domains.addAll(additionalDomains);
+        sipStack = new SipStack();
+        sipStack.init(this, 5060);
     }
     
     /**
      *
      */
     public void start() {
+        sipStack.start();
     }
     
     /**
      *
      */
     public void stop() {
+        try {
+            sipStack.stop();
+        } catch (IOException e) {
+            LOG.error("Error while stopping listening for SIP traffic.", e);
+        }
+        
         if (appRouter != null) {
             appRouter.destroy();
         }

@@ -19,6 +19,17 @@ class Completed extends ServerTransactionState {
         super(ServerTransactionStateName.COMPLETED);
         this.txn = txn;
         this.finalResponse = finalResponse;
+        
+        // When the server transaction enters the "Completed" state, it MUST set
+        // Timer J to fire in 64*T1 seconds for unreliable transports, and zero
+        // seconds for reliable transports.
+        
+        if (true) { // TODO: unreliable transport mechanism
+            System.out.println("Submitting txn to timer J");
+            TimerJ.getInstance().submit(txn);
+        } else {
+            txn.changeState(new Terminated(txn));
+        }
     }
 
     @Override

@@ -122,5 +122,6 @@
         <module>B2bUaApp</module>
         <module>SimpleProxyApp</module>
         <module>OptionsHandlerApp</module>
+        <module>SippClientApp</module>
   </modules>
 </project>

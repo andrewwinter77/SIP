@@ -40,6 +40,10 @@ public enum HeaderType {
     /**
      *
      */
+    INTEGER_WITH_PARAMS(true),
+    /**
+     *
+     */
     ADDRESS(true),
     /**
      *

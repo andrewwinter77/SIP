@@ -121,6 +121,10 @@ public class HeaderName {
      */
     public static final HeaderName MIN_EXPIRES = createKnownHeader("Min-Expires", null, HeaderType.INTEGER);
     /**
+     * 
+     */
+    public static final HeaderName MIN_SE = createKnownHeader("Min-SE", null, HeaderType.INTEGER_WITH_PARAMS);
+    /**
      *
      */
     public static final HeaderName ORGANIZATION = createKnownHeader("Organization", null, HeaderType.OPAQUE_STRING);
@@ -183,6 +187,10 @@ public class HeaderName {
      *
      */
     public static final HeaderName SERVER = createKnownHeader("Server", null, HeaderType.OPAQUE_STRING);
+    /**
+     * 
+     */
+    public static final HeaderName SESSION_EXPIRES = createKnownHeader("Session-Expires", null, HeaderType.INTEGER_WITH_PARAMS);
     /**
      *
      */

@@ -142,6 +142,11 @@ public enum ResponseType {
     EXTENSION_REQUIRED(421, "Extension Required"),
     
     /**
+     * Constant for 422 Session Interval Too Small.
+     */
+    SESSION_INTERVAL_TOO_SMALL(422, "Session Interval Too Small"),
+    
+    /**
      * Constant for 423 Interval Too Brief.
      */
     INTERVAL_TOO_BRIEF(423, "Interval Too Brief"),

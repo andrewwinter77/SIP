@@ -11,9 +11,12 @@ import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
  */
 class Terminated extends ServerTransactionState {
     
-    public Terminated(final InviteServerTransaction txn, final SipResponse response) {
+    public Terminated(final InviteServerTransaction txn) {
         super(ServerTransactionStateName.TERMINATED);
-        txn.sendResponseToTransportLayer(response);
+        
+        // Once the transaction is in the “Terminated” state, it MUST be
+        // destroyed immediately.
+        
         txn.destroy();
     }
 

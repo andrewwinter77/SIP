@@ -2,6 +2,7 @@ package org.andrewwinter.sip.transaction.server.noninvite;
 
 import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.parser.SipResponse;
+import org.andrewwinter.sip.timer.TimerService;
 import org.andrewwinter.sip.transaction.server.ServerTransactionState;
 import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
 
@@ -25,8 +26,7 @@ class Completed extends ServerTransactionState {
         // seconds for reliable transports.
         
         if (true) { // TODO: unreliable transport mechanism
-            System.out.println("Submitting txn to timer J");
-            TimerJ.getInstance().submit(txn);
+            TimerService.getInstance().startTimerJ(txn);
         } else {
             txn.changeState(new Terminated(txn));
         }

@@ -2,6 +2,7 @@ package org.andrewwinter.sip.transaction.server.invite;
 
 import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.parser.SipResponse;
+import org.andrewwinter.sip.timer.TimerService;
 import org.andrewwinter.sip.transaction.server.ServerTransactionState;
 import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
 
@@ -13,8 +14,18 @@ import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
  */
 class Confirmed extends ServerTransactionState {
     
-    public Confirmed() {
+    public Confirmed(final InviteServerTransaction txn) {
         super(ServerTransactionStateName.CONFIRMED);
+        
+        // When this state is entered, timer I is set to fire in T4 seconds for
+        // unreliable transports, and zero seconds for reliable transports. Once
+        // timer I fires, the server MUST transition to the "Terminated" state.
+        
+        if (true) { // TODO: unreliable transport mechanism
+            TimerService.getInstance().startTimerI(txn);
+        } else {
+            txn.changeState(new Terminated(txn));
+        }
     }
 
     @Override

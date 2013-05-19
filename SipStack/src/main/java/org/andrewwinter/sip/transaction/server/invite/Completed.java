@@ -43,7 +43,7 @@ class Completed extends ServerTransactionState {
             // "Completed" state, the server transaction MUST transition to the
             // "Confirmed" state.
             
-            txn.changeState(new Confirmed());
+            txn.changeState(new Confirmed(txn));
         }
     }
 }

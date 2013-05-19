@@ -99,10 +99,9 @@ class Proceeding extends ServerTransactionState {
             // responses are handled by the TU. The server transaction MUST then
             // transition to the "Terminated" state.
             
-            // [Get Terminated to send the response before it destroys the
-            // transaction and closes the connection. Doing this avoids a race.]
+            txn.sendResponseToTransportLayer(response);
             
-            txn.changeState(new Terminated(txn, response));
+            txn.changeState(new Terminated(txn));
             
         } else { // 300-699
             
@@ -115,8 +114,9 @@ class Proceeding extends ServerTransactionState {
             // unreliable transports, timer G is set to fire in T1 seconds, and
             // is not set to fire for reliable transports.
 
-            txn.changeState(new Completed(txn, response));
             txn.sendResponseToTransportLayer(response);
+
+            txn.changeState(new Completed(txn, response));
         }
 
         

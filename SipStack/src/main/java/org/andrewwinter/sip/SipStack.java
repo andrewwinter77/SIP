@@ -1,7 +1,7 @@
 package org.andrewwinter.sip;
 
 import java.io.IOException;
-import org.andrewwinter.sip.transaction.server.noninvite.TimerJ;
+import org.andrewwinter.sip.timer.TimerService;
 import org.andrewwinter.sip.transport.ServerTransport;
 import org.quartz.SchedulerException;
 
@@ -16,18 +16,11 @@ public class SipStack {
     public void init(final SipRequestHandler sipListener, final int unsecurePort) {
         transport = ServerTransport.getInstance();
         transport.init(sipListener, unsecurePort);
-        
-        try {
-            TimerJ.getInstance().init();
-        } catch (SchedulerException e) {
-            // TODO: Throw something like SipStackException here
-            e.printStackTrace();
-        }
     }
 
     public void start() {
         try {
-            TimerJ.getInstance().start();
+            TimerService.getInstance().start();
         } catch (SchedulerException e) {
             // TODO: Throw something like SipStackException here
             e.printStackTrace();
@@ -38,7 +31,7 @@ public class SipStack {
     
     public void stop() throws IOException {
         try {
-            TimerJ.getInstance().stop();
+            TimerService.getInstance().stop();
         } catch (SchedulerException e) {
             // TODO: Throw something like SipStackException here
             e.printStackTrace();

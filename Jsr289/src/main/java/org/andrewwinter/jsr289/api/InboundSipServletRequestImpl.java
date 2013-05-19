@@ -77,6 +77,13 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl {
 
             if (proxy == null) {
 
+                // Since a SIP Servlet container cannot know a priori whether an
+                // application will proxy a request or not, it cannot perform
+                // the Max-Forwards check before invoking the application.
+                // Instead, the container performs the check when the
+                // application invokes getProxy() on a SipServletRequest, and if
+                // Max-Forwards is 0 a TooManyHopsException is thrown.
+                  
                 final Integer maxForwards = getSipRequest().getMaxForwards();
                 if (maxForwards != null && maxForwards == 0) {
 

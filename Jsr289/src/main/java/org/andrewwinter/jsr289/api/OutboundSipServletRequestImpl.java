@@ -165,11 +165,6 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public String toString() {
-        return request.toString();
-    }
-
     /**
      * Send request back into the container so we can continue the application
      * sequencing.

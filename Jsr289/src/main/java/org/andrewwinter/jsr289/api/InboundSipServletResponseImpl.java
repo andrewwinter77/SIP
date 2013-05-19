@@ -72,11 +72,6 @@ public class InboundSipServletResponseImpl extends SipServletResponseImpl {
     }
 
     @Override
-    public String toString() {
-        return message.toString();
-    }
-
-    @Override
     public void send() throws IOException {
         throw new IllegalStateException("Cannot send inbound responses.");
     }

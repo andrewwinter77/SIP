@@ -353,11 +353,6 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
     }
 
     @Override
-    public String toString() {
-        return request.toString();
-    }
-
-    @Override
     public AsyncContext startAsync() throws IllegalStateException {
         throw new UnsupportedOperationException("Not supported yet.");
     }

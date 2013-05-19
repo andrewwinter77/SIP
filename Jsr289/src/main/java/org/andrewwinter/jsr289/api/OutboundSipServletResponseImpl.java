@@ -51,11 +51,6 @@ public class OutboundSipServletResponseImpl extends SipServletResponseImpl {
     }
 
     @Override
-    public String toString() {
-        return getSipResponse().toString();
-    }
-
-    @Override
     public void sendReliably() throws Rel100Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }

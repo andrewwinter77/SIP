@@ -218,11 +218,6 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl {
     }
 
     @Override
-    public String toString() {
-        return request.toString();
-    }
-
-    @Override
     public void send() throws IOException {
         throw new IllegalStateException("Cannot send inbound requests.");
     }

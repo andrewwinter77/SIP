@@ -145,9 +145,4 @@ public abstract class SipServletResponseImpl extends SipServletMessageImpl imple
     public Locale getLocale() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
-    @Override
-    public String toString() {
-        return getSipResponse().toString();
-    }
 }

@@ -599,4 +599,9 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
     public HeaderForm getHeaderForm() {
         return headerForm;
     }
+    
+    @Override
+    public String toString() {
+        return message.toString();
+    }
 }

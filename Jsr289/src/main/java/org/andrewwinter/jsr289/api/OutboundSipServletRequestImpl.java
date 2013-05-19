@@ -85,7 +85,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
     @Override
     public SipServletRequest createCancel() {
         
-        if (!request.isINVITE()) {
+        if (!getSipRequest().isINVITE()) {
             throw new IllegalStateException("Only outbound INVITEs can be canceled.");
         }
         
@@ -99,7 +99,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
             throw new IllegalStateException("Cannot cancel since not in the CALLING or PROCEEDING states.");
         }
         
-        final SipRequest cancel = SipMessageFactory.createCancel(request);
+        final SipRequest cancel = SipMessageFactory.createCancel(getSipRequest());
         final OutboundSipServletRequestImpl servletRequest = new OutboundSipServletRequestImpl(userAgentClient, cancel);
         servletRequest.setServletContext(getServletContext());
         servletRequest.setSipSession(getSession());
@@ -198,10 +198,10 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
                     pushRoute();
                 }
                 
-                userAgentClient = UserAgentClient.createUacAndSendRequest(this, request, dialog);
+                userAgentClient = UserAgentClient.createUacAndSendRequest(this, getSipRequest(), dialog);
             }
-        } else if (request.isCANCEL()) {
-            userAgentClient.cancel(request);
+        } else if (getSipRequest().isCANCEL()) {
+            userAgentClient.cancel(getSipRequest());
         }
     }
 
@@ -210,7 +210,7 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
         if (isSent()) {
             throw new IllegalStateException("Message has already been sent.");
         }
-        SipMessageHelper.setContentLength(len, request);
+        SipMessageHelper.setContentLength(len, message);
     }
 
     @Override

@@ -77,7 +77,7 @@ public class InboundSipServletRequestImpl extends SipServletRequestImpl {
 
             if (proxy == null) {
 
-                final Integer maxForwards = request.getMaxForwards();
+                final Integer maxForwards = getSipRequest().getMaxForwards();
                 if (maxForwards != null && maxForwards == 0) {
 
                     throw new TooManyHopsException();

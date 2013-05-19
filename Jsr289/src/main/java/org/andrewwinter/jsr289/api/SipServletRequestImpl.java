@@ -46,7 +46,6 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         SUBSEQUENT_REQUEST_METHODS.add("UPDATE");
         SUBSEQUENT_REQUEST_METHODS.add("INFO");
     }
-    protected final SipRequest request;
     /**
      * Null if not yet set.
      */
@@ -67,10 +66,6 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
      */
     public SipServletRequestImpl(final SipRequest request) {
         super(request);
-        if (request == null) {
-            throw new NullPointerException("Request must not be null.");
-        }
-        this.request = request;
     }
 
     public void setStateInfo(final Serializable stateInfo) {
@@ -78,11 +73,11 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
     }
     
     public Serializable getStateInfo() {
-        return this.stateInfo;
+        return stateInfo;
     }
     
-    public SipRequest getSipRequest() {
-        return request;
+    public final SipRequest getSipRequest() {
+        return (SipRequest) message;
     }
     
     @Override
@@ -92,7 +87,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
     
     @Override
     public URI getRequestURI() {
-        return URIImpl.create(request.getRequestUri());
+        return URIImpl.create(getSipRequest().getRequestUri());
     }
 
     @Override
@@ -100,7 +95,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         if (uri == null) {
             throw new NullPointerException("uri must not be null.");
         }
-        request.setRequestUri(((URIImpl) uri).getRfc3261Uri());
+        getSipRequest().setRequestUri(((URIImpl) uri).getRfc3261Uri());
     }
 
     @Override
@@ -111,7 +106,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
             throw new IllegalStateException("Cannot push Route on subsequent requests.");
         }
         final Uri rfc3261Uri = ((SipURIImpl) uri).getRfc3261Uri();
-        request.pushRoute(rfc3261Uri);
+        getSipRequest().pushRoute(rfc3261Uri);
     }
 
     @Override
@@ -125,13 +120,13 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
             // Note: This is not in the spec but makes sense to me.
             throw new IllegalArgumentException("Wildcard is not a valid route header.");
         }
-        request.pushRoute(((AddressImpl) uri).getRfc3261Address());
+        getSipRequest().pushRoute(((AddressImpl) uri).getRfc3261Address());
     }
 
     @Override
     public int getMaxForwards() {
         try {
-            Integer maxForwards = request.getMaxForwards();
+            Integer maxForwards = getSipRequest().getMaxForwards();
             if (maxForwards == null) {
                 return -1;
             } else {
@@ -147,7 +142,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         if (n < 0 || n > 255) {
             throw new IllegalArgumentException("Max forwards not in range 0..255.");
         }
-        SipMessageHelper.setMaxForwards(n, request);
+        SipMessageHelper.setMaxForwards(n, getSipRequest());
     }
 
     /**
@@ -169,7 +164,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         // in RFC 3261 to see if the request matches an existing transaction. If
         // it does, stop. The request is not an initial request.
 
-        if (request.matchesExistingServerTransaction()) {
+        if (getSipRequest().matchesExistingServerTransaction()) {
             return initial = false;
         }
 
@@ -177,7 +172,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         // or INFO, stop. The request is not an initial request for which
         // application selection occurs.
 
-        final String method = request.getMethod().toUpperCase(Locale.US);
+        final String method = message.getMethod().toUpperCase(Locale.US);
         if (SUBSEQUENT_REQUEST_METHODS.contains(method)) {
             return initial = false;
         }
@@ -188,7 +183,7 @@ public abstract class SipServletRequestImpl extends SipServletMessageImpl implem
         // compares it with existing dialogs. If it matches an existing dialog,
         // stop. The request is not an initial request.
 
-        if (request.matchesExistingDialog()) {
+        if (getSipRequest().matchesExistingDialog()) {
             return initial = false;
         }
 

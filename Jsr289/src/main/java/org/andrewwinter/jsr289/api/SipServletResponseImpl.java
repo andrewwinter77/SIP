@@ -22,7 +22,7 @@ public abstract class SipServletResponseImpl extends SipServletMessageImpl imple
 
     protected final SipServletRequestImpl servletRequest;
     
-    protected SipServletResponseImpl(SipResponse response, SipServletRequestImpl servletRequest) {
+    protected SipServletResponseImpl(final SipResponse response, final SipServletRequestImpl servletRequest) {
         super(response);
         this.servletRequest = servletRequest;
     }

@@ -43,6 +43,9 @@ public abstract class SipServletMessageImpl implements SipServletMessage {
     private ServletContext servletContext;
 
     protected SipServletMessageImpl(final SipMessage message) {
+        if (message == null) {
+            throw new IllegalArgumentException("Message must not be null.");
+        }
         this.message = message;
     }
     

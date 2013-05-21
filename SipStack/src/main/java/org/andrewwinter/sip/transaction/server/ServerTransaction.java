@@ -10,12 +10,13 @@ import org.andrewwinter.sip.parser.Address;
 import org.andrewwinter.sip.parser.SipMessageHelper;
 import org.andrewwinter.sip.parser.SipRequest;
 import org.andrewwinter.sip.parser.SipResponse;
+import org.andrewwinter.sip.transaction.Transaction;
 
 /**
  *
  * @author andrewwinter77
  */
-public abstract class ServerTransaction {
+public abstract class ServerTransaction extends Transaction {
 
     private final InboundSipRequest isr;
     
@@ -91,6 +92,7 @@ public abstract class ServerTransaction {
      * 
      */
     public void destroy() {
+        super.destroy();
         ServerTransactionStore.getInstance().remove(this);
         isr.getResponseSender().closeSocket();
     }

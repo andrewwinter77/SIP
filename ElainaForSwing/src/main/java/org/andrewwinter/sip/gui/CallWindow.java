@@ -243,6 +243,11 @@ public class CallWindow extends javax.swing.JDialog implements SipRequestHandler
     }
 
     @Override
+    public void inviteClientTxnTimeout() {
+        // TODO: Handle this - assume a 408?
+    }
+
+    @Override
     public void doResponse(final InboundSipResponse isr) {
         final SipResponse response = isr.getResponse();
         

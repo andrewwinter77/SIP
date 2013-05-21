@@ -568,6 +568,11 @@ public class ElainaUserAgent extends javax.swing.JFrame implements SipRequestHan
     }
 
     @Override
+    public void inviteClientTxnTimeout() {
+        // TODO: Handle this - assume a 408?
+    }
+
+    @Override
     public void doResponse(final InboundSipResponse isr) {
         final SipResponse response = isr.getResponse();
         final CallWindow guiDialog = WindowStore.getInstance().getCallWindow(response.getCallId());

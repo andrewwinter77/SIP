@@ -3,6 +3,7 @@ package org.andrewwinter.sip.transaction.client.invite;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.parser.SipRequest;
+import org.andrewwinter.sip.timer.TimerService;
 import org.andrewwinter.sip.transaction.client.ClientTransactionState;
 import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
 
@@ -25,6 +26,22 @@ class Calling extends ClientTransactionState {
         super(ClientTransactionStateName.CALLING);
         this.txn = txn;
         cancelRequested = false;
+        if (true) { // TODO: If unreliable transport
+            
+            // If an unreliable transport is being used, the client transaction
+            // MUST start timer A with a value of T1.
+            
+            TimerService.getInstance().startTimerA(txn, 0);
+        } else {
+            // If a reliable transport is being used, the client transaction
+            // SHOULD NOT start timer A (Timer A controls request
+            // retransmissions).
+        }
+        
+        // For any transport, the client transaction MUST start timer B with a
+        // value of 64*T1 seconds (Timer B controls transaction timeouts).
+        
+        TimerService.getInstance().startTimerB(txn);
     }
 
     @Override
@@ -50,7 +67,8 @@ class Calling extends ClientTransactionState {
             // in the "Calling" state, it transitions to the "Proceeding" state.
             // Furthermore, the provisional response MUST be passed to the TU.
             
-            txn.changeState(new Proceeding(txn, cancelRequested, cancel));
+           cancelTimersAB();
+           txn.changeState(new Proceeding(txn, cancelRequested, cancel));
             
         } else if (status >= 300 && status < 700) {
 
@@ -63,6 +81,7 @@ class Calling extends ClientTransactionState {
             // response are given in Section 17.1.1) and then pass the ACK to
             // the transport layer for transmission.            
 
+            cancelTimersAB();
             txn.changeState(new Completed(txn));
 
             // After having received the non-2xx final response the UAC core
@@ -78,9 +97,37 @@ class Calling extends ClientTransactionState {
             // a 2xx response MUST cause the client transaction to enter the
             // "Terminated" state, and the response MUST be passed up to the TU.
             
+            cancelTimersAB();
             txn.changeState(new Terminated(txn));
         }
         
         txn.sendResponseToTU(isr, dialog);
+    }
+
+    @Override
+    public void timerAFired() {
+        txn.sendRequest();
+    }
+    
+    @Override
+    public void timerBFired() {
+        
+        // If the client transaction is still in the "Calling" state when timer
+        // B fires, the client transaction SHOULD inform the TU that a timeout
+        // has occurred. The client transaction MUST NOT generate an ACK.
+        
+        txn.inviteClientTxnTimeout();
+        
+        cancelTimersAB();
+        txn.changeState(new Terminated(txn));
+    }
+    
+    /**
+     * 
+     */
+    private void cancelTimersAB() {
+        System.out.println("Cancelling timers A and B");
+        txn.cancelTimerA();
+        txn.cancelTimerB();
     }
 }

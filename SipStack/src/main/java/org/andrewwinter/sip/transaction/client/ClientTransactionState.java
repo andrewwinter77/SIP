@@ -40,4 +40,10 @@ public abstract class ClientTransactionState {
      */
     public void cancel(final SipRequest cancel) {
     }
+    
+    public void timerBFired() {
+    }
+    
+    public void timerAFired() {
+    }
 }

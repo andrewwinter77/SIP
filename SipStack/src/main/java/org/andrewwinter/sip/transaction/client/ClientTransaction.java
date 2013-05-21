@@ -4,13 +4,14 @@ import org.andrewwinter.sip.SipResponseHandler;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.parser.SipRequest;
+import org.andrewwinter.sip.transaction.Transaction;
 import org.andrewwinter.sip.transport.RequestSender;
 
 /**
  *
  * @author andrewwinter77
  */
-public abstract class ClientTransaction {
+public abstract class ClientTransaction extends Transaction {
 
     private final SipRequest request;
     
@@ -19,8 +20,6 @@ public abstract class ClientTransaction {
     private final SipResponseHandler sipListener;
     
     private final RequestSender sender;
-    
-    private boolean terminated;
     
     /**
      * 
@@ -35,7 +34,6 @@ public abstract class ClientTransaction {
         this.request = request;
         this.sipListener = txnUser;
         this.sender = sender;
-        this.terminated = false;
         ClientTransactionStore.getInstance().put(this);
     }
     
@@ -56,25 +54,11 @@ public abstract class ClientTransaction {
     }
 
     /**
-     *
-     */
-    protected void setTerminated() {
-        terminated = true;
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    public boolean isTerminated() {
-        return terminated;
-    }
-    
-    /**
      * 
      */
+    @Override
     public void destroy() {
-        terminated = true;
+        super.destroy();
         ClientTransactionStore.getInstance().remove(this);
         
         // TODO: Close socket - when we have one to close!
@@ -94,6 +78,10 @@ public abstract class ClientTransaction {
         sipListener.doResponse(isr);
     }
 
+    public void inviteClientTxnTimeout() {
+        sipListener.inviteClientTxnTimeout();
+    }
+    
     /**
      * 
      * @return 
@@ -151,5 +139,13 @@ public abstract class ClientTransaction {
         // The client transaction MUST pass the request to the transport layer
         // for transmission (see Section 18).
         sendRequest();
+    }
+    
+    public void timerAFired() {
+        state.timerAFired();
+    }
+    
+    public void timerBFired() {
+        state.timerBFired();
     }
 }

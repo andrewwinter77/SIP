@@ -36,6 +36,9 @@ class Proceeding extends ClientTransactionState {
             @Override
             public void doResponse(InboundSipResponse response) {
             }
+            @Override
+            public void inviteClientTxnTimeout() {
+            }
         };
         
         // When the client decides to send the CANCEL, it creates a client

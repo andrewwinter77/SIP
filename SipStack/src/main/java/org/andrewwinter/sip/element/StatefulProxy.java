@@ -188,6 +188,11 @@ public class StatefulProxy implements SipRequestHandler, SipResponseHandler {
     }
 
     @Override
+    public void inviteClientTxnTimeout() {
+        // TODO: Handle this
+    }
+    
+    @Override
     public void doResponse(final InboundSipResponse isr) {
      
         // TODO: Likely multiple threads will come in here at the same time. Make it thread safe.

@@ -184,6 +184,11 @@ public class OutboundSipServletRequestImpl extends SipServletRequestImpl impleme
     }
 
     @Override
+    public void inviteClientTxnTimeout() {
+        // TODO: Handle this - do we generate a 408 here?
+    }
+
+    @Override
     public void send() throws IOException {
 
         if (isSent()) {

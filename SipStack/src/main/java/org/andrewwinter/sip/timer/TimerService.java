@@ -1,5 +1,10 @@
 package org.andrewwinter.sip.timer;
 
+import java.util.List;
+import org.andrewwinter.sip.transaction.Transaction;
+import org.andrewwinter.sip.transaction.client.invite.InviteClientTransaction;
+import org.andrewwinter.sip.transaction.client.invite.TimerATask;
+import org.andrewwinter.sip.transaction.client.invite.TimerBTask;
 import org.andrewwinter.sip.transaction.server.invite.InviteServerTransaction;
 import org.andrewwinter.sip.transaction.server.invite.TimerITask;
 import org.andrewwinter.sip.transaction.server.noninvite.NonInviteServerTransaction;
@@ -8,6 +13,7 @@ import org.quartz.DateBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
+import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.Trigger;
@@ -33,6 +39,12 @@ public class TimerService {
      * Maximum duration a message will remain in the network.
      */
     public static final int T4 = 5000;
+    /**
+     * 
+     */
+    public static final int[] TIMER_A = new int[] {
+        T1, 2*T1, 4*T1, 8*T1, 16*T1, 32*T1  
+    };
     /**
      *
      */
@@ -87,11 +99,31 @@ public class TimerService {
         scheduler.shutdown();
     }
 
-    private void scheduleTask(
+    public void deleteTimers(final List<JobKey> timerJobs) {
+        try {
+            scheduler.deleteJobs(timerJobs);
+        } catch (SchedulerException e) {
+            // TODO: Handle SchedulerException
+            e.printStackTrace();
+        }
+    }
+    
+    public void deleteTimer(final JobKey job) {
+        try {
+            scheduler.deleteJob(job);
+        } catch (SchedulerException e) {
+            // TODO: Handle SchedulerException
+            e.printStackTrace();
+        }
+    }
+    
+    
+    private JobKey createTimerForTxn(
             final JobDataMap map,
             final int millis,
             final Class jobClass,
-            final String identity) throws SchedulerException {
+            final String identity,
+            final Transaction txn) throws SchedulerException {
         
         final Trigger trigger = TriggerBuilder
                 .newTrigger()
@@ -101,11 +133,44 @@ public class TimerService {
         final JobDetail job = JobBuilder
                 .newJob(jobClass)
                 .usingJobData(map)
-                .withIdentity(identity, TIMER_GROUP_NAME)
+//                .withIdentity(identity, TIMER_GROUP_NAME)
                 .build();
 
+        txn.addTimer(job.getKey());
+        
         try {
             scheduler.scheduleJob(job, trigger);
+        } catch (SchedulerException e) {
+            // TODO: Handle SchedulerException
+            e.printStackTrace();
+        }
+        
+        return job.getKey();
+    }
+
+    public void startTimerA(final InviteClientTransaction txn, int periodIndex) {
+
+        final JobDataMap map = new JobDataMap();
+        map.put(TimerATask.TXN_KEY, txn);
+        map.put(TimerATask.PERIOD_KEY, periodIndex);
+
+        try {
+            final JobKey key = createTimerForTxn(map, TIMER_A[periodIndex], TimerATask.class, "TimerAJob", txn);
+            txn.setTimerA(key);
+        } catch (SchedulerException e) {
+            // TODO: Handle SchedulerException
+            e.printStackTrace();
+        }
+    }
+
+    public void startTimerB(final InviteClientTransaction txn) {
+
+        final JobDataMap map = new JobDataMap();
+        map.put(TimerBTask.TXN_KEY, txn);
+
+        try {
+            final JobKey key = createTimerForTxn(map, TIMER_B, TimerBTask.class, "TimerBJob", txn);
+            txn.setTimerB(key);
         } catch (SchedulerException e) {
             // TODO: Handle SchedulerException
             e.printStackTrace();
@@ -118,7 +183,7 @@ public class TimerService {
         map.put(TimerITask.TXN_KEY, txn);
 
         try {
-            scheduleTask(map, TIMER_I, TimerITask.class, "TimerIJob");
+            createTimerForTxn(map, TIMER_I, TimerITask.class, "TimerIJob", txn);
         } catch (SchedulerException e) {
             // TODO: Handle SchedulerException
             e.printStackTrace();
@@ -131,7 +196,7 @@ public class TimerService {
         map.put(TimerJTask.TXN_KEY, txn);
 
         try {
-            scheduleTask(map, TIMER_J, TimerJTask.class, "TimerJJob");
+            createTimerForTxn(map, TIMER_J, TimerJTask.class, "TimerJJob", txn);
         } catch (SchedulerException e) {
             // TODO: Handle SchedulerException
             e.printStackTrace();

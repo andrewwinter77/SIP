@@ -13,4 +13,6 @@ public interface SipResponseHandler {
      * @param response 
      */
     void doResponse(InboundSipResponse response);
+    
+    void inviteClientTxnTimeout();
 }

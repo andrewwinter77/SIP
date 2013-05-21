@@ -3,6 +3,7 @@ package org.andrewwinter.sip.transaction.client.invite;
 import org.andrewwinter.sip.dialog.Dialog;
 import org.andrewwinter.sip.message.InboundSipResponse;
 import org.andrewwinter.sip.parser.SipRequest;
+import org.andrewwinter.sip.timer.TimerName;
 import org.andrewwinter.sip.timer.TimerService;
 import org.andrewwinter.sip.transaction.client.ClientTransactionState;
 import org.andrewwinter.sip.transaction.client.ClientTransactionStateName;
@@ -127,7 +128,7 @@ class Calling extends ClientTransactionState {
      */
     private void cancelTimersAB() {
         System.out.println("Cancelling timers A and B");
-        txn.cancelTimerA();
-        txn.cancelTimerB();
+        txn.cancelTimer(TimerName.TimerA);
+        txn.cancelTimer(TimerName.TimerB);
     }
 }

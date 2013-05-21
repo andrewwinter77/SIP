@@ -46,4 +46,9 @@ class Completed extends ServerTransactionState {
         
         txn.sendResponseToTransportLayer(finalResponse);
     }
+    
+    @Override
+    public void timerJFired() {
+        txn.changeState(new Terminated(txn));
+    }
 }

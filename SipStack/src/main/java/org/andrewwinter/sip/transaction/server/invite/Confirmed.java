@@ -14,8 +14,11 @@ import org.andrewwinter.sip.transaction.server.ServerTransactionStateName;
  */
 class Confirmed extends ServerTransactionState {
     
+    private final InviteServerTransaction txn;
+
     public Confirmed(final InviteServerTransaction txn) {
         super(ServerTransactionStateName.CONFIRMED);
+        this.txn = txn;
         
         // When this state is entered, timer I is set to fire in T4 seconds for
         // unreliable transports, and zero seconds for reliable transports. Once
@@ -39,5 +42,10 @@ class Confirmed extends ServerTransactionState {
         // The purpose of the "Confirmed" state is to absorb any additional ACK
         // messages that arrive, triggered from retransmissions of the final
         // response.
+    }
+    
+    @Override
+    public void timerIFired() {
+        txn.changeState(new Terminated(txn));
     }
 }

@@ -50,4 +50,10 @@ public abstract class ServerTransactionState {
     public final ServerTransactionStateName getStateName() {
         return state;
     }
+
+    public void timerIFired() {
+    }
+    
+    public void timerJFired() {
+    }
 }

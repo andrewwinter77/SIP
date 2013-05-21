@@ -222,4 +222,13 @@ public abstract class ServerTransaction extends Transaction {
             sipListener.doRequest(isr);
         }
     }
+    
+    public void timerIFired() {
+        state.timerIFired();
+    }
+    
+
+    public void timerJFired() {
+        state.timerJFired();
+    }
 }

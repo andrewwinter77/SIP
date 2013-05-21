@@ -78,10 +78,6 @@ public class TimerService {
      */
     public static final int TIMER_K = T4;
     
-    /**
-     * 
-     */
-    private static final String TIMER_GROUP_NAME = "SipTimer";
     
     private Scheduler scheduler;
     private static TimerService INSTANCE = new TimerService();
@@ -122,7 +118,6 @@ public class TimerService {
             final JobDataMap map,
             final int millis,
             final Class jobClass,
-            final String identity,
             final Transaction txn) throws SchedulerException {
         
         final Trigger trigger = TriggerBuilder
@@ -133,11 +128,8 @@ public class TimerService {
         final JobDetail job = JobBuilder
                 .newJob(jobClass)
                 .usingJobData(map)
-//                .withIdentity(identity, TIMER_GROUP_NAME)
                 .build();
 
-        txn.addTimer(job.getKey());
-        
         try {
             scheduler.scheduleJob(job, trigger);
         } catch (SchedulerException e) {
@@ -155,8 +147,8 @@ public class TimerService {
         map.put(TimerATask.PERIOD_KEY, periodIndex);
 
         try {
-            final JobKey key = createTimerForTxn(map, TIMER_A[periodIndex], TimerATask.class, "TimerAJob", txn);
-            txn.setTimerA(key);
+            final JobKey key = createTimerForTxn(map, TIMER_A[periodIndex], TimerATask.class, txn);
+            txn.setTimer(TimerName.TimerA, key);
         } catch (SchedulerException e) {
             // TODO: Handle SchedulerException
             e.printStackTrace();
@@ -169,8 +161,8 @@ public class TimerService {
         map.put(TimerBTask.TXN_KEY, txn);
 
         try {
-            final JobKey key = createTimerForTxn(map, TIMER_B, TimerBTask.class, "TimerBJob", txn);
-            txn.setTimerB(key);
+            final JobKey key = createTimerForTxn(map, TIMER_B, TimerBTask.class, txn);
+            txn.setTimer(TimerName.TimerB, key);
         } catch (SchedulerException e) {
             // TODO: Handle SchedulerException
             e.printStackTrace();
@@ -183,7 +175,8 @@ public class TimerService {
         map.put(TimerITask.TXN_KEY, txn);
 
         try {
-            createTimerForTxn(map, TIMER_I, TimerITask.class, "TimerIJob", txn);
+            final JobKey key = createTimerForTxn(map, TIMER_I, TimerITask.class, txn);
+            txn.setTimer(TimerName.TimerI, key);
         } catch (SchedulerException e) {
             // TODO: Handle SchedulerException
             e.printStackTrace();
@@ -196,7 +189,8 @@ public class TimerService {
         map.put(TimerJTask.TXN_KEY, txn);
 
         try {
-            createTimerForTxn(map, TIMER_J, TimerJTask.class, "TimerJJob", txn);
+            final JobKey key = createTimerForTxn(map, TIMER_J, TimerJTask.class, txn);
+            txn.setTimer(TimerName.TimerJ, key);
         } catch (SchedulerException e) {
             // TODO: Handle SchedulerException
             e.printStackTrace();

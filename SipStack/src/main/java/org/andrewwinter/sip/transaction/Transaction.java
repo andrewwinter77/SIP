@@ -1,7 +1,10 @@
 package org.andrewwinter.sip.transaction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import org.andrewwinter.sip.timer.TimerName;
 import org.andrewwinter.sip.timer.TimerService;
 import org.quartz.JobKey;
 
@@ -11,57 +14,23 @@ import org.quartz.JobKey;
  */
 public abstract class Transaction {
 
-    private JobKey timerA;
-    
-    private JobKey timerB;
-    
-    private JobKey timerI;
-
-    private final List<JobKey> timers;
-
     private boolean terminated;
     
-    public void setTimerA(final JobKey job) {
-        timerA = job;
+    private Map<TimerName, JobKey> timers;
+    
+    public void setTimer(final TimerName name, final JobKey key) {
+        timers.put(name, key);
     }
     
-    public void setTimerB(final JobKey job) {
-        timerB = job;
-    }
-    
-    public void setTimerI(final JobKey job) {
-        timerI = job;
-    }
-
-    public void cancelTimerA() {
-        if (timerA != null) {
-            TimerService.getInstance().deleteTimer(timerA);
-        }
-    }
-
-    public void cancelTimerB() {
-        if (timerB != null) {
-            TimerService.getInstance().deleteTimer(timerB);
-        }
-    }
-    
-    public void cancelTimerI() {
-        if (timerI != null) {
-            TimerService.getInstance().deleteTimer(timerI);
-        }
-    }
-
-    public void addTimer(final JobKey job) {
-        synchronized (timers) {
-            timers.add(job);
+    public void cancelTimer(final TimerName name) {
+        final JobKey key = timers.get(name);
+        if (key != null) {
+            TimerService.getInstance().deleteTimer(key);
         }
     }
     
     public void destroy() {
         terminated = true;
-        synchronized (timers) {
-            TimerService.getInstance().deleteTimers(timers);
-        }
     }
     
     /**
@@ -80,7 +49,7 @@ public abstract class Transaction {
     }
     
     protected Transaction() {
-        timers = new ArrayList<JobKey>();
+        timers = new HashMap<TimerName, JobKey>();
         terminated = false;
     }
 }
